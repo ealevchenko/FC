@@ -1,0 +1,115 @@
+﻿@using WebUI.App_GlobalResources;
+@{
+    ViewBag.Title = @GlobalResource.home_title;
+    ViewBag.section = @GlobalResource.home_tank_states;
+}
+
+@section styles {
+    @Styles.Render("~/jquery-ui/css")
+    @Styles.Render("~/DataTables/css")
+@*<link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css">*@
+    <link rel="stylesheet" type="text/css" href="~/Content/View/tankstates.css">
+
+}
+
+@section scripts {
+    <script>
+            var pipe_a92 = '@System.Configuration.ConfigurationManager.AppSettings["pipe_a92"]';
+            var pipe_a95 = '@System.Configuration.ConfigurationManager.AppSettings["pipe_a95"]';
+            var pipe_dt = '@System.Configuration.ConfigurationManager.AppSettings["pipe_dt"]';
+            var pipe_kerosin = '@System.Configuration.ConfigurationManager.AppSettings["pipe_kerosin"]';
+    </script>
+    @Scripts.Render("~/bundles/Ajax")
+    @Scripts.Render("~/bundles/jquery-ui")
+    @Scripts.Render("~/bundles/DataTables")
+    <script src="~/Scripts/jquery.cookie.js" type="text/javascript"></script>
+    <script src="~/Scripts/View/common.js" type="text/javascript"></script>
+    <script src="~/Scripts/View/tankstates.js" type="text/javascript"></script>
+    <script>
+        $('body').addClass('img-header-tankstates');
+    </script>
+
+}
+
+<div id="report" class="report-wide">
+    <div id="tabs-reports">
+        <ul>
+            <li><a href="#tabs-report-1" id="link-tabs-report-1"></a></li>
+            @*<li><a href="#tabs-report-2" id="link-tabs-report-2"></a></li>*@
+        </ul>
+
+        <div id="tabs-report-1">
+            <div id="accordion-total">
+                <h3 id="title-accordion-total"></h3>
+                <div>
+                    <table id="total-table" class='table'>
+                        <thead>
+                            <tr><th id="th-fuel"></th><th id="th-disloc"></th><th id="th-volum"></th><th id="th-mass"></th><th id="th-density"></th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th rowspan="2">A92</th>
+                                <th>Емкости</th>
+                                <td><label id="a92-volume"></label></td>
+                                <td><label id="a92-mass"></label></td>
+                                <td rowspan="2"><label id="a92-density"></label></td>
+                            </tr>
+                            <tr>
+                                <th>Трубы</th>
+                                <td><label id="a92-pipe-volume"></label></td>
+                                <td><label id="a92-pipe-mass"></label></td>
+                            </tr>
+                            <tr>
+                                <th rowspan="2">A95</th>
+                                <th>Емкости</th>
+                                <td><label id="a95-volume"></label></td>
+                                <td><label id="a95-mass"></label></td>
+                                <td rowspan="2"><label id="a95-density"></label></td>
+                            </tr>
+                            <tr>
+                                <th>Трубы</th>
+                                <td><label id="a95-pipe-volume"></label></td>
+                                <td><label id="a95-pipe-mass"></label></td>
+                            </tr>
+                            <tr>
+                                <th rowspan="2">ДТ</th>
+                                <th>Емкости</th>
+                                <td><label id="dt-volume"></label></td>
+                                <td><label id="dt-mass"></label></td>
+                                <td rowspan="2"><label id="dt-density"></label></td>
+                            </tr>
+                            <tr>
+                                <th>Трубы</th>
+                                <td><label id="dt-pipe-volume"></label></td>
+                                <td><label id="dt-pipe-mass"></label></td>
+                            </tr>
+                            <tr>
+                                <th rowspan="2">Керосин</th>
+                                <th>Емкости</th>
+                                <td><label id="kerosin-volume"></label></td>
+                                <td><label id="kerosin-mass"></label></td>
+                                <td rowspan="2"> <label id="kerosin-density"></label></td>
+                            </tr>
+                            <tr>
+                                <th>Трубы</th>
+                                <td><label id="kerosin-pipe-volume"></label></td>
+                                <td><label id="kerosin-pipe-mass"></label></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="accordion-detali">
+                <h3 id="title-accordion-detali"></h3>
+                <div>
+                    <table class='display compact' id="table-last-tank_states" style="width:100%" cellpadding="0"></table>
+                </div>
+            </div>
+        </div>
+        @*<div id="tabs-report-2">
+                <table class='display compact' id="table-cargo-disl-operations" style="width:100%" cellpadding="0"></table>
+            </div>*@
+    </div>
+
+</div>
+

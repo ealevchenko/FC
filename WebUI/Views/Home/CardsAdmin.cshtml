@@ -1,0 +1,163 @@
+﻿@using WebUI.App_GlobalResources;
+@{
+    ViewBag.Title = @GlobalResource.home_title;
+    ViewBag.section = @GlobalResource.home_cards_adm;
+}
+
+@section styles {
+    @Styles.Render("~/jquery-ui/css")
+    @Styles.Render("~/DataTables/css")
+    <link rel="stylesheet" type="text/css" href="~/Content/View/cards.css">
+}
+
+@section scripts {
+    <script>
+            var function_delete_cards = '@System.Configuration.ConfigurationManager.AppSettings["function_delete_cards"]';
+    </script>
+    @Scripts.Render("~/bundles/Ajax")
+    @Scripts.Render("~/bundles/jquery-ui")
+    @Scripts.Render("~/bundles/DataTables")
+    <script src="~/Scripts/jquery.cookie.js" type="text/javascript"></script>
+    <script src="~/Scripts/View/common.js" type="text/javascript"></script>
+    <script src="~/Scripts/View/cards.js" type="text/javascript"></script>
+    <script>
+        $('body').addClass('img-header-RFID-admin');
+    </script>
+}
+
+<div id="ins-edit-confirm" title="" style="display:none">
+    <form id="form-ins-edit">
+        <fieldset>
+            <table id="confirm" class="display">
+                <tr>
+                    <th><label for="Number" id="label-number-cards"></label></th>
+                    <td><input id="Number" name="Number" type="text" class="confirm-input ui-widget-content ui-corner-all" /></td>
+                </tr>
+                <tr>
+                    <th><label for="DriverName" id="label-drivername-cards"></label></th>
+                    <td><input id="DriverName" name="DriverName" type="text" class="confirm-input ui-widget-content ui-corner-all" /></td>
+                </tr>
+                <tr>
+                    <th><label for="AutoNumber" id="label-autonumber-cards"></label></th>
+                    <td><input id="AutoNumber" name="AutoNumber" type="text" class="confirm-input ui-widget-content ui-corner-all" /></td>
+                </tr>
+                <tr>
+                    <th><label for="Debitor" id="label-debitor-cards"></label></th>
+                    <td><input id="Debitor" name="Debitor" type="number" class="confirm-input ui-widget-content ui-corner-all" /></td>
+                </tr>
+                <tr>
+                    <th><label for="Sn1" id="label-sn1-cards"></label></th>
+                    <td><input id="Sn1" name="Sn1" type="text" class="confirm-input ui-widget-content ui-corner-all" /></td>
+                </tr>
+                <tr>
+                    <th><label for="Sn2" id="label-sn2-cards"></label></th>
+                    <td><input id="Sn2" name="Sn1" type="text" class="confirm-input ui-widget-content ui-corner-all" /></td>
+                </tr>
+                <tr>
+                    <th><label for="AutoModel" id="label-automodel-cards"></label></th>
+                    <td><input id="AutoModel" name="AutoModel" type="text" class="confirm-input ui-widget-content ui-corner-all" /></td>
+                </tr>
+                <tr>
+                    <th><label for="Street" id="label-street-cards"></label></th>
+                    <td><input id="Street" name="Street" type="number" class="confirm-input ui-widget-content ui-corner-all" /></td>
+                </tr>
+                <tr>
+                    <th><label for="House" id="label-house-cards"></label></th>
+                    <td><select id="House" name="House" class="ui-widget-content ui-corner-all"></select></td>
+                </tr>
+                <tr>
+                    <th><label for="Owner" id="label-owner-cards"></label></th>
+                    <td><input id="Owner" name="Owner" type="text" class="confirm-input ui-widget-content ui-corner-all" /></td>
+                </tr>
+                <tr>
+                    <th><label for="Active" id="label-active-cards"></label></th>
+                    <td><input id="Active" name="Active" type="checkbox" class="confirm-input ui-widget-content ui-corner-all" /></td>
+                </tr>
+            </table>
+            @*<input id="id-nodes" name="id-nodes" type="hidden" />
+                <p>
+                    <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+                    <label id="delete-confirm-text" name="delete-confirm-text"></label>
+                </p>*@
+            <!-- Allow form submission with keyboard without duplicating the dialog button -->
+            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+        </fieldset>
+    </form>
+</div>
+
+<div id="delete-confirm" title="" style="display:none">
+    <form id="form-delete">
+        <fieldset>
+            <legend id="legend-delete"></legend>
+            <table id="confirm" class="display">
+                <tr>
+                    <th><label for="Number" id="label-id-cards"></label></th>
+                    <td><label id="value-id-cards"></label></td>
+                </tr>
+                <tr>
+                    <th><label for="Number" id="label-number-cards"></label></th>
+                    <td><label id="value-number-cards"></label></td>
+                </tr>
+                <tr>
+                    <th><label for="DriverName" id="label-drivername-cards"></label></th>
+                    <td><label id="value-drivername-cards"></label></td>
+                </tr>
+                <tr>
+                    <th><label for="AutoNumber" id="label-autonumber-cards"></label></th>
+                    <td><label id="value-autonumber-cards"></label></td>
+                </tr>
+                <tr>
+                    <th><label for="Debitor" id="label-debitor-cards"></label></th>
+                    <td><label id="value-debitor-cards"></label></td>
+                </tr>
+                <tr>
+                    <th><label for="Sn1" id="label-sn1-cards"></label></th>
+                    <td><label id="value-sn1-cards"></label></td>
+                </tr>
+                <tr>
+                    <th><label for="Sn2" id="label-sn2-cards"></label></th>
+                    <td><label id="value-sn2-cards"></label></td>
+                </tr>
+                <tr>
+                    <th><label for="AutoModel" id="label-automodel-cards"></label></th>
+                    <td><label id="value-automodel-cards"></label></td>
+                </tr>
+                <tr>
+                    <th><label for="Street" id="label-street-cards"></label></th>
+                    <td><label id="value-street-cards"></label></td>
+                </tr>
+                <tr>
+                    <th><label for="House" id="label-house-cards"></label></th>
+                    <td><label id="value-house-cards"></label></td>
+                </tr>
+                <tr>
+                    <th><label for="Owner" id="label-owner-cards"></label></th>
+                    <td><label id="value-owner-cards"></label></td>
+                </tr>
+                <tr>
+                    <th><label for="Active" id="label-active-cards"></label></th>
+                    <td><label id="value-active-cards"></label></td>
+                </tr>
+            </table>
+            <!-- Allow form submission with keyboard without duplicating the dialog button -->
+            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+        </fieldset>
+    </form>
+</div>
+
+<div id="report" class="report-wide">
+    <div id="tabs-cards">
+        <ul>
+            <li><a href="#tabs-cards-1" id="link-tabs-cars-list"></a></li>
+            @*<li><a href="#tabs-cards-2" id="link-tabs-cars-user"></a></li>*@
+        </ul>
+        <div id="tabs-cards-1">
+            <div id="table-panel"></div>
+            <table class='display compact' id="table-list-cards" style="width:100%" cellpadding="0"></table>
+        </div>
+        @*<div id="tabs-cards-2">
+                <table class='display compact' id="table-cargo-disl-operations" style="width:100%" cellpadding="0"></table>
+            </div>*@
+    </div>
+</div>
+

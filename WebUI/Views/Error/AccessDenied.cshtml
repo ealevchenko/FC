@@ -1,0 +1,26 @@
+﻿@using WebUI.App_GlobalResources;
+
+@model string
+
+@{
+    ViewBag.Title = @GlobalResource.home_title;
+    ViewBag.section = @GlobalResource.title_access_denied;
+}
+
+@{
+    string[] message = @Model.Split(';');
+}
+
+@section styles {
+
+}
+
+@section scripts {
+    <script>
+        $('body').addClass('img-header-access-denied');
+    </script>
+}
+<div id="message-error">
+    <h2>@GlobalResource.error_ad_text1<span>@message[0]</span> <br /> @GlobalResource.error_ad_text2 <span>@message[1]</span></h2>
+</div>
+

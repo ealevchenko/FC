@@ -1,0 +1,45 @@
+﻿DIV#report {
+    padding: 0;
+    margin: 20px auto;
+    width: 1200px;
+    color: #666;
+    background: White;
+}
+
+td.active {
+    background: url('../../Images/element/active.png') no-repeat center center;
+}
+td.not_active {
+    background: url('../../Images/element/not_active.png') no-repeat center center;
+}
+td.null_active {
+    background: url('../../Images/element/null_active.png') no-repeat center center;
+}
+
+/*Панель настроек*/
+.setup-operation {
+    padding: 5px;
+    text-align: left;
+}
+
+    .setup-operation button {
+        margin-left: 5px;
+    }
+
+    .setup-operation label {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+.overflow {
+    height: 200px;
+}
+
+#confirm tr td {
+    padding: 5px;
+    text-align: left; 
+}
+
+.confirm-input {
+    width:300px;
+}
