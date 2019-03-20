@@ -297,7 +297,7 @@
                         { data: "TankNo", title: langView('field_TankNo', langs), width: "50px", orderable: true, searchable: true },
                         { data: "UsageVolume", title: langView('field_UsageVolume', langs), width: "50px", orderable: true, searchable: true },
                         { data: "UsageMass", title: langView('field_UsageMass', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "Density", title: langView('field_Density', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "UsageDensity", title: langView('field_Density', langs), width: "50px", orderable: true, searchable: true },
 
                     ],
                 });
@@ -337,6 +337,7 @@
                         "Name": data[i].Name,
                         "UsageVolume": data[i].UsageVolume,
                         "UsageMass": data[i].UsageMass,
+                        "UsageDensity": data[i].UsageDensity,
                         "TankNo": data[i].TankNo,
                         "FuelLevel": data[i].FuelLevel,
                         "FuelVolume": data[i].FuelVolume,

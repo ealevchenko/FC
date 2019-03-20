@@ -215,6 +215,10 @@
                 .Property(e => e.StopWaterLevel)
                 .HasPrecision(6, 1);
 
+            modelBuilder.Entity<azsFuelSale>()
+                .Property(e => e.UsageDensity)
+                .HasPrecision(9, 5);
+
             modelBuilder.Entity<azsFuelSale_bak_20170612>()
                 .Property(e => e.UsageVolume)
                 .HasPrecision(9, 1);

@@ -29,7 +29,7 @@ namespace WebUI.Controllers.api
             string sql = "SELECT [Id],[AzsNo],[FuelType],[LokomotiveId],[Name],[UsageVolume],[UsageMass],[TankNo],[FuelLevel],[FuelVolume],[Density],[Mass] "+
                         ",[Temperature],[WaterLevel],[TechnicalSale],[OperatorName],[DateStartWork],[TimeStartWork],[DateStart],[TimeStart],[DateStop] "+
                         ",[TimeStop],[CardId],[StartLevel],[StartVolume],[StartDensity],[StartMass],[StartTemperature],[StartWaterLevel],[StopLevel] "+
-                        ",[StopVolume],[StopDensity],[StopMass],[StopTemperature],[StopWaterLevel]  FROM [KRR-PA-CNT-Oil].[dbo].[azsFuelSale] "+
+                        ",[StopVolume],[StopDensity],[StopMass],[StopTemperature],[StopWaterLevel],[UsageDensity]  FROM [KRR-PA-CNT-Oil].[dbo].[azsFuelSale] " +
                         "WHERE CONVERT(datetime,CAST([DateStart] AS char(10))+ ' '+CAST(TimeStart AS char(8)),120)>=CONVERT(datetime,'"+start.ToString("yyyy-MM-dd HH:mm:ss")+"',120) and "+
                         "CONVERT(datetime,CAST([DateStart] AS char(10))+ ' '+CAST(TimeStart AS char(8)),120)<=CONVERT(datetime,'" + stop.ToString("yyyy-MM-dd HH:mm:ss") + "',120)";
 

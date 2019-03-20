@@ -106,5 +106,9 @@ namespace EFFC.Entities
 
         [Column(TypeName = "numeric")]
         public decimal? StopWaterLevel { get; set; }
+
+        [Column(TypeName = "numeric")]
+        public decimal? UsageDensity { get; set; }
+
     }
 }
