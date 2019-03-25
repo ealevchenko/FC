@@ -17,7 +17,7 @@
                 'field_AutoModel': 'Модель трансп. средства',
                 'field_Street': 'Автоколонна',
                 'field_House': 'Шифр цеха',
-                'field_Owner': 'Владелец',
+                'field_Owner': 'Правил',
                 'field_Active': 'Активация',
                 'title_insert_cards': 'Добавить карту',
                 'title_edit_cards': 'Править карту',
@@ -42,7 +42,7 @@
                 'field_AutoModel': 'Vehicle Model',
                 'field_Street': 'motorcade',
                 'field_House': 'Shop Code',
-                'field_Owner': 'Owner',
+                'field_Owner': 'Rules',
                 'field_Active': 'Activation',
                 'title_insert_cards': 'Add a card',
                 'title_edit_cards': 'Edit card',
@@ -157,7 +157,7 @@
                         { data: "id", title: langView('field_id', langs), width: "50px", orderable: true, searchable: false },
                         { data: "Number", title: langView('field_Number', langs), width: "100px", orderable: true, searchable: true },
                         { data: "AutoNumber", title: langView('field_AutoNumber', langs), width: "100px", orderable: true, searchable: true },
-                        { data: "Debitor", title: langView('field_Debitor', langs), width: "100px", orderable: true, searchable: false },
+                        { data: "Debitor", title: langView('field_Debitor', langs), width: "100px", orderable: true, searchable: true },
                         { data: "Sn1", title: langView('field_Sn1', langs), width: "100px", orderable: true, searchable: false },
                         { data: "AutoModel", title: langView('field_AutoModel', langs), width: "100px", orderable: true, searchable: true },
                         { data: "Street", title: langView('field_Street', langs), width: "100px", orderable: true, searchable: false },
@@ -294,6 +294,7 @@
             id: 0,
             create_date: null,
             create_time: null,
+            user:null,
             initObject: function () {
                 this.obj = this.html_div.dialog({
                     resizable: false,
@@ -370,6 +371,7 @@
 
             },
             setCards: function (cards) {
+                confirm_ins_edit_panel.user = $('input#username').val();
                 if (cards != null) {
                     // режим edit
                     confirm_ins_edit_panel.id = cards.Id;
@@ -383,7 +385,7 @@
                     $('#Sn2').val(cards.Sn2);
                     $('#AutoModel').val(cards.AutoModel);
                     $('#Street').val(cards.Street);
-                    $('#Owner').val(cards.Owner);
+                    $('#Owner').val($('input#username').val());
                     $('#Active').prop('checked', cards.Active);
                 } else {
                     // режим insert
@@ -417,7 +419,7 @@
                 $('#Sn2').val('');
                 $('#AutoModel').val('');
                 $('#Street').val('');
-                $('#Owner').val('');
+                $('#Owner').val($('input#username').val());
                 $('#Active').prop('checked', false);
             },
             // Получить cards после правки
@@ -438,7 +440,7 @@
                     CreateTime: confirm_ins_edit_panel.id == 0 ? toISOStringTZ(now).substring(11, 23) : confirm_ins_edit_panel.create_time,
                     UpdateDate: toISOStringTZ(now).substring(0, 10),
                     UpdateTime: toISOStringTZ(now).substring(11, 23),
-                    Owner: $('#Owner').val() != '' ? $('#Owner').val() : null,
+                    Owner: confirm_ins_edit_panel.user != null ? confirm_ins_edit_panel.user : null,
                     Active: $('#Active').prop('checked'),
                 };
             },

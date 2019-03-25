@@ -25,6 +25,8 @@
     </script>
 }
 
+<input id="username" type="hidden" value="@User.Identity.Name" />
+
 <div id="ins-edit-confirm" title="" style="display:none">
     <form id="form-ins-edit">
         <fieldset>
@@ -67,13 +69,14 @@
                 </tr>
                 <tr>
                     <th><label for="Owner" id="label-owner-cards"></label></th>
-                    <td><input id="Owner" name="Owner" type="text" class="confirm-input ui-widget-content ui-corner-all" /></td>
+                    <td><input id="Owner" name="Owner" type="text" disabled="disabled" class="confirm-input ui-widget-content ui-corner-all" /></td>
                 </tr>
                 <tr>
                     <th><label for="Active" id="label-active-cards"></label></th>
                     <td><input id="Active" name="Active" type="checkbox" class="confirm-input ui-widget-content ui-corner-all" /></td>
                 </tr>
             </table>
+            
             @*<input id="id-nodes" name="id-nodes" type="hidden" />
                 <p>
                     <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
