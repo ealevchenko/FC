@@ -18,7 +18,7 @@ namespace WebUI.Controllers
         /// RFID Карты
         /// </summary>
         /// <returns></returns>
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_CardRFID_user,EUROPE\KRR-LG-Fuel_CardRFID_admin")]
+        //[ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_CardRFID_user,EUROPE\KRR-LG-Fuel_CardRFID_admin")]
         public ActionResult Cards()
         {
             return View();
@@ -27,7 +27,7 @@ namespace WebUI.Controllers
         /// 
         /// </summary>
         /// <returns></returns>
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_CardRFID_admin")]
+        //[ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_CardRFID_admin")]
         public ActionResult CardsAdmin()
         {
             return View();
@@ -36,7 +36,7 @@ namespace WebUI.Controllers
         /// Состояние склада ГСМ АЗС
         /// </summary>
         /// <returns></returns>
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user")]
+        //[ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user")]
         public ActionResult TankStates()
         {
             return View();
@@ -45,12 +45,12 @@ namespace WebUI.Controllers
         /// Заправочная ведомость
         /// </summary>
         /// <returns></returns>
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user")]
+        //[ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user")]
         public ActionResult FuelSale()
         {
             return View();
         }
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user")]
+        //[ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user")]
         public ActionResult RWTankStates()
         {
             return View();

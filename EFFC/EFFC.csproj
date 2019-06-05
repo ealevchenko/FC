@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Concrete\EFAzsPlan.cs" />
     <Compile Include="Concrete\EFazsCards.cs" />
     <Compile Include="Concrete\EFazsDeparts.cs" />
     <Compile Include="Concrete\EFazsFuelSale.cs" />
