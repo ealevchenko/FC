@@ -16,12 +16,13 @@
     <div id="lockPanel" class="LockOff"></div>
     <div class="container">
         <div class="header">
-            <a href='@Url.Action("Index", "Home", new { Area = "Oil" })'>
-                <strong>&laquo; Отчеты ЦСМ: </strong>
-            </a>
             <a href='@Url.Action("Index", "Home", new { Area = "" })'>
+                <strong>&laquo; Отчеты ГСМ: </strong>
+            </a>
+            <a href='@Url.Action("Index", "Home", new { Area = "Oil" })'>
                 <strong>&laquo; Home: </strong>
             </a>
+
             <span class="right">
                 @using (Html.BeginForm("ChangeCulture", "Home", new { area = "" }))
                 {

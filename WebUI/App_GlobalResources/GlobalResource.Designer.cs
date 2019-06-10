@@ -160,6 +160,42 @@ namespace WebUI.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Поступления масла на ЦСМ.
+        /// </summary>
+        public static string home_link_description_oilreceipt {
+            get {
+                return ResourceManager.GetString("home_link_description_oilreceipt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Инвентаризация остатков на ЦСМ.
+        /// </summary>
+        public static string home_link_description_oilresidue {
+            get {
+                return ResourceManager.GetString("home_link_description_oilresidue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Выдача масла из ЦСМ.
+        /// </summary>
+        public static string home_link_description_oilsales {
+            get {
+                return ResourceManager.GetString("home_link_description_oilsales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Перекачка масла на ЦСМ.
+        /// </summary>
+        public static string home_link_description_oiltransfer {
+            get {
+                return ResourceManager.GetString("home_link_description_oiltransfer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Список RFID-карт установленных на АМКР.
         /// </summary>
         public static string home_link_description_RFID_cards {
@@ -201,6 +237,42 @@ namespace WebUI.App_GlobalResources {
         public static string home_link_fuelsales_kgd {
             get {
                 return ResourceManager.GetString("home_link_fuelsales_kgd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Поступления.
+        /// </summary>
+        public static string home_link_oilreceipt {
+            get {
+                return ResourceManager.GetString("home_link_oilreceipt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Остатки.
+        /// </summary>
+        public static string home_link_oilresidue {
+            get {
+                return ResourceManager.GetString("home_link_oilresidue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Выдача.
+        /// </summary>
+        public static string home_link_oilsales {
+            get {
+                return ResourceManager.GetString("home_link_oilsales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Перекачки.
+        /// </summary>
+        public static string home_link_oiltransfer {
+            get {
+                return ResourceManager.GetString("home_link_oiltransfer", resourceCulture);
             }
         }
         
@@ -282,6 +354,15 @@ namespace WebUI.App_GlobalResources {
         public static string home_title {
             get {
                 return ResourceManager.GetString("home_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Система контроля ЦСМ.
+        /// </summary>
+        public static string home_title_oil {
+            get {
+                return ResourceManager.GetString("home_title_oil", resourceCulture);
             }
         }
         

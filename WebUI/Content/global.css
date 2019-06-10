@@ -68,6 +68,10 @@ body{
     background-image: url(../Images/pattern.png), url(../Images/global.jpg);
 }
 
+.img-header-global-oil {
+    background-image: url(../Images/pattern.png), url(../Images/global_oil.jpg);
+}
+
 .img-header-RFID {
     background-image: url(../Images/pattern.png), url(../Images/RFID.jpg);
 }

@@ -137,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Oil\Models\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +184,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Areas\Oil\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Oil\OilAreaRegistration.cs" />
     <Compile Include="Controllers\api\AzsPlanController.cs" />
     <Compile Include="Controllers\api\azsCardsController.cs" />
     <Compile Include="Controllers\api\azsDepartsController.cs" />
@@ -420,6 +423,7 @@
     <Content Include="Images\error.jpg" />
     <Content Include="Images\Error_404.jpg" />
     <Content Include="Images\fuelsales.jpg" />
+    <Content Include="Images\global_oil.jpg" />
     <Content Include="Images\RFID_admin.jpg" />
     <Content Include="Images\rwfuelsales.jpg" />
     <Content Include="Images\tankstates.jpg" />
@@ -500,6 +504,11 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Areas\Oil\Views\web.config" />
+    <Content Include="Areas\Oil\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Oil\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Oil\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Oil\Views\Shared\_Global.cshtml" />
     <None Include="Properties\PublishProfiles\fc.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />

@@ -201,4 +201,31 @@
   <data name="home_tank_states_rw" xml:space="preserve">
     <value>Экипировка ст. "Карьерная ГД"</value>
   </data>
+  <data name="home_link_description_oilreceipt" xml:space="preserve">
+    <value>Поступления масла на ЦСМ</value>
+  </data>
+  <data name="home_link_description_oilresidue" xml:space="preserve">
+    <value>Инвентаризация остатков на ЦСМ</value>
+  </data>
+  <data name="home_link_description_oilsales" xml:space="preserve">
+    <value>Выдача масла из ЦСМ</value>
+  </data>
+  <data name="home_link_description_oiltransfer" xml:space="preserve">
+    <value>Перекачка масла на ЦСМ</value>
+  </data>
+  <data name="home_link_oilreceipt" xml:space="preserve">
+    <value>Поступления</value>
+  </data>
+  <data name="home_link_oilresidue" xml:space="preserve">
+    <value>Остатки</value>
+  </data>
+  <data name="home_link_oilsales" xml:space="preserve">
+    <value>Выдача</value>
+  </data>
+  <data name="home_link_oiltransfer" xml:space="preserve">
+    <value>Перекачки</value>
+  </data>
+  <data name="home_title_oil" xml:space="preserve">
+    <value>Система контроля ЦСМ</value>
+  </data>
 </root>

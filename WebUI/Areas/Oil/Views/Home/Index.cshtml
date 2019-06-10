@@ -1,0 +1,63 @@
+﻿@using WebUI.App_GlobalResources;
+@{
+    ViewBag.Title = @GlobalResource.home_title_oil;
+    ViewBag.section = @GlobalResource.home;
+}
+
+@section styles {
+    <link rel="stylesheet" type="text/css" href="~/Content/homemenu.css">
+}
+
+@section scripts {
+    <script>
+        $('body').addClass('img-header-global-oil');
+    </script>
+}
+<ul class="ca-menu">
+    <li>
+        <a href='@Url.Action("", "Home", new { Area = "Oil" })'>
+            <span class="ca-icon">A</span>
+            <div class="ca-content">
+                <h2 class="ca-main">@GlobalResource.home_link_oilreceipt</h2>
+                <h3 class="ca-sub">@GlobalResource.home_link_description_oilreceipt</h3>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href='@Url.Action("", "Home", new { Area = "Oil" })'>
+            <span class="ca-icon">J</span>
+            <div class="ca-content">
+                <h2 class="ca-main">@GlobalResource.home_link_oilsales</h2>
+                <h3 class="ca-sub">@GlobalResource.home_link_description_oilsales</h3>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href='@Url.Action("", "Home", new { Area = "Oil" })'>
+            <span class="ca-icon">Z</span>
+            <div class="ca-content">
+                <h2 class="ca-main">@GlobalResource.home_link_oilresidue</h2>
+                <h3 class="ca-sub">@GlobalResource.home_link_description_oilresidue</h3>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href='@Url.Action("", "Home", new { Area = "Oil" })'>
+            <span class="ca-icon">H</span>
+            <div class="ca-content">
+                <h2 class="ca-main">@GlobalResource.home_link_oiltransfer</h2>
+                <h3 class="ca-sub">@GlobalResource.home_link_description_oiltransfer</h3>
+            </div>
+        </a>
+    </li>
+</ul>
+
+@*<div class="more">
+    <ul>
+        <li>@GlobalResource.home_more_link:</li>
+        <li><a href='@Url.Action("CardsAdmin", "Home")'>@GlobalResource.home_link_RFID_cards_adm</a></li>
+        @*<li><a href="#">....</a></li>
+            <li><a href="#">....</a></li>
+    </ul>
+</div>*@
+
