@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Web
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28306.52
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFFC", "EFFC\EFFC.csproj", "{B73CA8E1-6727-4DFB-A4FA-DEEB4C901B06}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI", "WebUI\WebUI.csproj", "{5E787734-7200-4A05-8FE7-97C6FECA38DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFOC", "EFOC\EFOC.csproj", "{7375DABD-0D71-40D1-ACF3-7DF26926E828}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +23,15 @@ Global
 		{5E787734-7200-4A05-8FE7-97C6FECA38DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E787734-7200-4A05-8FE7-97C6FECA38DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E787734-7200-4A05-8FE7-97C6FECA38DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7375DABD-0D71-40D1-ACF3-7DF26926E828}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7375DABD-0D71-40D1-ACF3-7DF26926E828}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7375DABD-0D71-40D1-ACF3-7DF26926E828}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7375DABD-0D71-40D1-ACF3-7DF26926E828}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4580BDAE-DB6F-47FF-8CE5-5F331E678486}
 	EndGlobalSection
 EndGlobal

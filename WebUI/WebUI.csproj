@@ -186,6 +186,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Areas\Oil\Controllers\HomeController.cs" />
     <Compile Include="Areas\Oil\OilAreaRegistration.cs" />
+    <Compile Include="Controllers\api\oilOutcomesController.cs" />
     <Compile Include="Controllers\api\AzsPlanController.cs" />
     <Compile Include="Controllers\api\azsCardsController.cs" />
     <Compile Include="Controllers\api\azsDepartsController.cs" />
@@ -663,6 +664,10 @@
     <ProjectReference Include="..\EFFC\EFFC.csproj">
       <Project>{b73ca8e1-6727-4dfb-a4fa-deeb4c901b06}</Project>
       <Name>EFFC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EFOC\EFOC.csproj">
+      <Project>{7375dabd-0d71-40d1-acf3-7df26926e828}</Project>
+      <Name>EFOC</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

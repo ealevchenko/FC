@@ -13,9 +13,10 @@ namespace WebUI.App_Start
     using Ninject.Web.Common.WebHost;
     using Ninject.Web.WebApi;
     using System.Web.Http;
-    using EFFC.Abstract;
-    using EFFC.Entities;
-    using EFFC.Concrete;
+    //using EFFC.Abstract;
+    //using EFFC.Entities;
+    //using EFFC.Concrete;
+    //using EFOC.Entities;
 
     public static class NinjectWebCommon 
     {
@@ -68,13 +69,15 @@ namespace WebUI.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IRepository<Cards>>().To<EFCards>();
-            kernel.Bind<IRepository<azsCards>>().To<EFazsCards>();
-            kernel.Bind<IRepository<azsDeparts>>().To<EFazsDeparts>();
-            kernel.Bind<IRepository<azsTankStates>>().To<EFazsTankStates>();
-            kernel.Bind<IRepository<azsFuelSale>>().To<EFazsFuelSale>();
-            kernel.Bind<IRepository<FuelSale>>().To<EFFuelSale>();
-            kernel.Bind<IRepository<TankStates>>().To<EFTankStates>();
+            kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.Cards>>().To<EFFC.Concrete.EFCards>();
+            kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.azsCards>>().To<EFFC.Concrete.EFazsCards>();
+            kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.azsDeparts>>().To<EFFC.Concrete.EFazsDeparts>();
+            kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.azsTankStates>>().To<EFFC.Concrete.EFazsTankStates>();
+            kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.azsFuelSale>>().To<EFFC.Concrete.EFazsFuelSale>();
+            kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.FuelSale>>().To<EFFC.Concrete.EFFuelSale>();
+            kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.TankStates>>().To<EFFC.Concrete.EFTankStates>();
+            kernel.Bind<EFOC.Abstract.IRepository<EFOC.Entities.Outcomes>>().To<EFOC.Concrete.EFOutcomes>();
+
         }        
     }
 }
