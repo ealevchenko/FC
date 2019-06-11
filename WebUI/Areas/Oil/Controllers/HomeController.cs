@@ -13,5 +13,13 @@ namespace WebUI.Areas.Oil.Controllers
         {
             return View();
         }
+        public ActionResult Sales()
+        {
+            return View();
+        }
+        public ActionResult Receipt()
+        {
+            return View();
+        }
     }
 }

@@ -11,6 +11,55 @@ using System.Web.Http.Description;
 
 namespace WebUI.Controllers.api
 {
+    public class Outcomes_report : Outcomes  {
+        //public long Id { get; set; }
+        //public DateTime DateCreated { get; set; }
+        //public string OperatorCreated { get; set; }
+        //public string OilType { get; set; }
+        //public string TankNo { get; set; }
+        //public double TargetMass { get; set; }
+        //public double TargetVolume { get; set; }
+        //public double CreatedLevel { get; set; }
+        //public double CreatedVolume { get; set; }
+        //public double CreatedMass { get; set; }
+        //public double CreatedTemp { get; set; }
+        //public double CreatedDens { get; set; }
+        //public double CreatedWater { get; set; }
+        //public int OutcomeType { get; set; }
+        //public string Receiver { get; set; }
+        //public DateTime? DateStarted { get; set; }
+        //public string OperatorStarted { get; set; }
+        //public string Pump_Used { get; set; }
+        //public long? CounterStart { get; set; }
+        //public double? LevelStart { get; set; }
+        //public double? VolumeStart { get; set; }
+        //public double? MassStart { get; set; }
+        //public double? TempStart { get; set; }
+        //public double? DensStart { get; set; }
+        //public double? WaterStart { get; set; }
+        //public DateTime? DateStop { get; set; }
+        //public long? CounterStop { get; set; }
+        //public double? LevelStop { get; set; }
+        //public double? VolumeStop { get; set; }
+        //public double? MassStop { get; set; }
+        //public double? TempStop { get; set; }
+        //public double? DensStop { get; set; }
+        //public double? WaterStop { get; set; }
+        //public int? FLAG_R { get; set; }
+        //public string LOGIN_EXP { get; set; }
+        //public string N_POST { get; set; }
+        //public string TRANSP_FAKT { get; set; }
+        //public string N_TREB { get; set; }
+        //public string LGORT { get; set; }
+        //public string WERKS { get; set; }
+        //public int sended { get; set; }
+        //public string OZM_TREB { get; set; }
+        //public string OZM_BAK { get; set; }
+        //public int? N_POS { get; set; }
+        public string Invent { get; set; }
+    }
+
+
     [RoutePrefix("api/oil")]
     public class oilOutcomesController : ApiController
     {
@@ -43,17 +92,17 @@ namespace WebUI.Controllers.api
 
         // GET: api/oil/outcomes/start/2019-06-04T07:00:00/stop/2019-06-04T18:59:59
         [Route("outcomes/start/{start:datetime}/stop/{stop:datetime}")]
-        [ResponseType(typeof(Outcomes))]
+        [ResponseType(typeof(Outcomes_report))]
         public IHttpActionResult GetOutcomes(DateTime start, DateTime stop)
         {
             try
             {
-                string sql = "SELECT TOP 1000 [Id] ,[DateCreated] ,[OperatorCreated] ,[OilType] ,[TankNo] ,[TargetMass] ,[TargetVolume] ,[CreatedLevel] ,[CreatedVolume] ,[CreatedMass] " +
-                    ",[CreatedTemp] ,[CreatedDens] ,[CreatedWater] ,[OutcomeType] ,[Receiver] ,[DateStarted] ,[OperatorStarted] ,[Pump_Used] ,[CounterStart] ,[LevelStart] ,[VolumeStart] " +
-                    ",[MassStart] ,[TempStart] ,[DensStart] ,[WaterStart] ,[DateStop] ,[CounterStop] ,[LevelStop] ,[VolumeStop] ,[MassStop] ,[TempStop] ,[DensStop] ,[WaterStop] " +
-                    ",[FLAG_R] ,[LOGIN_EXP] ,[N_POST] ,[TRANSP_FAKT] ,[N_TREB] ,[LGORT] ,[WERKS] ,[sended] ,[OZM_TREB] ,[OZM_BAK] ,[N_POS] FROM [dbo].[Outcomes] " +
-                    "where [DateStarted] >= convert(datetime,'" + start.ToString("yyyy-MM-dd HH:mm:ss") + "',120) and [DateStarted] <= convert(datetime,'" + stop.ToString("yyyy-MM-dd HH:mm:ss") + "',120) order by [DateStarted]";
-                List<Outcomes> list = this.ef_outcomes.Database.SqlQuery<Outcomes>(sql).ToList();
+                string sql = "SELECT o.[Id] ,o.[DateCreated] ,o.[OperatorCreated] ,o.[OilType] ,o.[TankNo] ,o.[TargetMass] ,o.[TargetVolume] ,o.[CreatedLevel] ,o.[CreatedVolume] ,o.[CreatedMass] " +
+                    ",o.[CreatedTemp] ,o.[CreatedDens] ,o.[CreatedWater] ,o.[OutcomeType] ,o.[Receiver] ,o.[DateStarted] ,o.[OperatorStarted] ,o.[Pump_Used] ,o.[CounterStart] ,o.[LevelStart] ,o.[VolumeStart] " +
+                    ",o.[MassStart] ,o.[TempStart] ,o.[DensStart] ,o.[WaterStart] ,o.[DateStop] ,o.[CounterStop] ,o.[LevelStop] ,o.[VolumeStop] ,o.[MassStop] ,o.[TempStop] ,o.[DensStop] ,o.[WaterStop] " +
+                    ",o.[FLAG_R] ,o.[LOGIN_EXP] ,o.[N_POST] ,o.[TRANSP_FAKT] ,o.[N_TREB] ,o.[LGORT] ,o.[WERKS] ,o.[sended] ,o.[OZM_TREB] ,o.[OZM_BAK] ,o.[N_POS], t.Invent FROM dbo.Outcomes as o INNER JOIN dbo.Oil_Types as t ON o.OilType = t.name " +
+                    "where o.[DateStarted] >= convert(datetime,'" + start.ToString("yyyy-MM-dd HH:mm:ss") + "',120) and o.[DateStarted] <= convert(datetime,'" + stop.ToString("yyyy-MM-dd HH:mm:ss") + "',120) order by o.[DateStarted]";
+                List<Outcomes_report> list = this.ef_outcomes.Database.SqlQuery<Outcomes_report>(sql).ToList();
 
                 if (list == null)
                 {

@@ -186,6 +186,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Areas\Oil\Controllers\HomeController.cs" />
     <Compile Include="Areas\Oil\OilAreaRegistration.cs" />
+    <Compile Include="Controllers\api\oilIncomesController.cs" />
     <Compile Include="Controllers\api\oilOutcomesController.cs" />
     <Compile Include="Controllers\api\AzsPlanController.cs" />
     <Compile Include="Controllers\api\azsCardsController.cs" />
@@ -416,6 +417,7 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\View\cards.css" />
     <Content Include="Content\View\fuelsales.css" />
+    <Content Include="Content\View\report_oil.css" />
     <Content Include="Content\View\tankstates.css" />
     <Content Include="Images\access-denied.png" />
     <Content Include="Images\element\active.png" />
@@ -425,6 +427,7 @@
     <Content Include="Images\Error_404.jpg" />
     <Content Include="Images\fuelsales.jpg" />
     <Content Include="Images\global_oil.jpg" />
+    <Content Include="Images\oilsales.jpg" />
     <Content Include="Images\RFID_admin.jpg" />
     <Content Include="Images\rwfuelsales.jpg" />
     <Content Include="Images\tankstates.jpg" />
@@ -510,6 +513,8 @@
     <Content Include="Areas\Oil\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Oil\Views\Home\Index.cshtml" />
     <Content Include="Areas\Oil\Views\Shared\_Global.cshtml" />
+    <Content Include="Areas\Oil\Views\Home\Sales.cshtml" />
+    <Content Include="Areas\Oil\Views\Home\Receipt.cshtml" />
     <None Include="Properties\PublishProfiles\fc.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
@@ -602,6 +607,8 @@
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\View\cards.js" />
+    <Content Include="Scripts\View\oilreceipt.js" />
+    <Content Include="Scripts\View\oilsales.js" />
     <Content Include="Scripts\View\rwfuelsales.js" />
     <Content Include="Scripts\View\fuelsales.js" />
     <Content Include="Scripts\View\rwtankstates.js" />

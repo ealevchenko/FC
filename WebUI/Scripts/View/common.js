@@ -147,10 +147,10 @@ var language_table = function (langs) {
 -------------------------------------------------------------*/
 // Метод определения списка по указаному языку
 var getLanguages = function (languages, lang) {
-    if (lang == 'ru') {
+    if (lang === 'ru') {
         var language = navigator.language ? navigator.language : navigator.browserLanguage;
         if (!language) return languages['default'];
-        var language = language.toLowerCase();
+        language = language.toLowerCase();
         for (var key in languages) {
             if (language.indexOf(key) != -1) {
                 return languages[key];
@@ -175,7 +175,7 @@ var langView = function (t, langs) {
 // Коррекция вывода даты с учетом зоны
 var toISOStringTZ = function (date) {
     return new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString();
-}
+};
 
 var outVal = function (i) {
     return i != null ? Number(i) : '';
@@ -199,16 +199,16 @@ var LockScreen = function (message) {
     if (lock)
         lock.className = 'LockOn';
     lock.innerHTML = message;
-}
+};
 // Разблокировать 
 var LockScreenOff = function () {
     var lock = document.getElementById('lockPanel');
     if (lock)
         lock.className = 'LockOff';
-}
+};
 
 // Инициализация компонента Select
-var initSelect = function(obj_select, property, data, callback_option, value_select, event_change, exceptions_value) {
+var initSelect = function (obj_select, property, data, callback_option, value_select, event_change, exceptions_value) {
     var options = [];
     var lang = $.cookie('lang');
     // Проверка выбор неопределен
@@ -243,7 +243,7 @@ var initSelect = function(obj_select, property, data, callback_option, value_sel
     obj_select.append(options.join(""))
         .val(value_select)
         .selectmenu("refresh");
-}
+};
 
 /* ----------------------------------------------------------
     Обработчики ajax - функций
@@ -259,11 +259,11 @@ var OnAJAXError = function (x, y, z) {
         alert(x + '\n' + y + '\n' + z);
     }
     LockScreenOff();
-}
+};
 // Событие после выполнения
 var AJAXComplete = function () {
     //LockScreenOff();
-}
+};
 
 /* ----------------------------------------------------------
     AJAX функции
@@ -600,6 +600,54 @@ var getAsyncViewFuelSaleOfDateTime = function (start, stop, callback) {
     $.ajax({
         type: 'GET',
         url: '../api/fuelsale/' + toISOStringTZ(start).substring(0, 19) + '/' + toISOStringTZ(stop).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+}
+
+/////////////////////////////////////////////////////////////////////
+// Веруть Выдача масла из ЦСМ
+var getAsyncViewOilSalesOfDateTime = function (start, stop, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/oil/outcomes/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+}
+// Веруть Прием масла из ЦСМ
+var getAsyncViewOilReceiptOfDateTime = function (start, stop, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/oil/incomes/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
         async: true,
         dataType: 'json',
         beforeSend: function () {

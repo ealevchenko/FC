@@ -91,6 +91,11 @@ body{
     background-image: url(../Images/pattern.png), url(../Images/rwfuelsales.jpg);
 }
 
+.img-header-oilsales {
+    background-image: url(../Images/pattern.png), url(../Images/oilsales.jpg);
+}
+
+
 .img-header-error404 {
     background-image: url(../Images/Error_404.jpg);
 }
