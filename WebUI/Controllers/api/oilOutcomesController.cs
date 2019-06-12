@@ -11,8 +11,19 @@ using System.Web.Http.Description;
 
 namespace WebUI.Controllers.api
 {
-    public class Outcomes_report : Outcomes  {
+    public class Outcomes_report : Outcomes
+    {
         public string Invent { get; set; }
+    }
+
+    public class TagWinCC
+    {
+        public int ValueId { get; set; }
+        public DateTime Timestamp { get; set; }
+        public Double Realvalue { get; set; }
+        public int quality { get; set; }
+        public int flags { get; set; }
+
     }
 
 
@@ -59,6 +70,28 @@ namespace WebUI.Controllers.api
                     ",o.[FLAG_R] ,o.[LOGIN_EXP] ,o.[N_POST] ,o.[TRANSP_FAKT] ,o.[N_TREB] ,o.[LGORT] ,o.[WERKS] ,o.[sended] ,o.[OZM_TREB] ,o.[OZM_BAK] ,o.[N_POS], t.Invent FROM dbo.Outcomes as o INNER JOIN dbo.Oil_Types as t ON o.OilType = t.name " +
                     "where o.[DateStarted] >= convert(datetime,'" + start.ToString("yyyy-MM-dd HH:mm:ss") + "',120) and o.[DateStarted] <= convert(datetime,'" + stop.ToString("yyyy-MM-dd HH:mm:ss") + "',120) order by o.[DateStarted]";
                 List<Outcomes_report> list = this.ef_outcomes.Database.SqlQuery<Outcomes_report>(sql).ToList();
+
+                if (list == null)
+                {
+                    return NotFound();
+                }
+                return Ok(list);
+            }
+            catch (Exception e)
+            {
+                return NotFound();
+            }
+        }
+
+        // GET: api/oil/tagwincc/start/2019-06-11T00:00:00/stop/2019-06-11T00:00:01
+        [Route("tagwincc/start/{start:datetime}/stop/{stop:datetime}")]
+        [ResponseType(typeof(TagWinCC))]
+        public IHttpActionResult GetTagWinCC(DateTime start, DateTime stop)
+        {
+            try
+            {
+                string sql = "EXEC [dbo].[getTagsWinCC] '" + start.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + stop.ToString("yyyy-MM-dd HH:mm:ss") + "'";
+                List<TagWinCC> list = this.ef_outcomes.Database.SqlQuery<TagWinCC>(sql).ToList();
 
                 if (list == null)
                 {

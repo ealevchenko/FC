@@ -36,7 +36,7 @@ namespace WebUI.Controllers
         /// Состояние склада ГСМ АЗС
         /// </summary>
         /// <returns></returns>
-        //[ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user")]
+        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user")]
         public ActionResult TankStates()
         {
             return View();
