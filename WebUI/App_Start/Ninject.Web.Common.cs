@@ -13,6 +13,10 @@ namespace WebUI.App_Start
     using Ninject.Web.Common.WebHost;
     using Ninject.Web.WebApi;
     using System.Web.Http;
+    //using EFFC.Abstract;
+    //using EFFC.Entities;
+    //using EFFC.Concrete;
+    //using EFOC.Entities;
 
     public static class NinjectWebCommon 
     {

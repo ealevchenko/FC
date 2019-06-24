@@ -45,13 +45,23 @@ use CC_HMI_CFG2_19_05_14_11_51_06R
 
     DECLARE @Statement varchar(8000)
     SET @Statement = ''
-
-	IF OBJECT_ID (N'ASUCSM.dbo.TagWincc', N'U') IS NOT NULL  
+	if OBJECT_ID(N'TempDB..#TagWincc',N'U') is not null
+	--IF OBJECT_ID (N'ASUCSM.dbo.TagWincc', N'U') IS NOT NULL  
 	begin 
-	drop table ASUCSM.dbo.TagWincc end 
-	create table ASUCSM.dbo.TagWincc ( ValueId int, [Timestamp] datetime, Realvalue varchar(250), quality int, flags int ) 
+	--drop table ASUCSM.dbo.TagWincc 
+	drop table #TagWincc 
+	end 
+	--create table ASUCSM.dbo.TagWincc 
+	create table #TagWincc  	
+	( 
+	ValueId int, 
+	[Timestamp] datetime, 
+	Realvalue varchar(250), 
+	quality int, 
+	flags int 
+	) 
 
-    SET @Statement = 'Insert into ASUCSM.dbo.TagWincc SELECT * FROM OPENQUERY('+@LS_Name+',''Tag:R,('+@List+'),'''''+@TimeBegin+''''','''''+@TimeEnd+''''''
+    SET @Statement = 'Insert into #TagWincc SELECT * FROM OPENQUERY('+@LS_Name+',''Tag:R,('+@List+'),'''''+@TimeBegin+''''','''''+@TimeEnd+''''''
 
     IF(LEN(@TimeStep) <> 0)
     BEGIN
@@ -84,15 +94,33 @@ use CC_HMI_CFG2_19_05_14_11_51_06R
     END
     --SET NOCOUNT OFF
 
-    SELECT t.ValueId, 
-    t.Timestamp, 
-    t.Realvalue, 
-    t.quality, 
-    t.flags, 
-    a.ValueName, 
-    a.ValueType, 
-    a.bak,
-    oil_type = (SELECT TOP 1 [OilType] FROM [ASUCSM].[dbo].[Incomes] where [TankNo]= Cast(a.bak as sysname)  and [DateStarted]<=t.Timestamp order by [DateStarted] desc)
-FROM ASUCSM.dbo.TagWincc as t LEFT OUTER JOIN
-                      ASUCSM.dbo.Archive as a ON t.ValueId = a.ValueID
-ORDER BY a.bak, a.ValueType
+--    SELECT 
+--    t.ValueId, 
+--    t.Timestamp, 
+--    t.Realvalue, 
+--    t.quality, 
+--    t.flags, 
+--    a.ValueName, 
+--    a.ValueType, 
+--    a.bak--,
+--    --oil_type = (SELECT TOP 1 [OilType] FROM [ASUCSM].[dbo].[Incomes] where [TankNo]= Cast(a.bak as sysname)  and [DateStarted]<=t.Timestamp order by [DateStarted] )
+
+--FROM #TagWincc as t LEFT OUTER JOIN ASUCSM.dbo.Archive as a ON t.ValueId = a.ValueID
+--where a.bak in (132,135,138,139,141,142,144,225,228,229,231,301,304,307,310,313,316,319,322,420,421,423,424,503,506,509,512,515,518)
+--ORDER BY a.bak, a.ValueType
+
+    SELECT 
+    t.Timestamp,
+	a.bak,
+	SUM(CASE a.ValueType WHEN N'Temp' THEN CAST(t.Realvalue AS float) ELSE 0 END) as Temp,
+	SUM(CASE a.ValueType WHEN N'Volume' THEN CAST(t.Realvalue AS float) ELSE 0 END) as Volume,
+	SUM(CASE a.ValueType WHEN N'Water' THEN CAST(t.Realvalue AS float) ELSE 0 END) as Water,	
+	SUM(CASE a.ValueType WHEN N'Dens' THEN CAST(t.Realvalue AS float) ELSE 0 END) as Dens,	
+	SUM(CASE a.ValueType WHEN N'Level' THEN CAST(t.Realvalue AS float) ELSE 0 END) as 'Level',	
+	SUM(CASE a.ValueType WHEN N'Mass' THEN CAST(t.Realvalue AS float) ELSE 0 END) as Mass,		
+    oil_type = (SELECT TOP 1 [OilType] FROM [ASUCSM].[dbo].[Incomes] where [TankNo]= Cast(a.bak as sysname)  and [DateStarted]<=t.Timestamp order by [DateStarted] )
+
+FROM #TagWincc as t LEFT OUTER JOIN ASUCSM.dbo.Archive as a ON t.ValueId = a.ValueID
+where a.bak in (132,135,138,139,141,142,144,225,228,229,231,301,304,307,310,313,316,319,322,420,421,423,424,503,506,509,512,515,518)
+GROUP BY t.Timestamp, a.bak
+order by t.Timestamp, a.bak
