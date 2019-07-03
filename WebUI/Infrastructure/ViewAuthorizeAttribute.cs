@@ -82,8 +82,9 @@ namespace WebUI.Infrastructure
                     allowedRoles[i] = allowedRoles[i].Trim();
                 }
             }
-
-            if (!(User(filterContext.HttpContext) && Role(filterContext.HttpContext)))
+            bool us = User(filterContext.HttpContext);
+            bool rl = Role(filterContext.HttpContext);
+            if (!us && !rl)
             {
 
                 string message = filterContext.HttpContext.User.Identity.Name + ";" + filterContext.ActionDescriptor.ActionName;
