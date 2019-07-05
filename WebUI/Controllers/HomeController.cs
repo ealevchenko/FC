@@ -18,7 +18,7 @@ namespace WebUI.Controllers
         /// RFID Карты
         /// </summary>
         /// <returns></returns>
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_CardRFID_user,EUROPE\KRR-LG-Fuel_CardRFID_admin", Users = @"HP_EDIK\lev75")]
+        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_CardRFID_user,EUROPE\KRR-LG-Fuel_CardRFID_admin", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko")]
         public ActionResult Cards()
         {
             return View();
@@ -36,7 +36,7 @@ namespace WebUI.Controllers
         /// Состояние склада ГСМ АЗС
         /// </summary>
         /// <returns></returns>
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75")]
+        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko")]
         public ActionResult TankStates()
         {
             return View();
@@ -45,12 +45,12 @@ namespace WebUI.Controllers
         /// Заправочная ведомость
         /// </summary>
         /// <returns></returns>
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75")]
+        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko")]
         public ActionResult FuelSale()
         {
             return View();
         }
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75")]
+        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko")]
         public ActionResult RWTankStates()
         {
             return View();
@@ -59,7 +59,7 @@ namespace WebUI.Controllers
         /// Заправочная ведомость жд трансп.
         /// </summary>
         /// <returns></returns>
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75")]
+        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko")]
         public ActionResult RWFuelSale()
         {
             return View();

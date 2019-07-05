@@ -26,6 +26,12 @@ h1 span{
     font-weight: bold;
 }
 
+table#table-fuel-sales td.total-foot {
+    text-align:right;
+    color: #0026ff;
+    font-weight: bold;
+}
+
 #table-panel button {
     margin: 5px;
 }

@@ -9,17 +9,20 @@
                 'text_link_tabs_report_2': '',
                 'field_FuelType': 'Тип топлива',
                 'field_DateTime': 'Дата и время',
-                'field_Waybill': 'RFID-Карта',
+                'field_rfid_card': 'RFID-Карта',
                 'field_AutoNumber': 'Номер транспортного средства',
                 'field_AutoModel': 'Модель трансп. средства',
                 'field_TankNo': '№ Емкости',
                 'field_UsageVolume': 'Объем (л)',
                 'field_UsageMass': 'Масса (кг)',
                 'field_Density': 'Плотность (кг/м3)',
+                'field_Volume15': 'Объем прив. к 15 град. (л)',
+                'field_Mass15': 'Масса прив. к 15 град. (кг)',
+                'field_Dens15': 'Плотность прив. к 15 град. (кг/м3)',
                 'bt_left_title': 'Предыдущая дата',
                 'bt_right_title': 'Следующая дата',
                 'bt_refresh_title': 'Обновить отчет',
-                'bt_refresh_text': 'Показать ведомость',
+                'bt_refresh_text': 'Обновить',
                 'label_select_date': 'Выберите дату',
                 'select_text_sm1': 'Смена Д (07:00-18:59)',
                 'select_text_sm2': 'Смена Н (19:00-06:59)',
@@ -30,13 +33,16 @@
                 'text_link_tabs_report_2': '',
                 'field_FuelType': 'Fuel type',
                 'field_DateTime': 'Date and time',
-                'field_Waybill': 'RFID Card',
+                'field_rfid_card': 'RFID Card',
                 'field_AutoNumber': 'Vehicle Number',
                 'field_AutoModel': 'Model trans. facilities',
                 'field_TankNo': 'Capacity No.',
                 'field_UsageVolume': 'Volume (l)',
                 'field_UsageMass': 'Mass (kg)',
                 'field_Density': 'Density (kg/m3)',
+                'field_Volume15': 'Объем прив. к 15 град. (л)',
+                'field_Mass15': 'Масса прив. к 15 град. (кг)',
+                'field_Dens15': 'Плотность прив. к 15 град. (кг/м3)',
                 'bt_left_title': 'Previous Date',
                 'bt_right_title': 'Next Date',
                 'bt_refresh_title': 'Refresh Report',
@@ -126,16 +132,7 @@
                 this.bt_refresh.text(langView('bt_refresh_text', langs));
 
                 this.bt_refresh.on('click', function () {
-                    if (panel_select_report.select_sm.val() == 2) {
-                        date_start = new Date(date_curent.getFullYear(), date_curent.getMonth(), date_curent.getDate(), 19, 0, 0);
-                        date_stop = new Date(date_curent.getFullYear(), date_curent.getMonth(), date_curent.getDate()+1, 6, 59, 59);
-                    }
-                    if (panel_select_report.select_sm.val() == 1) {
-                        date_start = new Date(date_curent.getFullYear(), date_curent.getMonth(), date_curent.getDate(), 7, 0, 0);
-                        date_stop = new Date(date_curent.getFullYear(), date_curent.getMonth(), date_curent.getDate(), 18, 59, 59);
-                    }
-
-                    tab_type_reports.activeTable(tab_type_reports.active, true);
+                    panel_select_report.viewReport();
                 });
 
                 // Настроим выбор времени
@@ -148,6 +145,7 @@
                     function (event, ui) {
                         event.preventDefault();
                         // Обработать выбор смены
+                        panel_select_report.viewReport();
                     },
                     null);
                 // настроим компонент выбора времени
@@ -165,11 +163,22 @@
                         date_curent = obj.date1;
                     })
                     .bind('datepicker-closed', function () {
-
+                        panel_select_report.viewReport();
                     });
                 // Выставим текущую дату
                 var date_curent_set = date_curent.getDate() + '.' + (date_curent.getMonth() + 1) + '.' + date_curent.getFullYear() + ' 00:00';
                 this.obj_date.data('dateRangePicker').setDateRange(date_curent_set, date_curent_set, true);
+            },
+            viewReport: function () {
+                if (panel_select_report.select_sm.val() == 2) {
+                    date_start = new Date(date_curent.getFullYear(), date_curent.getMonth(), date_curent.getDate(), 19, 0, 0);
+                    date_stop = new Date(date_curent.getFullYear(), date_curent.getMonth(), date_curent.getDate() + 1, 6, 59, 59);
+                }
+                if (panel_select_report.select_sm.val() == 1) {
+                    date_start = new Date(date_curent.getFullYear(), date_curent.getMonth(), date_curent.getDate(), 7, 0, 0);
+                    date_stop = new Date(date_curent.getFullYear(), date_curent.getMonth(), date_curent.getDate(), 18, 59, 59);
+                }
+                tab_type_reports.activeTable(tab_type_reports.active, true);
             }
         },
         // Таблица 
@@ -187,7 +196,7 @@
                     "ordering": true,
                     "info": false,
                     "select": false,
-                    "autoWidth": false,
+                    "autoWidth": true,
                     //"filter": true,
                     //"scrollY": "600px",
                     //"scrollX": true,
@@ -209,95 +218,53 @@
                         total_dt_volume = api
                             .data()
                             .reduce(function (a, b) {
-                                if (b.Fuel == 107000024) {
-                                    return intVal(a) + intVal(b.UsageVolume);
+                                if (b.fuel_type == 107000024) {
+                                    return intVal(a) + intVal(b.volume);
                                 } else { return intVal(a);}
                             }, 0);
-                        //total_a92_volume = api
-                        //    .data()
-                        //    .reduce(function (a, b) {
-                        //        if (b.Fuel == 107000022) {
-                        //            return intVal(a) + intVal(b.UsageVolume);
-                        //        } else { return intVal(a);}
-                        //    }, 0);
-                        //total_a95_volume = api
-                        //    .data()
-                        //    .reduce(function (a, b) {
-                        //        if (b.Fuel == 107000023) {
-                        //            return intVal(a) + intVal(b.UsageVolume);
-                        //        } else { return intVal(a);}
-                        //    }, 0);
-                        //total_kerosin_volume = api
-                        //    .data()
-                        //    .reduce(function (a, b) {
-                        //        if (b.Fuel == 107000027) {
-                        //            return intVal(a) + intVal(b.UsageVolume);
-                        //        } else { return intVal(a);}
-                        //    }, 0);
-                        //total_volume = api
-                        //    .column(6)
-                        //    .data()
-                        //    .reduce(function (a, b) {
-                        //        return intVal(a) + intVal(b);
-                        //    }, 0);
+                        total_dt_volume15 = api
+                            .data()
+                            .reduce(function (a, b) {
+                                if (b.fuel_type == 107000024) {
+                                    return intVal(a) + intVal(b.volume15);
+                                } else { return intVal(a);}
+                            }, 0);
                         // Total mass
                         total_dt_mass = api
                             .data()
                             .reduce(function (a, b) {
-                                if (b.Fuel == 107000024) {
-                                    return intVal(a) + intVal(b.UsageMass);
+                                if (b.fuel_type == 107000024) {
+                                    return intVal(a) + intVal(b.mass);
                                 } else { return intVal(a);}
                             }, 0);
-                        //total_a92_mass = api
-                        //    .data()
-                        //    .reduce(function (a, b) {
-                        //        if (b.Fuel == 107000022) {
-                        //            return intVal(a) + intVal(b.UsageMass);
-                        //        } else { return intVal(a);}
-                        //    }, 0);
-                        //total_a95_mass = api
-                        //    .data()
-                        //    .reduce(function (a, b) {
-                        //        if (b.Fuel == 107000023) {
-                        //            return intVal(a) + intVal(b.UsageMass);
-                        //        } else { return intVal(a);}
-                        //    }, 0);
-                        //total_kerosin_mass = api
-                        //    .data()
-                        //    .reduce(function (a, b) {
-                        //        if (b.Fuel == 107000027) {
-                        //            return intVal(a) + intVal(b.UsageMass);
-                        //        } else { return intVal(a);}
-                        //    }, 0);
-                        //total_mass = api
-                        //    .column(7)
-                        //    .data()
-                        //    .reduce(function (a, b) {
-                        //        return intVal(a) + intVal(b);
-                        //    }, 0);
+                        total_dt_mass15 = api
+                            .data()
+                            .reduce(function (a, b) {
+                                if (b.fuel_type == 107000024) {
+                                    return intVal(a) + intVal(b.mass15);
+                                } else { return intVal(a);}
+                            }, 0);
 
+                        $('td#volume').text(total_dt_volume.toFixed(2));
+                        $('td#volume15').text(total_dt_volume15.toFixed(2));
+                        $('td#mass').text(total_dt_mass.toFixed(2));
+                        $('td#mass15').text(total_dt_mass15.toFixed(2));
 
-                        //$('#a92-volume').text(total_a92_volume.toFixed(2)+' (л)');
-                        //$('#a95-volume').text(total_a95_volume.toFixed(2)+' (л)');
-                        $('#dt-volume').text(total_dt_volume.toFixed(2)+' (л)');
-                        //$('#kerosin-volume').text(total_kerosin_volume.toFixed(2)+' (л)');
-                        // Update footer mass
-                        //$('#a92-mass').text(total_a92_mass.toFixed(2) + ' (кг)');
-                        //$('#a95-mass').text(total_a95_mass.toFixed(2) + ' (кг)');
-                        $('#dt-mass').text(total_dt_mass.toFixed(2) + ' (кг)');
-                        //$('#kerosin-mass').text(total_kerosin_mass.toFixed(2) + ' (кг)');
                     },
                     columns: [
 
-                        { data: "DateTime", title: langView('field_DateTime', langs), width: "150px", orderable: true, searchable: false },
-                        { data: "FuelType", title: langView('field_FuelType', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "Waybill", title: langView('field_Waybill', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "start_datetime", title: langView('field_DateTime', langs), width: "100px", orderable: true, searchable: false },
+                        { data: "fuel_type", title: langView('field_FuelType', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "number_card", title: langView('field_rfid_card', langs), width: "50px", orderable: true, searchable: true },
                         { data: "AutoNumber", title: langView('field_AutoNumber', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "AutoModel", title: langView('field_AutoModel', langs), width: "150px", orderable: true, searchable: true },
-                        { data: "TankNo", title: langView('field_TankNo', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "UsageVolume", title: langView('field_UsageVolume', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "UsageMass", title: langView('field_UsageMass', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "Density", title: langView('field_Density', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "AutoModel", title: langView('field_AutoModel', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "tank_num", title: langView('field_TankNo', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "volume", title: langView('field_UsageVolume', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "mass", title: langView('field_UsageMass', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "dens", title: langView('field_Density', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "volume15", title: langView('field_Volume15', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "mass15", title: langView('field_Mass15', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "dens15", title: langView('field_Dens15', langs), width: "50px", orderable: true, searchable: true },
                     ],
                 });
             },
@@ -306,7 +273,8 @@
                 LockScreen(langView('mess_delay', langs));
                 if (this.list == null | data_refresh == true) {
                     // Обновим данные
-                    getAsyncViewFuelSaleOfDateTime(
+                    //getAsyncViewFuelSaleOfDateTime(
+                      getAsyncReportLocalFS_RWOfDateTime(
                         date_start, date_stop,
                         function (result) {
                             table_fuel_sales.list = result;
@@ -325,49 +293,59 @@
                 this.obj.clear();
                 for (i = 0; i < data.length; i++) {
 
-                    var cards = reference_cards != null ? reference_cards.getResult(data[i].CardId) : null;
+                    var cards = reference_cards != null ? reference_cards.getResult(data[i].id_card) : null;
 
                     this.obj.row.add({
-                        "Id": data[i].Id,
-                        "AzsNo": data[i].AzsNo,
-                        "FuelType": outFuelType(data[i].FuelType),
-                        "Fuel": data[i].FuelType,
-                        "LokomotiveId": data[i].LokomotiveId,
-                        "Name": data[i].Name,
-                        "UsageVolume": data[i].UsageVolume,
-                        "UsageMass": data[i].UsageMass,
-                        "TankNo": data[i].TankNo,
-                        "FuelLevel": data[i].FuelLevel,
-                        "FuelVolume": data[i].FuelVolume,
-                        "Density": data[i].Density,
-                        "Mass": data[i].Mass,
-                        "Temperature": data[i].Temperature,
-                        "WaterLevel": data[i].WaterLevel,
-                        "TechnicalSale": data[i].TechnicalSale,
-                        "OperatorName": data[i].OperatorName,
-                        "DateStartWork": data[i].DateStartWork,
-                        "TimeStartWork": data[i].TimeStartWork,
-                        "DateStart": data[i].DateStart,
-                        "TimeStart": data[i].TimeStart,
-                        "DateStop": data[i].DateStop,
-                        "TimeStop": data[i].TimeStop,
-                        "CardId": data[i].CardId,
-                        "StartLevel": data[i].StartLevel,
-                        "StartVolume": data[i].StartVolume,
-                        "StartDensity": data[i].StartDensity,
-                        "StartMass": data[i].StartMass,
-                        "StartTemperature": data[i].StartTemperature,
-                        "StartWaterLevel": data[i].StartWaterLevel,
-                        "StopLevel": data[i].StopLevel,
-                        "StopVolume": data[i].StopVolume,
-                        "StopDensity": data[i].StopDensity,
-                        "StopMass": data[i].StopMass,
-                        "StopTemperature": data[i].StopTemperature,
-                        "StopWaterLevel": data[i].StopWaterLevel,
-                        "DateTime": data[i].DateStart.substring(0, 10) + ' ' + data[i].TimeStart.substring(0, 12),
-                        "Waybill": cards != null ? cards.Number : data[i].CardId,
-                        "AutoNumber": cards != null ? cards.AutoNumber : data[i].CardId,
-                        "AutoModel": cards != null ? cards.AutoModel : data[i].CardId,
+                        "id": data[i].id,
+                        "start_datetime": data[i].start_datetime,
+                        "fuel_type": data[i].fuel_type,
+                        "number_card": data[i].number_card,
+                        "tank_num": data[i].tank_num,
+                        "volume": data[i].volume,
+                        "mass": data[i].mass,
+                        "dens": data[i].dens,
+                        "volume15": data[i].volume15,
+                        "mass15": data[i].mass15,
+                        "dens15": data[i].dens15,
+                        //"AzsNo": data[i].AzsNo,
+                        //"FuelType": outFuelType(data[i].FuelType),
+                        //"Fuel": data[i].FuelType,
+                        //"LokomotiveId": data[i].LokomotiveId,
+                        //"Name": data[i].Name,
+                        //"UsageVolume": data[i].UsageVolume,
+                        //"UsageMass": data[i].UsageMass,
+                        //"TankNo": data[i].TankNo,
+                        //"FuelLevel": data[i].FuelLevel,
+                        //"FuelVolume": data[i].FuelVolume,
+                        //"Density": data[i].Density,
+                        //"Mass": data[i].Mass,
+                        //"Temperature": data[i].Temperature,
+                        //"WaterLevel": data[i].WaterLevel,
+                        //"TechnicalSale": data[i].TechnicalSale,
+                        //"OperatorName": data[i].OperatorName,
+                        //"DateStartWork": data[i].DateStartWork,
+                        //"TimeStartWork": data[i].TimeStartWork,
+                        //"DateStart": data[i].DateStart,
+                        //"TimeStart": data[i].TimeStart,
+                        //"DateStop": data[i].DateStop,
+                        //"TimeStop": data[i].TimeStop,
+                        //"CardId": data[i].CardId,
+                        //"StartLevel": data[i].StartLevel,
+                        //"StartVolume": data[i].StartVolume,
+                        //"StartDensity": data[i].StartDensity,
+                        //"StartMass": data[i].StartMass,
+                        //"StartTemperature": data[i].StartTemperature,
+                        //"StartWaterLevel": data[i].StartWaterLevel,
+                        //"StopLevel": data[i].StopLevel,
+                        //"StopVolume": data[i].StopVolume,
+                        //"StopDensity": data[i].StopDensity,
+                        //"StopMass": data[i].StopMass,
+                        //"StopTemperature": data[i].StopTemperature,
+                        //"StopWaterLevel": data[i].StopWaterLevel,
+                        //"DateTime": data[i].DateStart.substring(0, 10) + ' ' + data[i].TimeStart.substring(0, 12),
+                        //"Waybill": cards != null ? cards.Number : data[i].CardId,
+                        "AutoNumber": cards != null ? cards.AutoNumber : data[i].auto_number,
+                        "AutoModel": cards != null ? cards.AutoModel : '?',
                     });
                 }
                 LockScreenOff();
@@ -386,6 +364,7 @@
     //// Загрузка библиотек
     loadReference(function (result) {
         table_fuel_sales.initObject();
+        panel_select_report.viewReport();
     });
 
 });
