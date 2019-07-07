@@ -137,6 +137,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Cards\Models\" />
+    <Folder Include="Areas\FuelAZS\Models\" />
+    <Folder Include="Areas\FuelGD\Models\" />
     <Folder Include="Areas\Oil\Models\" />
     <Folder Include="Models\" />
   </ItemGroup>
@@ -156,6 +159,12 @@
     <Compile Include="App_Start\Ninject.Web.Common.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Cards\CardsAreaRegistration.cs" />
+    <Compile Include="Areas\Cards\Controllers\HomeController.cs" />
+    <Compile Include="Areas\FuelAZS\Controllers\HomeController.cs" />
+    <Compile Include="Areas\FuelAZS\FuelAZSAreaRegistration.cs" />
+    <Compile Include="Areas\FuelGD\Controllers\HomeController.cs" />
+    <Compile Include="Areas\FuelGD\FuelGDAreaRegistration.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
     <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
@@ -186,6 +195,8 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Areas\Oil\Controllers\HomeController.cs" />
     <Compile Include="Areas\Oil\OilAreaRegistration.cs" />
+    <Compile Include="Controllers\api\RemainsTanksRWController.cs" />
+    <Compile Include="Controllers\api\ReceivingFuelRWController.cs" />
     <Compile Include="Controllers\api\FuelSaleRWController.cs" />
     <Compile Include="Controllers\api\oilIncomesController.cs" />
     <Compile Include="Controllers\api\oilOutcomesController.cs" />
@@ -418,6 +429,8 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\View\cards.css" />
     <Content Include="Content\View\fuelsales.css" />
+    <Content Include="Content\View\remainstanks_gd.css" />
+    <Content Include="Content\View\receivingfuel_gd.css" />
     <Content Include="Content\View\report_oil.css" />
     <Content Include="Content\View\tankstates.css" />
     <Content Include="Images\access-denied.png" />
@@ -446,6 +459,8 @@
     <Content Include="Scripts\jquery.daterangepicker\date.js" />
     <Content Include="Scripts\jquery.daterangepicker\daterangepicker.jQuery.js" />
     <Content Include="Scripts\jquery.daterangepicker\time.js" />
+    <Content Include="Scripts\jszip.js" />
+    <Content Include="Scripts\jszip.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
@@ -511,11 +526,22 @@
     <Content Include="Scripts\esm\popper-utils.js.map" />
     <Content Include="Areas\Oil\Views\web.config" />
     <Content Include="Areas\Oil\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Oil\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Oil\Views\Home\Index.cshtml" />
     <Content Include="Areas\Oil\Views\Shared\_Global.cshtml" />
     <Content Include="Areas\Oil\Views\Home\Sales.cshtml" />
     <Content Include="Areas\Oil\Views\Home\Receipt.cshtml" />
+    <Content Include="Areas\FuelAZS\Views\web.config" />
+    <Content Include="Areas\FuelGD\Views\web.config" />
+    <Content Include="Areas\FuelAZS\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\FuelAZS\Views\Home\Index.cshtml" />
+    <Content Include="Areas\FuelAZS\Views\Shared\_Global.cshtml" />
+    <Content Include="Areas\FuelGD\Views\Shared\_Global.cshtml" />
+    <Content Include="Areas\FuelGD\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\FuelGD\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Cards\Views\web.config" />
+    <Content Include="Areas\Cards\Views\Shared\_Global.cshtml" />
+    <Content Include="Areas\Cards\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\FuelGD\Views\Home\RemainsTanks.cshtml" />
     <None Include="Properties\PublishProfiles\fc.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
@@ -610,6 +636,8 @@
     <Content Include="Scripts\View\cards.js" />
     <Content Include="Scripts\View\oilreceipt.js" />
     <Content Include="Scripts\View\oilsales.js" />
+    <Content Include="Scripts\View\rwremainstanks.js" />
+    <Content Include="Scripts\View\rwreceivingfuel.js" />
     <Content Include="Scripts\View\rwfuelsales.js" />
     <Content Include="Scripts\View\fuelsales.js" />
     <Content Include="Scripts\View\rwtankstates.js" />
@@ -632,11 +660,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Views\Shared\_Global.cshtml" />
-    <Content Include="Views\Home\Cards.cshtml" />
+    <Content Include="Areas\Cards\Views\Home\Cards.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -646,14 +673,15 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Home\TankStates.cshtml" />
+    <Content Include="Areas\FuelAZS\Views\Home\TankStates.cshtml" />
     <Content Include="Views\Error\Http404.cshtml" />
     <Content Include="Views\Error\Default.cshtml" />
     <Content Include="Views\Error\AccessDenied.cshtml" />
-    <Content Include="Views\Home\FuelSale.cshtml" />
-    <Content Include="Views\Home\CardsAdmin.cshtml" />
-    <Content Include="Views\Home\RWTankStates.cshtml" />
-    <Content Include="Views\Home\RWFuelSale.cshtml" />
+    <Content Include="Areas\FuelAZS\Views\Home\FuelSale.cshtml" />
+    <Content Include="Areas\Cards\Views\Home\CardsAdmin.cshtml" />
+    <Content Include="Areas\FuelGD\Views\Home\TankStates.cshtml" />
+    <Content Include="Areas\FuelGD\Views\Home\FuelSale.cshtml" />
+    <Content Include="Areas\FuelGD\Views\Home\ReceivingFuel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App_GlobalResources\GlobalResource.en.resx">

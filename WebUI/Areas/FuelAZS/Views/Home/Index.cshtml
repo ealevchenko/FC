@@ -1,0 +1,44 @@
+﻿@using WebUI.App_GlobalResources;
+@{
+    ViewBag.Title = @GlobalResource.home_title;
+    ViewBag.section = @GlobalResource.home;
+}
+
+@section styles {
+    <link rel="stylesheet" type="text/css" href="~/Content/homemenu.css">
+}
+
+@section scripts {
+    <script>
+        $('body').addClass('img-header-global');
+    </script>
+}
+    <ul class="ca-menu">
+        <li>
+            <a href='@Url.Action("FuelSale", "Home", new { Area = "FuelAZS" })'>
+                <span class="ca-icon">i</span>
+                <div class="ca-content">
+                    <h2 class="ca-main">@GlobalResource.home_link_fuelsales</h2>
+                    <h3 class="ca-sub">@GlobalResource.home_link_description_fuelsales</h3>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href='@Url.Action("TankStates", "Home", new { Area = "FuelAZS" })'>
+                <span class="ca-icon">Z</span>
+                <div class="ca-content">
+                    <h2 class="ca-main">@GlobalResource.home_link_tankstates</h2>
+                    <h3 class="ca-sub">@GlobalResource.home_link_description_tankstates</h3>
+                </div>
+            </a>
+        </li>
+    </ul>
+<div class="more">
+    <ul>
+        <li>@GlobalResource.home_more_link:</li>
+        <li><a href='@Url.Action("CardsAdmin", "Home", new { Area = "Cards" })'>@GlobalResource.home_link_RFID_cards_adm</a></li>
+        @*<li><a href="#">....</a></li>
+            <li><a href="#">....</a></li>*@
+    </ul>
+</div>
+

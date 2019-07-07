@@ -193,7 +193,7 @@
     <value>Экипировка станции "Карьерная ГД"</value>
   </data>
   <data name="home_link_fuelsales_kgd" xml:space="preserve">
-    <value>Топливо для ж.д. ГД</value>
+    <value>Выдача ж.д. ГД</value>
   </data>
   <data name="home_link_tankstates_kgd" xml:space="preserve">
     <value>Экипировка локомотивов</value>
@@ -227,5 +227,50 @@
   </data>
   <data name="home_title_oil" xml:space="preserve">
     <value>Система контроля ЦСМ</value>
+  </data>
+  <data name="home_link_description_receiving_fuel_kgd" xml:space="preserve">
+    <value>Ведомость приема топлива (экипировка ж.д. ГД)</value>
+  </data>
+  <data name="home_link_receiving_fuel_kgd" xml:space="preserve">
+    <value>Прием ж.д. ГД</value>
+  </data>
+  <data name="home_receiving_fuel_rw" xml:space="preserve">
+    <value>Ведомость приема топлива (экипировка ж.д. транспорта ГД)</value>
+  </data>
+  <data name="link_menu_home_fuel_azs" xml:space="preserve">
+    <value>Меню АЗС</value>
+  </data>
+  <data name="link_menu_home_fuel_gd" xml:space="preserve">
+    <value>Меню АЗС ГД</value>
+  </data>
+  <data name="home_link_description_fuel_azs" xml:space="preserve">
+    <value>Отчетная документация</value>
+  </data>
+  <data name="home_link_description_fuel_gd" xml:space="preserve">
+    <value>Отчетная документация</value>
+  </data>
+  <data name="home_link_description_oil" xml:space="preserve">
+    <value>Отчетная документация</value>
+  </data>
+  <data name="home_link_fuel_azs" xml:space="preserve">
+    <value>АЗС АМКР</value>
+  </data>
+  <data name="home_link_fuel_gd" xml:space="preserve">
+    <value>Экипировка "Карьерная" АМКР</value>
+  </data>
+  <data name="home_link_oil" xml:space="preserve">
+    <value>ЦСМ АМКР</value>
+  </data>
+  <data name="link_menu_home_oil" xml:space="preserve">
+    <value>Меню ЦСМ</value>
+  </data>
+  <data name="home_link_description_remainstanks_kgd" xml:space="preserve">
+    <value>Остатки диз. топлива в емкостях ст. Карьерная</value>
+  </data>
+  <data name="home_link_remainstanks_kgd" xml:space="preserve">
+    <value>Остатки</value>
+  </data>
+  <data name="home_remains_tanks_rw" xml:space="preserve">
+    <value>Остатки в емкостях</value>
   </data>
 </root>

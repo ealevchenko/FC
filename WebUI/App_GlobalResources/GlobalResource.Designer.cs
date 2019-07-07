@@ -19,7 +19,7 @@ namespace WebUI.App_GlobalResources {
     // с помощью такого средства, как ResGen или Visual Studio.
     // Чтобы добавить или удалить член, измените файл .ResX и снова запустите ResGen
     // с параметром /str или перестройте свой проект VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class GlobalResource {
@@ -142,6 +142,24 @@ namespace WebUI.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Отчетная документация.
+        /// </summary>
+        public static string home_link_description_fuel_azs {
+            get {
+                return ResourceManager.GetString("home_link_description_fuel_azs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Отчетная документация.
+        /// </summary>
+        public static string home_link_description_fuel_gd {
+            get {
+                return ResourceManager.GetString("home_link_description_fuel_gd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Заправочная ведомость (по объему и весу).
         /// </summary>
         public static string home_link_description_fuelsales {
@@ -156,6 +174,15 @@ namespace WebUI.App_GlobalResources {
         public static string home_link_description_fuelsales_kgd {
             get {
                 return ResourceManager.GetString("home_link_description_fuelsales_kgd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Отчетная документация.
+        /// </summary>
+        public static string home_link_description_oil {
+            get {
+                return ResourceManager.GetString("home_link_description_oil", resourceCulture);
             }
         }
         
@@ -196,6 +223,24 @@ namespace WebUI.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Ведомость приема топлива (экипировка ж.д. ГД).
+        /// </summary>
+        public static string home_link_description_receiving_fuel_kgd {
+            get {
+                return ResourceManager.GetString("home_link_description_receiving_fuel_kgd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Остатки диз. топлива в емкостях ст. Карьерная.
+        /// </summary>
+        public static string home_link_description_remainstanks_kgd {
+            get {
+                return ResourceManager.GetString("home_link_description_remainstanks_kgd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Список RFID-карт установленных на АМКР.
         /// </summary>
         public static string home_link_description_RFID_cards {
@@ -223,6 +268,24 @@ namespace WebUI.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на АЗС АМКР.
+        /// </summary>
+        public static string home_link_fuel_azs {
+            get {
+                return ResourceManager.GetString("home_link_fuel_azs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Экипировка &quot;Карьерная&quot; АМКР.
+        /// </summary>
+        public static string home_link_fuel_gd {
+            get {
+                return ResourceManager.GetString("home_link_fuel_gd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Выдача ГСМ.
         /// </summary>
         public static string home_link_fuelsales {
@@ -232,11 +295,20 @@ namespace WebUI.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Топливо для ж.д. ГД.
+        ///   Ищет локализованную строку, похожую на Выдача ж.д. ГД.
         /// </summary>
         public static string home_link_fuelsales_kgd {
             get {
                 return ResourceManager.GetString("home_link_fuelsales_kgd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ЦСМ АМКР.
+        /// </summary>
+        public static string home_link_oil {
+            get {
+                return ResourceManager.GetString("home_link_oil", resourceCulture);
             }
         }
         
@@ -273,6 +345,24 @@ namespace WebUI.App_GlobalResources {
         public static string home_link_oiltransfer {
             get {
                 return ResourceManager.GetString("home_link_oiltransfer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Прием ж.д. ГД.
+        /// </summary>
+        public static string home_link_receiving_fuel_kgd {
+            get {
+                return ResourceManager.GetString("home_link_receiving_fuel_kgd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Остатки.
+        /// </summary>
+        public static string home_link_remainstanks_kgd {
+            get {
+                return ResourceManager.GetString("home_link_remainstanks_kgd", resourceCulture);
             }
         }
         
@@ -331,6 +421,24 @@ namespace WebUI.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Ведомость приема топлива (экипировка ж.д. транспорта ГД).
+        /// </summary>
+        public static string home_receiving_fuel_rw {
+            get {
+                return ResourceManager.GetString("home_receiving_fuel_rw", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Остатки в емкостях.
+        /// </summary>
+        public static string home_remains_tanks_rw {
+            get {
+                return ResourceManager.GetString("home_remains_tanks_rw", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Состояние склада ГСМ АЗС.
         /// </summary>
         public static string home_tank_states {
@@ -372,6 +480,33 @@ namespace WebUI.App_GlobalResources {
         public static string lang {
             get {
                 return ResourceManager.GetString("lang", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Меню АЗС.
+        /// </summary>
+        public static string link_menu_home_fuel_azs {
+            get {
+                return ResourceManager.GetString("link_menu_home_fuel_azs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Меню АЗС ГД.
+        /// </summary>
+        public static string link_menu_home_fuel_gd {
+            get {
+                return ResourceManager.GetString("link_menu_home_fuel_gd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Меню ЦСМ.
+        /// </summary>
+        public static string link_menu_home_oil {
+            get {
+                return ResourceManager.GetString("link_menu_home_oil", resourceCulture);
             }
         }
         

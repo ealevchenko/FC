@@ -272,7 +272,7 @@ var AJAXComplete = function () {
 function getAsyncViewCars(callback) {
     $.ajax({
         type: 'GET',
-        url: '../api/cards',
+        url: '../../api/cards',
         async: true,
         dataType: 'json',
         beforeSend: function () {
@@ -296,7 +296,7 @@ function getAsyncViewCars(callback) {
 var getAsyncViewazsCards = function (callback) {
     $.ajax({
         type: 'GET',
-        url: '../api/azs/cards',
+        url: '../../api/azs/cards',
         async: true,
         dataType: 'json',
         beforeSend: function () {
@@ -319,7 +319,7 @@ var getAsyncViewazsCards = function (callback) {
 var getAsyncViewazsCardsOfID = function (id, callback) {
     $.ajax({
         type: 'GET',
-        url: '../api/azs/cards/'+id,
+        url: '../../api/azs/cards/'+id,
         async: true,
         dataType: 'json',
         beforeSend: function () {
@@ -341,7 +341,7 @@ var getAsyncViewazsCardsOfID = function (id, callback) {
 //Добавить cazsCards
 var postAsyncazsCards = function (cards, callback) {
     $.ajax({
-        url: '../api/azs/cards',
+        url: '../../api/azs/cards',
         type: 'POST',
         data: JSON.stringify(cards),
         contentType: "application/json;charset=utf-8",
@@ -366,7 +366,7 @@ var postAsyncazsCards = function (cards, callback) {
 var putAsyncazsCards = function (cards, callback) {
     $.ajax({
         type: 'PUT',
-        url: '../api/azs/cards/' + cards.Id,
+        url: '../../api/azs/cards/' + cards.Id,
         data: JSON.stringify(cards),
         contentType: "application/json;charset=utf-8",
         async: true,
@@ -389,7 +389,7 @@ var putAsyncazsCards = function (cards, callback) {
 // Удалить azsCards по id
 var deleteAsynczsCards = function (id, callback) {
     $.ajax({
-        url: '../api/azs/cards/' + id,
+        url: '../../api/azs/cards/' + id,
         type: 'DELETE',
         contentType: "application/json;charset=utf-8",
         async: true,
@@ -449,7 +449,7 @@ var getReference_azsCards = function (callback) {
 var getAsyncViewazsDeparts = function (callback) {
     $.ajax({
         type: 'GET',
-        url: '../api/azs/departs',
+        url: '../../api/azs/departs',
         async: true,
         dataType: 'json',
         beforeSend: function () {
@@ -503,7 +503,7 @@ var getReference_azsDeparts = function(callback) {
 var getAsyncViewLastazsTankStates = function (callback) {
     $.ajax({
         type: 'GET',
-        url: '../api/azs/tankstates/last',
+        url: '../../api/azs/tankstates/last',
         async: true,
         dataType: 'json',
         beforeSend: function () {
@@ -527,7 +527,7 @@ var getAsyncViewLastazsTankStates = function (callback) {
 var getAsyncViewazsFuelSaleOfDateTime = function (start, stop, callback) {
     $.ajax({
         type: 'GET',
-        url: '../api/azs/fuelsale/' + toISOStringTZ(start).substring(0, 19) + '/' + toISOStringTZ(stop).substring(0, 19),
+        url: '../../api/azs/fuelsale/' + toISOStringTZ(start).substring(0, 19) + '/' + toISOStringTZ(stop).substring(0, 19),
         async: true,
         dataType: 'json',
         beforeSend: function () {
@@ -551,7 +551,7 @@ var getAsyncViewazsFuelSaleOfDateTime = function (start, stop, callback) {
 var getAsyncViewLastTankStates = function (callback) {
     $.ajax({
         type: 'GET',
-        url: '../api/tankstates/last',
+        url: '../../api/tankstates/last',
         async: true,
         dataType: 'json',
         beforeSend: function () {
@@ -574,7 +574,7 @@ var getAsyncViewLastTankStates = function (callback) {
 var getAsyncViewLastTankStatesOfNum = function (num, callback) {
     $.ajax({
         type: 'GET',
-        url: '../api/tankstates/last/tank/'+num,
+        url: '../../api/tankstates/last/tank/'+num,
         async: true,
         dataType: 'json',
         beforeSend: function () {
@@ -599,7 +599,30 @@ var getAsyncViewLastTankStatesOfNum = function (num, callback) {
 var getAsyncViewFuelSaleOfDateTime = function (start, stop, callback) {
     $.ajax({
         type: 'GET',
-        url: '../api/fuelsale/' + toISOStringTZ(start).substring(0, 19) + '/' + toISOStringTZ(stop).substring(0, 19),
+        url: '../../api/fuelsale/' + toISOStringTZ(start).substring(0, 19) + '/' + toISOStringTZ(stop).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+};
+// Веруть заправочную ведомость жд трансп локальный отчет
+var getAsyncReportLocalFS_RWOfDateTime = function (start, stop, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/fuel_sale_rw/local/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
         async: true,
         dataType: 'json',
         beforeSend: function () {
@@ -618,11 +641,34 @@ var getAsyncViewFuelSaleOfDateTime = function (start, stop, callback) {
         },
     });
 }
-// Веруть заправочную ведомость жд трансп локальный отчет
-var getAsyncReportLocalFS_RWOfDateTime = function (start, stop, callback) {
+// Веруть приемку топлива
+var getAsyncReportLocalRF_RWOfDateTime = function (start, stop, callback) {
     $.ajax({
         type: 'GET',
-        url: '../api/fuel_sale_rw/local/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
+        url: '../../api/receiving_fuel_rw/local/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+}
+// Веруть остатки топлива
+var getAsyncReportLocalRT_RWOfDateTime = function (start, stop, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/remains_tanks_rw/local/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
         async: true,
         dataType: 'json',
         beforeSend: function () {

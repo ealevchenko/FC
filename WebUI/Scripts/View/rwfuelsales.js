@@ -266,6 +266,11 @@
                         { data: "mass15", title: langView('field_Mass15', langs), width: "50px", orderable: true, searchable: true },
                         { data: "dens15", title: langView('field_Dens15', langs), width: "50px", orderable: true, searchable: true },
                     ],
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copyHtml5',
+                        'excelHtml5',
+                    ]
                 });
             },
             // Показать таблицу с данными

@@ -13,59 +13,6 @@ namespace WebUI.Controllers
         {
             return View();
         }
-
-        /// <summary>
-        /// RFID Карты
-        /// </summary>
-        /// <returns></returns>
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_CardRFID_user,EUROPE\KRR-LG-Fuel_CardRFID_admin", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko")]
-        public ActionResult Cards()
-        {
-            return View();
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_CardRFID_admin")]
-        public ActionResult CardsAdmin()
-        {
-            return View();
-        }
-        /// <summary>
-        /// Состояние склада ГСМ АЗС
-        /// </summary>
-        /// <returns></returns>
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko")]
-        public ActionResult TankStates()
-        {
-            return View();
-        }
-        /// <summary>
-        /// Заправочная ведомость
-        /// </summary>
-        /// <returns></returns>
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko")]
-        public ActionResult FuelSale()
-        {
-            return View();
-        }
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko")]
-        public ActionResult RWTankStates()
-        {
-            return View();
-        }
-        /// <summary>
-        /// Заправочная ведомость жд трансп.
-        /// </summary>
-        /// <returns></returns>
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko")]
-        public ActionResult RWFuelSale()
-        {
-            return View();
-        }
-
-
         public ActionResult ChangeCulture(string lang)
         {
             string returnUrl = Request.UrlReferrer.AbsolutePath;
