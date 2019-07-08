@@ -198,7 +198,7 @@
                 this.obj = this.html_table.DataTable({
                     //"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                     "paging": false,
-                    "ordering": true,
+                    "ordering": false,
                     "info": false,
                     "select": false,
                     "autoWidth": true,
@@ -210,54 +210,49 @@
                     "createdRow": function (row, data, index) {
                         $(row).attr('id', data.id);
                     },
-                    //"footerCallback": function (row, data, start, end, display) {
-                    //    var api = this.api(), data;
-                    //    // Remove the formatting to get integer data for summation
-                    //    var intVal = function (i) {
-                    //        return typeof i === 'string' ?
-                    //            i.replace(/[\$,]/g, '') * 1 :
-                    //            typeof i === 'number' ?
-                    //            i : 0;
-                    //    };
-                    //    // Total volume
-                    //    total_dt_volume = api
-                    //        .data()
-                    //        .reduce(function (a, b) {
-                    //            return intVal(a) + intVal(b.railway_volume);
-                    //        }, 0);
-                    //    total_dt_volume15 = api
-                    //        .data()
-                    //        .reduce(function (a, b) {
-                    //            return intVal(a) + intVal(b.railway_volume15);
-                    //        }, 0);
-                    //    // Total mass
-                    //    total_dt_mass = api
-                    //        .data()
-                    //        .reduce(function (a, b) {
-                    //            return intVal(a) + intVal(b.railway_mass);
-                    //        }, 0);
-                    //    total_dt_mass15 = api
-                    //        .data()
-                    //        .reduce(function (a, b) {
-                    //            return intVal(a) + intVal(b.railway_mass15);
-                    //        }, 0);
+                    "footerCallback": function (row, data, start, end, display) {
+                        var api = this.api(), data;
+                        // Remove the formatting to get integer data for summation
+                        var intVal = function (i) {
+                            return typeof i === 'string' ?
+                                i.replace(/[\$,]/g, '') * 1 :
+                                typeof i === 'number' ?
+                                i : 0;
+                        };
 
-                    //    $('td#volume').text(total_dt_volume.toFixed(2));
-                    //    $('td#volume15').text(total_dt_volume15.toFixed(2));
-                    //    $('td#mass').text(total_dt_mass.toFixed(2));
-                    //    $('td#mass15').text(total_dt_mass15.toFixed(2));
+                        var pipe_volume = Number(kgd_pipe_dt);
+                        var last_volume = 0;
+                        var last_dens = 0;
+                        var last_mass = 0;
+                        // Total volume
 
-                    //},
+                        var lastRow = api.rows().count();
+                        if (lastRow > 0) {
+                            //var row = api.rows(lastRow).data();
+                            last_volume = Number(api.data()[lastRow - 1].volume);
+                            last_mass = Number(api.data()[lastRow - 1].mass);
+                            last_dens = Number(api.data()[lastRow - 1].dens);
+                        }
+                        var pipe_mass = pipe_volume * last_dens * 0.001;
+                        $('td#pipe-volume').text(pipe_volume.toFixed(2));
+                        $('td#pipe-mass').text(pipe_mass.toFixed(2));
+                        $('td#volume').text(last_volume.toFixed(2));
+                        $('td#mass').text(last_mass.toFixed(2));
+                        $('td#dens').text(last_dens.toFixed(2));
+                        $('td#total-volume').text(Number(last_volume + pipe_volume).toFixed(2));
+                        $('td#total-mass').text(Number(last_mass + pipe_mass).toFixed(2));
+
+                    },
                     columns: [
-                        { data: "date", title: langView('field_date', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "level", title: langView('field_railway_level', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "volume", title: langView('field_railway_volume', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "dens", title: langView('field_railway_dens', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "mass", title: langView('field_railway_mass', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "temp", title: langView('field_railway_temp', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "volume15", title: langView('field_railway_volume15', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "dens15", title: langView('field_railway_dens15', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "mass15", title: langView('field_railway_mass15', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "date", title: langView('field_date', langs), width: "50px", orderable: false, searchable: true },
+                        { data: "level", title: langView('field_railway_level', langs), width: "50px", orderable: false, searchable: true },
+                        { data: "volume", title: langView('field_railway_volume', langs), width: "50px", orderable: false, searchable: true },
+                        { data: "dens", title: langView('field_railway_dens', langs), width: "50px", orderable: false, searchable: true },
+                        { data: "mass", title: langView('field_railway_mass', langs), width: "50px", orderable: false, searchable: true },
+                        { data: "temp", title: langView('field_railway_temp', langs), width: "50px", orderable: false, searchable: true },
+                        { data: "volume15", title: langView('field_railway_volume15', langs), width: "50px", orderable: false, searchable: true },
+                        { data: "dens15", title: langView('field_railway_dens15', langs), width: "50px", orderable: false, searchable: true },
+                        { data: "mass15", title: langView('field_railway_mass15', langs), width: "50px", orderable: false, searchable: true },
 
                     ],
                     dom: 'Bfrtip',
@@ -297,13 +292,13 @@
                         "id": data[i].id,
                         "date": data[i].date,
                         "level": data[i].level,
-                        "volume": data[i].volume,
+                        "volume": data[i].volume!==null? Number(data[i].volume*1000).toFixed(2):null,
                         "dens": data[i].dens_avg,
-                        "mass": data[i].mass,
+                        "mass": data[i].mass !== null ? Number(data[i].mass*1000).toFixed(2):null,
                         "temp": data[i].temp_avg,
-                        "volume15": data[i].volume15,
+                        "volume15": data[i].volume15 !== null ? Number(data[i].volume15*1000).toFixed(2):null,
                         "dens15": data[i].dens15,
-                        "mass15": data[i].mass15,
+                        "mass15": data[i].mass15 !== null ? Number(data[i].mass15*1000).toFixed(2):null,
                     });
                 }
                 LockScreenOff();
