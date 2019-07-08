@@ -1,7 +1,7 @@
 USE [CC_HMI_CUNJ_19_06_24_11_33_35R]
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetRemains]    Script Date: 07.07.2019 21:58:54 ******/
+/****** Object:  StoredProcedure [dbo].[GetRemains]    Script Date: 08.07.2019 22:19:09 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -26,12 +26,12 @@ BEGIN
 
 	declare @List varchar(1000)='6;7;8;9;10;11';
     declare @TimeBegin varchar(32) = CONVERT(varchar(23) ,@date, 120);
-    declare @TimeEnd varchar(32)='0000-00-00 00:00:00.001';
+    declare @TimeEnd varchar(32)='0000-00-00 00:00:00.999';
     --declare @TimeEnd varchar(32)= CONVERT(varchar(23) ,DATEADD(second,+1,@date), 120);
-
+    --declare @TimeEnd varchar(32) = CONVERT(varchar(23) ,@date, 120);
     declare @WHEREClause varchar(1000)= NULL;
     declare @ORDERBYClause varchar(1000) = 'Timestamp ASC';
-    declare @Timestep varchar(500) = '1';
+    declare @Timestep varchar(500) = '60';
     declare @Aggregationmode int = 261;
     declare @SymDataSource varchar(512) = NULL;
     declare @SymCatalog varchar(512) = NULL;
