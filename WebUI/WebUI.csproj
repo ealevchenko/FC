@@ -195,6 +195,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Areas\Oil\Controllers\HomeController.cs" />
     <Compile Include="Areas\Oil\OilAreaRegistration.cs" />
+    <Compile Include="Controllers\api\Daily_ReportRWController.cs" />
     <Compile Include="Controllers\api\RemainsTanksRWController.cs" />
     <Compile Include="Controllers\api\ReceivingFuelRWController.cs" />
     <Compile Include="Controllers\api\FuelSaleRWController.cs" />
@@ -428,6 +429,7 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\View\cards.css" />
+    <Content Include="Content\View\dailireport.css" />
     <Content Include="Content\View\fuelsales.css" />
     <Content Include="Content\View\remainstanks_gd.css" />
     <Content Include="Content\View\receivingfuel_gd.css" />
@@ -542,6 +544,7 @@
     <Content Include="Areas\Cards\Views\Shared\_Global.cshtml" />
     <Content Include="Areas\Cards\Views\_ViewStart.cshtml" />
     <Content Include="Areas\FuelGD\Views\Home\RemainsTanks.cshtml" />
+    <Content Include="Areas\FuelGD\Views\Home\DailyReport.cshtml" />
     <None Include="Properties\PublishProfiles\fc.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
@@ -636,6 +639,7 @@
     <Content Include="Scripts\View\cards.js" />
     <Content Include="Scripts\View\oilreceipt.js" />
     <Content Include="Scripts\View\oilsales.js" />
+    <Content Include="Scripts\View\rwdailireport.js" />
     <Content Include="Scripts\View\rwremainstanks.js" />
     <Content Include="Scripts\View\rwreceivingfuel.js" />
     <Content Include="Scripts\View\rwfuelsales.js" />

@@ -273,4 +273,13 @@
   <data name="home_remains_tanks_rw" xml:space="preserve">
     <value>Остатки в емкостях</value>
   </data>
+  <data name="home_daili_report_rw" xml:space="preserve">
+    <value>Суточный отчет (экипировка ст. "Карьерная ГД")</value>
+  </data>
+  <data name="home_link_dailireport_kgd" xml:space="preserve">
+    <value>Суточный отчет</value>
+  </data>
+  <data name="home_link_description_dailireport_kgd" xml:space="preserve">
+    <value>Суточный отчет (экипировка ст. "Карьерная ГД")</value>
+  </data>
 </root>

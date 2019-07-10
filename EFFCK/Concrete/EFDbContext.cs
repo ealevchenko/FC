@@ -13,6 +13,7 @@ namespace EFFCK.Concrete
         {
         }
 
+        public virtual DbSet<Daily_ReportRW> Daily_ReportRW { get; set; }
         public virtual DbSet<FuelSaleRW> FuelSaleRW { get; set; }
         public virtual DbSet<ReceivingFuelRW> ReceivingFuelRW { get; set; }
         public virtual DbSet<RemainsTanksRW> RemainsTanksRW { get; set; }

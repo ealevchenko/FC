@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Concrete\EFDaily_ReportRW.cs" />
     <Compile Include="Concrete\EFRemainsTanksRW.cs" />
     <Compile Include="Concrete\EFReceivingFuelRW.cs" />
     <Compile Include="Concrete\EFFuelSaleRW.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Entities\UsersChanges.cs" />
     <Compile Include="Entities\ReceivingFuelRW.cs" />
     <Compile Include="Entities\RemainsTanksRW.cs" />
+    <Compile Include="Entities\Daily_ReportRW.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

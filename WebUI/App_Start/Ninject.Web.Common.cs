@@ -83,6 +83,7 @@ namespace WebUI.App_Start
             kernel.Bind<EFFCK.Abstract.IRepository<EFFCK.Entities.FuelSaleRW>>().To<EFFCK.Concrete.EFFuelSaleRW>();
             kernel.Bind<EFFCK.Abstract.IRepository<EFFCK.Entities.ReceivingFuelRW>>().To<EFFCK.Concrete.EFReceivingFuelRW>();
             kernel.Bind<EFFCK.Abstract.IRepository<EFFCK.Entities.RemainsTanksRW>>().To<EFFCK.Concrete.EFRemainsTanksRW>();
+            kernel.Bind<EFFCK.Abstract.IRepository<EFFCK.Entities.Daily_ReportRW>>().To<EFFCK.Concrete.EFDaily_ReportRW>();
         }        
     }
 }
