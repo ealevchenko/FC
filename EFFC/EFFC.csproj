@@ -55,6 +55,10 @@
     <Compile Include="Concrete\EFazsCards.cs" />
     <Compile Include="Concrete\EFazsDeparts.cs" />
     <Compile Include="Concrete\EFazsFuelSale.cs" />
+    <Compile Include="Concrete\EFRemainsTanks_KGD.cs" />
+    <Compile Include="Concrete\EFReceivingFuel_KGD.cs" />
+    <Compile Include="Concrete\EFFuelSale_KGD.cs" />
+    <Compile Include="Concrete\EFDaily_Report_KGD.cs" />
     <Compile Include="Concrete\EFTankStates.cs" />
     <Compile Include="Concrete\EFazsTankStates.cs" />
     <Compile Include="Concrete\EFCards.cs" />
@@ -79,6 +83,10 @@
     <Compile Include="Entities\TankerStorage.cs" />
     <Compile Include="Entities\TankStates.cs" />
     <Compile Include="Entities\TrainTankerOrder.cs" />
+    <Compile Include="Entities\Daily_Report_KGD.cs" />
+    <Compile Include="Entities\FuelSale_KGD.cs" />
+    <Compile Include="Entities\ReceivingFuel_KGD.cs" />
+    <Compile Include="Entities\RemainsTanks_KGD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
