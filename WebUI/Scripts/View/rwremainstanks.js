@@ -267,7 +267,8 @@
                 LockScreen(langView('mess_delay', langs));
                 if (this.list === null | data_refresh === true) {
                     // Обновим данные
-                    getAsyncReportLocalRT_RWOfDateTime(
+                    //getAsyncReportLocalRT_RWOfDateTime(
+                      getAsyncReportRT_KGDOfDateTime(
                         date_start, date_stop,
                         function (result) {
                             table_remains_tanks.list = result;

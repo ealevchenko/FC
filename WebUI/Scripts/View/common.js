@@ -546,6 +546,29 @@ var getAsyncViewazsFuelSaleOfDateTime = function (start, stop, callback) {
         },
     });
 }
+// Суточный репорт АЗС (БД ЦОД)
+var getAsyncViewReportDR_AZSOfDateTime = function (start, stop, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/daily_report_azs/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+};
 /////////////////////////////////////////////////////////////////////
 // Веруть состояние экипировки ст Карьерная ГД
 var getAsyncViewLastTankStates = function (callback) {
@@ -593,32 +616,31 @@ var getAsyncViewLastTankStatesOfNum = function (num, callback) {
         },
     });
 }
-
 /////////////////////////////////////////////////////////////////////
 // Веруть заправочную ведомость жд трансп
-var getAsyncViewFuelSaleOfDateTime = function (start, stop, callback) {
-    $.ajax({
-        type: 'GET',
-        url: '../../api/fuelsale/' + toISOStringTZ(start).substring(0, 19) + '/' + toISOStringTZ(stop).substring(0, 19),
-        async: true,
-        dataType: 'json',
-        beforeSend: function () {
-            AJAXBeforeSend();
-        },
-        success: function (data) {
-            if (typeof callback === 'function') {
-                callback(data);
-            }
-        },
-        error: function (x, y, z) {
-            OnAJAXError(x, y, z);
-        },
-        complete: function () {
-            AJAXComplete();
-        },
-    });
-};
-// Веруть заправочную ведомость жд трансп локальный отчет
+//var getAsyncViewFuelSaleOfDateTime = function (start, stop, callback) {
+//    $.ajax({
+//        type: 'GET',
+//        url: '../../api/fuelsale/' + toISOStringTZ(start).substring(0, 19) + '/' + toISOStringTZ(stop).substring(0, 19),
+//        async: true,
+//        dataType: 'json',
+//        beforeSend: function () {
+//            AJAXBeforeSend();
+//        },
+//        success: function (data) {
+//            if (typeof callback === 'function') {
+//                callback(data);
+//            }
+//        },
+//        error: function (x, y, z) {
+//            OnAJAXError(x, y, z);
+//        },
+//        complete: function () {
+//            AJAXComplete();
+//        },
+//    });
+//};
+// Веруть заправочную ведомость ст. Карьерная ГД (локальный отчет)
 var getAsyncReportLocalFS_RWOfDateTime = function (start, stop, callback) {
     $.ajax({
         type: 'GET',
@@ -641,7 +663,7 @@ var getAsyncReportLocalFS_RWOfDateTime = function (start, stop, callback) {
         },
     });
 }
-// Веруть приемку топлива
+// Веруть приемку топлива ст. Карьерная ГД (локальный отчет)
 var getAsyncReportLocalRF_RWOfDateTime = function (start, stop, callback) {
     $.ajax({
         type: 'GET',
@@ -664,7 +686,7 @@ var getAsyncReportLocalRF_RWOfDateTime = function (start, stop, callback) {
         },
     });
 }
-// Веруть остатки топлива
+// Веруть остатки топлива ст. Карьерная ГД (локальный отчет)
 var getAsyncReportLocalRT_RWOfDateTime = function (start, stop, callback) {
     $.ajax({
         type: 'GET',
@@ -687,7 +709,7 @@ var getAsyncReportLocalRT_RWOfDateTime = function (start, stop, callback) {
         },
     });
 }
-// Суточный репорт ж.д. транспорт
+// Суточный репорт ст. Карьерная ГД (локальный отчет)
 var getAsyncViewReportDR15OfDateTime = function (start, stop, callback) {
     $.ajax({
         type: 'GET',
@@ -710,7 +732,98 @@ var getAsyncViewReportDR15OfDateTime = function (start, stop, callback) {
         },
     });
 };
-
+// Веруть заправочную ведомость ст. Карьерная ГД (БД ЦОД)
+var getAsyncReportFS_KGDOfDateTime = function (start, stop, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/fuel_sale_kgd/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+}
+// Веруть приемку топлива ст. Карьерная ГД (БД ЦОД)
+var getAsyncReportRF_KGDOfDateTime = function (start, stop, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/receiving_fuel_kgd/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+}
+// Веруть остатки топлива ст. Карьерная ГД (БД ЦОД)
+var getAsyncReportRT_KGDOfDateTime = function (start, stop, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/remains_tanks_kgd/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+}
+// Суточный репорт ст. Карьерная ГД (БД ЦОД)
+var getAsyncViewReportDR_KGDOfDateTime = function (start, stop, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/daily_report_kgd/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+};
 /////////////////////////////////////////////////////////////////////
 // Веруть Выдача масла из ЦСМ
 var getAsyncViewOilSalesOfDateTime = function (start, stop, callback) {

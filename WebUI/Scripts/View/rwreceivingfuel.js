@@ -271,7 +271,8 @@
                 LockScreen(langView('mess_delay', langs));
                 if (this.list === null | data_refresh === true) {
                     // Обновим данные
-                    getAsyncReportLocalRF_RWOfDateTime(
+                    //getAsyncReportLocalRF_RWOfDateTime(
+                      getAsyncReportRF_KGDOfDateTime(
                         date_start, date_stop,
                         function (result) {
                             table_receiving_fuel.list = result;
