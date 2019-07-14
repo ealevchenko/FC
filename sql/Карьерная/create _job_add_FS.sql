@@ -1,11 +1,11 @@
 USE [msdb]
 GO
 
-/****** Object:  Job [add_FS]    Script Date: 07.07.2019 23:36:27 ******/
+/****** Object:  Job [add_FS]    Script Date: 14.07.2019 17:03:58 ******/
 BEGIN TRANSACTION
 DECLARE @ReturnCode INT
 SELECT @ReturnCode = 0
-/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 07.07.2019 23:36:27 ******/
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 14.07.2019 17:03:58 ******/
 IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
 BEGIN
 EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
@@ -25,7 +25,7 @@ EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'add_FS',
 		@category_name=N'[Uncategorized (Local)]', 
 		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [add_fuel_sale]    Script Date: 07.07.2019 23:36:27 ******/
+/****** Object:  Step [add_fuel_sale]    Script Date: 14.07.2019 17:03:58 ******/
 EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'add_fuel_sale', 
 		@step_id=1, 
 		@cmdexec_success_code=0, 
@@ -40,9 +40,24 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'add_fuel
 		@database_name=N'ASUTSK', 
 		@flags=0
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [add_receiving_fuel]    Script Date: 07.07.2019 23:36:28 ******/
-EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'add_receiving_fuel', 
+/****** Object:  Step [in DC fuel_sale]    Script Date: 14.07.2019 17:03:58 ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'in DC fuel_sale', 
 		@step_id=2, 
+		@cmdexec_success_code=0, 
+		@on_success_action=3, 
+		@on_success_step_id=0, 
+		@on_fail_action=3, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'TSQL', 
+		@command=N'EXEC [dbo].[AddFuelSale_DC]', 
+		@database_name=N'ASUTSK', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [add_receiving_fuel]    Script Date: 14.07.2019 17:03:58 ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'add_receiving_fuel', 
+		@step_id=3, 
 		@cmdexec_success_code=0, 
 		@on_success_action=3, 
 		@on_success_step_id=0, 
@@ -55,9 +70,39 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'add_rece
 		@database_name=N'ASUTSK', 
 		@flags=0
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [add_remains]    Script Date: 07.07.2019 23:36:28 ******/
+/****** Object:  Step [in DC receiving_fuel]    Script Date: 14.07.2019 17:03:58 ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'in DC receiving_fuel', 
+		@step_id=4, 
+		@cmdexec_success_code=0, 
+		@on_success_action=3, 
+		@on_success_step_id=0, 
+		@on_fail_action=3, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'TSQL', 
+		@command=N'EXEC [dbo].[AddReceivingFuel_DC]', 
+		@database_name=N'ASUTSK', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [add_remains]    Script Date: 14.07.2019 17:03:58 ******/
 EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'add_remains', 
-		@step_id=3, 
+		@step_id=5, 
+		@cmdexec_success_code=0, 
+		@on_success_action=3, 
+		@on_success_step_id=0, 
+		@on_fail_action=3, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'TSQL', 
+		@command=N'EXEC [CC_HMI_CUNJ_19_07_11_10_29_56R].[dbo].[AddRemains]', 
+		@database_name=N'master', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [in DC remains]    Script Date: 14.07.2019 17:03:58 ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'in DC remains', 
+		@step_id=6, 
 		@cmdexec_success_code=0, 
 		@on_success_action=1, 
 		@on_success_step_id=0, 
@@ -66,7 +111,7 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'add_rema
 		@retry_attempts=0, 
 		@retry_interval=0, 
 		@os_run_priority=0, @subsystem=N'TSQL', 
-		@command=N'EXEC [CC_HMI_CUNJ_19_06_24_11_33_35R].[dbo].[AddRemains]', 
+		@command=N'EXEC [CC_HMI_CUNJ_19_07_11_10_29_56R].[dbo].[AddRemains_DC]', 
 		@database_name=N'master', 
 		@flags=0
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback

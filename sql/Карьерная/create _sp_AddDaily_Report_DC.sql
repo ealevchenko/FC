@@ -1,7 +1,7 @@
 USE [CC_HMI_CUNJ_19_07_11_10_29_56R]
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddDaily_Report]    Script Date: 14.07.2019 11:11:53 ******/
+/****** Object:  StoredProcedure [dbo].[AddDaily_Report_DC]    Script Date: 14.07.2019 15:18:13 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -13,10 +13,11 @@ GO
 
 
 
+
 -- =============================================
 -- Description:	Формирование суточного отчета
 -- =============================================
-CREATE PROCEDURE [dbo].[AddDaily_Report]
+CREATE PROCEDURE [dbo].[AddDaily_Report_DC]
 AS
 BEGIN
 DECLARE	@return_value int
@@ -25,51 +26,51 @@ declare @stop_report datetime
 declare @start datetime
 declare @stop datetime
 
--- Проверим наличие таблицы [dbo].[Daily_Report_15] если нет создадим
-if OBJECT_ID(N'[ASUTSK].[dbo].[Daily_ReportRW]',N'U') is null
-begin
-	CREATE TABLE [ASUTSK].[dbo].[Daily_ReportRW](
-		[id] [int] IDENTITY(1,1) NOT NULL,
-		[type] [nvarchar](10) NULL,
-		[date_start] [datetime] NULL,
-		[date_stop] [datetime] NULL,
-		[volume_start] [int] NULL,
-		[mass_start] [float] NULL,
-		[dens_start] [float] NULL,
-		[temp_start] [float] NULL,
-		[volume15_start] [int] NULL,
-		[mass15_start] [float] NULL,
-		[dens15_start] [float] NULL,
-		[volume_coming] [int] NULL,
-		[mass_coming] [float] NULL,
-		[dens_coming] [float] NULL,
-		[temp_coming] [float] NULL,
-		[volume15_coming] [int] NULL,
-		[mass15_coming] [float] NULL,
-		[dens15_coming] [float] NULL,
-		[volume_consumption] [int] NULL,
-		[mass_consumption] [float] NULL,
-		[dens_consumption] [float] NULL,
-		[temp_consumption] [float] NULL,
-		[volume15_consumption] [int] NULL,
-		[mass15_consumption] [float] NULL,
-		[dens15_consumption] [float] NULL,
-		[volume_stop] [int] NULL,
-		[mass_stop] [float] NULL,
-		[dens_stop] [float] NULL,
-		[temp_stop] [float] NULL,
-		[volume15_stop] [int] NULL,
-		[mass15_stop] [float] NULL,
-		[dens15_stop] [float] NULL,
-		[send] [datetime] NULL,
-	 CONSTRAINT [PK_Daily_Report_15] PRIMARY KEY CLUSTERED 
-	(
-		[id] ASC
-	)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-	) ON [PRIMARY]	
-end
+---- Проверим наличие таблицы [dbo].[Daily_Report_15] если нет создадим
+--if OBJECT_ID(N'[10.21.4.168].[KRR-PA-CNT-Oil].[dbo].[Daily_ReportRW]',N'U') is null
+--begin
+--	CREATE TABLE [10.21.4.168].[KRR-PA-CNT-Oil].[dbo].[Daily_ReportRW](
+--		[id] [int] IDENTITY(1,1) NOT NULL,
+--		[type] [nvarchar](10) NULL,
+--		[date_start] [datetime] NULL,
+--		[date_stop] [datetime] NULL,
+--		[volume_start] [int] NULL,
+--		[mass_start] [float] NULL,
+--		[dens_start] [float] NULL,
+--		[temp_start] [float] NULL,
+--		[volume15_start] [int] NULL,
+--		[mass15_start] [float] NULL,
+--		[dens15_start] [float] NULL,
+--		[volume_coming] [int] NULL,
+--		[mass_coming] [float] NULL,
+--		[dens_coming] [float] NULL,
+--		[temp_coming] [float] NULL,
+--		[volume15_coming] [int] NULL,
+--		[mass15_coming] [float] NULL,
+--		[dens15_coming] [float] NULL,
+--		[volume_consumption] [int] NULL,
+--		[mass_consumption] [float] NULL,
+--		[dens_consumption] [float] NULL,
+--		[temp_consumption] [float] NULL,
+--		[volume15_consumption] [int] NULL,
+--		[mass15_consumption] [float] NULL,
+--		[dens15_consumption] [float] NULL,
+--		[volume_stop] [int] NULL,
+--		[mass_stop] [float] NULL,
+--		[dens_stop] [float] NULL,
+--		[temp_stop] [float] NULL,
+--		[volume15_stop] [int] NULL,
+--		[mass15_stop] [float] NULL,
+--		[dens15_stop] [float] NULL,
+--		[send] [datetime] NULL,
+--	 CONSTRAINT [PK_Daily_Report_15] PRIMARY KEY CLUSTERED 
+--	(
+--		[id] ASC
+--	)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+--	) ON [PRIMARY]	
+--end
 -- Получим время начала запроса и конца
-set @start_report = (select top(1) [date_start] from [ASUTSK].[dbo].[Daily_ReportRW] order by [date_start] desc)
+set @start_report = (select top(1) [date_start] from [10.21.4.168].[KRR-PA-CNT-Oil].[dbo].[Daily_Report_KGD] order by [date_start] desc)
 Set @stop_report = CONVERT(DATETIME, CONVERT(char(11), getdate() ,20) + '00:00:00', 102)
 -- Проверим в таблице есть данные
 if (@start_report is null) begin 
@@ -495,7 +496,39 @@ begin
 				set @dens15_consumption =   [ASUTSK].[dbo].[GET_DENS15](@type, @dens_consumption, @temp_consumption);
 				set @mass15_consumption = @volume15_consumption*@dens15_consumption*0.001;
 				-->
-				insert into [ASUTSK].[dbo].[Daily_ReportRW]
+				INSERT INTO [10.21.4.168].[KRR-PA-CNT-Oil].[dbo].[Daily_Report_KGD]
+           ([type]
+           ,[date_start]
+           ,[date_stop]
+           ,[volume_start]
+           ,[mass_start]
+           ,[dens_start]
+           ,[temp_start]
+           ,[volume15_start]
+           ,[mass15_start]
+           ,[dens15_start]
+           ,[volume_coming]
+           ,[mass_coming]
+           ,[dens_coming]
+           ,[temp_coming]
+           ,[volume15_coming]
+           ,[mass15_coming]
+           ,[dens15_coming]
+           ,[volume_consumption]
+           ,[mass_consumption]
+           ,[dens_consumption]
+           ,[temp_consumption]
+           ,[volume15_consumption]
+           ,[mass15_consumption]
+           ,[dens15_consumption]
+           ,[volume_stop]
+           ,[mass_stop]
+           ,[dens_stop]
+           ,[temp_stop]
+           ,[volume15_stop]
+           ,[mass15_stop]
+           ,[dens15_stop]
+           ,[send])
 				select 
 				type = @type,
 				date_start = @start,
@@ -531,8 +564,7 @@ begin
 				volume15_stop = @volume15_stop,
 				mass15_stop = @mass15_stop,
 				dens15_stop= @dens15_stop,				
-				
-				send = null
+				[send] = null
 
 				set @row = @row+1;
 		--** КОНЕЦ ВЫБОРКИ СУТОЧНОГО РАПОРТА *********************************

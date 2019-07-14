@@ -2,7 +2,7 @@
 USE [CC_HMI_CUNJ_19_06_24_11_33_35R]--[ASUTSK]
 GO
 
-drop table [ASUTSK].[dbo].[Daily_ReportRW]
+--drop table [ASUTSK].[dbo].[Daily_ReportRW]
 
 DECLARE	@return_value int
 declare @start_report datetime
@@ -481,9 +481,9 @@ begin
 				
 				set @mass_consumption = @volume_consumption * @dens_consumption * 0.001;
 				set @temp_consumption =(select avg((End_Temp + Start_Temp)/2) FROM [ASUTSK].[dbo].[Outcomes] where [Start_Date]>= @start and [Start_Date]< @stop and Start_Temp>0 and End_Temp>0)
-				set @volume15_consumption =  null;--(SELECT  SUM([ASU_AZSlogs].[dbo].[GET_VOLUME15](@type, (mass/volume) * 1000, (stop_temp+start_temp)/2, volume)) FROM [ASU_AZSoperations].dbo.FuelSale where fuel_type=@type and stop_datetime >= @start and stop_datetime<=@stop GROUP BY fuel_type);
-				set @dens15_consumption =   null;--(SELECT  AVG([ASU_AZSlogs].[dbo].[GET_DENS15](@type, (mass/volume) * 1000, (stop_temp+start_temp)/2)) FROM [ASU_AZSoperations].dbo.FuelSale where fuel_type=@type and stop_datetime >= @start and stop_datetime<=@stop GROUP BY fuel_type);
-				set @mass15_consumption =  null;--@volume15_consumption*@dens15_consumption*0.001;
+				set @volume15_consumption = [ASUTSK].[dbo].[GET_VOLUME15](@type, @dens_consumption, @temp_consumption, @volume_consumption);
+				set @dens15_consumption =   [ASUTSK].[dbo].[GET_DENS15](@type, @dens_consumption, @temp_consumption);
+				set @mass15_consumption = @volume15_consumption*@dens15_consumption*0.001;
 				-->
 				insert into [ASUTSK].[dbo].[Daily_ReportRW]
 				select 

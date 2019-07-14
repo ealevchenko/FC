@@ -1,7 +1,7 @@
 USE [CC_HMI_CUNJ_19_07_11_10_29_56R]
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddRemains]    Script Date: 14.07.2019 11:12:16 ******/
+/****** Object:  StoredProcedure [dbo].[AddRemains]    Script Date: 14.07.2019 15:30:43 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -13,9 +13,9 @@ GO
 
 
 -- =============================================
--- Description:	Выборка и перенос остатков в емкости
+-- Description:	Выборка и перенос остатков в емкости карьерная ГД в ЦОД
 -- =============================================
-CREATE PROCEDURE [dbo].[AddRemains]
+CREATE PROCEDURE [dbo].[AddRemains_DC]
 AS
 BEGIN
 	declare @start_report datetime
@@ -25,30 +25,30 @@ BEGIN
 	declare @time_zone int
 	set @time_zone = CAST(SUBSTRING(CONVERT(char(13), GETDATE() - GETUTCDATE() ,20), 13, 1) AS INT);
 
-	-- Проверим наличие таблицы [dbo].[RemainsTanksRW] если нет создадим
-	if OBJECT_ID(N'[ASUTSK].[dbo].[RemainsTanksRW]',N'U') is null
-	begin
-		CREATE TABLE [ASUTSK].[dbo].[RemainsTanksRW](
-			[id] [int] IDENTITY(1,1) NOT NULL,
-			[date] [datetime] NULL,
-			[level] float NULL,
-			[volume] float NULL,
-			[mass] float NULL,
-			[dens_avg] float NULL,
-			[temp_avg] float NULL,
-			[water] float NULL,
-			[volume15] float NULL,
-			[mass15] float NULL,
-			[dens15] float NULL,
-		 CONSTRAINT [PK_RemainsTanksRW] PRIMARY KEY CLUSTERED 
-		(
-			[id] ASC
-		)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-		) ON [PRIMARY]
-	end
+	---- Проверим наличие таблицы [10.21.4.168].[KRR-PA-CNT-Oil].[dbo].[RemainsTanks_KGD] если нет создадим
+	--if OBJECT_ID(N'[10.21.4.168].[KRR-PA-CNT-Oil].[dbo].[RemainsTanks_KGD]',N'U') is null
+	--begin
+	--	CREATE TABLE [10.21.4.168].[KRR-PA-CNT-Oil].[dbo].[RemainsTanks_KGD](
+	--		[id] [int] IDENTITY(1,1) NOT NULL,
+	--		[date] [datetime] NULL,
+	--		[level] float NULL,
+	--		[volume] float NULL,
+	--		[mass] float NULL,
+	--		[dens_avg] float NULL,
+	--		[temp_avg] float NULL,
+	--		[water] float NULL,
+	--		[volume15] float NULL,
+	--		[mass15] float NULL,
+	--		[dens15] float NULL,
+	--	 CONSTRAINT [PK_RemainsTanks_KGD] PRIMARY KEY CLUSTERED 
+	--	(
+	--		[id] ASC
+	--	)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	--	) ON [PRIMARY]
+	--end
 
 	 --Получим время начала запроса и конца
-	set @start_report = (select top(1) [date] from [ASUTSK].[dbo].[RemainsTanksRW] order by [date] desc);
+	set @start_report = (select top(1) [date] from [10.21.4.168].[KRR-PA-CNT-Oil].[dbo].[RemainsTanks_KGD] order by [date] desc);
 
 	Set @stop_report = CONVERT(DATETIME, CONVERT(char(13), getdate() ,20) + ':00:00', 102)
 
@@ -189,7 +189,17 @@ BEGIN
 			FROM #TagWincc
 			GROUP BY [Timestamp]
 
-			 insert into [ASUTSK].[dbo].[RemainsTanksRW]
+			 INSERT INTO [10.21.4.168].[KRR-PA-CNT-Oil].[dbo].[RemainsTanks_KGD]
+           ([date]
+           ,[level]
+           ,[volume]
+           ,[mass]
+           ,[dens_avg]
+           ,[temp_avg]
+           ,[water]
+           ,[volume15]
+           ,[mass15]
+           ,[dens15])
 			 select 
 			 [date]
 			,[level]

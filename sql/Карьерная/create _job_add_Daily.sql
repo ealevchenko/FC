@@ -1,11 +1,11 @@
 USE [msdb]
 GO
 
-/****** Object:  Job [add_Daily]    Script Date: 10.07.2019 0:40:08 ******/
+/****** Object:  Job [add_Daily]    Script Date: 14.07.2019 17:03:36 ******/
 BEGIN TRANSACTION
 DECLARE @ReturnCode INT
 SELECT @ReturnCode = 0
-/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 10.07.2019 0:40:08 ******/
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 14.07.2019 17:03:36 ******/
 IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
 BEGIN
 EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
@@ -25,9 +25,24 @@ EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'add_Daily',
 		@category_name=N'[Uncategorized (Local)]', 
 		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [add_Daily_ReportRW]    Script Date: 10.07.2019 0:40:08 ******/
+/****** Object:  Step [add_Daily_ReportRW]    Script Date: 14.07.2019 17:03:36 ******/
 EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'add_Daily_ReportRW', 
 		@step_id=1, 
+		@cmdexec_success_code=0, 
+		@on_success_action=3, 
+		@on_success_step_id=0, 
+		@on_fail_action=3, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'TSQL', 
+		@command=N'EXEC [CC_HMI_CUNJ_19_07_11_10_29_56R].[dbo].[AddDaily_Report]', 
+		@database_name=N'CC_HMI_CUNJ_19_07_11_10_29_56R', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [in DC]    Script Date: 14.07.2019 17:03:36 ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'in DC', 
+		@step_id=2, 
 		@cmdexec_success_code=0, 
 		@on_success_action=1, 
 		@on_success_step_id=0, 
@@ -36,8 +51,8 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'add_Dail
 		@retry_attempts=0, 
 		@retry_interval=0, 
 		@os_run_priority=0, @subsystem=N'TSQL', 
-		@command=N'EXEC [CC_HMI_CUNJ_19_06_24_11_33_35R].[dbo].[AddDaily_Report]', 
-		@database_name=N'CC_HMI_CUNJ_19_06_24_11_33_35R', 
+		@command=N'EXEC [CC_HMI_CUNJ_19_07_11_10_29_56R].[dbo].[AddDaily_Report_DC]', 
+		@database_name=N'master', 
 		@flags=0
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
 EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1

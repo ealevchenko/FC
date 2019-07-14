@@ -1,7 +1,7 @@
-USE [CC_HMI_CUNJ_19_06_24_11_33_35R]
+USE [CC_HMI_CUNJ_19_07_11_10_29_56R]
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetRemains]    Script Date: 08.07.2019 22:19:09 ******/
+/****** Object:  StoredProcedure [dbo].[GetRemains]    Script Date: 14.07.2019 11:11:12 ******/
 SET ANSI_NULLS ON
 GO
 
