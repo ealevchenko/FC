@@ -84,6 +84,12 @@ namespace WebUI.App_Start
             kernel.Bind<EFFCK.Abstract.IRepository<EFFCK.Entities.ReceivingFuelRW>>().To<EFFCK.Concrete.EFReceivingFuelRW>();
             kernel.Bind<EFFCK.Abstract.IRepository<EFFCK.Entities.RemainsTanksRW>>().To<EFFCK.Concrete.EFRemainsTanksRW>();
             kernel.Bind<EFFCK.Abstract.IRepository<EFFCK.Entities.Daily_ReportRW>>().To<EFFCK.Concrete.EFDaily_ReportRW>();
+
+            kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.FuelSale_KGD>>().To<EFFC.Concrete.EFFuelSale_KGD>();
+            kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.ReceivingFuel_KGD>>().To<EFFC.Concrete.EFReceivingFuel_KGD>();
+            kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.RemainsTanks_KGD>>().To<EFFC.Concrete.EFRemainsTanks_KGD>();
+            kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.Daily_Report_KGD>>().To<EFFC.Concrete.EFDaily_Report_KGD>();
+
         }        
     }
 }
