@@ -90,6 +90,8 @@ namespace WebUI.App_Start
             kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.RemainsTanks_KGD>>().To<EFFC.Concrete.EFRemainsTanks_KGD>();
             kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.Daily_Report_KGD>>().To<EFFC.Concrete.EFDaily_Report_KGD>();
 
+            kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.Daily_Report_AZS>>().To<EFFC.Concrete.EFDaily_Report_AZS>();
+
         }        
     }
 }
