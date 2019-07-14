@@ -124,6 +124,15 @@ namespace WebUI.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Суточный отчет (АЗС).
+        /// </summary>
+        public static string home_daili_report_azs {
+            get {
+                return ResourceManager.GetString("home_daili_report_azs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Суточный отчет (экипировка ст. &quot;Карьерная ГД&quot;).
         /// </summary>
         public static string home_daili_report_rw {
@@ -153,9 +162,27 @@ namespace WebUI.App_GlobalResources {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Суточный отчет.
         /// </summary>
+        public static string home_link_dailireport_azs {
+            get {
+                return ResourceManager.GetString("home_link_dailireport_azs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Суточный отчет.
+        /// </summary>
         public static string home_link_dailireport_kgd {
             get {
                 return ResourceManager.GetString("home_link_dailireport_kgd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Суточный отчет (АЗС).
+        /// </summary>
+        public static string home_link_description_dailireport_azs {
+            get {
+                return ResourceManager.GetString("home_link_description_dailireport_azs", resourceCulture);
             }
         }
         

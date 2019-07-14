@@ -32,5 +32,10 @@ namespace WebUI.Areas.FuelAZS.Controllers
         {
             return View();
         }
+        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko")]
+        public ActionResult DailyReport()
+        {
+            return View();
+        }
     }
 }

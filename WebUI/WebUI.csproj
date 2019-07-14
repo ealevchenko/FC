@@ -550,6 +550,7 @@
     <Content Include="Areas\Cards\Views\_ViewStart.cshtml" />
     <Content Include="Areas\FuelGD\Views\Home\RemainsTanks.cshtml" />
     <Content Include="Areas\FuelGD\Views\Home\DailyReport.cshtml" />
+    <Content Include="Areas\FuelAZS\Views\Home\DailyReport.cshtml" />
     <None Include="Properties\PublishProfiles\fc.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
@@ -644,6 +645,7 @@
     <Content Include="Scripts\View\cards.js" />
     <Content Include="Scripts\View\oilreceipt.js" />
     <Content Include="Scripts\View\oilsales.js" />
+    <Content Include="Scripts\View\azsdailireport.js" />
     <Content Include="Scripts\View\rwdailireport.js" />
     <Content Include="Scripts\View\rwremainstanks.js" />
     <Content Include="Scripts\View\rwreceivingfuel.js" />

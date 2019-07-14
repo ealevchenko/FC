@@ -282,4 +282,13 @@
   <data name="home_link_description_dailireport_kgd" xml:space="preserve">
     <value>Суточный отчет (экипировка ст. "Карьерная ГД")</value>
   </data>
+  <data name="home_daili_report_azs" xml:space="preserve">
+    <value>Суточный отчет (АЗС)</value>
+  </data>
+  <data name="home_link_dailireport_azs" xml:space="preserve">
+    <value>Суточный отчет</value>
+  </data>
+  <data name="home_link_description_dailireport_azs" xml:space="preserve">
+    <value>Суточный отчет (АЗС)</value>
+  </data>
 </root>
