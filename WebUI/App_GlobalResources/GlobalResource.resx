@@ -291,4 +291,7 @@
   <data name="home_link_description_dailireport_azs" xml:space="preserve">
     <value>Суточный отчет (АЗС)</value>
   </data>
+  <data name="home_remains_tanks_oil" xml:space="preserve">
+    <value>Остатки в емкостях</value>
+  </data>
 </root>

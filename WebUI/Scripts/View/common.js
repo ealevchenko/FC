@@ -871,3 +871,26 @@ var getAsyncViewOilReceiptOfDateTime = function (start, stop, callback) {
         },
     });
 }
+// Вернуть часовые остатки
+var getAsyncViewOilRemainsTanksOfDateTime = function (date, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/oil/remains_tanks/date/' + toISOStringTZ(date).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        }
+    });
+}

@@ -201,6 +201,7 @@
     <Compile Include="Controllers\api\DCFuelSale_KGDController.cs" />
     <Compile Include="Controllers\api\DCReceivingFuel_KGDController.cs" />
     <Compile Include="Controllers\api\DCRemainsTanks_KGDController.cs" />
+    <Compile Include="Controllers\api\oilRemainsTanksController.cs" />
     <Compile Include="Controllers\api\RemainsTanksRWController.cs" />
     <Compile Include="Controllers\api\ReceivingFuelRWController.cs" />
     <Compile Include="Controllers\api\FuelSaleRWController.cs" />
@@ -436,6 +437,7 @@
     <Content Include="Content\View\cards.css" />
     <Content Include="Content\View\dailireport.css" />
     <Content Include="Content\View\fuelsales.css" />
+    <Content Include="Content\View\remainstanks_oil.css" />
     <Content Include="Content\View\remainstanks_gd.css" />
     <Content Include="Content\View\receivingfuel_gd.css" />
     <Content Include="Content\View\report_oil.css" />
@@ -551,6 +553,7 @@
     <Content Include="Areas\FuelGD\Views\Home\RemainsTanks.cshtml" />
     <Content Include="Areas\FuelGD\Views\Home\DailyReport.cshtml" />
     <Content Include="Areas\FuelAZS\Views\Home\DailyReport.cshtml" />
+    <Content Include="Areas\Oil\Views\Home\RemainsTanks.cshtml" />
     <None Include="Properties\PublishProfiles\fc.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
@@ -646,6 +649,7 @@
     <Content Include="Scripts\View\oilreceipt.js" />
     <Content Include="Scripts\View\oilsales.js" />
     <Content Include="Scripts\View\azsdailireport.js" />
+    <Content Include="Scripts\View\oil_remainstanks.js" />
     <Content Include="Scripts\View\rwdailireport.js" />
     <Content Include="Scripts\View\rwremainstanks.js" />
     <Content Include="Scripts\View\rwreceivingfuel.js" />

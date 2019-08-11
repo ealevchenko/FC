@@ -21,5 +21,10 @@ namespace WebUI.Areas.Oil.Controllers
         {
             return View();
         }
+
+        public ActionResult RemainsTanks()
+        {
+            return View();
+        }
     }
 }

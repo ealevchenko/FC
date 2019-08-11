@@ -1,0 +1,87 @@
+﻿DIV#report {
+    padding: 0;
+    margin: 20px auto;
+    width: 1200px;
+    color: #666;
+    background: White;
+}
+
+h1 {
+    color: #0026ff;
+}
+
+    h1 span {
+        color: #000;
+    }
+
+.title-foot {
+    text-align: right;
+    color: #0026ff;
+    font-weight: bold;
+}
+
+.total-foot {
+    text-align: right;
+    color: #ff0000;
+    font-weight: bold;
+}
+
+table#table-receiving-fuel td.total-foot {
+    text-align: right;
+    color: #0026ff;
+    font-weight: bold;
+}
+
+table#table-receiving-fuel th.title-foot {
+    text-align: right;
+    color: #000;
+    font-style:italic;
+    font-weight: bold;
+}
+
+table#table-receiving-fuel td {
+    text-align: right;
+}
+
+table#table-receiving-fuel td:first-child, table#table-receiving-fuel td:last-child {
+    text-align: left;
+}
+
+#table-panel button {
+    margin: 5px;
+}
+
+#table-panel input {
+    margin: 5px;
+}
+
+#table-panel label {
+    margin: 5px;
+}
+
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+}
+
+    .table th,
+    .table td {
+        padding: 10px;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+    }
+
+    .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #dee2e6;
+    }
+
+    .table tbody + tbody {
+        border-top: 2px solid #dee2e6;
+    }
+
+    .table .table {
+        background-color: #fff;
+    }

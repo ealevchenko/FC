@@ -38,6 +38,8 @@
 
         public virtual DbSet<Daily_Report_AZS> Daily_Report_AZS { get; set; }
 
+        public virtual DbSet<RemainsTanks_OIL> RemainsTanks_OIL { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<azsDelta>()

@@ -486,6 +486,15 @@ namespace WebUI.App_GlobalResources {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Остатки в емкостях.
         /// </summary>
+        public static string home_remains_tanks_oil {
+            get {
+                return ResourceManager.GetString("home_remains_tanks_oil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Остатки в емкостях.
+        /// </summary>
         public static string home_remains_tanks_rw {
             get {
                 return ResourceManager.GetString("home_remains_tanks_rw", resourceCulture);
