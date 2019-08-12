@@ -39,6 +39,7 @@
         public virtual DbSet<Daily_Report_AZS> Daily_Report_AZS { get; set; }
 
         public virtual DbSet<RemainsTanks_OIL> RemainsTanks_OIL { get; set; }
+        public virtual DbSet<Oil_Transfer> Oil_Transfer { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

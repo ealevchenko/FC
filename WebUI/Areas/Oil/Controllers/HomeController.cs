@@ -26,5 +26,10 @@ namespace WebUI.Areas.Oil.Controllers
         {
             return View();
         }
+        public ActionResult Transfer()
+        {
+            return View();
+        }
+
     }
 }

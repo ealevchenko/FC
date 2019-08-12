@@ -538,6 +538,15 @@ namespace WebUI.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Перекачка масла на ЦСМ.
+        /// </summary>
+        public static string home_transfer_oil {
+            get {
+                return ResourceManager.GetString("home_transfer_oil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на ru-RU.
         /// </summary>
         public static string lang {

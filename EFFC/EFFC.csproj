@@ -56,6 +56,7 @@
     <Compile Include="Concrete\EFazsDeparts.cs" />
     <Compile Include="Concrete\EFazsFuelSale.cs" />
     <Compile Include="Concrete\EFDaily_Report_AZS.cs" />
+    <Compile Include="Concrete\EFOil_Transfer.cs" />
     <Compile Include="Concrete\EFRemainsTanks_OIL.cs" />
     <Compile Include="Concrete\EFRemainsTanks_KGD.cs" />
     <Compile Include="Concrete\EFReceivingFuel_KGD.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Entities\RemainsTanks_KGD.cs" />
     <Compile Include="Entities\Daily_Report_AZS.cs" />
     <Compile Include="Entities\RemainsTanks_OIL.cs" />
+    <Compile Include="Entities\Oil_Transfer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

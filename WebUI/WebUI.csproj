@@ -202,6 +202,7 @@
     <Compile Include="Controllers\api\DCReceivingFuel_KGDController.cs" />
     <Compile Include="Controllers\api\DCRemainsTanks_KGDController.cs" />
     <Compile Include="Controllers\api\oilRemainsTanksController.cs" />
+    <Compile Include="Controllers\api\oilTransferController.cs" />
     <Compile Include="Controllers\api\RemainsTanksRWController.cs" />
     <Compile Include="Controllers\api\ReceivingFuelRWController.cs" />
     <Compile Include="Controllers\api\FuelSaleRWController.cs" />
@@ -554,6 +555,7 @@
     <Content Include="Areas\FuelGD\Views\Home\DailyReport.cshtml" />
     <Content Include="Areas\FuelAZS\Views\Home\DailyReport.cshtml" />
     <Content Include="Areas\Oil\Views\Home\RemainsTanks.cshtml" />
+    <Content Include="Areas\Oil\Views\Home\Transfer.cshtml" />
     <None Include="Properties\PublishProfiles\fc.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
