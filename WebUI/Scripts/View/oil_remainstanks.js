@@ -172,7 +172,7 @@
                         panel_select_report.viewReport();
                     });
                 // Выставим текущую дату
-                panel_select_report.select_sm.val(date_curent.getHours())
+                panel_select_report.select_sm.val(date_curent.getHours()).selectmenu("refresh");
                 var date_curent_set = date_curent.getDate() + '.' + (date_curent.getMonth() + 1) + '.' + date_curent.getFullYear() + ' ' + date_curent.getHours() + ':00';
                 this.obj_date.data('dateRangePicker').setDateRange(date_curent_set, date_curent_set, true);
             },
@@ -197,12 +197,13 @@
             select: null,
             select_id: null,
             list: [],
+            groupColumn: 0,
             // Инициализировать таблицу
             initObject: function () {
                 this.obj = this.html_table.DataTable({
                     //"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                     "paging": false,
-                    "ordering": false,
+                    "ordering": true,
                     "info": false,
                     "select": false,
                     "autoWidth": true,
@@ -214,46 +215,68 @@
                     "createdRow": function (row, data, index) {
                         $(row).attr('id', data.id);
                     },
-                    //"footerCallback": function (row, data, start, end, display) {
-                    //    var api = this.api(), data;
-                    //    // Remove the formatting to get integer data for summation
-                    //    var intVal = function (i) {
-                    //        return typeof i === 'string' ?
-                    //            i.replace(/[\$,]/g, '') * 1 :
-                    //            typeof i === 'number' ?
-                    //                i : 0;
-                    //    };
+                    "footerCallback": function (row, data, start, end, display) {
+                        var api = this.api(), data;
+                        // Remove the formatting to get integer data for summation
+                        var intVal = function (i) {
+                            return typeof i === 'string' ?
+                                i.replace(/[\$,]/g, '') * 1 :
+                                typeof i === 'number' ?
+                                i : 0;
+                        };
+                        var total_volume = 0;
+                        var total_mass = 0;
+                        // Total volume
+                        total_volume = api.column(2).data().reduce(function (a, b) {return intVal(a) + intVal(b);}, 0);
+                        // Total mass
+                        total_mass = api.column(4).data().reduce(function (a, b) { return intVal(a) + intVal(b); }, 0);
 
-                    //    var pipe_volume = Number(kgd_pipe_dt);
-                    //    var last_volume = 0;
-                    //    var last_dens = 0;
-                    //    var last_mass = 0;
-                    //    // Total volume
-
-                    //    var lastRow = api.rows().count();
-                    //    if (lastRow > 0) {
-                    //        //var row = api.rows(lastRow).data();
-                    //        last_volume = Number(api.data()[lastRow - 1].volume);
-                    //        last_mass = Number(api.data()[lastRow - 1].mass);
-                    //        last_dens = Number(api.data()[lastRow - 1].dens);
-                    //    }
-                    //    var pipe_mass = pipe_volume * last_dens * 0.001;
-                    //    $('td#pipe-volume').text(pipe_volume.toFixed(2));
-                    //    $('td#pipe-mass').text(pipe_mass.toFixed(2));
-                    //    $('td#volume').text(last_volume.toFixed(2));
-                    //    $('td#mass').text(last_mass.toFixed(2));
-                    //    $('td#dens').text(last_dens.toFixed(2));
-                    //    $('td#total-volume').text(Number(last_volume + pipe_volume).toFixed(2));
-                    //    $('td#total-mass').text(Number(last_mass + pipe_mass).toFixed(2));
-
-                    //},
+                        $('td#volume').text(total_volume.toFixed(3));
+                        $('td#mass').text(total_mass.toFixed(2));
+                    },
                     columns: [
+                        { data: "oil_type", title: langView('field_oil_type', langs), width: "50px", orderable: true, searchable: true },
                         { data: "bak", title: langView('field_bak', langs), width: "50px", orderable: false, searchable: true },
-                        { data: "oil_type", title: langView('field_oil_type', langs), width: "50px", orderable: false, searchable: true },
                         { data: "Volume", title: langView('field_Volume', langs), width: "50px", orderable: false, searchable: true },
                         { data: "Dens", title: langView('field_Dens', langs), width: "50px", orderable: false, searchable: true },
                         { data: "Mass", title: langView('field_Mass', langs), width: "50px", orderable: false, searchable: true },
                     ],
+                    "columnDefs": [
+                         { "visible": false, "targets": table_remains_tanks.groupColumn }
+                    ],
+                    "order": [[table_remains_tanks.groupColumn, 'asc']],
+                    "drawCallback": function (settings) {
+                        var api = this.api();
+                        var rows = api.rows({ page: 'current' }).nodes();
+                        var type = null;
+                        var last = null;
+                        var valume = 0;
+                        var mass = 0;
+                        api.column(table_remains_tanks.groupColumn, { page: 'current' }).data().each(function (group, i) {
+                            var data = table_remains_tanks.obj.rows().data();
+                            if (last !== group) {
+                                if (type !== null) {
+                                    $(rows).eq(i).before(
+                                        '<tr class="group"><td colspan="1">' + type + ' Итого:</td><td>' + valume.toFixed(3) + '</td><td></td><td>' + mass.toFixed(2) + '</td></tr>'
+                                    );
+                                }
+                                type = group;
+                                $(rows).eq(i).before(
+                                    '<tr class="group1"><td colspan="1">' + group + '</td><td></td><td></td><td></td></tr>'
+                                );
+                                last = group;
+                                valume = 0;
+                                mass = 0;
+                            }
+                            valume += Number(data[i].Volume);
+                            mass += Number(data[i].Mass);
+                            if (i === (rows.length - 1)) {
+                                $(rows).eq(i).after(
+                                    '<tr class="group"><td colspan="1">' + type + ' Итого:</td><td>' + valume.toFixed(3) + '</td><td></td><td>' + mass.toFixed(2) + '</td></tr>'
+                                );
+                            }
+                        });
+                    },
                     dom: 'Bfrtip',
                     buttons: [
                         'copyHtml5',
@@ -287,43 +310,88 @@
 
                     //var cards = reference_cards != null ? reference_cards.getResult(data[i].id_card) : null;
                     this.obj.row.add({
-                    "id": data[i].id,
-                    "Timestamp": data[i].Timestamp,
-                    "bak": data[i].bak,
-                    "Temp": data[i].Temp,
-                    "Volume": data[i].Volume,
-                    "Water": data[i].Water,
-                    "Dens": data[i].Dens,
-                    "Level": data[i].Level,
-                    "Mass": data[i].Mass,
-                    "oil_type": data[i].oil_type,
+                        "id": data[i].id,
+                        "Timestamp": data[i].Timestamp,
+                        "bak": getNameTanks(data[i].bak),
+                        "Temp": data[i].Temp,
+                        "Volume": data[i].Volume !== null ? Number(data[i].Volume).toFixed(3) : 0.000,
+                        "Water": data[i].Water,
+                        "Dens": data[i].Dens !== null ? Number(data[i].Dens).toFixed(3) : 0.000,
+                        "Level": data[i].Level,
+                        "Mass": data[i].Mass !== null ? Number(data[i].Mass).toFixed(2) : 0.00,
+                        "oil_type": data[i].oil_type,
 
-                    //"volume": data[i].volume !== null ? Number(data[i].volume * 1000).toFixed(2) : null,
-                    //"dens": data[i].dens_avg,
-                    //"mass": data[i].mass !== null ? Number(data[i].mass * 1000).toFixed(2) : null,
-                    //"temp": data[i].temp_avg,
-                    //"volume15": data[i].volume15 !== null ? Number(data[i].volume15 * 1000).toFixed(2) : null,
-                    //"dens15": data[i].dens15,
-                    //"mass15": data[i].mass15 !== null ? Number(data[i].mass15 * 1000).toFixed(2) : null,
-                });
-        }
-    LockScreenOff();
-},
+                        //"volume": data[i].volume !== null ? Number(data[i].volume * 1000).toFixed(2) : null,
+                        //"dens": data[i].dens_avg,
+                        //"mass": data[i].mass !== null ? Number(data[i].mass * 1000).toFixed(2) : null,
+                        //"temp": data[i].temp_avg,
+                        //"volume15": data[i].volume15 !== null ? Number(data[i].volume15 * 1000).toFixed(2) : null,
+                        //"dens15": data[i].dens15,
+                        //"mass15": data[i].mass15 !== null ? Number(data[i].mass15 * 1000).toFixed(2) : null,
+                    });
+                }
+                LockScreenOff();
+            },
         }
 
     //-----------------------------------------------------------------------------------------
     // Функции
     //-----------------------------------------------------------------------------------------
-
+    var getNameTanks = function (num) {
+        if (num===null) return '?'
+        switch(Number(num)){
+            case 132: return "Группа-1 №32"; break;
+            case 135: return "Группа-1 №35"; break;
+            case 138: return "Группа-1 №38"; break;
+            case 139: return "Группа-1 №39"; break;
+            case 141: return "Группа-1 №41"; break;
+            case 142: return "Группа-1 №42"; break;
+            case 144: return "Группа-1 №44"; break;
+            case 225: return "Группа-2 №25"; break;
+            case 228: return "Группа-2 №28"; break;
+            case 229: return "Группа-2 №29"; break;
+            case 231: return "Группа-2 №31"; break;
+            case 301: return "Группа-3 №01"; break;
+            case 304: return "Группа-3 №04"; break;
+            case 307: return "Группа-3 №07"; break;
+            case 310: return "Группа-3 №10"; break;
+            case 313: return "Группа-3 №13"; break;
+            case 316: return "Группа-3 №16"; break;
+            case 319: return "Группа-3 №19"; break;
+            case 322: return "Группа-3 №22"; break;
+            case 420: return "Группа-4 №20"; break;
+            case 421: return "Группа-4 №21"; break;
+            case 423: return "Группа-4 №23"; break;
+            case 424: return "Группа-4 №24"; break;
+            case 503: return "Группа-5 №03"; break;
+            case 506: return "Группа-5 №06"; break;
+            case 509: return "Группа-5 №09"; break;
+            case 512: return "Группа-5 №12"; break;
+            case 515: return "Группа-5 №15"; break;
+            case 518: return "Группа-5 №18"; break;
+            case 9189: return "Малый бак№1"; break;
+            case 9190: return "Малый бак№2"; break;
+            case 9191: return "Малый бак№3"; break;
+            case 9192: return "Малый бак№4"; break;
+            case 9193: return "Малый бак№5"; break;
+            case 195: return "Филиал №1"; break;
+            case 196: return "Филиал №2"; break;
+            case 197: return "Филиал №3"; break;
+            case 198: return "Филиал №4"; break;
+            case 199: return "Филиал №5"; break;
+            case 200: return "Филиал №6"; break;
+            default: return num; break;
+        }
+    }
     //-----------------------------------------------------------------------------------------
     // Инициализация объектов
     //-----------------------------------------------------------------------------------------
     panel_select_report.initObject();
-tab_type_reports.initObject();
-//// Загрузка библиотек
-//loadReference(function (result) {
-table_remains_tanks.initObject();
-panel_select_report.viewReport();
+    tab_type_reports.initObject();
+    //// Загрузка библиотек
+    //loadReference(function (result) {
+    table_remains_tanks.initObject();
+    panel_select_report.viewReport();
     //});
 
 });

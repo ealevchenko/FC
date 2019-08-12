@@ -1,7 +1,7 @@
 ﻿DIV#report {
     padding: 0;
     margin: 20px auto;
-    width: 1200px;
+    width: 1000px;
     color: #666;
     background: White;
 }
@@ -26,24 +26,24 @@ h1 {
     font-weight: bold;
 }
 
-table#table-receiving-fuel td.total-foot {
+table#table-remains-tanks td.total-foot {
     text-align: right;
     color: #0026ff;
     font-weight: bold;
 }
 
-table#table-receiving-fuel th.title-foot {
+table#table-remains-tanks th.title-foot {
     text-align: right;
     color: #000;
     font-style:italic;
     font-weight: bold;
 }
 
-table#table-receiving-fuel td {
+table#table-remains-tanks td {
     text-align: right;
 }
 
-table#table-receiving-fuel td:first-child, table#table-receiving-fuel td:last-child {
+table#table-remains-tanks td:first-child {
     text-align: left;
 }
 
@@ -84,4 +84,40 @@ table#table-receiving-fuel td:first-child, table#table-receiving-fuel td:last-ch
 
     .table .table {
         background-color: #fff;
+    }
+
+
+    tr.group, tr.group:hover {
+    background-color: #ddd !important;
+}
+
+/*GROUP*/
+
+.group {
+    color:#0b23a7;
+    font-weight: bold;
+}
+
+#table-remains-tanks tr.group1 {
+    color: White;
+    background: #4b589d;
+    font-weight: bold;
+}
+
+    #table-remains-tanks tr.group1, #table-remains-tanks tr.group1:hover {
+        color: White;
+        background: #0b23a7;
+        font-weight: bold;
+    }
+
+#table-remains-tanks-fft tr.group1 {
+    color: White;
+    background: #4b589d;
+    font-weight: bold;
+}
+
+    #table-remains-tanks-fft tr.group1, #table-remains-tanks-fft tr.group1:hover {
+        color: White;
+        background: #0b23a7;
+        font-weight: bold;
     }
