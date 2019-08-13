@@ -41,6 +41,9 @@
         public virtual DbSet<RemainsTanks_OIL> RemainsTanks_OIL { get; set; }
         public virtual DbSet<Oil_Transfer> Oil_Transfer { get; set; }
 
+        public virtual DbSet<FuelSale_OIL> FuelSale_OIL { get; set; }
+        public virtual DbSet<Receipts_OIL> Receipts_OIL { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<azsDelta>()
@@ -616,8 +619,8 @@
                 .Property(e => e.IncomeMass)
                 .HasPrecision(9, 1);
             modelBuilder.Entity<FuelSale_KGD>()
-    .Property(e => e.dose)
-    .HasPrecision(9, 3);
+                .Property(e => e.dose)
+                .HasPrecision(9, 3);
 
             modelBuilder.Entity<FuelSale_KGD>()
                 .Property(e => e.passage)
@@ -691,6 +694,30 @@
             modelBuilder.Entity<FuelSale_KGD>()
                 .Property(e => e.stop_water_level)
                 .HasPrecision(6, 1);
+
+            modelBuilder.Entity<FuelSale_OIL>()
+                .Property(e => e.OperatorCreated)
+                .IsFixedLength();
+
+            modelBuilder.Entity<FuelSale_OIL>()
+                .Property(e => e.OilType)
+                .IsFixedLength();
+
+            modelBuilder.Entity<FuelSale_OIL>()
+                .Property(e => e.TankNo)
+                .IsFixedLength();
+
+            modelBuilder.Entity<FuelSale_OIL>()
+                .Property(e => e.Receiver)
+                .IsFixedLength();
+
+            modelBuilder.Entity<FuelSale_OIL>()
+                .Property(e => e.OperatorStarted)
+                .IsFixedLength();
+
+            modelBuilder.Entity<Receipts_OIL>()
+                .Property(e => e.DensStop)
+                .HasPrecision(4, 1);
         }
     }
 }

@@ -93,6 +93,8 @@
     <Compile Include="Entities\Daily_Report_AZS.cs" />
     <Compile Include="Entities\RemainsTanks_OIL.cs" />
     <Compile Include="Entities\Oil_Transfer.cs" />
+    <Compile Include="Entities\FuelSale_OIL.cs" />
+    <Compile Include="Entities\Receipts_OIL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
