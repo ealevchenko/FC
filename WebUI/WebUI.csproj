@@ -652,6 +652,7 @@
     <Content Include="Scripts\View\oilsales.js" />
     <Content Include="Scripts\View\azsdailireport.js" />
     <Content Include="Scripts\View\oil_remainstanks.js" />
+    <Content Include="Scripts\View\oil_transfer.js" />
     <Content Include="Scripts\View\rwdailireport.js" />
     <Content Include="Scripts\View\rwremainstanks.js" />
     <Content Include="Scripts\View\rwreceivingfuel.js" />

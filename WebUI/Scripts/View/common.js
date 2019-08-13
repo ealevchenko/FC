@@ -871,7 +871,7 @@ var getAsyncViewOilReceiptOfDateTime = function (start, stop, callback) {
         },
     });
 }
-// Вернуть часовые остатки
+// Вернуть часовые остатки  (по данным ЦОД)
 var getAsyncViewOilRemainsTanksOfDateTime = function (date, callback) {
     $.ajax({
         type: 'GET',
@@ -892,5 +892,28 @@ var getAsyncViewOilRemainsTanksOfDateTime = function (date, callback) {
         complete: function () {
             AJAXComplete();
         }
+    });
+}
+// Перекачки масла в ЦСМ (по данным ЦОД)
+var getAsyncViewOilReceiptOfDateTime = function (start, stop, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/oil/transfer/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
     });
 }

@@ -320,14 +320,6 @@
                         "Level": data[i].Level,
                         "Mass": data[i].Mass !== null ? Number(data[i].Mass).toFixed(2) : 0.00,
                         "oil_type": data[i].oil_type,
-
-                        //"volume": data[i].volume !== null ? Number(data[i].volume * 1000).toFixed(2) : null,
-                        //"dens": data[i].dens_avg,
-                        //"mass": data[i].mass !== null ? Number(data[i].mass * 1000).toFixed(2) : null,
-                        //"temp": data[i].temp_avg,
-                        //"volume15": data[i].volume15 !== null ? Number(data[i].volume15 * 1000).toFixed(2) : null,
-                        //"dens15": data[i].dens15,
-                        //"mass15": data[i].mass15 !== null ? Number(data[i].mass15 * 1000).toFixed(2) : null,
                     });
                 }
                 LockScreenOff();
