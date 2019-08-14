@@ -11,11 +11,11 @@ using System.Web.Http.Description;
 namespace WebUI.Controllers.api
 {
     [RoutePrefix("api/oil")]
-    public class oilTransferController : ApiController
+    public class DCTransfer_OILController : ApiController
     {
         protected IRepository<Oil_Transfer> ef_ot;
 
-        public oilTransferController(IRepository<Oil_Transfer> ot)
+        public DCTransfer_OILController(IRepository<Oil_Transfer> ot)
         {
             this.ef_ot = ot;
         }

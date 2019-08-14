@@ -11,27 +11,25 @@ using System.Web.Http.Description;
 namespace WebUI.Controllers.api
 {
     [RoutePrefix("api/oil")]
-    public class oilRemainsTanksController : ApiController
+    public class DCFuelSale_OILController : ApiController
     {
-        protected IRepository<RemainsTanks_OIL> ef_rt;
+        protected IRepository<FuelSale_OIL> ef_fs;
 
-        public oilRemainsTanksController(IRepository<RemainsTanks_OIL> rt)
+        public DCFuelSale_OILController(IRepository<FuelSale_OIL> fs)
         {
-            this.ef_rt = rt;
+            this.ef_fs = fs;
         }
 
-        // GET: api/oil/remains_tanks/date/2019-08-11T07:00:00
-        [Route("remains_tanks/date/{date:datetime}")]
-        [ResponseType(typeof(RemainsTanks_OIL))]
-        public IHttpActionResult GetRemainsTanks(DateTime date)
+        // GET: api/oil/fuel_sale/start/2019-01-01T00:00:00/stop/2019-08-12T23:59:59
+        [Route("fuel_sale/start/{start:datetime}/stop/{stop:datetime}")]
+        [ResponseType(typeof(FuelSale_OIL))]
+        public IHttpActionResult GetFuelSale(DateTime start, DateTime stop)
         {
             try
             {
-                DateTime stop = date.AddSeconds(1); 
-                List<RemainsTanks_OIL> list = this.ef_rt.Get()
-                    .Where(r=>r.Timestamp > date && r.Timestamp < stop)
+                List<FuelSale_OIL> list = this.ef_fs.Get()
+                    .Where(t => t.DateStarted >= start && t.DateStarted <= stop)
                     .ToList();
-
                 if (list == null)
                 {
                     return NotFound();
