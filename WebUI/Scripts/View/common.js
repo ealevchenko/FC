@@ -847,7 +847,7 @@ var getAsyncViewOilSalesOfDateTime = function (start, stop, callback) {
             AJAXComplete();
         },
     });
-}
+};
 // Веруть Прием масла из ЦСМ
 var getAsyncViewOilReceiptOfDateTime = function (start, stop, callback) {
     $.ajax({
@@ -870,7 +870,7 @@ var getAsyncViewOilReceiptOfDateTime = function (start, stop, callback) {
             AJAXComplete();
         },
     });
-}
+};
 // Вернуть часовые остатки  (по данным ЦОД)
 var getAsyncViewOilRemainsTanksOfDateTime = function (date, callback) {
     $.ajax({
@@ -895,7 +895,7 @@ var getAsyncViewOilRemainsTanksOfDateTime = function (date, callback) {
     });
 }
 // Перекачки масла в ЦСМ (по данным ЦОД)
-var getAsyncViewOilReceiptOfDateTime = function (start, stop, callback) {
+var getAsyncViewOilTransferOfDateTime = function (start, stop, callback) {
     $.ajax({
         type: 'GET',
         url: '../../api/oil/transfer/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
@@ -917,3 +917,49 @@ var getAsyncViewOilReceiptOfDateTime = function (start, stop, callback) {
         },
     });
 }
+// Веруть Прием масла в ЦСМ (по данным ЦОД)
+var getAsyncViewOilReceiptsOfDateTime = function (start, stop, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/oil/receipts/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        }
+    });
+};
+// Веруть выдачу масла из ЦСМ (по данным ЦОД)
+var getAsyncViewOilFuelSaleOfDateTime = function (start, stop, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/oil/fuel_sale/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        }
+    });
+};

@@ -540,8 +540,8 @@
     <Content Include="Areas\Oil\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Oil\Views\Home\Index.cshtml" />
     <Content Include="Areas\Oil\Views\Shared\_Global.cshtml" />
-    <Content Include="Areas\Oil\Views\Home\Sales.cshtml" />
-    <Content Include="Areas\Oil\Views\Home\Receipt.cshtml" />
+    <Content Include="Areas\Oil\Views\Home\FuelSale.cshtml" />
+    <Content Include="Areas\Oil\Views\Home\Receipts.cshtml" />
     <Content Include="Areas\FuelAZS\Views\web.config" />
     <Content Include="Areas\FuelGD\Views\web.config" />
     <Content Include="Areas\FuelAZS\Views\_ViewStart.cshtml" />
@@ -650,8 +650,8 @@
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\View\cards.js" />
-    <Content Include="Scripts\View\oilreceipt.js" />
-    <Content Include="Scripts\View\oilsales.js" />
+    <Content Include="Scripts\View\oil_receipts.js" />
+    <Content Include="Scripts\View\oil_fuelsale.js" />
     <Content Include="Scripts\View\azsdailireport.js" />
     <Content Include="Scripts\View\oil_remainstanks.js" />
     <Content Include="Scripts\View\oil_transfer.js" />

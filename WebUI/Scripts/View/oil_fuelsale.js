@@ -292,7 +292,7 @@
                         { data: "DateStarted", title: langView('field_DateStarted', langs), width: "150px", orderable: true, searchable: false },
                         { data: "TankNo", title: langView('field_TankNo', langs), width: "50px", orderable: true, searchable: true },
                         { data: "OilType", title: langView('field_OilType', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "Invent", title: langView('field_Invent', langs), width: "100px", orderable: true, searchable: true },
+                        //{ data: "Invent", title: langView('field_Invent', langs), width: "100px", orderable: true, searchable: true },
                         { data: "Receiver", title: langView('field_Receiver', langs), width: "50px", orderable: false, searchable: false },
                         { data: "TargetVolume", title: langView('field_TargetVolume', langs), width: "50px", orderable: false, searchable: false },
                         { data: "CreatedDens", title: langView('field_CreatedDens', langs), width: "50px", orderable: false, searchable: false },
@@ -305,7 +305,7 @@
                 LockScreen(langView('mess_delay', langs));
                 if (this.list === null | data_refresh === true) {
                     // Обновим данные
-                    getAsyncViewOilSalesOfDateTime(
+                    getAsyncViewOilFuelSaleOfDateTime(
                         date_start, date_stop,
                         function (result) {
                             table_report.list = result;
@@ -328,7 +328,7 @@
                         "DateStarted": data[i].DateStarted,
                         "TankNo": data[i].TankNo,
                         "OilType": data[i].OilType,
-                        "Invent": data[i].Invent,
+                        //"Invent": data[i].Invent,
                         "Receiver": data[i].Receiver,
                         "TargetVolume": data[i].TargetVolume !== null ? (data[i].TargetVolume / 1000).toFixed(3) : null,
                         "CreatedDens": data[i].CreatedDens !== null ? data[i].CreatedDens.toFixed(1) : null,

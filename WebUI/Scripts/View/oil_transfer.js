@@ -176,7 +176,7 @@
                 LockScreen(langView('mess_delay', langs));
                 if (this.list === null | data_refresh === true) {
                     // Обновим данные
-                    getAsyncViewOilReceiptOfDateTime(
+                    getAsyncViewOilTransferOfDateTime(
                         panel_select_report.date_start,
                         panel_select_report.date_stop,
                         function (result) {
