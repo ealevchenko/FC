@@ -177,6 +177,36 @@ var toISOStringTZ = function (date) {
     return new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString();
 };
 
+//var DateStringtoDate = function (dateString) {
+
+//    var ISO_8601_re = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.(\d{3}))?(Z|[\+-]\d{2}(?::\d{2})?)$/,
+//        m = dateString.match(ISO_8601_re);
+
+//    var year = +m[1],
+//        month = +m[2],
+//        dayOfMonth = +m[3],
+//        hour = +m[4],
+//        minute = +m[5],
+//        second = +m[6],
+//        ms = +m[7], // +'' === 0
+//        timezone = m[8];
+
+//    if (timezone === 'Z') timezone = 0;
+//    else timezone = timezone.split(':'), timezone = +(timezone[0][0] + '1') * (60 * (+timezone[0].slice(1)) + (+timezone[1] || 0));
+//    // timezone is now minutes
+
+//    // your prefered way to construct
+//    var myDate = new Date();
+//    myDate.setUTCFullYear(year);
+//    myDate.setUTCMonth(month - 1);
+//    myDate.setUTCDate(dayOfMonth);
+//    myDate.setUTCHours(hour);
+//    myDate.setUTCMinutes(minute + timezone); // timezone offset set here, after hours
+//    myDate.setUTCSeconds(second);
+//    myDate.setUTCMilliseconds(ms);
+//    return myDate;
+//};
+
 var outVal = function (i) {
     return i != null ? Number(i) : '';
 };
@@ -569,6 +599,53 @@ var getAsyncViewReportDR_AZSOfDateTime = function (start, stop, callback) {
         },
     });
 };
+// Суточный(налоговый) отчет по АЗС - новый (БД ЦОД)
+var getAsyncViewDailyAccountingReportOfDateTime = function (start, stop, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/dar_azs/daily_accounting_report/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+};
+// Суточный(налоговый) отчет -ДЕТАЛИ по АЗС - новый (БД ЦОД)
+var getAsyncViewDailyAccountingDetaliReportOfDateTime = function (start, fuel, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/dar_azs/daily_accounting_detali_report/date/' + start + '/fuel/' + fuel,
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+};
+
 /////////////////////////////////////////////////////////////////////
 // Веруть состояние экипировки ст Карьерная ГД
 var getAsyncViewLastTankStates = function (callback) {

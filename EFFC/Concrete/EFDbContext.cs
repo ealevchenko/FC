@@ -44,8 +44,22 @@
         public virtual DbSet<FuelSale_OIL> FuelSale_OIL { get; set; }
         public virtual DbSet<Receipts_OIL> Receipts_OIL { get; set; }
 
+
+        public virtual DbSet<Daily_Accounting_Report_AZS> Daily_Accounting_Report_AZS { get; set; }
+        public virtual DbSet<Daily_Accounting_Detali_Report_AZS> Daily_Accounting_Detali_Report_AZS { get; set; }
+        public virtual DbSet<DeliveryTanks_AZS> DeliveryTanks_AZS { get; set; }
+        public virtual DbSet<ReceivingTanks_AZS> ReceivingTanks_AZS { get; set; }
+        public virtual DbSet<RemainsTanks_AZS> RemainsTanks_AZS { get; set; }
+
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<DeliveryTanks_AZS>()
+                .Property(e => e.passage)
+                .IsFixedLength()
+                .IsUnicode(false);
+
             modelBuilder.Entity<azsDelta>()
                 .Property(e => e.UsageVolume)
                 .HasPrecision(9, 1);

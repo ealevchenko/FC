@@ -195,6 +195,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Areas\Oil\Controllers\HomeController.cs" />
     <Compile Include="Areas\Oil\OilAreaRegistration.cs" />
+    <Compile Include="Controllers\api\DCDailyAccountingReport_AZSController.cs" />
     <Compile Include="Controllers\api\DCDaily_Report_AZSController.cs" />
     <Compile Include="Controllers\api\DCDaily_Report_KGDController.cs" />
     <Compile Include="Controllers\api\Daily_ReportRWController.cs" />
@@ -438,7 +439,7 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\View\cards.css" />
-    <Content Include="Content\View\dailireport.css" />
+    <Content Include="Content\View\daily_accounting_report.css" />
     <Content Include="Content\View\fuelsales.css" />
     <Content Include="Content\View\remainstanks_oil.css" />
     <Content Include="Content\View\remainstanks_gd.css" />
@@ -555,7 +556,7 @@
     <Content Include="Areas\Cards\Views\_ViewStart.cshtml" />
     <Content Include="Areas\FuelGD\Views\Home\RemainsTanks.cshtml" />
     <Content Include="Areas\FuelGD\Views\Home\DailyReport.cshtml" />
-    <Content Include="Areas\FuelAZS\Views\Home\DailyReport.cshtml" />
+    <Content Include="Areas\FuelAZS\Views\Home\DailyAccountingReport.cshtml" />
     <Content Include="Areas\Oil\Views\Home\RemainsTanks.cshtml" />
     <Content Include="Areas\Oil\Views\Home\Transfer.cshtml" />
     <None Include="Properties\PublishProfiles\fc.pubxml" />
@@ -652,7 +653,7 @@
     <Content Include="Scripts\View\cards.js" />
     <Content Include="Scripts\View\oil_receipts.js" />
     <Content Include="Scripts\View\oil_fuelsale.js" />
-    <Content Include="Scripts\View\azsdailireport.js" />
+    <Content Include="Scripts\View\azs_daily_accounting_report.js" />
     <Content Include="Scripts\View\oil_remainstanks.js" />
     <Content Include="Scripts\View\oil_transfer.js" />
     <Content Include="Scripts\View\rwdailireport.js" />

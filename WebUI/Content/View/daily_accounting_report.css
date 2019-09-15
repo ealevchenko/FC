@@ -1,0 +1,80 @@
+﻿DIV#report {
+    padding: 0;
+    margin: 20px auto;
+    width: 1800px;
+    color: #666;
+    background: White;
+}
+
+h1{
+	color:#0026ff;
+
+}
+h1 span{
+	color:#000;
+}
+
+.title-foot {
+    text-align:right;
+    color: #0026ff;
+    font-weight: bold;
+}
+
+.total-foot {
+    text-align:right;
+    color: #ff0000;
+    font-weight: bold;
+}
+
+table#table-fuel-sales td.total-foot {
+    text-align:right;
+    color: #0026ff;
+    font-weight: bold;
+}
+
+
+table#table-fuel-sales th.title-foot {
+    text-align: right;
+    color: #000;
+    font-style: italic;
+    font-weight: bold;
+}
+
+#table-panel button {
+    margin: 5px;
+}
+#table-panel input {
+    margin: 5px;
+}
+#table-panel label {
+    margin: 5px;
+}
+
+/*Показывает или прячить детали*/
+td.details-control {
+    background: url('../../Content/DataTables/images/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+
+tr.shown td.details-control {
+    background: url('../../Content/DataTables/images/details_close.png') no-repeat center center;
+}
+
+.detali-operation {
+    border-left: 6px solid #8ae;
+    border-top: 1px solid #8ae;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 1.4;
+    background-color: #eee;
+    border-radius: 4px;
+    text-align: left;
+}
+
+table.dataTable tbody tr.total-issue {
+    background-color: lightsalmon;
+}
+
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.total-issue {
+    background-color: lightsalmon;
+}

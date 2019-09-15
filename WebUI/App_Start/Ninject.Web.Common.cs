@@ -94,6 +94,12 @@ namespace WebUI.App_Start
             kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.Daily_Report_KGD>>().To<EFFC.Concrete.EFDaily_Report_KGD>();
 
             kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.Daily_Report_AZS>>().To<EFFC.Concrete.EFDaily_Report_AZS>();
+            kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.Daily_Accounting_Report_AZS>>().To<EFFC.Concrete.EFDaily_Accounting_Report_AZS>();
+            kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.Daily_Accounting_Detali_Report_AZS>>().To<EFFC.Concrete.EFDaily_Accounting_Detali_Report_AZS>();
+            kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.RemainsTanks_AZS>>().To<EFFC.Concrete.EFRemainsTanks_AZS>();
+            kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.ReceivingTanks_AZS>>().To<EFFC.Concrete.EFReceivingTanks_AZS>();
+            kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.DeliveryTanks_AZS>>().To<EFFC.Concrete.EFDeliveryTanks_AZS>();
+
 
             kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.Receipts_OIL>>().To<EFFC.Concrete.EFReceipts_OIL>();
             kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.FuelSale_OIL>>().To<EFFC.Concrete.EFFuelSale_OIL>();
