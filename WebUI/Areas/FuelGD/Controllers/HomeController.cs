@@ -14,7 +14,7 @@ namespace WebUI.Areas.FuelGD.Controllers
         {
             return View();
         }
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko")]
+        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko,EUROPE\iishkurka")]
         public ActionResult TankStates()
         {
             return View();
@@ -23,13 +23,13 @@ namespace WebUI.Areas.FuelGD.Controllers
         /// Заправочная ведомость жд трансп.
         /// </summary>
         /// <returns></returns>
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko")]
+        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko,EUROPE\iishkurka")]
         public ActionResult FuelSale()
         {
             return View();
         }
 
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko")]
+        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko,EUROPE\iishkurka")]
         public ActionResult ReceivingFuel()
         {
             return View();
