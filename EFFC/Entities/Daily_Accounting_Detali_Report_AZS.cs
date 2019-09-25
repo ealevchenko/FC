@@ -16,8 +16,26 @@ namespace EFFC.Entities
 
         public int? fuel_type { get; set; }
 
+        [StringLength(10)]
+        public string ukt_zed { get; set; }
+
         [StringLength(11)]
         public string tank { get; set; }
+
+        [StringLength(10)]
+        public string serial_number { get; set; }
+
+        [StringLength(21)]
+        public string unified_tank_number { get; set; }
+
+        [StringLength(100)]
+        public string type_name { get; set; }
+
+        [StringLength(50)]
+        public string level_meters_model { get; set; }
+
+        [StringLength(10)]
+        public string level_meters_serial_number { get; set; }
 
         public DateTime? dt_actual_remains_start { get; set; }
 
@@ -101,6 +119,8 @@ namespace EFFC.Entities
 
         public double? mass15_remains_stop { get; set; }
 
-        public double? permissible_error { get; set; }
+        public double? permissible_volume15_error { get; set; }
+
+        public double? permissible_mass15_error { get; set; }
     }
 }

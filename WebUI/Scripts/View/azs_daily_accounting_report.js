@@ -38,7 +38,18 @@
                 'field_volume15_stop': 'Остаток, объем на конец суток пересчитанный к 15 град. С° (л)',
                 'field_mass15_stop': 'Остаток, масса на конец суток пересчитанная к 15 град. С° (кг)',
                 'field_dens15_stop': 'Остаток, плотность на конец суток пересчитанная к 15 град. С° (кг/м3).',
-                'field_permissible_error': 'Допустимая ошибка 0.65%.',
+
+                'field_permissible_volume15_error': 'Допустимая погрешность литров при 15 °С, 0,65%',
+                'field_permissible_mass15_error': 'Допустимая погрешность фактических КГ, 0,65%',
+                'field_serial_number': 'Серийный (идентификационный) номер резервуара',
+                'field_unified_tank_number': 'Унифицированный номер резервуара',
+                'field_type_name': 'Тип (название) резервуара',
+                'field_level_meters_model': 'Название (модель) уровнемера',
+                'field_level_meters_serial_number': 'Серийный (идентификационный) номер уровнемера',
+
+                'field_ukt_zed': 'Код топлива за кодом товарной подкатегории в соответствии с УКТ ЗЕД (10 знаков)',
+                'field_fuel_name': 'Полное название топлива',
+
                 'label_select_date': 'Выберите дату'
 
 
@@ -78,7 +89,18 @@
                 'field_volume15_stop': 'Balance, the volume at the end of the day recalculated to 15 degrees. C ° (l) ',
                 'field_mass15_stop': 'Balance, weight at the end of the day recalculated to 15 degrees. C ° (kg) ',
                 'field_dens15_stop': 'Balance, density at the end of the day recalculated to 15 degrees. С ° (kg / m3). ',
-                'field_permissible_error': 'Allowable error 0.65%',
+
+                'field_permissible_volume15_error': 'Permissible error of liters at 15 ° C, 0.65%',
+                'field_permissible_mass15_error': 'Permissible error of the actual KG, 0.65%',
+                'field_serial_number': 'Serial (identification) number of the tank',
+                'field_unified_tank_number': 'Unified reservoir number',
+                'field_type_name': 'Type (name) of the reservoir',
+                'field_level_meters_model': 'Name (model) of the level gauge',
+                'field_level_meters_serial_number': 'Serial (identification) number of the level gauge',
+
+                'field_ukt_zed': 'Fuel code behind the product subcategory code according to UKT ZED (10 characters)',
+                'field_fuel_name': 'Full name of the fuel',
+
                 'label_select_date': 'Select a date'
             }
         };
@@ -218,6 +240,9 @@
                         },
                         { data: "date_start", title: langView('field_date_start', langs), width: "50px", orderable: true, searchable: true },
                         { data: "type", title: langView('field_type', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "ukt_zed", title: langView('field_ukt_zed', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "fuel_name", title: langView('field_fuel_name', langs), width: "50px", orderable: true, searchable: true },
+
                         { data: "volume_start", title: langView('field_volume_start', langs), width: "50px", orderable: true, searchable: true },
                         { data: "mass_start", title: langView('field_mass_start', langs), width: "50px", orderable: true, searchable: true },
                         { data: "dens_start", title: langView('field_dens_start', langs), width: "50px", orderable: true, searchable: true },
@@ -250,7 +275,9 @@
                         { data: "mass15_stop", title: langView('field_mass15_stop', langs), width: "50px", orderable: true, searchable: true },
                         { data: "dens15_stop", title: langView('field_dens15_stop', langs), width: "50px", orderable: true, searchable: true },
 
-                        { data: "permissible_error", title: langView('field_permissible_error', langs), width: "50px", orderable: true, searchable: true }
+                        { data: "permissible_volume15_error", title: langView('field_permissible_volume15_error', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "permissible_mass15_error", title: langView('field_permissible_mass15_error', langs), width: "50px", orderable: true, searchable: true }
+
                     ],
                     dom: 'Blftipr',
                     buttons: [
@@ -288,6 +315,8 @@
                     this.obj_table.row.add({
                         "id": data[i].id,
                         "type": data[i].type,
+                        "ukt_zed": data[i].ukt_zed,
+                        "fuel_name": data[i].fuel_name,
                         "date_start": data[i].date_start,
                         "date_stop": data[i].date_stop,
                         "volume_start": data[i].volume_start,
@@ -321,7 +350,8 @@
                         "volume15_stop": data[i].volume15_stop !== null ? data[i].volume15_stop : 0,
                         "mass15_stop": data[i].mass15_stop !== null ? Number(data[i].mass15_stop).toFixed(2) : 0.00,
                         "dens15_stop": data[i].dens15_stop !== null ? Number(data[i].dens15_stop).toFixed(5) : 0.00000,
-                        "permissible_error": data[i].permissible_error !== null ? Number(data[i].permissible_error).toFixed(3) : 0.000
+                        "permissible_volume15_error": data[i].permissible_volume15_error !== null ? Number(data[i].permissible_volume15_error).toFixed(3) : 0.000,
+                        "permissible_mass15_error": data[i].permissible_mass15_error !== null ? Number(data[i].permissible_mass15_error).toFixed(3) : 0.000
                     });
                 }
                 LockScreenOff();
@@ -367,7 +397,13 @@
                     },
                     columns: [
                         //{ data: "date_start", title: langView('field_date_start', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "tank", title: langView('field_tank', langs), width: "50px", orderable: true, searchable: true },
+                        //{ data: "tank", title: langView('field_tank', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "serial_number", title: langView('field_serial_number', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "unified_tank_number", title: langView('field_unified_tank_number', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "type_name", title: langView('field_type_name', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "level_meters_model", title: langView('field_level_meters_model', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "level_meters_serial_number", title: langView('field_level_meters_serial_number', langs), width: "50px", orderable: true, searchable: true },
+
                         //{ data: "type", title: langView('field_type', langs), width: "50px", orderable: true, searchable: true },
 
                         { data: "volume_start", title: langView('field_volume_start', langs), width: "50px", orderable: true, searchable: true },
@@ -402,7 +438,11 @@
                         { data: "mass15_stop", title: langView('field_mass15_stop', langs), width: "50px", orderable: true, searchable: true },
                         { data: "dens15_stop", title: langView('field_dens15_stop', langs), width: "50px", orderable: true, searchable: true },
 
-                        { data: "permissible_error", title: langView('field_permissible_error', langs), width: "50px", orderable: true, searchable: true }
+                        { data: "permissible_volume15_error", title: langView('field_permissible_volume15_error', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "permissible_mass15_error", title: langView('field_permissible_mass15_error', langs), width: "50px", orderable: true, searchable: true }
+
+
+
                     ],
                     dom: 'Blftipr',
                     buttons: [
@@ -424,7 +464,14 @@
                                 "date_start": result[i].dt_start,
                                 "date_stop": result[i].dt_stop,
                                 "fuel_type": result[i].fuel_type,
+                                "ukt_zed": result[i].ukt_zed,
                                 "tank": result[i].tank,
+                                "serial_number": result[i].serial_number !==null ? result[i].serial_number: result[i].tank,
+                                "unified_tank_number": result[i].unified_tank_number,
+                                "type_name": result[i].type_name,
+                                "level_meters_model": result[i].level_meters_model,
+                                "level_meters_serial_number": result[i].level_meters_serial_number,
+
                                 "dt_actual_remains_start": result[i].dt_actual_remains_start,
                                 "level_remains_start": result[i].level_remains_start !== null ? Number(result[i].level_remains_start).toFixed(2) : null,
                                 "volume_start": result[i].volume_remains_start,
@@ -462,7 +509,11 @@
                                 "mass15_stop": result[i].mass15_remains_stop !== null ? Number(result[i].mass15_remains_stop).toFixed(2) : 0.00,
                                 "dens15_stop": result[i].dens15_remains_stop !== null ? Number(result[i].dens15_remains_stop).toFixed(5) : 0.00000,
 
-                                "permissible_error": result[i].permissible_error !== null ? Number(result[i].permissible_error).toFixed(3) : 0.000
+                                "permissible_volume15_error": result[i].permissible_volume15_error !== null ? Number(result[i].permissible_volume15_error).toFixed(3) : 0.000,
+                                "permissible_mass15_error": result[i].permissible_mass15_error !== null ? Number(result[i].permissible_mass15_error).toFixed(3) : 0.000
+
+
+
 
 
                                 //"relation_remains_start": 0.37620936869214172,
