@@ -177,36 +177,6 @@ var toISOStringTZ = function (date) {
     return new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString();
 };
 
-//var DateStringtoDate = function (dateString) {
-
-//    var ISO_8601_re = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.(\d{3}))?(Z|[\+-]\d{2}(?::\d{2})?)$/,
-//        m = dateString.match(ISO_8601_re);
-
-//    var year = +m[1],
-//        month = +m[2],
-//        dayOfMonth = +m[3],
-//        hour = +m[4],
-//        minute = +m[5],
-//        second = +m[6],
-//        ms = +m[7], // +'' === 0
-//        timezone = m[8];
-
-//    if (timezone === 'Z') timezone = 0;
-//    else timezone = timezone.split(':'), timezone = +(timezone[0][0] + '1') * (60 * (+timezone[0].slice(1)) + (+timezone[1] || 0));
-//    // timezone is now minutes
-
-//    // your prefered way to construct
-//    var myDate = new Date();
-//    myDate.setUTCFullYear(year);
-//    myDate.setUTCMonth(month - 1);
-//    myDate.setUTCDate(dayOfMonth);
-//    myDate.setUTCHours(hour);
-//    myDate.setUTCMinutes(minute + timezone); // timezone offset set here, after hours
-//    myDate.setUTCSeconds(second);
-//    myDate.setUTCMilliseconds(ms);
-//    return myDate;
-//};
-
 var outVal = function (i) {
     return i != null ? Number(i) : '';
 };
@@ -1040,3 +1010,53 @@ var getAsyncViewOilFuelSaleOfDateTime = function (start, stop, callback) {
         }
     });
 };
+
+//-------------------------------------------------------------------------
+// Экспорт отчетов в Excel
+function fnExcelReport(tab, name_file) {
+    var file_name = name_file + '.xls';
+    var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
+    tab_text = tab_text + '<head><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>';
+
+    tab_text = tab_text + '<x:Name>Test Sheet</x:Name>';
+
+    tab_text = tab_text + '<x:WorksheetOptions><x:Panes></x:Panes></x:WorksheetOptions></x:ExcelWorksheet>';
+    tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml>';
+
+    //tab_text = tab_text +'<style>'+
+    //    '.font920875 {'+
+    //        'color: blue;'+
+    //    'font-size: 10.0pt;'+
+    //    'font-weight: 700;' +
+    //    'font-style: normal;' +
+    //    'text-decoration: none;' +
+    //    'font-family: Arial, sans-serif;' +
+    //    'mso-font-charset: 204;' +
+    //'} </style>';
+
+
+
+    tab_text = tab_text + '</head><body>';
+
+    tab_text = tab_text + "<table>";
+    //var tab = $('#table-list-wagons-tracking').html();
+    tab_text = tab_text + tab;
+    tab_text = tab_text + '</table></body></html>';
+
+    var data_type = 'data:application/vnd.ms-excel';
+
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+
+    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+        if (window.navigator.msSaveBlob) {
+            var blob = new Blob([tab_text], {
+                type: "application/csv;charset=utf-8;"
+            });
+            navigator.msSaveBlob(blob, file_name);
+        }
+    } else {
+        $('#test').attr('href', data_type + ', ' + encodeURIComponent(tab_text));
+        $('#test').attr('download', file_name);
+    }
+}

@@ -441,6 +441,7 @@
     <Content Include="Content\View\cards.css" />
     <Content Include="Content\View\daily_accounting_report.css" />
     <Content Include="Content\View\fuelsales.css" />
+    <Content Include="Content\View\info_day_report.css" />
     <Content Include="Content\View\remainstanks_oil.css" />
     <Content Include="Content\View\remainstanks_gd.css" />
     <Content Include="Content\View\receivingfuel_gd.css" />
@@ -487,6 +488,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\View\azs_info_day_report.js" />
     <Content Include="Scripts\View\common.js" />
     <Content Include="Content\websymbols\generator_config.txt" />
     <Content Include="Content\websymbols\stylesheet.css" />
@@ -559,6 +561,7 @@
     <Content Include="Areas\FuelAZS\Views\Home\DailyAccountingReport.cshtml" />
     <Content Include="Areas\Oil\Views\Home\RemainsTanks.cshtml" />
     <Content Include="Areas\Oil\Views\Home\Transfer.cshtml" />
+    <Content Include="Areas\FuelAZS\Views\Home\InformationDayReport.cshtml" />
     <None Include="Properties\PublishProfiles\fc.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />

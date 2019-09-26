@@ -37,5 +37,14 @@ namespace WebUI.Areas.FuelAZS.Controllers
         {
             return View();
         }
+        /// <summary>
+        /// Информация за сутки
+        /// </summary>
+        /// <returns></returns>
+        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko,EUROPE\iishkurka")]
+        public ActionResult InformationDayReport()
+        {
+            return View();
+        }
     }
 }

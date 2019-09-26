@@ -160,6 +160,15 @@ namespace WebUI.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Информация за сутки по акцизному складу топлива.
+        /// </summary>
+        public static string home_info_day_report_azs {
+            get {
+                return ResourceManager.GetString("home_info_day_report_azs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Суточный отчет.
         /// </summary>
         public static string home_link_dailireport_azs {

@@ -297,4 +297,7 @@
   <data name="home_transfer_oil" xml:space="preserve">
     <value>Перекачка масла на ЦСМ</value>
   </data>
+  <data name="home_info_day_report_azs" xml:space="preserve">
+    <value>Информация за сутки по акцизному складу топлива</value>
+  </data>
 </root>
