@@ -1016,34 +1016,61 @@ var getAsyncViewOilFuelSaleOfDateTime = function (start, stop, callback) {
 function fnExcelReport(tab, name_file) {
     var file_name = name_file + '.xls';
     var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
-    tab_text = tab_text + '<head><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>';
+    tab_text = tab_text + '<head>';
+    tab_text = tab_text + '<xml>';
+    tab_text = tab_text + '<x:ExcelWorkbook>';
+    tab_text = tab_text + '<x:ExcelWorksheets>';
+    tab_text = tab_text + '<x:ExcelWorksheet>';
+    tab_text = tab_text + '<x:Name>Table-1</x:Name>';
+    tab_text = tab_text + '<x:WorksheetOptions>';
+    tab_text = tab_text + '<x:Panes></x:Panes>';
+    tab_text = tab_text + '</x:WorksheetOptions>';
+    tab_text = tab_text + '</x:ExcelWorksheet>';
+    tab_text = tab_text + '</x:ExcelWorksheets>';
 
-    tab_text = tab_text + '<x:Name>Test Sheet</x:Name>';
+    //tab_text = tab_text + '<x:ExcelWorksheets>';
+    //tab_text = tab_text + '<x:ExcelWorksheet>';
+    //tab_text = tab_text + '<x:Name>Table-2</x:Name>';
+    //tab_text = tab_text + '<x:WorksheetOptions>';
+    //tab_text = tab_text + '<x:Panes></x:Panes>';
+    //tab_text = tab_text + '</x:WorksheetOptions>';
+    //tab_text = tab_text + '</x:ExcelWorksheet>';
 
-    tab_text = tab_text + '<x:WorksheetOptions><x:Panes></x:Panes></x:WorksheetOptions></x:ExcelWorksheet>';
-    tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml>';
+    
+    tab_text = tab_text + '</x:ExcelWorkbook>';
+    tab_text = tab_text + '</xml>';
 
-    //tab_text = tab_text +'<style>'+
-    //    '.font920875 {'+
-    //        'color: blue;'+
-    //    'font-size: 10.0pt;'+
-    //    'font-weight: 700;' +
-    //    'font-style: normal;' +
-    //    'text-decoration: none;' +
-    //    'font-family: Arial, sans-serif;' +
-    //    'mso-font-charset: 204;' +
-    //'} </style>';
+    //tab_text = tab_text + '<head>';			
+    //tab_text = tab_text + '<xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>';
 
+    //tab_text = tab_text + '<x:Name>Table-1</x:Name>';
 
+    //tab_text = tab_text + '<x:WorksheetOptions><x:Panes></x:Panes></x:WorksheetOptions></x:ExcelWorksheet>';
+    //tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml>';
 
-    tab_text = tab_text + '</head><body>';
+    tab_text = tab_text +'<style>'+
+        '.font920875 {'+
+            'color: blue;'+
+        'font-size: 10.0pt;'+
+        'font-weight: 700;' +
+        'font-style: normal;' +
+        'text-decoration: none;' +
+        'font-family: Arial, sans-serif;' +
+        'mso-font-charset: 204;' +
+    '} </style>';
+
+   tab_text = tab_text + '</head><body>';
 
     tab_text = tab_text + "<table>";
     //var tab = $('#table-list-wagons-tracking').html();
     tab_text = tab_text + tab;
-    tab_text = tab_text + '</table></body></html>';
+    tab_text = tab_text + '</table>';
+        
+    tab_text = tab_text + '</body></html>';
 
-    var data_type = 'data:application/vnd.ms-excel';
+    tab_text = tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table
+    tab_text = tab_text.replace(/<img[^>]*>/gi, ""); // remove if u want images in your table
+    tab_text = tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
 
     var ua = window.navigator.userAgent;
     var msie = ua.indexOf("MSIE ");
@@ -1053,10 +1080,10 @@ function fnExcelReport(tab, name_file) {
             var blob = new Blob([tab_text], {
                 type: "application/csv;charset=utf-8;"
             });
-            navigator.msSaveBlob(blob, file_name);
+            navigator.msSaveOrOpenBlob(blob, file_name);
         }
     } else {
-        $('#test').attr('href', data_type + ', ' + encodeURIComponent(tab_text));
+        $('#test').attr('href', 'data:application/vnd.ms-excel' + ', ' + encodeURIComponent(tab_text));
         $('#test').attr('download', file_name);
     }
 }
