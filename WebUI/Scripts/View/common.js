@@ -190,6 +190,25 @@ var outFuelType = function (i) {
         default: return i;
     }
 };
+
+var outFuelTypeUKTZED = function (i) {
+    switch (i) {
+        case 107000022: return "2710124194";
+        case 107000023: return "2710124512";
+        case 107000024: return "2710194300";
+        case 107000027: return "2710192100";
+        default: return i;
+    }
+};
+var outFuelTypeDescription = function (i) {
+    switch (i) {
+        case 107000022: return "Бензини моторні з вмістом свинцю 0,013г/л або менше: інші бензини, з октановим числом більш як 92, але менш як 95";
+        case 107000023: return "Бензини моторні з вмістом свинцю 0,013г/л або менше: інші бензини, з октановим числом 95 або більше, але менш як 98";
+        case 107000024: return "Важкі дистиляти (газойлі) із вмістом сірки не більш як 0,001 мас.%";
+        case 107000027: return "Гас: паливо для реактивних двигунів";
+        default: return i;
+    }
+};
 /* ----------------------------------------------------------
     Блокировка экрана
 -------------------------------------------------------------*/
@@ -592,11 +611,80 @@ var getAsyncViewDailyAccountingReportOfDateTime = function (start, stop, callbac
         },
     });
 };
+// Суточный(налоговый) отчет по АЗС - новый (БД ЦОД)
+var getAsyncViewDailyAccountingReportOfDate = function (date, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/dar_azs/daily_accounting_report/date/' + toISOStringTZ(date).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+};
 // Суточный(налоговый) отчет -ДЕТАЛИ по АЗС - новый (БД ЦОД)
 var getAsyncViewDailyAccountingDetaliReportOfDateTime = function (start, fuel, callback) {
     $.ajax({
         type: 'GET',
         url: '../../api/dar_azs/daily_accounting_detali_report/date/' + start + '/fuel/' + fuel,
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+};
+// Суточный(налоговый) отчет -ДЕТАЛИ по АЗС - новый (БД ЦОД)
+var getAsyncViewDailyAccountingDetaliReportOfDate = function (date, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/dar_azs/daily_accounting_detali_report/date/' + toISOStringTZ(date).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+};
+// Получить выдачи за сутки просуммированные по пистолетам 
+var getAsyncViewDeliveryTanksReportGroupNumOfDate = function (date, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/dar_azs/delivery_tanks/group_num/date/' + toISOStringTZ(date).substring(0, 19),
         async: true,
         dataType: 'json',
         beforeSend: function () {
@@ -639,12 +727,12 @@ var getAsyncViewLastTankStates = function (callback) {
             AJAXComplete();
         },
     });
-}
+};
 // Веруть состояние экипировки ст Карьерная ГД по номеру
 var getAsyncViewLastTankStatesOfNum = function (num, callback) {
     $.ajax({
         type: 'GET',
-        url: '../../api/tankstates/last/tank/'+num,
+        url: '../../api/tankstates/last/tank/' + num,
         async: true,
         dataType: 'json',
         beforeSend: function () {
@@ -662,7 +750,7 @@ var getAsyncViewLastTankStatesOfNum = function (num, callback) {
             AJAXComplete();
         },
     });
-}
+};
 /////////////////////////////////////////////////////////////////////
 // Веруть заправочную ведомость жд трансп
 //var getAsyncViewFuelSaleOfDateTime = function (start, stop, callback) {
@@ -709,7 +797,7 @@ var getAsyncReportLocalFS_RWOfDateTime = function (start, stop, callback) {
             AJAXComplete();
         },
     });
-}
+};
 // Веруть приемку топлива ст. Карьерная ГД (локальный отчет)
 var getAsyncReportLocalRF_RWOfDateTime = function (start, stop, callback) {
     $.ajax({
@@ -732,7 +820,7 @@ var getAsyncReportLocalRF_RWOfDateTime = function (start, stop, callback) {
             AJAXComplete();
         },
     });
-}
+};
 // Веруть остатки топлива ст. Карьерная ГД (локальный отчет)
 var getAsyncReportLocalRT_RWOfDateTime = function (start, stop, callback) {
     $.ajax({
@@ -755,7 +843,7 @@ var getAsyncReportLocalRT_RWOfDateTime = function (start, stop, callback) {
             AJAXComplete();
         },
     });
-}
+};
 // Суточный репорт ст. Карьерная ГД (локальный отчет)
 var getAsyncViewReportDR15OfDateTime = function (start, stop, callback) {
     $.ajax({
@@ -801,7 +889,7 @@ var getAsyncReportFS_KGDOfDateTime = function (start, stop, callback) {
             AJAXComplete();
         },
     });
-}
+};
 // Веруть приемку топлива ст. Карьерная ГД (БД ЦОД)
 var getAsyncReportRF_KGDOfDateTime = function (start, stop, callback) {
     $.ajax({
@@ -824,7 +912,7 @@ var getAsyncReportRF_KGDOfDateTime = function (start, stop, callback) {
             AJAXComplete();
         },
     });
-}
+};
 // Веруть остатки топлива ст. Карьерная ГД (БД ЦОД)
 var getAsyncReportRT_KGDOfDateTime = function (start, stop, callback) {
     $.ajax({
@@ -847,7 +935,7 @@ var getAsyncReportRT_KGDOfDateTime = function (start, stop, callback) {
             AJAXComplete();
         },
     });
-}
+};
 // Суточный репорт ст. Карьерная ГД (БД ЦОД)
 var getAsyncViewReportDR_KGDOfDateTime = function (start, stop, callback) {
     $.ajax({
@@ -940,7 +1028,7 @@ var getAsyncViewOilRemainsTanksOfDateTime = function (date, callback) {
             AJAXComplete();
         }
     });
-}
+};
 // Перекачки масла в ЦСМ (по данным ЦОД)
 var getAsyncViewOilTransferOfDateTime = function (start, stop, callback) {
     $.ajax({
@@ -1013,7 +1101,7 @@ var getAsyncViewOilFuelSaleOfDateTime = function (start, stop, callback) {
 
 //-------------------------------------------------------------------------
 // Экспорт отчетов в Excel
-function fnExcelReport(tab, name_file) {
+function fnExcelReport(name_tab, tab, css, name_file) {
     var file_name = name_file + '.xls';
     var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
     tab_text = tab_text + '<head>';
@@ -1021,50 +1109,24 @@ function fnExcelReport(tab, name_file) {
     tab_text = tab_text + '<x:ExcelWorkbook>';
     tab_text = tab_text + '<x:ExcelWorksheets>';
     tab_text = tab_text + '<x:ExcelWorksheet>';
-    tab_text = tab_text + '<x:Name>Table-1</x:Name>';
+    tab_text = tab_text + '<x:Name>'+name_tab+'</x:Name>';
     tab_text = tab_text + '<x:WorksheetOptions>';
     tab_text = tab_text + '<x:Panes></x:Panes>';
     tab_text = tab_text + '</x:WorksheetOptions>';
     tab_text = tab_text + '</x:ExcelWorksheet>';
     tab_text = tab_text + '</x:ExcelWorksheets>';
-
-    //tab_text = tab_text + '<x:ExcelWorksheets>';
-    //tab_text = tab_text + '<x:ExcelWorksheet>';
-    //tab_text = tab_text + '<x:Name>Table-2</x:Name>';
-    //tab_text = tab_text + '<x:WorksheetOptions>';
-    //tab_text = tab_text + '<x:Panes></x:Panes>';
-    //tab_text = tab_text + '</x:WorksheetOptions>';
-    //tab_text = tab_text + '</x:ExcelWorksheet>';
-
     
     tab_text = tab_text + '</x:ExcelWorkbook>';
     tab_text = tab_text + '</xml>';
 
-    //tab_text = tab_text + '<head>';			
-    //tab_text = tab_text + '<xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>';
-
-    //tab_text = tab_text + '<x:Name>Table-1</x:Name>';
-
-    //tab_text = tab_text + '<x:WorksheetOptions><x:Panes></x:Panes></x:WorksheetOptions></x:ExcelWorksheet>';
-    //tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml>';
-
-    tab_text = tab_text +'<style>'+
-        '.font920875 {'+
-            'color: blue;'+
-        'font-size: 10.0pt;'+
-        'font-weight: 700;' +
-        'font-style: normal;' +
-        'text-decoration: none;' +
-        'font-family: Arial, sans-serif;' +
-        'mso-font-charset: 204;' +
-    '} </style>';
+    tab_text = tab_text + '<style>' + css + '</style>';
 
    tab_text = tab_text + '</head><body>';
 
-    tab_text = tab_text + "<table>";
+    //tab_text = tab_text + "<table>";
     //var tab = $('#table-list-wagons-tracking').html();
     tab_text = tab_text + tab;
-    tab_text = tab_text + '</table>';
+    //tab_text = tab_text + '</table>';
         
     tab_text = tab_text + '</body></html>';
 

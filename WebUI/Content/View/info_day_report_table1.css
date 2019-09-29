@@ -1,0 +1,950 @@
+﻿
+.font520875 {
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+}
+
+.font620875 {
+    color: black;
+    font-size: 12.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+}
+
+.font720875 {
+    color: black;
+    font-size: 12.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+}
+
+.font820875 {
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+}
+    
+.font920875 {
+    color: blue;
+    font-size: 10.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+}
+
+.font1020875 {
+    color: blue;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+}
+
+.xl1520875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 11.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Calibri, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: general;
+    vertical-align: bottom;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.xl6320875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 11.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Calibri, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border-top: .5pt solid black;
+    border-right: .5pt solid black;
+    border-bottom: none;
+    border-left: .5pt solid black;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl6420875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border-top: none;
+    border-right: .5pt solid black;
+    border-bottom: none;
+    border-left: .5pt solid black;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl6520875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 11.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Calibri, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: general;
+    vertical-align: top;
+    border-top: none;
+    border-right: .5pt solid black;
+    border-bottom: none;
+    border-left: .5pt solid black;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl6620875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 11.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Calibri, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: general;
+    vertical-align: top;
+    border-top: none;
+    border-right: .5pt solid black;
+    border-bottom: .5pt solid black;
+    border-left: .5pt solid black;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl6720875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border-top: .5pt solid black;
+    border-right: none;
+    border-bottom: .5pt solid black;
+    border-left: .5pt solid black;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl6820875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border: .5pt solid black;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl6920875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: general;
+    vertical-align: middle;
+    border-top: .5pt solid black;
+    border-right: .5pt solid black;
+    border-bottom: none;
+    border-left: .5pt solid black;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl7020875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: general;
+    vertical-align: middle;
+    border-top: none;
+    border-right: .5pt solid black;
+    border-bottom: none;
+    border-left: .5pt solid black;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl7120875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: general;
+    vertical-align: middle;
+    border-top: none;
+    border-right: .5pt solid black;
+    border-bottom: .5pt solid black;
+    border-left: .5pt solid black;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl7220875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: "\@";
+    text-align: center;
+    vertical-align: middle;
+    border-top: .5pt solid black;
+    border-right: none;
+    border-bottom: .5pt solid black;
+    border-left: .5pt solid black;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+.xl7220875-numder {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-displayed-decimal-separator:"\,";
+    mso-number-format: "0.000";
+    text-align: center;
+    vertical-align: middle;
+    border-top: .5pt solid black;
+    border-right: none;
+    border-bottom: .5pt solid black;
+    border-left: .5pt solid black;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+.xl7320875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 11.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Calibri, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: bottom;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.xl7420875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: "\@";
+    text-align: center;
+    vertical-align: middle;
+    border: .5pt solid black;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl7520875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: "\@";
+    text-align: center;
+    vertical-align: middle;
+    border: .5pt solid black;
+    background: yellow;
+    mso-pattern: black none;
+    white-space: normal;
+}
+
+.xl7620875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border-top: .5pt solid black;
+    border-right: .5pt solid black;
+    border-bottom: .5pt solid black;
+    border-left: none;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl7720875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border-top: .5pt solid black;
+    border-right: .5pt solid black;
+    border-bottom: none;
+    border-left: .5pt solid black;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl7820875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border-top: none;
+    border-right: .5pt solid black;
+    border-bottom: .5pt solid black;
+    border-left: .5pt solid black;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl7920875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border-top: .5pt solid black;
+    border-right: none;
+    border-bottom: none;
+    border-left: .5pt solid black;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl8020875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border-top: .5pt solid black;
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl8120875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border-top: .5pt solid black;
+    border-right: .5pt solid black;
+    border-bottom: none;
+    border-left: none;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl8220875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border-top: none;
+    border-right: none;
+    border-bottom: .5pt solid black;
+    border-left: .5pt solid black;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl8320875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border-top: none;
+    border-right: none;
+    border-bottom: .5pt solid black;
+    border-left: none;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl8420875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border-top: none;
+    border-right: .5pt solid black;
+    border-bottom: .5pt solid black;
+    border-left: none;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl8520875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 12.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border-top: .5pt solid black;
+    border-right: none;
+    border-bottom: none;
+    border-left: .5pt solid black;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl8620875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 12.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border-top: .5pt solid black;
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl8720875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 12.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border-top: .5pt solid black;
+    border-right: .5pt solid black;
+    border-bottom: none;
+    border-left: none;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl8820875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 12.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    border-left: .5pt solid black;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl8920875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 12.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl9020875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 12.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border-top: none;
+    border-right: .5pt solid black;
+    border-bottom: none;
+    border-left: none;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl9120875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 12.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border-top: none;
+    border-right: none;
+    border-bottom: .5pt solid black;
+    border-left: .5pt solid black;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl9220875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 12.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border-top: none;
+    border-right: none;
+    border-bottom: .5pt solid black;
+    border-left: none;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl9320875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 12.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border-top: none;
+    border-right: .5pt solid black;
+    border-bottom: .5pt solid black;
+    border-left: none;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl9420875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border-top: .5pt solid black;
+    border-right: none;
+    border-bottom: .5pt solid black;
+    border-left: none;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl9520875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: general;
+    vertical-align: middle;
+    border-top: .5pt solid black;
+    border-right: none;
+    border-bottom: .5pt solid black;
+    border-left: .5pt solid black;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl9620875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: general;
+    vertical-align: middle;
+    border-top: .5pt solid black;
+    border-right: none;
+    border-bottom: .5pt solid black;
+    border-left: none;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl9720875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: general;
+    vertical-align: middle;
+    border-top: .5pt solid black;
+    border-right: .5pt solid black;
+    border-bottom: .5pt solid black;
+    border-left: none;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.xl9820875 {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 204;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    border-left: .5pt solid black;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}

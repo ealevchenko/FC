@@ -367,6 +367,15 @@ namespace WebUI.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Акцизный склад топлива.
+        /// </summary>
+        public static string home_link_info_day_report_azs {
+            get {
+                return ResourceManager.GetString("home_link_info_day_report_azs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на ЦСМ АМКР.
         /// </summary>
         public static string home_link_oil {

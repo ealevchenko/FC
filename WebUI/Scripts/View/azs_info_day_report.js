@@ -7,6 +7,7 @@
             {
                 'text_link_tabs_report_1': 'Таблица 1',
                 'text_link_tabs_report_2': 'Таблица 2',
+                'text_link_tabs_report_3': 'Таблица 3',
                 'bt_excel_text': 'to excel',
 
                 'field_date_start': 'Дата',
@@ -60,6 +61,8 @@
             {
                 'text_link_tabs_report_1': 'Table 1',
                 'text_link_tabs_report_2': 'Table 2',
+                'text_link_tabs_report_3': 'Table 3',
+
                 'bt_excel_text': 'to excel',
                 'field_date_start': 'Date',
                 'field_tank': 'Tanks',
@@ -114,23 +117,49 @@
         date_stop = null,
         langs = $.extend(true, $.extend(true, getLanguages($.Text_View, lang), getLanguages($.Text_Common, lang)), getLanguages($.Text_Table, lang)),
         // Загрузка библиотек
-        loadReference = function (callback) {
-            //LockScreen(langView('mess_load', langs));
-            //var count = 1;
-            //// Загрузка списка карточек (common.js)
-            //getReference_azsCards(function (result) {
-            //    reference_cards = result;
-            //    count -= 1;
-            //    if (count <= 0) {
-            //        if (typeof callback === 'function') {
-            //            LockScreenOff();
-            //            callback();
-            //        }
-            //    }
-            //})
+        loadData = function (date, callback) {
+            LockScreen(langView('mess_delay', langs));
+            var count = 3;
+            // Загрузка списка общего отчета за сутки (common.js)
+            getAsyncViewDailyAccountingReportOfDate(date, function (result_daily_accounting) {
+                list_daily_accounting = result_daily_accounting;
+                count -= 1;
+                if (count <= 0) {
+                    if (typeof callback === 'function') {
+                        LockScreenOff();
+                        callback();
+                    }
+                }
+            });
+            // Загрузка списка детального отчета за сутки (common.js)
+            getAsyncViewDailyAccountingDetaliReportOfDate(date, function (result_daily_accounting_detali) {
+                list_daily_accounting_detali = result_daily_accounting_detali;
+                count -= 1;
+                if (count <= 0) {
+                    if (typeof callback === 'function') {
+                        LockScreenOff();
+                        callback();
+                    }
+                }
+            });
+            // Получить выдачи за сутки просуммированные по пистолетам  (common.js)
+            getAsyncViewDeliveryTanksReportGroupNumOfDate(date, function (result_delivery_tanks_group_num) {
+                list_delivery_tanks_group_num = result_delivery_tanks_group_num;
+                count -= 1;
+                if (count <= 0) {
+                    if (typeof callback === 'function') {
+                        LockScreenOff();
+                        callback();
+                    }
+                }
+            });
+
         },
-        // список карточек
-        reference_cards = null,
+        // список 
+        list_daily_accounting = [],
+        list_daily_accounting_detali = [],
+        list_delivery_tanks_group_num = [],
+
         //// Типы отчетов
         tab_type_reports = {
             html_div: $("#tabs-reports"),
@@ -138,23 +167,37 @@
             initObject: function () {
                 $('#link-tabs-report-1').text(langView('text_link_tabs_report_1', langs));
                 $('#link-tabs-report-2').text(langView('text_link_tabs_report_2', langs));
+                $('#link-tabs-report-3').text(langView('text_link_tabs_report_3', langs));
                 this.html_div.tabs({
                     collapsible: true,
                     activate: function (event, ui) {
                         tab_type_reports.active = tab_type_reports.html_div.tabs("option", "active");
-                        //tab_type_reports.activeTable(tab_type_cards.active, false);
+                        tab_type_reports.activeTable(tab_type_reports.active);
                     },
                 });
-                //this.activeTable(this.active, true);
+                //this.activeTable(this.active);
             },
-            activeTable: function (active, data_refresh) {
+            activeTable: function (active) {
                 if (active === 0) {
-                    table_report_1.viewTable(data_refresh);
+                    table_report_1.viewTable();
                 }
                 if (active === 1) {
-                    table_report_2.viewTable(data_refresh);
+                    table_report_2.viewTable();
                 }
-
+                if (active === 2) {
+                    table_report_3.viewTable();
+                }
+            },
+            excelTable: function (active) {
+                if (active === 0) {
+                    table_report_1.exportTable();
+                }
+                if (active === 1) {
+                    table_report_2.exportTable();
+                }
+                if (active === 2) {
+                    table_report_3.exportTable();
+                }
             },
 
         },
@@ -165,7 +208,7 @@
             obj_date: null,
             bt_left: $('<button class="ui-button ui-widget ui-corner-all ui-button-icon-only" ><span class="ui-icon ui-icon-circle-triangle-w"></span>text</button>'),
             bt_right: $('<button class="ui-button ui-widget ui-corner-all ui-button-icon-only" ><span class="ui-icon ui-icon-circle-triangle-e"></span>text</button>'),
-            bt_excel: $('<button class="ui-button ui-widget ui-corner-all ui-button-icon-only" ><span class="ui-icon ui-icon-circle-triangle-e"></span>text</button>'),
+            bt_excel: $('<button class="ui-button ui-widget ui-corner-all">to Excel</button >'),
             label: $('<label for="date" ></label>'),
             span: $('<span id="select-range"></span>'),
             input_date: $('<input id="date" name="date" size="20">'),
@@ -185,9 +228,7 @@
                 this.bt_excel.text(langView('bt_excel_text', langs));
 
                 this.bt_excel.on('click', function () {
-                    //panel_select_report.viewReport();
-                    var table = $('table#table-report-1').html();
-                        fnExcelReport(table, "Таблица1");
+                    tab_type_reports.excelTable(tab_type_reports.active);
                 });
                 // настроим компонент выбора времени
                 this.obj_date = this.input_date.dateRangePicker(
@@ -204,162 +245,110 @@
                         date_curent = obj.date1;
                     })
                     .bind('datepicker-closed', function () {
-                        panel_select_report.viewReport();
+                        panel_select_report.loadReport(true);
                     });
                 // Выставим текущую дату
                 var date_curent_set = date_curent.getDate() + '.' + (date_curent.getMonth() + 1) + '.' + date_curent.getFullYear() + ' 00:00';
                 this.obj_date.data('dateRangePicker').setDateRange(date_curent_set, date_curent_set, true);
             },
-            viewReport: function () {
+            loadReport: function (data_refresh) {
                 date_start = new Date(date_curent.getFullYear(), date_curent.getMonth(), date_curent.getDate(), 0, 0, 0);
                 date_stop = new Date(date_curent.getFullYear(), date_curent.getMonth(), date_curent.getDate(), 23, 59, 59);
-                tab_type_reports.activeTable(tab_type_reports.active, true);
+                if (data_refresh) {
+                    loadData(date_start, function () {
+                        tab_type_reports.activeTable(tab_type_reports.active);
+                    });
+                } else {
+                    tab_type_reports.activeTable(tab_type_reports.active);
+                }
+
+
             }
         },
         //
         table_report_1 = {
-            html_table: $('table#table-report-1'),
-            obj_table: null,
-            select: null,
-            select_id: null,
-            list: [],
-            // Инициализировать таблицу
-            initObject: function () {
-                this.obj_table = this.html_table.DataTable({
-                    "paging": false,
-                    "ordering": false,
-                    "info": false,
-                    "select": false,
-                    "autoWidth": false,
-                    "scrollX": false,
-                    language: language_table(langs),
-                    jQueryUI: false,
-                    "createdRow": function (row, data, index) {
-                        //$(row).attr('id', data.id);
-                    },
-                    //columns: [
-                    //    { data: "date_start", title: langView('field_date_start', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "type", title: langView('field_type', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "ukt_zed", title: langView('field_ukt_zed', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "fuel_name", title: langView('field_fuel_name', langs), width: "50px", orderable: true, searchable: true },
-
-                    //    { data: "volume_start", title: langView('field_volume_start', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "mass_start", title: langView('field_mass_start', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "dens_start", title: langView('field_dens_start', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "temp_start", title: langView('field_temp_start', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "volume15_start", title: langView('field_volume15_start', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "mass15_start", title: langView('field_mass15_start', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "dens15_start", title: langView('field_dens15_start', langs), width: "50px", orderable: true, searchable: true },
-
-                    //    { data: "volume_received", title: langView('field_volume_received', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "mass_received", title: langView('field_mass_received', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "dens_received", title: langView('field_dens_received', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "temp_received", title: langView('field_temp_received', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "volume15_received", title: langView('field_volume15_received', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "mass15_received", title: langView('field_mass15_received', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "dens15_received", title: langView('field_dens15_received', langs), width: "50px", orderable: true, searchable: true },
-
-                    //    { data: "volume_delivery", title: langView('field_volume_delivery', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "mass_delivery", title: langView('field_mass_delivery', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "dens_delivery", title: langView('field_dens_delivery', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "temp_delivery", title: langView('field_temp_delivery', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "volume15_delivery", title: langView('field_volume15_delivery', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "mass15_delivery", title: langView('field_mass15_delivery', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "dens15_delivery", title: langView('field_dens15_delivery', langs), width: "50px", orderable: true, searchable: true },
-
-                    //    { data: "volume_stop", title: langView('field_volume_stop', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "mass_stop", title: langView('field_mass_stop', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "dens_stop", title: langView('field_dens_stop', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "temp_stop", title: langView('field_temp_stop', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "volume15_stop", title: langView('field_volume15_stop', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "mass15_stop", title: langView('field_mass15_stop', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "dens15_stop", title: langView('field_dens15_stop', langs), width: "50px", orderable: true, searchable: true },
-
-                    //    { data: "permissible_volume15_error", title: langView('field_permissible_volume15_error', langs), width: "50px", orderable: true, searchable: true },
-                    //    { data: "permissible_mass15_error", title: langView('field_permissible_mass15_error', langs), width: "50px", orderable: true, searchable: true }
-
-                    //],
-                    //dom: 'Blftipr',
-                    //buttons: [
-                    //    'copyHtml5',
-                    //    'excelHtml5',
-                    //]
+            viewTable: function () {
+                $('div#report-1').empty();
+                var tab = get_html_table1_star(date_start, date_stop);
+                var formatter = new Intl.NumberFormat("ru");
+                //formatter.format()
+                $.each(list_daily_accounting_detali, function (i, el) {
+                    if (el.tank !== "B13") {
+                            tab += "<tr style='height:auto;'>" +
+                            "<td class=xl7020875 width=24 style='width:18pt'>&nbsp;</td>" +
+                            "<td class=xl7420875 width=51 style='border-top:none;border-left:none;width:38pt'>&nbsp;</td>" +
+                            "<td class=xl7420875 width=120 style='border-top:none;border-left:none;width:90pt'>" + el.ukt_zed + "</td>" +
+                            "<td class=xl7220875 width=81 style='border-top:none;border-left:none;width:61pt'>" + outFuelTypeDescription(el.fuel_type) + "</td>" +
+                            "<td class=xl7420875 width=81 style='border-top:none;width:61pt'>&nbsp;</td>" +
+                            "<td class=xl7420875 width=92 style='border-top:none;border-left:none;width:69pt;word-wrap:break-word'>" + (el.unified_tank_number !== null ? el.unified_tank_number : el.tank ) + "</td>" +
+                            "<td class=xl7220875 width=92 style='border-top:none;border-left:none;width:69pt'>" + (el.level_meters_serial_number!==null ? el.level_meters_serial_number : "&nbsp;") + "</td>" +
+                            "<td class=xl7220875-numder width=98 style='border-top:none;width:74pt'>" + (el.volume15_remains_start !== null ? Number(el.volume15_remains_start).toFixed(3) : "&nbsp;") + "</td>" +
+                            "<td class=xl7220875-numder width=103 style='border-top:none;width:77pt'>" + (el.volume15_remains_stop !== null ? Number(el.volume15_remains_stop).toFixed(3) : "&nbsp;") + "</td>" +
+                            "<td class=xl7420875 width=93 style='border-top:none;width:70pt'>&nbsp;</td>" +
+                            "<td class=xl7420875 width=108 style='border-top:none;border-left:none;width:81pt'>&nbsp;</td>" +
+                            "<td class=xl7420875 width=46 style='border-top:none;border-left:none;width:35pt'>&nbsp;</td>" +
+                            "</tr>";
+                    }
                 });
+
+
+                tab += html_table1_stop;
+
+                $('div#report-1').html(tab);
             },
-            // Показать таблицу с данными
-            viewTable: function (data_refresh) {
+            exportTable: function () {
+                var tab = $('div#report-1').html();
+                fnExcelReport("Таблица 1", tab, css_table1, "Table1"); //
+            }
+        },
 
-                var table1 = "";
-                //LockScreen(langView('mess_delay', langs));
-                //if (this.list === null | data_refresh === true) {
-                //    // Обновим данные
-                //    getAsyncViewDailyAccountingReportOfDateTime(
-                //        panel_select_report.date_start,
-                //        panel_select_report.date_stop,
-                //        function (result) {
-                //            table_report_1.list = result;
-                //            table_report_1.loadDataTable(result);
-                //            table_report_1.obj_table.draw();
-                //        }
-                //    );
-                //} else {
-                //    table_report_1.loadDataTable(this.list);
-                //    table_report_1.obj_table.draw();
-                //};
+        table_report_2 = {
+            viewTable: function () {
+                $('div#report-2').empty();
+                var tab = html_table2_start;
+                var formatter = new Intl.NumberFormat("ru");
+                $.each(list_daily_accounting, function (i, el) {
+                    tab += "<tr style='height:auto'>" +
+                        "<td class=xl671827 width=183 style='border-top:none;border-left:none;width:137pt'>&nbsp;</td>" +
+                        "<td class=xl671827 width=183 style='border-top:none;border-left:none;width:137pt'>" + el.ukt_zed + "</td>" +
+                        "<td class=xl671827 width=183 style='border-top:none;border-left:none;width:137pt'>" + outFuelTypeDescription(el.type) + "</td>" +
+                        "<td class=xl671827-number width=183 style='border-top:none;border-left:none;width:137pt'>" + (el.volume15_start !== null ? Number(el.volume15_start).toFixed(3) : "&nbsp;") + "</td>" +
+                        "<td class=xl671827-number width=183 style='border-top:none;border-left:none;width:137pt'>" + (el.volume15_stop !== null ? Number(el.volume15_stop).toFixed(3) : "&nbsp;") + "</td>" +
+                        "<td class=xl671827 width=183 style='border-top:none;border-left:none;width:137pt'>&nbsp;</td>" +
+                        "</tr>";
+                });        
+                tab += html_table2_stop;
+                $('div#report-2').html(tab);
             },
-            // Загрузить данные
-            loadDataTable: function (data) {
-                this.list = data;
-                this.obj_table.clear();
-                for (i = 0; i < data.length; i++) {
-                    //var cards = reference_cards != null ? reference_cards.getResult(data[i].id_card) : null;
-                    this.obj_table.row.add({
-                        "id": data[i].id,
-                        "type": data[i].type,
-                        "ukt_zed": data[i].ukt_zed,
-                        "fuel_name": data[i].fuel_name,
-                        "date_start": data[i].date_start,
-                        "date_stop": data[i].date_stop,
-                        "volume_start": data[i].volume_start,
-                        "mass_start": data[i].mass_start !== null ? Number(data[i].mass_start).toFixed(2) : 0.00,
-                        "dens_start": data[i].dens_start !== null ? Number(data[i].dens_start).toFixed(5) : 0.00000,
-                        "temp_start": data[i].temp_start !== null ? Number(data[i].temp_start).toFixed(2) : 0.00,
-                        "volume15_start": data[i].volume15_start,
-                        "mass15_start": data[i].mass15_start !== null ? Number(data[i].mass15_start).toFixed(2) : 0.00,
-                        "dens15_start": data[i].dens15_start !== null ? Number(data[i].dens15_start).toFixed(5) : 0.00000,
-
-                        "volume_received": data[i].volume_received !== null ? data[i].volume_received : 0,
-                        "mass_received": data[i].mass_received !== null ? Number(data[i].mass_received).toFixed(2) : 0.00,
-                        "dens_received": data[i].dens_received !== null ? Number(data[i].dens_received).toFixed(5) : 0.00000,
-                        "temp_received": data[i].temp_received !== null ? Number(data[i].temp_received).toFixed(2) : 0.00,
-                        "volume15_received": data[i].volume15_received !== null ? data[i].volume15_received : 0,
-                        "mass15_received": data[i].mass15_received !== null ? Number(data[i].mass15_received).toFixed(2) : 0.00,
-                        "dens15_received": data[i].dens15_received !== null ? Number(data[i].dens15_received).toFixed(5) : 0.00000,
-
-                        "volume_delivery": data[i].volume_delivery !== null ? data[i].volume_delivery : 0,
-                        "mass_delivery": data[i].mass_delivery !== null ? Number(data[i].mass_delivery).toFixed(2) : 0.00,
-                        "dens_delivery": data[i].dens_delivery !== null ? Number(data[i].dens_delivery).toFixed(5) : 0.00000,
-                        "temp_delivery": data[i].temp_delivery !== null ? Number(data[i].temp_delivery).toFixed(2) : 0.00,
-                        "volume15_delivery": data[i].volume15_delivery !== null ? data[i].volume15_delivery : 0,
-                        "mass15_delivery": data[i].mass15_delivery !== null ? Number(data[i].mass15_delivery).toFixed(2) : 0.00,
-                        "dens15_delivery": data[i].dens15_delivery !== null ? Number(data[i].dens15_delivery).toFixed(5) : 0.00000,
-
-                        "volume_stop": data[i].volume_stop !== null ? data[i].volume_stop : 0,
-                        "mass_stop": data[i].mass_stop !== null ? Number(data[i].mass_stop).toFixed(2) : 0.00,
-                        "dens_stop": data[i].dens_stop !== null ? Number(data[i].dens_stop).toFixed(5) : 0.00000,
-                        "temp_stop": data[i].temp_stop !== null ? Number(data[i].temp_stop).toFixed(2) : 0.00,
-                        "volume15_stop": data[i].volume15_stop !== null ? data[i].volume15_stop : 0,
-                        "mass15_stop": data[i].mass15_stop !== null ? Number(data[i].mass15_stop).toFixed(2) : 0.00,
-                        "dens15_stop": data[i].dens15_stop !== null ? Number(data[i].dens15_stop).toFixed(5) : 0.00000,
-                        "permissible_volume15_error": data[i].permissible_volume15_error !== null ? Number(data[i].permissible_volume15_error).toFixed(3) : 0.000,
-                        "permissible_mass15_error": data[i].permissible_mass15_error !== null ? Number(data[i].permissible_mass15_error).toFixed(3) : 0.000
-                    });
-                }
-                LockScreenOff();
-            },
-
+            exportTable: function () {
+                var tab = $('div#report-2').html();
+                fnExcelReport("Таблица 2", tab, css_table2, "Table2"); //
+            }
         };
 
+        table_report_3 = {
+            viewTable: function () {
+                $('div#report-3').empty();
+                var tab = get_html_table3_star(list_delivery_tanks_group_num.length);
+                $.each(list_delivery_tanks_group_num, function (i, el) {
+                    tab += "<tr class=xl6527789 style='height:auto'>" +
+                        "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>&nbsp;</td>" +
+                        "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + el.ukt_zed + "</td>" +
+                        "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + outFuelTypeDescription(el.fuel_type) + "</td>" +
+                        "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + el.serial_number_flowmeter + "/" + el.identification_number_flowmeter+ "("+ el.num +")" +"</td>" +
+                        "<td class=xl6427789-number width=170 style='border-top:none;border-left:none;width:128pt'>" + (el.volume_delivery !== null ? Number(el.volume_delivery).toFixed(3) : "&nbsp;") + "</td>" +
+                        "<td class=xl6427789 width=147 style='border-top:none;border-left:none;width:110pt'>&nbsp;</td>" +
+                        "<td class=xl6427789 width=45 style='border-top:none;border-left:none;width:34pt'>&nbsp;</td>" +
+                        "</tr>";
+                });        
+                tab += html_table3_stop;
+                $('div#report-3').html(tab);
+            },
+            exportTable: function () {
+                var tab = $('div#report-3').html();
+                fnExcelReport("Таблица 3", tab, css_table3, "Table3"); //
+            }
+        };
     //-----------------------------------------------------------------------------------------
     // Функции
     //-----------------------------------------------------------------------------------------
@@ -373,7 +362,7 @@
     ////// Загрузка библиотек
     //loadReference(function (result) {
     //    table_report_1.initObject();
-    //    tab_type_reports.activeTable(tab_type_reports.active, true);
+    panel_select_report.loadReport(true);
     //});
 
 });

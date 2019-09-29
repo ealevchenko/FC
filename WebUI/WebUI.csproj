@@ -442,6 +442,9 @@
     <Content Include="Content\View\daily_accounting_report.css" />
     <Content Include="Content\View\fuelsales.css" />
     <Content Include="Content\View\info_day_report.css" />
+    <Content Include="Content\View\info_day_report_table1.css" />
+    <Content Include="Content\View\info_day_report_table3.css" />
+    <Content Include="Content\View\info_day_report_table2.css" />
     <Content Include="Content\View\remainstanks_oil.css" />
     <Content Include="Content\View\remainstanks_gd.css" />
     <Content Include="Content\View\receivingfuel_gd.css" />
@@ -489,6 +492,9 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\View\azs_info_day_report.js" />
+    <Content Include="Scripts\View\azs_info_day_report_table1.js" />
+    <Content Include="Scripts\View\azs_info_day_report_table3.js" />
+    <Content Include="Scripts\View\azs_info_day_report_table2.js" />
     <Content Include="Scripts\View\common.js" />
     <Content Include="Content\websymbols\generator_config.txt" />
     <Content Include="Content\websymbols\stylesheet.css" />

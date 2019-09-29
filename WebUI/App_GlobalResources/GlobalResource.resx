@@ -300,4 +300,7 @@
   <data name="home_info_day_report_azs" xml:space="preserve">
     <value>Информация за сутки по акцизному складу топлива</value>
   </data>
+  <data name="home_link_info_day_report_azs" xml:space="preserve">
+    <value>Акцизный склад топлива</value>
+  </data>
 </root>
