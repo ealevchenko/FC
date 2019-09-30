@@ -8,118 +8,36 @@
                 'text_link_tabs_report_1': 'Таблица 1',
                 'text_link_tabs_report_2': 'Таблица 2',
                 'text_link_tabs_report_3': 'Таблица 3',
+                'text_link_tabs_report_4': 'Таблица 4',
+                'text_link_tabs_report_5': 'Таблица 5',
+                'text_link_tabs_report_6': 'Таблица 6',
                 'bt_excel_text': 'to excel',
 
-                'field_date_start': 'Дата',
-                'field_tank': 'Емкость',
-                'field_type': 'ОЗМ',
-                'field_volume_start': 'Остаток, объем на начало суток (л)',
-                'field_mass_start': 'Остаток, масса на начало суток (кг)',
-                'field_dens_start': 'Остаток, плотность на начало суток (кг/м3)',
-                'field_temp_start': 'Остаток, средняя температура на начало суток (град. С°)',
-                'field_volume15_start': 'Остаток, объем на начало суток пересчитанный к 15 град. С° (л)',
-                'field_mass15_start': 'Остаток, масса на начало суток пересчитанная к 15 град. С° (кг)',
-                'field_dens15_start': 'Остаток, плотность на начало суток пересчитанная к 15 град. С° (кг/м3)',
-                'field_volume_received': 'Приход, объем (л)',
-                'field_mass_received': 'Приход, масса (кг)',
-                'field_dens_received': 'Приход, плотность (кг/м3)',
-                'field_temp_received': 'Приход, температура (град. С°)',
-                'field_volume15_received': 'Приход, объем пересчитанный к 15 град. С° (л)',
-                'field_mass15_received': 'Приход, масса пересчитанная к 15 град. С° (кг)',
-                'field_dens15_received': 'Приход, плотность пересчитанная к 15 град. С° (кг/м3)',
-                'field_volume_delivery': 'Расход, объем (л)',
-                'field_mass_delivery': 'Расход, масса (кг)',
-                'field_dens_delivery': 'Расход, плотность (кг/м3)',
-                'field_temp_delivery': 'Расход, температура (град. С°)',
-                'field_volume15_delivery': 'Расход, объем пересчитанный к 15 град. С° (л)',
-                'field_mass15_delivery': 'Расход, масса пересчитанная к 15 град. С° (кг)',
-                'field_dens15_delivery': 'Расход, плотность пересчитанная к 15 град. С°(кг/м3)',
-                'field_volume_stop': 'Остаток, объем на конец суток (л)',
-                'field_mass_stop': 'Остаток, масса на конец суток (кг)',
-                'field_dens_stop': 'Остаток, плотность на конец суток (кг/м3)',
-                'field_temp_stop': 'Остаток, средняя температура на конец суток (град. С°)',
-                'field_volume15_stop': 'Остаток, объем на конец суток пересчитанный к 15 град. С° (л)',
-                'field_mass15_stop': 'Остаток, масса на конец суток пересчитанная к 15 град. С° (кг)',
-                'field_dens15_stop': 'Остаток, плотность на конец суток пересчитанная к 15 град. С° (кг/м3).',
-
-                'field_permissible_volume15_error': 'Допустимая погрешность литров при 15 °С, 0,65%',
-                'field_permissible_mass15_error': 'Допустимая погрешность фактических КГ, 0,65%',
-                'field_serial_number': 'Серийный (идентификационный) номер резервуара',
-                'field_unified_tank_number': 'Унифицированный номер резервуара',
-                'field_type_name': 'Тип (название) резервуара',
-                'field_level_meters_model': 'Название (модель) уровнемера',
-                'field_level_meters_serial_number': 'Серийный (идентификационный) номер уровнемера',
-
-                'field_ukt_zed': 'Код топлива за кодом товарной подкатегории в соответствии с УКТ ЗЕД (10 знаков)',
-                'field_fuel_name': 'Полное название топлива',
-
                 'label_select_date': 'Выберите дату'
-
-
             },
             'en':  //default language: English
             {
                 'text_link_tabs_report_1': 'Table 1',
                 'text_link_tabs_report_2': 'Table 2',
                 'text_link_tabs_report_3': 'Table 3',
-
+                'text_link_tabs_report_4': 'Table 4',
+                'text_link_tabs_report_5': 'Table 5',
+                'text_link_tabs_report_6': 'Table 6',
                 'bt_excel_text': 'to excel',
-                'field_date_start': 'Date',
-                'field_tank': 'Tanks',
-                'field_type': 'OZM',
-                'field_volume_start': 'Balance, volume at the beginning of the day (l)',
-                'field_mass_start': 'Balance, weight at the beginning of the day (kg)',
-                'field_dens_start': 'Residual density at the beginning of the day (kg / m3)',
-                'field_temp_start': 'Balance, average temperature at the beginning of the day (degrees C °)',
-                'field_volume15_start': 'Balance, the volume at the beginning of the day recalculated to 15 degrees. C ° (l) ',
-                'field_mass15_start': 'Balance, mass at the beginning of the day recalculated to 15 degrees. C ° (kg) ',
-                'field_dens15_start': 'Balance, density at the beginning of the day recalculated to 15 degrees. С ° (kg / m3) ',
-                'field_volume_received': 'Incoming, volume (l)',
-                'field_mass_received': 'Arrival, mass (kg)',
-                'field_dens_received': 'Income, density (kg / m3)',
-                'field_temp_received': 'Arrival, temperature (degrees C °)',
-                'field_volume15_received': 'Arrival, volume recalculated to 15 degrees. C ° (l) ',
-                'field_mass15_received': 'Arrival, mass converted to 15 degrees. C ° (kg) ',
-                'field_dens15_received': 'Coming, density converted to 15 degrees. С ° (kg / m3) ',
-                'field_volume_delivery': 'Consumption, volume (l)',
-                'field_mass_delivery': 'Consumption, mass (kg)',
-                'field_dens_delivery': 'Consumption, density (kg / m3)',
-                'field_temp_delivery': 'Flow, temperature (degrees C °)',
-                'field_volume15_delivery': 'Consumption, volume recalculated to 15 degrees. C ° (l) ',
-                'field_mass15_delivery': 'Consumption, mass converted to 15 degrees. C ° (kg) ',
-                'field_dens15_delivery': 'Consumption, density converted to 15 degrees. С ° (kg / m3) ',
-                'field_volume_stop': 'Balance, volume at the end of the day (l)',
-                'field_mass_stop': 'Balance, weight at the end of the day (kg)',
-                'field_dens_stop': 'Residual density at the end of the day (kg / m3)',
-                'field_temp_stop': 'Balance, average temperature at the end of the day (degrees C °)',
-                'field_volume15_stop': 'Balance, the volume at the end of the day recalculated to 15 degrees. C ° (l) ',
-                'field_mass15_stop': 'Balance, weight at the end of the day recalculated to 15 degrees. C ° (kg) ',
-                'field_dens15_stop': 'Balance, density at the end of the day recalculated to 15 degrees. С ° (kg / m3). ',
-
-                'field_permissible_volume15_error': 'Permissible error of liters at 15 ° C, 0.65%',
-                'field_permissible_mass15_error': 'Permissible error of the actual KG, 0.65%',
-                'field_serial_number': 'Serial (identification) number of the tank',
-                'field_unified_tank_number': 'Unified reservoir number',
-                'field_type_name': 'Type (name) of the reservoir',
-                'field_level_meters_model': 'Name (model) of the level gauge',
-                'field_level_meters_serial_number': 'Serial (identification) number of the level gauge',
-
-                'field_ukt_zed': 'Fuel code behind the product subcategory code according to UKT ZED (10 characters)',
-                'field_fuel_name': 'Full name of the fuel',
 
                 'label_select_date': 'Select a date'
             }
         };
 
     var lang = $.cookie('lang') === undefined ? 'ru' : $.cookie('lang'),
-        date_curent = new Date(),
+        date_curent = moment(new Date()).add('day', -1)._d,
         date_start = null,
         date_stop = null,
         langs = $.extend(true, $.extend(true, getLanguages($.Text_View, lang), getLanguages($.Text_Common, lang)), getLanguages($.Text_Table, lang)),
         // Загрузка библиотек
         loadData = function (date, callback) {
             LockScreen(langView('mess_delay', langs));
-            var count = 3;
+            var count = 4;
             // Загрузка списка общего отчета за сутки (common.js)
             getAsyncViewDailyAccountingReportOfDate(date, function (result_daily_accounting) {
                 list_daily_accounting = result_daily_accounting;
@@ -153,12 +71,23 @@
                     }
                 }
             });
-
+            // Получить выдачи за сутки просуммированные по ГСМ  (common.js)
+            getAsyncViewDeliveryTanksReportGroupFuelOfDate(date, function (result_delivery_tanks_group_fuel) {
+                list_delivery_tanks_group_fuel = result_delivery_tanks_group_fuel;
+                count -= 1;
+                if (count <= 0) {
+                    if (typeof callback === 'function') {
+                        LockScreenOff();
+                        callback();
+                    }
+                }
+            });
         },
         // список 
         list_daily_accounting = [],
         list_daily_accounting_detali = [],
         list_delivery_tanks_group_num = [],
+        list_delivery_tanks_group_fuel = [],
 
         //// Типы отчетов
         tab_type_reports = {
@@ -168,6 +97,9 @@
                 $('#link-tabs-report-1').text(langView('text_link_tabs_report_1', langs));
                 $('#link-tabs-report-2').text(langView('text_link_tabs_report_2', langs));
                 $('#link-tabs-report-3').text(langView('text_link_tabs_report_3', langs));
+                $('#link-tabs-report-4').text(langView('text_link_tabs_report_4', langs));
+                $('#link-tabs-report-5').text(langView('text_link_tabs_report_5', langs));
+                $('#link-tabs-report-6').text(langView('text_link_tabs_report_6', langs));
                 this.html_div.tabs({
                     collapsible: true,
                     activate: function (event, ui) {
@@ -187,6 +119,15 @@
                 if (active === 2) {
                     table_report_3.viewTable();
                 }
+                if (active === 3) {
+                    table_report_4.viewTable();
+                }
+                if (active === 4) {
+                    table_report_5.viewTable();
+                }
+                if (active === 5) {
+                    table_report_6.viewTable();
+                }
             },
             excelTable: function (active) {
                 if (active === 0) {
@@ -197,6 +138,15 @@
                 }
                 if (active === 2) {
                     table_report_3.exportTable();
+                }
+                if (active === 3) {
+                    table_report_4.exportTable();
+                }
+                if (active === 4) {
+                    table_report_5.exportTable();
+                }
+                if (active === 5) {
+                    table_report_6.exportTable();
                 }
             },
 
@@ -274,14 +224,14 @@
                 //formatter.format()
                 $.each(list_daily_accounting_detali, function (i, el) {
                     if (el.tank !== "B13") {
-                            tab += "<tr style='height:auto;'>" +
+                        tab += "<tr style='height:auto;'>" +
                             "<td class=xl7020875 width=24 style='width:18pt'>&nbsp;</td>" +
                             "<td class=xl7420875 width=51 style='border-top:none;border-left:none;width:38pt'>&nbsp;</td>" +
                             "<td class=xl7420875 width=120 style='border-top:none;border-left:none;width:90pt'>" + el.ukt_zed + "</td>" +
                             "<td class=xl7220875 width=81 style='border-top:none;border-left:none;width:61pt'>" + outFuelTypeDescription(el.fuel_type) + "</td>" +
                             "<td class=xl7420875 width=81 style='border-top:none;width:61pt'>&nbsp;</td>" +
-                            "<td class=xl7420875 width=92 style='border-top:none;border-left:none;width:69pt;word-wrap:break-word'>" + (el.unified_tank_number !== null ? el.unified_tank_number : el.tank ) + "</td>" +
-                            "<td class=xl7220875 width=92 style='border-top:none;border-left:none;width:69pt'>" + (el.level_meters_serial_number!==null ? el.level_meters_serial_number : "&nbsp;") + "</td>" +
+                            "<td class=xl7420875 width=92 style='border-top:none;border-left:none;width:69pt;word-wrap:break-word'>" + (el.unified_tank_number !== null ? el.unified_tank_number : el.tank) + "</td>" +
+                            "<td class=xl7220875 width=92 style='border-top:none;border-left:none;width:69pt'>" + (el.level_meters_serial_number !== null ? el.level_meters_serial_number : "&nbsp;") + "</td>" +
                             "<td class=xl7220875-numder width=98 style='border-top:none;width:74pt'>" + (el.volume15_remains_start !== null ? Number(el.volume15_remains_start).toFixed(3) : "&nbsp;") + "</td>" +
                             "<td class=xl7220875-numder width=103 style='border-top:none;width:77pt'>" + (el.volume15_remains_stop !== null ? Number(el.volume15_remains_stop).toFixed(3) : "&nbsp;") + "</td>" +
                             "<td class=xl7420875 width=93 style='border-top:none;width:70pt'>&nbsp;</td>" +
@@ -316,7 +266,7 @@
                         "<td class=xl671827-number width=183 style='border-top:none;border-left:none;width:137pt'>" + (el.volume15_stop !== null ? Number(el.volume15_stop).toFixed(3) : "&nbsp;") + "</td>" +
                         "<td class=xl671827 width=183 style='border-top:none;border-left:none;width:137pt'>&nbsp;</td>" +
                         "</tr>";
-                });        
+                });
                 tab += html_table2_stop;
                 $('div#report-2').html(tab);
             },
@@ -324,7 +274,7 @@
                 var tab = $('div#report-2').html();
                 fnExcelReport("Таблица 2", tab, css_table2, "Table2"); //
             }
-        };
+        },
 
         table_report_3 = {
             viewTable: function () {
@@ -335,12 +285,12 @@
                         "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>&nbsp;</td>" +
                         "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + el.ukt_zed + "</td>" +
                         "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + outFuelTypeDescription(el.fuel_type) + "</td>" +
-                        "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + el.serial_number_flowmeter + "/" + el.identification_number_flowmeter+ "("+ el.num +")" +"</td>" +
+                        "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + el.serial_number_flowmeter + "/" + el.identification_number_flowmeter + "(" + el.num + ")" + "</td>" +
                         "<td class=xl6427789-number width=170 style='border-top:none;border-left:none;width:128pt'>" + (el.volume_delivery !== null ? Number(el.volume_delivery).toFixed(3) : "&nbsp;") + "</td>" +
                         "<td class=xl6427789 width=147 style='border-top:none;border-left:none;width:110pt'>&nbsp;</td>" +
                         "<td class=xl6427789 width=45 style='border-top:none;border-left:none;width:34pt'>&nbsp;</td>" +
                         "</tr>";
-                });        
+                });
                 tab += html_table3_stop;
                 $('div#report-3').html(tab);
             },
@@ -348,7 +298,100 @@
                 var tab = $('div#report-3').html();
                 fnExcelReport("Таблица 3", tab, css_table3, "Table3"); //
             }
+        },
+
+        table_report_4 = {
+            viewTable: function () {
+                $('div#report-4').empty();
+                var tab = get_html_table4_star(list_delivery_tanks_group_fuel.length);
+                $.each(list_delivery_tanks_group_fuel, function (i, el) {
+                    tab += "<tr class=xl6615240 style='height:auto'>" +
+                        "<td class=xl6515240 width=80 style='border-top:none;border-left:none;width:60pt'>&nbsp;</td>" +
+                        "<td class=xl6515240 width=218 style='border-top:none;border-left:none;width:164pt'>" + el.ukt_zed + "</td>" +
+                        "<td class=xl6515240 width=218 style='border-top:none;border-left:none;width:164pt'>" + outFuelTypeDescription(el.fuel_type) + "</td>" +
+                        "<td class=xl6515240-number width=353 style='border-top:none;border-left:none;width:265pt'>" + (el.volume_delivery !== null ? Number(el.volume_delivery).toFixed(3) : "&nbsp;") + "</td>" +
+                        "<td class=xl6515240 width=71 style='border-top:none;border-left:none;width:53pt'>&nbsp;</td>" +
+                        "</tr>";
+                });
+                tab += html_table4_stop;
+                $('div#report-4').html(tab);
+            },
+            exportTable: function () {
+                var tab = $('div#report-4').html();
+                fnExcelReport("Таблица 4", tab, css_table4, "Table4"); //
+            }
+        },
+
+        table_report_5 = {
+            viewTable: function () {
+                $('div#report-5').empty();
+                var tab = get_html_table5_star(list_daily_accounting.length);
+                $.each(list_daily_accounting, function (i, el) {
+
+                    var result = el.volume15_stop - el.volume15_start + el.volume15_delivery;
+
+                    tab += "<tr  class=xl6627014 style='height:auto'>" +
+                        "<td class=xl6527014 width=41 style='border-top:none;border-left:none;width:31pt'>&nbsp;</td>" +
+                        "<td class=xl6527014 width=112 style='border-top:none;border-left:none;width:84pt'>" + el.ukt_zed + "</td>" +
+                        "<td class=xl6527014 width=112 style='border-top:none;border-left:none;width:84pt'>" + outFuelTypeDescription(el.type) + "</td>" +
+                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_stop !== null ? Number(el.volume15_stop).toFixed(3) : "&nbsp;") + "</td>" +
+                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_start !== null ? Number(el.volume15_start).toFixed(3) : "&nbsp;") + "</td>" +
+                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_delivery !== null ? Number(el.volume15_delivery).toFixed(3) : "&nbsp;") + "</td>" +
+                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>&nbsp;</td>" +
+                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>&nbsp;</td>" +
+                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (result !== null ? Number(result).toFixed(3) : "&nbsp;") + "</td>" +
+                        "<td class=xl6527014 width=49 style='border-top:none;border-left:none;width:37pt'>&nbsp;</td>" +
+                        "</tr>";
+                });
+                tab += html_table5_stop;
+                $('div#report-5').html(tab);
+            },
+            exportTable: function () {
+                var tab = $('div#report-5').html();
+                fnExcelReport("Таблица 5", tab, css_table5, "Table5"); //
+            }
+        },
+
+        table_report_6 = {
+            viewTable: function () {
+                $('div#report-6').empty();
+                var tab = get_html_table6_star(list_daily_accounting.length);
+                $.each(list_daily_accounting, function (i, el) {
+
+                    var result = el.volume15_stop - el.volume15_start + el.volume15_delivery;
+                    tab += "<tr class=xl6631436 style='height:auto'>" +
+                        "<td class=xl6531436 width=55 style='border-top:none;border-left:none;width:41pt'>&nbsp;</td>" +
+                        "<td class=xl6531436 width=133 style='border-top:none;border-left:none;width:100pt'>" + el.ukt_zed + "</td>" +
+                        "<td class=xl6531436 width=193 style='border-top:none;border-left:none;width:145pt'>" + outFuelTypeDescription(el.type) + "</td>" +
+                        "<td class=xl6531436-number width=133 style='border-top:none;border-left:none;width:100pt'>" + (el.volume15_start !== null ? Number(el.volume15_start).toFixed(3) : "&nbsp;") + "</td>" +
+                        "<td class=xl6531436-number width=133 style='border-top:none;border-left:none;width:100pt'>" + (el.volume15_stop !== null ? Number(el.volume15_stop).toFixed(3) : "&nbsp;") + "</td>" +
+                        "<td class=xl6531436-number width=133 style='border-top:none;border -left:none;width:100pt'>" + (result !== null ? Number(result).toFixed(3) : "&nbsp;") + "</td>" +
+                        "<td class=xl6531436-number width=133 style='border-top:none;border-left:none;width:100pt'>" + (el.volume15_delivery !== null ? Number(el.volume15_delivery).toFixed(3) : "&nbsp;") + "</td>" +
+                        "<td class=xl6531436 width=71 style='border-top:none;border-left:none;width:53pt'>&nbsp;</td>" +
+                        "</tr>";
+
+                //    tab += "<tr  class=xl6627014 style='height:auto'>" +
+                //        "<td class=xl6527014 width=41 style='border-top:none;border-left:none;width:31pt'>&nbsp;</td>" +
+                //        "<td class=xl6527014 width=112 style='border-top:none;border-left:none;width:84pt'>" + el.ukt_zed + "</td>" +
+                //        "<td class=xl6527014 width=112 style='border-top:none;border-left:none;width:84pt'>" + outFuelTypeDescription(el.type) + "</td>" +
+                //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_stop !== null ? Number(el.volume15_stop).toFixed(3) : "&nbsp;") + "</td>" +
+                //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_start !== null ? Number(el.volume15_start).toFixed(3) : "&nbsp;") + "</td>" +
+                //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_delivery !== null ? Number(el.volume15_delivery).toFixed(3) : "&nbsp;") + "</td>" +
+                //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>&nbsp;</td>" +
+                //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>&nbsp;</td>" +
+                //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (result !== null ? Number(result).toFixed(3) : "&nbsp;") + "</td>" +
+                //        "<td class=xl6527014 width=49 style='border-top:none;border-left:none;width:37pt'>&nbsp;</td>" +
+                //        "</tr>";
+                });
+                tab += html_table6_stop;
+                $('div#report-6').html(tab);
+            },
+            exportTable: function () {
+                var tab = $('div#report-6').html();
+                fnExcelReport("Таблица 6", tab, css_table6, "Table6"); //
+            }
         };
+
     //-----------------------------------------------------------------------------------------
     // Функции
     //-----------------------------------------------------------------------------------------

@@ -703,7 +703,29 @@ var getAsyncViewDeliveryTanksReportGroupNumOfDate = function (date, callback) {
         },
     });
 };
-
+// Получить выдачи за сутки просуммированные по ГСМ 
+var getAsyncViewDeliveryTanksReportGroupFuelOfDate = function (date, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/dar_azs/delivery_tanks/group_fuel/date/' + toISOStringTZ(date).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+};
 /////////////////////////////////////////////////////////////////////
 // Веруть состояние экипировки ст Карьерная ГД
 var getAsyncViewLastTankStates = function (callback) {

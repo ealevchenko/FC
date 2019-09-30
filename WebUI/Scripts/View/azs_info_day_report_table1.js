@@ -573,7 +573,7 @@ var css_table1 = ".font520875 {" +
     "text-align: center;" +
     "vertical-align: middle;" +
     "border: .5pt solid black;" +
-    "background: yellow;" +
+    //"background: yellow;" +
     "mso-pattern: black none;" +
     "white-space: normal;" +
     "}" +
