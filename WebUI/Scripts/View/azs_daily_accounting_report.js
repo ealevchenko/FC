@@ -110,31 +110,13 @@
         date_start = null,
         date_stop = null,
         langs = $.extend(true, $.extend(true, getLanguages($.Text_View, lang), getLanguages($.Text_Common, lang)), getLanguages($.Text_Table, lang)),
-        // Загрузка библиотек
-        loadReference = function (callback) {
-            LockScreen(langView('mess_load', langs));
-            var count = 1;
-            // Загрузка списка карточек (common.js)
-            getReference_azsCards(function (result) {
-                reference_cards = result;
-                count -= 1;
-                if (count <= 0) {
-                    if (typeof callback === 'function') {
-                        LockScreenOff();
-                        callback();
-                    }
-                }
-            })
-        },
-        // список карточек
-        reference_cards = null,
-        //// Типы отчетов
+        // Типы отчетов
         tab_type_reports = {
             html_div: $("#tabs-reports"),
             active: 0,
             initObject: function () {
                 $('#link-tabs-report-1').text(langView('text_link_tabs_report_1', langs));
-                $('#link-tabs-report-2').text(langView('text_link_tabs_report_2', langs));
+                //$('#link-tabs-report-2').text(langView('text_link_tabs_report_2', langs));
                 this.html_div.tabs({
                     collapsible: true,
                     activate: function (event, ui) {
@@ -311,7 +293,6 @@
                 this.list = data;
                 this.obj_table.clear();
                 for (i = 0; i < data.length; i++) {
-                    //var cards = reference_cards != null ? reference_cards.getResult(data[i].id_card) : null;
                     this.obj_table.row.add({
                         "id": data[i].id,
                         "type": data[i].type,
@@ -379,7 +360,7 @@
             //
             viewTableDetali: function (data) {
 
-                var table_detali = $('table#table-detali-'+data.id).DataTable({
+                var table_detali = $('table#table-detali-' + data.id).DataTable({
                     //"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                     "paging": false,
                     "ordering": true,
@@ -466,7 +447,7 @@
                                 "fuel_type": result[i].fuel_type,
                                 "ukt_zed": result[i].ukt_zed,
                                 "tank": result[i].tank,
-                                "serial_number": result[i].serial_number !==null ? result[i].serial_number: result[i].tank,
+                                "serial_number": result[i].serial_number !== null ? result[i].serial_number : result[i].tank,
                                 "unified_tank_number": result[i].unified_tank_number,
                                 "type_name": result[i].type_name,
                                 "level_meters_model": result[i].level_meters_model,
@@ -542,10 +523,7 @@
     //-----------------------------------------------------------------------------------------
     panel_select_report.initObject();
     tab_type_reports.initObject();
-    //// Загрузка библиотек
-    loadReference(function (result) {
-        table_daili_report.initObject();
-        tab_type_reports.activeTable(tab_type_reports.active, true);
-    });
+    table_daili_report.initObject();
+    tab_type_reports.activeTable(tab_type_reports.active, true);
 
 });
