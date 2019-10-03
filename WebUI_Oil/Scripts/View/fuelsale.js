@@ -3,13 +3,11 @@
     var date_curent = new Date(),
         date_start = null,
         date_stop = null,
-        //// Типы отчетов
-        tab_type_reports = {
+         tab_type_reports = {
             html_div: $("#tabs-reports"),
             active: 0,
             initObject: function () {
                 $('#link-tabs-report-1').text('Ведомость');
-                $('#link-tabs-report-2').text('');
                 this.html_div.tabs({
                     collapsible: true,
                     activate: function (event, ui) {
@@ -46,7 +44,6 @@
             span1: $('<span id="select-range"></span>'),
             input_data_start: $('<input id="date-start" name="date-start" size="20">'),
             input_data_stop: $('<input id="date-stop" name="date-stop" size="20">'),
-
             initObject: function () {
                 this.span.append(this.input_date);
                 obj = this.html_div_panel;
@@ -138,10 +135,10 @@
                     date_start = new Date(date_curent.getFullYear(), date_curent.getMonth(), date_curent.getDate(), 7, 0, 0);
                     date_stop = new Date(date_curent.getFullYear(), date_curent.getMonth(), date_curent.getDate(), 18, 59, 59);
                 }
-                    var date_curent_start = date_start.getDate() + '.' + (date_start.getMonth() + 1) + '.' + date_start.getFullYear() + ' ' + date_start.getHours() + ':' + date_start.getMinutes();
-                    var date_curent_stop = date_stop.getDate() + '.' + (date_stop.getMonth() + 1) + '.' + date_stop.getFullYear() + ' ' + date_stop.getHours() + ':' + date_stop.getMinutes();
-                    this.obj_date1.data('dateRangePicker').setDateRange(date_curent_start, date_curent_stop, true);
-                    tab_type_reports.activeTable(tab_type_reports.active, true);
+                var date_curent_start = date_start.getDate() + '.' + (date_start.getMonth() + 1) + '.' + date_start.getFullYear() + ' ' + date_start.getHours() + ':' + date_start.getMinutes();
+                var date_curent_stop = date_stop.getDate() + '.' + (date_stop.getMonth() + 1) + '.' + date_stop.getFullYear() + ' ' + date_stop.getHours() + ':' + date_stop.getMinutes();
+                this.obj_date1.data('dateRangePicker').setDateRange(date_curent_start, date_curent_stop, true);
+                tab_type_reports.activeTable(tab_type_reports.active, true);
             }
         },
         // Таблица 
@@ -264,15 +261,15 @@
                         { data: "TankNo", title: '№ Бака', width: "50px", orderable: true, searchable: true },
                         { data: "OilType", title: 'Тип Масла', width: "50px", orderable: true, searchable: true },
                         //{ data: "Invent", title: 'Инв. №', width: "100px", orderable: true, searchable: true },
-                        //{ data: "Receiver", title: 'Получатель', width: "50px", orderable: false, searchable: false },
+                        { data: "Receiver", title: 'Получатель', width: "50px", orderable: false, searchable: false },
                         { data: "TargetVolume", title: 'Объем (м3)', width: "50px", orderable: false, searchable: false },
-                        //{ data: "CreatedDens", title: 'Плотность (кг/м3)', width: "50px", orderable: false, searchable: false },
+                        { data: "CreatedDens", title: 'Плотность (кг/м3)', width: "50px", orderable: false, searchable: false },
                         { data: "TargetMass", title: 'Масса (т)', width: "50px", orderable: false, searchable: false },
                     ],
                     dom: 'Blftipr',
                     buttons: [
                         'copyHtml5',
-                        'excelHtml5',
+                        'excelHtml5'
                     ]
                 });
             },
@@ -281,7 +278,7 @@
                 LockScreen('Мы обрабатываем ваш запрос...');
                 if (this.list === null | data_refresh === true) {
                     // Обновим данные
-                    getAsyncViewOilReceiptOfDateTime(
+                    getAsyncViewOilSalesOfDateTime(
                         date_start, date_stop,
                         function (result) {
                             table_report.list = result;
@@ -305,10 +302,10 @@
                         "TankNo": data[i].TankNo,
                         "OilType": data[i].OilType,
                         //"Invent": data[i].Invent,
-                        //"Receiver": data[i].Receiver,
-                        "TargetVolume": data[i].CreatedVolume !== null ? Number(data[i].CreatedVolume).toFixed(3) : null,
-                        //"CreatedDens": data[i].CreatedDens !== null ? data[i].CreatedDens.toFixed(1) : null,
-                        "TargetMass": data[i].CreatedMass !== null ? Number(data[i].CreatedMass).toFixed(3) : null,
+                        "Receiver": data[i].Receiver,
+                        "TargetVolume": data[i].TargetVolume !== null ? (data[i].TargetVolume / 1000).toFixed(3) : null,
+                        "CreatedDens": data[i].CreatedDens !== null ? data[i].CreatedDens.toFixed(1) : null,
+                        "TargetMass": data[i].TargetMass !== null ? (data[i].TargetMass / 1000).toFixed(3) : null,
                     });
                 }
                 LockScreenOff();

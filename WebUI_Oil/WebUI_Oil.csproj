@@ -22,6 +22,8 @@
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -184,6 +186,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\api\IncomesController.cs" />
+    <Compile Include="Controllers\api\OutcomesController.cs" />
+    <Compile Include="Controllers\api\TransferController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -578,6 +582,8 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\View\common.js" />
+    <Content Include="Scripts\View\transfer.js" />
+    <Content Include="Scripts\View\fuelsale.js" />
     <Content Include="Scripts\View\receipts.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -606,6 +612,8 @@
     <Content Include="Scripts\popper.min.js.map" />
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Views\Home\Receipts.cshtml" />
+    <Content Include="Views\Home\FuelSale.cshtml" />
+    <Content Include="Views\Home\Transfer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

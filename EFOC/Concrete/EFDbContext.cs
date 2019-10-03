@@ -20,11 +20,13 @@
         public virtual DbSet<Oil_Types> Oil_Types { get; set; }
         public virtual DbSet<Outcomes> Outcomes { get; set; }
 
+        public virtual DbSet<Perek_Rep_View> Perek_Rep_View { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Incomes>()
-    .Property(e => e.DensStop)
-    .HasPrecision(4, 1);
+                .Property(e => e.DensStop)
+                .HasPrecision(4, 1);
 
             modelBuilder.Entity<Outcomes>()
                 .Property(e => e.OperatorCreated)
@@ -45,6 +47,58 @@
             modelBuilder.Entity<Outcomes>()
                 .Property(e => e.OperatorStarted)
                 .IsFixedLength();
+
+            modelBuilder.Entity<Perek_Rep_View>()
+                .Property(e => e.out_tank)
+                .IsFixedLength();
+
+            modelBuilder.Entity<Perek_Rep_View>()
+                .Property(e => e.OilType)
+                .IsFixedLength();
+
+            modelBuilder.Entity<Perek_Rep_View>()
+                .Property(e => e.out_dv)
+                .HasPrecision(10, 3);
+
+            modelBuilder.Entity<Perek_Rep_View>()
+                .Property(e => e.out_dens)
+                .HasPrecision(10, 1);
+
+            modelBuilder.Entity<Perek_Rep_View>()
+                .Property(e => e.out_dm_real)
+                .HasPrecision(10, 3);
+
+            modelBuilder.Entity<Perek_Rep_View>()
+                .Property(e => e.out_dm_calc)
+                .HasPrecision(10, 3);
+
+            modelBuilder.Entity<Perek_Rep_View>()
+                .Property(e => e.in_dv)
+                .HasPrecision(10, 3);
+
+            modelBuilder.Entity<Perek_Rep_View>()
+                .Property(e => e.in_dens)
+                .HasPrecision(10, 3);
+
+            modelBuilder.Entity<Perek_Rep_View>()
+                .Property(e => e.in_dm_real)
+                .HasPrecision(10, 3);
+
+            modelBuilder.Entity<Perek_Rep_View>()
+                .Property(e => e.in_dm_calc)
+                .HasPrecision(10, 3);
+
+            modelBuilder.Entity<Perek_Rep_View>()
+                .Property(e => e.delta_v)
+                .HasPrecision(10, 3);
+
+            modelBuilder.Entity<Perek_Rep_View>()
+                .Property(e => e.delta_m_real)
+                .HasPrecision(10, 3);
+
+            modelBuilder.Entity<Perek_Rep_View>()
+                .Property(e => e.delta_m_calc)
+                .HasPrecision(10, 3);
         }
     }
 }

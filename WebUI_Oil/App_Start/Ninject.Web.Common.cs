@@ -69,6 +69,7 @@ namespace WebUI_Oil.App_Start
         {
             kernel.Bind<IRepository<Outcomes>>().To<EFOutcomes>();
             kernel.Bind<IRepository<Incomes>>().To<EFIncomes>();
+            kernel.Bind<IRepository<Perek_Rep_View>>().To<EFPerek_Rep_View>();
         }        
     }
 }

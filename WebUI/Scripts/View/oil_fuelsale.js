@@ -298,6 +298,11 @@
                         { data: "CreatedDens", title: langView('field_CreatedDens', langs), width: "50px", orderable: false, searchable: false },
                         { data: "TargetMass", title: langView('field_TargetMass', langs), width: "50px", orderable: false, searchable: false },
                     ],
+                    dom: 'Blftipr',
+                    buttons: [
+                        'copyHtml5',
+                        'excelHtml5',
+                    ]
                 });
             },
             // Показать таблицу с данными

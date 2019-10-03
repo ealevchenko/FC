@@ -18,5 +18,13 @@ namespace WebUI_Oil.Controllers
         {
             return View();
         }
+        public ActionResult FuelSale()
+        {
+            return View();
+        }
+        public ActionResult Transfer()
+        {
+            return View();
+        }
     }
 }

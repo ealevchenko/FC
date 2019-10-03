@@ -125,34 +125,6 @@ var AJAXComplete = function () {
     //LockScreenOff();
 };
 
-var language_table = function () {
-    return {
-        "decimal": "",
-        "emptyTable": "Нет данных в таблице",
-        "info": "Отображение _START_ по _END_ из _TOTAL_ записей",
-        "infoEmpty": "Отображение 0 to 0 of 0 записей",
-        "infoFiltered": "(отфильтровано из _MAX_ всего записей)",
-        "infoPostFix": "",
-        "thousands": ".",
-        "lengthMenu": "Показать  _MENU_ записей",
-        "loadingRecords": "Загрузка...",
-        "processing": "Обработка ...",
-        "search": "Найти:",
-        "zeroRecords": "Не найдено совпадающих записей",
-        "paginate": {
-            "first": "Первая",
-            "last": "Последняя",
-            "next": "Следующая",
-            "previous": "Предыдущая"
-        },
-        "aria": {
-            "sortAscending": ": активировать сортировку столбца по возрастанию",
-            "sortDescending": ": активировать сортировку колонки по убыванию"
-        },
-    }
-}
-
-
 /* ----------------------------------------------------------
     AJAX функции
 -------------------------------------------------------------*/
@@ -161,7 +133,7 @@ var language_table = function () {
 var getAsyncViewOilSalesOfDateTime = function (start, stop, callback) {
     $.ajax({
         type: 'GET',
-        url: '../../api/oil/outcomes/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
+        url: '../api/oil/outcomes/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
         async: true,
         dataType: 'json',
         beforeSend: function () {
@@ -226,3 +198,26 @@ var getAsyncViewOilRemainsTanksOfDateTime = function (date, callback) {
         }
     });
 }
+// Веруть перекачку масла из ЦСМ
+var getAsyncViewOilTransferOfDateTime = function (start, stop, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../api/oil/transfer/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+};

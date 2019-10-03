@@ -55,6 +55,7 @@
     <Compile Include="Concrete\EFCat_Werks.cs" />
     <Compile Include="Concrete\EFCat_OZM.cs" />
     <Compile Include="Concrete\EFCat_Depots.cs" />
+    <Compile Include="Concrete\EFPerek_Rep_View.cs" />
     <Compile Include="Concrete\EFOil_Types.cs" />
     <Compile Include="Concrete\EFIncomes.cs" />
     <Compile Include="Concrete\EFOutcomes.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Entities\Incomes.cs" />
     <Compile Include="Entities\Oil_Types.cs" />
     <Compile Include="Entities\Outcomes.cs" />
+    <Compile Include="Entities\Perek_Rep_View.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
