@@ -26,5 +26,10 @@ namespace WebUI_Oil.Controllers
         {
             return View();
         }
+        public ActionResult Remains()
+        {
+            return View();
+        }
+
     }
 }

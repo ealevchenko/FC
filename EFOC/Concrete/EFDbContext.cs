@@ -20,6 +20,8 @@
         public virtual DbSet<Oil_Types> Oil_Types { get; set; }
         public virtual DbSet<Outcomes> Outcomes { get; set; }
 
+        public virtual DbSet<RemainsTanks> RemainsTanks { get; set; }
+
         public virtual DbSet<Perek_Rep_View> Perek_Rep_View { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

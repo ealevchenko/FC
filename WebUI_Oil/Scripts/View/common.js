@@ -179,7 +179,7 @@ var getAsyncViewOilReceiptOfDateTime = function (start, stop, callback) {
 var getAsyncViewOilRemainsTanksOfDateTime = function (date, callback) {
     $.ajax({
         type: 'GET',
-        url: '../../api/oil/remains_tanks/date/' + toISOStringTZ(date).substring(0, 19),
+        url: '../api/oil/remains_tanks/date/' + toISOStringTZ(date).substring(0, 19),
         async: true,
         dataType: 'json',
         beforeSend: function () {

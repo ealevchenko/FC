@@ -37,3 +37,86 @@ h1 {
 #table-panel label {
     margin: 5px;
 }
+
+table#table-remains-tanks td.total-foot {
+    text-align: right;
+    color: #0026ff;
+    font-weight: bold;
+}
+
+table#table-remains-tanks th.title-foot {
+    text-align: right;
+    color: #000;
+    font-style: italic;
+    font-weight: bold;
+}
+
+table#table-remains-tanks td {
+    text-align: right;
+}
+
+    table#table-remains-tanks td:first-child {
+        text-align: left;
+    }
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+}
+
+    .table th,
+    .table td {
+        padding: 10px;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+    }
+
+    .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #dee2e6;
+    }
+
+    .table tbody + tbody {
+        border-top: 2px solid #dee2e6;
+    }
+
+    .table .table {
+        background-color: #fff;
+    }
+
+
+tr.group, tr.group:hover {
+    background-color: #ddd !important;
+}
+
+/*GROUP*/
+
+.group {
+    color: #0b23a7;
+    font-weight: bold;
+}
+
+#table-remains-tanks tr.group1 {
+    color: White;
+    background: #4b589d;
+    font-weight: bold;
+}
+
+    #table-remains-tanks tr.group1, #table-remains-tanks tr.group1:hover {
+        color: White;
+        background: #0b23a7;
+        font-weight: bold;
+    }
+
+#table-remains-tanks-fft tr.group1 {
+    color: White;
+    background: #4b589d;
+    font-weight: bold;
+}
+
+    #table-remains-tanks-fft tr.group1, #table-remains-tanks-fft tr.group1:hover {
+        color: White;
+        background: #0b23a7;
+        font-weight: bold;
+    }
