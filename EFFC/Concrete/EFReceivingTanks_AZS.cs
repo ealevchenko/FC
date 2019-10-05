@@ -20,6 +20,11 @@ namespace EFFC.Concrete
             this.db = db;
         }
 
+        public EFReceivingTanks_AZS()
+        {
+            this.db = new EFDbContext();
+        }
+
         public Database Database
         {
             get { return this.db.Database; }
@@ -60,7 +65,17 @@ namespace EFFC.Concrete
 
             }
         }
+        public void Add(List<ReceivingTanks_AZS> items)
+        {
+            try
+            {
+                db.Inserts<ReceivingTanks_AZS>(items);
+            }
+            catch (Exception e)
+            {
 
+            }
+        }
         public void Update(ReceivingTanks_AZS item)
         {
             try

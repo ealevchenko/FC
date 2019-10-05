@@ -19,7 +19,11 @@ namespace EFFC.Concrete
 
             this.db = db;
         }
+        public EFDeliveryTanks_AZS()
+        {
 
+            this.db = new EFDbContext();
+        }
         public Database Database
         {
             get { return this.db.Database; }
@@ -54,6 +58,18 @@ namespace EFFC.Concrete
             try
             {
                 db.Insert<DeliveryTanks_AZS>(item);
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
+
+        public void Add(List<DeliveryTanks_AZS> items)
+        {
+            try
+            {
+                db.Inserts<DeliveryTanks_AZS>(items);
             }
             catch (Exception e)
             {

@@ -20,6 +20,12 @@ namespace EFFC.Concrete
             this.db = db;
         }
 
+        public EFDaily_Accounting_Report_AZS()
+        {
+
+            this.db = new EFDbContext();
+        }
+
         public Database Database
         {
             get { return this.db.Database; }
@@ -60,7 +66,17 @@ namespace EFFC.Concrete
 
             }
         }
+        public void Add(List<Daily_Accounting_Report_AZS> items)
+        {
+            try
+            {
+                db.Inserts<Daily_Accounting_Report_AZS>(items);
+            }
+            catch (Exception e)
+            {
 
+            }
+        }
         public void Update(Daily_Accounting_Report_AZS item)
         {
             try

@@ -19,6 +19,11 @@ namespace EFFC.Concrete
 
             this.db = db;
         }
+        public EFRemainsTanks_AZS()
+        {
+
+            this.db = new EFDbContext();
+        }
 
         public Database Database
         {
@@ -60,7 +65,17 @@ namespace EFFC.Concrete
 
             }
         }
+        public void Add(List<RemainsTanks_AZS> items)
+        {
+            try
+            {
+                db.Inserts<RemainsTanks_AZS>(items);
+            }
+            catch (Exception e)
+            {
 
+            }
+        }
         public void Update(RemainsTanks_AZS item)
         {
             try
