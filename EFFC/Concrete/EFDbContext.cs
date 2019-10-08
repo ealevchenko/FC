@@ -51,6 +51,8 @@
         public virtual DbSet<ReceivingTanks_AZS> ReceivingTanks_AZS { get; set; }
         public virtual DbSet<RemainsTanks_AZS> RemainsTanks_AZS { get; set; }
 
+        public virtual DbSet<Cat_TRK_AZS> Cat_TRK_AZS { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

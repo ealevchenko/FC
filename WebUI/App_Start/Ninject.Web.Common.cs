@@ -99,7 +99,7 @@ namespace WebUI.App_Start
             kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.RemainsTanks_AZS>>().To<EFFC.Concrete.EFRemainsTanks_AZS>();
             kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.ReceivingTanks_AZS>>().To<EFFC.Concrete.EFReceivingTanks_AZS>();
             kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.DeliveryTanks_AZS>>().To<EFFC.Concrete.EFDeliveryTanks_AZS>();
-
+            kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.Cat_TRK_AZS>>().To<EFFC.Concrete.EFCat_TRK_AZS>();
 
             kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.Receipts_OIL>>().To<EFFC.Concrete.EFReceipts_OIL>();
             kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.FuelSale_OIL>>().To<EFFC.Concrete.EFFuelSale_OIL>();

@@ -41,20 +41,45 @@ namespace WebUI.Controllers.api
         protected IRepository<RemainsTanks_AZS> ef_remt;
         protected IRepository<ReceivingTanks_AZS> ef_rect;
         protected IRepository<DeliveryTanks_AZS> ef_dt;
+        protected IRepository<Cat_TRK_AZS> ef_ctrk;
         public DCDailyAccountingReport_AZSController(IRepository<Daily_Accounting_Report_AZS> dar, 
             IRepository<Daily_Accounting_Detali_Report_AZS> dadr,
             IRepository<RemainsTanks_AZS> remt,
             IRepository<ReceivingTanks_AZS> rect,
-            IRepository<DeliveryTanks_AZS> dt)
+            IRepository<DeliveryTanks_AZS> dt,
+             IRepository<Cat_TRK_AZS> ctrk
+            )
         {
             this.ef_dar = dar;
             this.ef_dadr = dadr;
             this.ef_remt = remt;
             this.ef_rect = rect;
             this.ef_dt = dt;
-
+            this.ef_ctrk = ctrk;
         }
 
+        // GET: api/dar_azs/catalog/trk/all
+        [Route("catalog/trk/all")]
+        [ResponseType(typeof(Cat_TRK_AZS))]
+        public IHttpActionResult GetCatalogTRK()
+        {
+            try
+            {
+                List<Cat_TRK_AZS> list = this.ef_ctrk
+                    .Get()
+                    .ToList();
+                if (list == null)
+                {
+                    return NotFound();
+                }
+                return Ok(list);
+            }
+            catch (Exception e)
+            {
+                return NotFound();
+            }
+        }
+        
         // GET: api/dar_azs/daily_accounting_report/start/2019-09-01T00:00:00/stop/2019-09-15T00:00:00
         [Route("daily_accounting_report/start/{start:datetime}/stop/{stop:datetime}")]
         [ResponseType(typeof(Daily_Accounting_Report_AZS))]

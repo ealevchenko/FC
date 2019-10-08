@@ -177,6 +177,44 @@ var toISOStringTZ = function (date) {
     return new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString();
 };
 
+var outOZMFuelType = function (i) {
+    switch (i) {
+        case 9:
+        case 10:
+        case 11:
+        case 12:
+        case 13:
+        case 14:
+        case 17:
+        case 18:
+        case 23:
+        case 24:
+        case 27:
+        case 28:
+            return 107000022; // А92
+        case 15:
+        case 16:
+        case 19:
+        case 20:
+        case 21:
+        case 22:
+        case 25:
+        case 26:
+            return 107000023; // А95
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 29:
+            return 107000024; // ДТ
+    }
+};
+
+
 var outVal = function (i) {
     return i != null ? Number(i) : '';
 };
@@ -338,7 +376,7 @@ var getAsyncViewazsCards = function (callback) {
 var getAsyncViewazsCardsOfID = function (id, callback) {
     $.ajax({
         type: 'GET',
-        url: '../../api/azs/cards/'+id,
+        url: '../../api/azs/cards/' + id,
         async: true,
         dataType: 'json',
         beforeSend: function () {
@@ -488,7 +526,7 @@ var getAsyncViewazsDeparts = function (callback) {
     });
 }
 // Загрузить библиотеку
-var getReference_azsDeparts = function(callback) {
+var getReference_azsDeparts = function (callback) {
     var ref = {
         list: [],
         initObject: function () {
@@ -541,6 +579,29 @@ var getAsyncViewLastazsTankStates = function (callback) {
         },
     });
 }
+// Веруть каталог ТРК АЗС 
+var getAsyncViewCatalogTRK = function (callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/dar_azs/catalog/trk/all',
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+};
 /////////////////////////////////////////////////////////////////////
 // Веруть заправочную ведомость
 var getAsyncViewazsFuelSaleOfDateTime = function (start, stop, callback) {
@@ -1131,25 +1192,25 @@ function fnExcelReport(name_tab, tab, css, name_file) {
     tab_text = tab_text + '<x:ExcelWorkbook>';
     tab_text = tab_text + '<x:ExcelWorksheets>';
     tab_text = tab_text + '<x:ExcelWorksheet>';
-    tab_text = tab_text + '<x:Name>'+name_tab+'</x:Name>';
+    tab_text = tab_text + '<x:Name>' + name_tab + '</x:Name>';
     tab_text = tab_text + '<x:WorksheetOptions>';
     tab_text = tab_text + '<x:Panes></x:Panes>';
     tab_text = tab_text + '</x:WorksheetOptions>';
     tab_text = tab_text + '</x:ExcelWorksheet>';
     tab_text = tab_text + '</x:ExcelWorksheets>';
-    
+
     tab_text = tab_text + '</x:ExcelWorkbook>';
     tab_text = tab_text + '</xml>';
 
     tab_text = tab_text + '<style>' + css + '</style>';
 
-   tab_text = tab_text + '</head><body>';
+    tab_text = tab_text + '</head><body>';
 
     //tab_text = tab_text + "<table>";
     //var tab = $('#table-list-wagons-tracking').html();
     tab_text = tab_text + tab;
     //tab_text = tab_text + '</table>';
-        
+
     tab_text = tab_text + '</body></html>';
 
     tab_text = tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table

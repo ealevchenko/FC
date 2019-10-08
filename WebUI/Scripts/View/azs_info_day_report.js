@@ -37,7 +37,7 @@
         // Загрузка библиотек
         loadData = function (date, callback) {
             LockScreen(langView('mess_delay', langs));
-            var count = 4;
+            var count = 5;
             // Загрузка списка общего отчета за сутки (common.js)
             getAsyncViewDailyAccountingReportOfDate(date, function (result_daily_accounting) {
                 list_daily_accounting = result_daily_accounting;
@@ -82,12 +82,24 @@
                     }
                 }
             });
+            // Получить каталог ТРК  (common.js)
+            getAsyncViewCatalogTRK(function (result_catalog_trkl) {
+                list_catalog_trk = result_catalog_trkl;
+                count -= 1;
+                if (count <= 0) {
+                    if (typeof callback === 'function') {
+                        LockScreenOff();
+                        callback();
+                    }
+                }
+            });
         },
         // список 
         list_daily_accounting = [],
         list_daily_accounting_detali = [],
         list_delivery_tanks_group_num = [],
         list_delivery_tanks_group_fuel = [],
+        list_catalog_trk = [],
 
         //// Типы отчетов
         tab_type_reports = {
@@ -223,7 +235,7 @@
                 var formatter = new Intl.NumberFormat("ru");
                 //formatter.format()
                 $.each(list_daily_accounting_detali, function (i, el) {
-                    if (el.tank !== "B13") {
+                    if (el.tank !== "B13" && el.tank !== "PL107000022" && el.tank !== "PL107000023" && el.tank !== "PL107000024" && el.tank !== "PL107000027") {
                         tab += "<tr style='height:auto;'>" +
                             "<td class=xl7020875 width=24 style='width:18pt'>&nbsp;</td>" +
                             "<td class=xl7420875 width=51 style='border-top:none;border-left:none;width:38pt'>&nbsp;</td>" +
@@ -258,12 +270,57 @@
                 var tab = html_table2_start;
                 var formatter = new Intl.NumberFormat("ru");
                 $.each(list_daily_accounting, function (i, el) {
+
+                    var PL107000022;
+                    var PL107000023;
+                    var PL107000024;
+                    var PL107000027;
+
+                    var res_107000022 = getObjects(list_daily_accounting_detali, 'tank', 'PL107000022');
+                    if (res_107000022 && res_107000022.length > 0) {
+                        PL107000022 = res_107000022[0];
+                    }
+                    var res_107000023 = getObjects(list_daily_accounting_detali, 'tank', 'PL107000023');
+                    if (res_107000023 && res_107000023.length > 0) {
+                        PL107000023 = res_107000023[0];
+                    }
+                    var res_107000024 = getObjects(list_daily_accounting_detali, 'tank', 'PL107000024');
+                    if (res_107000024 && res_107000024.length > 0) {
+                        PL107000024 = res_107000024[0];
+                    }
+                    var res_107000027 = getObjects(list_daily_accounting_detali, 'tank', 'PL107000027');
+                    if (res_107000027 && res_107000027.length > 0) {
+                        PL107000027 = res_107000027[0];
+                    }
+
+                    var volume15_start = 0;
+                    var volume15_stop = 0;
+
+                    switch (el.type) {
+                        case 107000022:
+                            volume15_start = (el.volume15_start !== null ? el.volume15_start - PL107000022.volume15_remains_start : 0);
+                            volume15_stop = (el.volume15_stop !== null ? el.volume15_stop - PL107000022.volume15_remains_stop : 0);
+                            break;
+                        case 107000023:
+                            volume15_start = (el.volume15_start !== null ? el.volume15_start - PL107000023.volume15_remains_start : 0);
+                            volume15_stop = (el.volume15_stop !== null ? el.volume15_stop - PL107000023.volume15_remains_stop : 0);
+                            break;
+                        case 107000024:
+                            volume15_start = (el.volume15_start !== null ? el.volume15_start - PL107000024.volume15_remains_start : 0);
+                            volume15_stop = (el.volume15_stop !== null ? el.volume15_stop - PL107000024.volume15_remains_stop : 0);
+                            break;
+                        case 107000027:
+                            volume15_start = (el.volume15_start !== null ? el.volume15_start - PL107000027.volume15_remains_start : 0);
+                            volume15_stop = (el.volume15_stop !== null ? el.volume15_stop - PL107000027.volume15_remains_stop : 0);
+                            break;
+                    }
+
                     tab += "<tr style='height:auto'>" +
                         "<td class=xl671827 width=183 style='border-top:none;border-left:none;width:137pt'>&nbsp;</td>" +
                         "<td class=xl671827 width=183 style='border-top:none;border-left:none;width:137pt'>" + el.ukt_zed + "</td>" +
                         "<td class=xl671827 width=183 style='border-top:none;border-left:none;width:137pt'>" + outFuelTypeDescription(el.type) + "</td>" +
-                        "<td class=xl671827-number width=183 style='border-top:none;border-left:none;width:137pt'>" + (el.volume15_start !== null ? Number(el.volume15_start).toFixed(3) : "&nbsp;") + "</td>" +
-                        "<td class=xl671827-number width=183 style='border-top:none;border-left:none;width:137pt'>" + (el.volume15_stop !== null ? Number(el.volume15_stop).toFixed(3) : "&nbsp;") + "</td>" +
+                        "<td class=xl671827-number width=183 style='border-top:none;border-left:none;width:137pt'>" + (volume15_start).toFixed(3) + "</td>" +
+                        "<td class=xl671827-number width=183 style='border-top:none;border-left:none;width:137pt'>" + (volume15_stop).toFixed(3) + "</td>" +
                         "<td class=xl671827 width=183 style='border-top:none;border-left:none;width:137pt'>&nbsp;</td>" +
                         "</tr>";
                 });
@@ -279,18 +336,94 @@
         table_report_3 = {
             viewTable: function () {
                 $('div#report-3').empty();
-                var tab = get_html_table3_star(list_delivery_tanks_group_num.length);
-                $.each(list_delivery_tanks_group_num, function (i, el) {
-                    tab += "<tr class=xl6527789 style='height:auto'>" +
-                        "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>&nbsp;</td>" +
-                        "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + el.ukt_zed + "</td>" +
-                        "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + outFuelTypeDescription(el.fuel_type) + "</td>" +
-                        "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + el.serial_number_flowmeter + "/" + el.identification_number_flowmeter + "(" + el.num + ")" + "</td>" +
-                        "<td class=xl6427789-number width=170 style='border-top:none;border-left:none;width:128pt'>" + (el.volume_delivery !== null ? Number(el.volume_delivery).toFixed(3) : "&nbsp;") + "</td>" +
-                        "<td class=xl6427789 width=147 style='border-top:none;border-left:none;width:110pt'>&nbsp;</td>" +
-                        "<td class=xl6427789 width=45 style='border-top:none;border-left:none;width:34pt'>&nbsp;</td>" +
-                        "</tr>";
+                //var tab = get_html_table3_star(list_delivery_tanks_group_num.length);
+                var tab = get_html_table3_star(32);
+                var ns1 =null, ns2=null, ns3=null;
+                $.each([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], function (i, el) {
+                    var gun = getObjects(list_delivery_tanks_group_num, 'num', el);
+                    if (gun && gun.length > 0) {
+                        var gun_value = gun[0];
+
+                        switch ($.trim(gun_value.name_trk)) {
+                            case "Правый стояк": ns1 = gun_value; break;
+                            case "Средний стояк": ns2 = gun_value; break;
+                            case "Левый стояк": ns3 = gun_value; break;
+                            default:
+                                tab += "<tr class=xl6527789 style='height:auto'>" +
+                                    "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>&nbsp;</td>" +
+                                    "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + gun_value.ukt_zed + "</td>" +
+                                    "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + outFuelTypeDescription(gun_value.fuel_type) + "</td>" +
+                                    "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + gun_value.serial_number_flowmeter + "/" + gun_value.identification_number_flowmeter + "(" + gun_value.num + ")" + "</td>" +
+                                    "<td class=xl6427789-number width=170 style='border-top:none;border-left:none;width:128pt'>" + (gun_value.volume_delivery !== null ? Number(gun_value.volume_delivery).toFixed(3) : "&nbsp;") + "</td>" +
+                                    "<td class=xl6427789 width=147 style='border-top:none;border-left:none;width:110pt'>&nbsp;</td>" +
+                                    "<td class=xl6427789 width=45 style='border-top:none;border-left:none;width:34pt'>&nbsp;</td>" +
+                                    "</tr>";
+                                break;
+                        }
+                    } else {
+                        var catalog = getObjects(list_catalog_trk, 'num', el);
+                        if (catalog && catalog.length > 0) {
+                            var cat = catalog[0];
+                            tab += "<tr class=xl6527789 style='height:auto'>" +
+                                "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>&nbsp;</td>" +
+                                "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + outFuelTypeUKTZED(outOZMFuelType(el)) + "</td>" +
+                                "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + outFuelTypeDescription(outOZMFuelType(el)) + "</td>" +
+                                "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + cat.serial_number_flowmeter + "/" + cat.identification_number_flowmeter + "(" + cat.num + ")" + "</td>" +
+                                "<td class=xl6427789-number width=170 style='border-top:none;border-left:none;width:128pt'>" + Number(0).toFixed(3) + "</td>" +
+                                "<td class=xl6427789 width=147 style='border-top:none;border-left:none;width:110pt'>&nbsp;</td>" +
+                                "<td class=xl6427789 width=45 style='border-top:none;border-left:none;width:34pt'>&nbsp;</td>" +
+                                "</tr>";
+                        }
+                    }
                 });
+                var catalog_ns10 = getObjects(list_catalog_trk, 'trk', 10);
+                if (catalog_ns10 && catalog_ns10.length > 0) {
+                    var catalog_ns1 = getObjects(catalog_ns10, 'active', 1);
+                    if (catalog_ns1 && catalog_ns1.length > 0) {
+                        var cat_ns1 = catalog_ns1[0];
+                        tab += "<tr class=xl6527789 style='height:auto'>" +
+                            "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>&nbsp;</td>" +
+                            "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + outFuelTypeUKTZED(cat_ns1.type_fuel) + "</td>" +
+                            "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + outFuelTypeDescription(cat_ns1.type_fuel) + "</td>" +
+                            "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + cat_ns1.serial_number_flowmeter + "(" + cat_ns1.name + ")" + "</td>" +
+                            "<td class=xl6427789-number width=170 style='border-top:none;border-left:none;width:128pt'>" + (ns1 != null ? Number(ns1.volume_delivery).toFixed(3) : Number(0).toFixed(3)) + "</td>" +
+                            "<td class=xl6427789 width=147 style='border-top:none;border-left:none;width:110pt'>&nbsp;</td>" +
+                            "<td class=xl6427789 width=45 style='border-top:none;border-left:none;width:34pt'>&nbsp;</td>" +
+                            "</tr>";
+                    }
+                }
+                var catalog_ns11 = getObjects(list_catalog_trk, 'trk', 11);
+                if (catalog_ns11 && catalog_ns11.length > 0) {
+                    var catalog_ns2 = getObjects(catalog_ns11, 'active', 1);
+                    if (catalog_ns2 && catalog_ns2.length > 0) {
+                        var cat_ns2 = catalog_ns2[0];
+                        tab += "<tr class=xl6527789 style='height:auto'>" +
+                            "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>&nbsp;</td>" +
+                            "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + outFuelTypeUKTZED(cat_ns2.type_fuel) + "</td>" +
+                            "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + outFuelTypeDescription(cat_ns2.type_fuel) + "</td>" +
+                            "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + cat_ns2.serial_number_flowmeter + "(" + cat_ns2.name + ")" + "</td>" +
+                            "<td class=xl6427789-number width=170 style='border-top:none;border-left:none;width:128pt'>" + (ns2 != null ? Number(ns2.volume_delivery).toFixed(3) : Number(0).toFixed(3)) + "</td>" +
+                            "<td class=xl6427789 width=147 style='border-top:none;border-left:none;width:110pt'>&nbsp;</td>" +
+                            "<td class=xl6427789 width=45 style='border-top:none;border-left:none;width:34pt'>&nbsp;</td>" +
+                            "</tr>";
+                    }
+                }
+                var catalog_ns12 = getObjects(list_catalog_trk, 'trk', 12);
+                if (catalog_ns12 && catalog_ns12.length > 0) {
+                    var catalog_ns3 = getObjects(catalog_ns12, 'active', 1);
+                    if (catalog_ns3 && catalog_ns3.length > 0) {
+                        var cat_ns3 = catalog_ns3[0];
+                        tab += "<tr class=xl6527789 style='height:auto'>" +
+                            "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>&nbsp;</td>" +
+                            "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + outFuelTypeUKTZED(cat_ns3.type_fuel) + "</td>" +
+                            "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + outFuelTypeDescription(cat_ns3.type_fuel) + "</td>" +
+                            "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + cat_ns3.serial_number_flowmeter + "(" + cat_ns3.name + ")" + "</td>" +
+                            "<td class=xl6427789-number width=170 style='border-top:none;border-left:none;width:128pt'>" + (ns3 != null ? Number(ns3.volume_delivery).toFixed(3) : Number(0).toFixed(3)) + "</td>" +
+                            "<td class=xl6427789 width=147 style='border-top:none;border-left:none;width:110pt'>&nbsp;</td>" +
+                            "<td class=xl6427789 width=45 style='border-top:none;border-left:none;width:34pt'>&nbsp;</td>" +
+                            "</tr>";
+                    }
+                }
                 tab += html_table3_stop;
                 $('div#report-3').html(tab);
             },
@@ -370,18 +503,18 @@
                         "<td class=xl6531436 width=71 style='border-top:none;border-left:none;width:53pt'>&nbsp;</td>" +
                         "</tr>";
 
-                //    tab += "<tr  class=xl6627014 style='height:auto'>" +
-                //        "<td class=xl6527014 width=41 style='border-top:none;border-left:none;width:31pt'>&nbsp;</td>" +
-                //        "<td class=xl6527014 width=112 style='border-top:none;border-left:none;width:84pt'>" + el.ukt_zed + "</td>" +
-                //        "<td class=xl6527014 width=112 style='border-top:none;border-left:none;width:84pt'>" + outFuelTypeDescription(el.type) + "</td>" +
-                //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_stop !== null ? Number(el.volume15_stop).toFixed(3) : "&nbsp;") + "</td>" +
-                //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_start !== null ? Number(el.volume15_start).toFixed(3) : "&nbsp;") + "</td>" +
-                //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_delivery !== null ? Number(el.volume15_delivery).toFixed(3) : "&nbsp;") + "</td>" +
-                //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>&nbsp;</td>" +
-                //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>&nbsp;</td>" +
-                //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (result !== null ? Number(result).toFixed(3) : "&nbsp;") + "</td>" +
-                //        "<td class=xl6527014 width=49 style='border-top:none;border-left:none;width:37pt'>&nbsp;</td>" +
-                //        "</tr>";
+                    //    tab += "<tr  class=xl6627014 style='height:auto'>" +
+                    //        "<td class=xl6527014 width=41 style='border-top:none;border-left:none;width:31pt'>&nbsp;</td>" +
+                    //        "<td class=xl6527014 width=112 style='border-top:none;border-left:none;width:84pt'>" + el.ukt_zed + "</td>" +
+                    //        "<td class=xl6527014 width=112 style='border-top:none;border-left:none;width:84pt'>" + outFuelTypeDescription(el.type) + "</td>" +
+                    //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_stop !== null ? Number(el.volume15_stop).toFixed(3) : "&nbsp;") + "</td>" +
+                    //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_start !== null ? Number(el.volume15_start).toFixed(3) : "&nbsp;") + "</td>" +
+                    //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_delivery !== null ? Number(el.volume15_delivery).toFixed(3) : "&nbsp;") + "</td>" +
+                    //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>&nbsp;</td>" +
+                    //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>&nbsp;</td>" +
+                    //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (result !== null ? Number(result).toFixed(3) : "&nbsp;") + "</td>" +
+                    //        "<td class=xl6527014 width=49 style='border-top:none;border-left:none;width:37pt'>&nbsp;</td>" +
+                    //        "</tr>";
                 });
                 tab += html_table6_stop;
                 $('div#report-6').html(tab);

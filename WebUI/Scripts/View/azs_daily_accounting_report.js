@@ -41,6 +41,9 @@
 
                 'field_permissible_volume15_error': 'Допустимая погрешность литров при 15 °С, 0,65%',
                 'field_permissible_mass15_error': 'Допустимая погрешность фактических КГ, 0,65%',
+                'field_absolute_volume15_error': 'Абсолютная погрешность литров при 15 °С, л',
+                'field_absolute_mass15_error': 'Абсолютная погрешность фактических КГ',
+
                 'field_serial_number': 'Серийный (идентификационный) номер резервуара',
                 'field_unified_tank_number': 'Унифицированный номер резервуара',
                 'field_type_name': 'Тип (название) резервуара',
@@ -92,6 +95,9 @@
 
                 'field_permissible_volume15_error': 'Permissible error of liters at 15 ° C, 0.65%',
                 'field_permissible_mass15_error': 'Permissible error of the actual KG, 0.65%',
+                'field_absolute_volume15_error': 'Absolute error of liters at 15 ° C, l',
+                'field_absolute_mass15_error': 'Absolute error of the actual KG',
+
                 'field_serial_number': 'Serial (identification) number of the tank',
                 'field_unified_tank_number': 'Unified reservoir number',
                 'field_type_name': 'Type (name) of the reservoir',
@@ -258,7 +264,9 @@
                         { data: "dens15_stop", title: langView('field_dens15_stop', langs), width: "50px", orderable: true, searchable: true },
 
                         { data: "permissible_volume15_error", title: langView('field_permissible_volume15_error', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "permissible_mass15_error", title: langView('field_permissible_mass15_error', langs), width: "50px", orderable: true, searchable: true }
+                        { data: "absolute_volume15_error", title: langView('field_absolute_volume15_error', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "permissible_mass15_error", title: langView('field_permissible_mass15_error', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "absolute_mass15_error", title: langView('field_absolute_mass15_error', langs), width: "50px", orderable: true, searchable: true }
 
                     ],
                     dom: 'Blftipr',
@@ -332,7 +340,10 @@
                         "mass15_stop": data[i].mass15_stop !== null ? Number(data[i].mass15_stop).toFixed(2) : 0.00,
                         "dens15_stop": data[i].dens15_stop !== null ? Number(data[i].dens15_stop).toFixed(5) : 0.00000,
                         "permissible_volume15_error": data[i].permissible_volume15_error !== null ? Number(data[i].permissible_volume15_error).toFixed(3) : 0.000,
-                        "permissible_mass15_error": data[i].permissible_mass15_error !== null ? Number(data[i].permissible_mass15_error).toFixed(3) : 0.000
+                        "absolute_volume15_error": data[i].permissible_volume15_error !== null ? Number(data[i].permissible_volume15_error * data[i].volume15_start).toFixed(3) : 0.000,
+                        "permissible_mass15_error": data[i].permissible_mass15_error !== null ? Number(data[i].permissible_mass15_error).toFixed(3) : 0.000,
+                        "absolute_mass15_error": data[i].permissible_mass15_error !== null ? Number(data[i].permissible_mass15_error * data[i].mass15_start).toFixed(3) : 0.000
+
                     });
                 }
                 LockScreenOff();
@@ -420,7 +431,9 @@
                         { data: "dens15_stop", title: langView('field_dens15_stop', langs), width: "50px", orderable: true, searchable: true },
 
                         { data: "permissible_volume15_error", title: langView('field_permissible_volume15_error', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "permissible_mass15_error", title: langView('field_permissible_mass15_error', langs), width: "50px", orderable: true, searchable: true }
+                        { data: "absolute_volume15_error", title: langView('field_absolute_volume15_error', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "permissible_mass15_error", title: langView('field_permissible_mass15_error', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "absolute_mass15_error", title: langView('field_absolute_mass15_error', langs), width: "50px", orderable: true, searchable: true }
 
 
 
@@ -491,9 +504,9 @@
                                 "dens15_stop": result[i].dens15_remains_stop !== null ? Number(result[i].dens15_remains_stop).toFixed(5) : 0.00000,
 
                                 "permissible_volume15_error": result[i].permissible_volume15_error !== null ? Number(result[i].permissible_volume15_error).toFixed(3) : 0.000,
-                                "permissible_mass15_error": result[i].permissible_mass15_error !== null ? Number(result[i].permissible_mass15_error).toFixed(3) : 0.000
-
-
+                                "absolute_volume15_error": result[i].permissible_volume15_error !== null ? Number(Number(result[i].permissible_volume15_error) * Number(result[i].volume15_remains_start)).toFixed(3) : 0.000,
+                                "permissible_mass15_error": result[i].permissible_mass15_error !== null ? Number(result[i].permissible_mass15_error).toFixed(3) : 0.000,
+                                "absolute_mass15_error": result[i].permissible_mass15_error !== null ? Number(Number(result[i].permissible_mass15_error) * Number(result[i].mass15_remains_start)).toFixed(3) : 0.000
 
 
 

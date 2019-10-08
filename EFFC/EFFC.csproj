@@ -56,6 +56,7 @@
     <Compile Include="Concrete\EFazsDeparts.cs" />
     <Compile Include="Concrete\EFazsFuelSale.cs" />
     <Compile Include="Concrete\EFDaily_Accounting_Detali_Report_AZS.cs" />
+    <Compile Include="Concrete\EFCat_TRK_AZS.cs" />
     <Compile Include="Concrete\EFRemainsTanks_AZS.cs" />
     <Compile Include="Concrete\EFReceivingTanks_AZS.cs" />
     <Compile Include="Concrete\EFDeliveryTanks_AZS.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Entities\azsTankStates.cs" />
     <Compile Include="Entities\azsUsers.cs" />
     <Compile Include="Entities\Cards.cs" />
+    <Compile Include="Entities\Cat_TRK_AZS.cs" />
     <Compile Include="Entities\Delta.cs" />
     <Compile Include="Entities\FuelIncome.cs" />
     <Compile Include="Entities\FuelSale.cs" />
@@ -107,15 +109,15 @@
     <Compile Include="Entities\ReceivingTanks_AZS.cs" />
     <Compile Include="Entities\RemainsTanks_AZS.cs" />
     <Compile Include="Entities\Daily_Accounting_Detali_Report_AZS.cs" />
+    <Compile Include="Model\Cat_TRK_AZS.cs" />
+    <Compile Include="Model\Model1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
