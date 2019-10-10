@@ -340,9 +340,9 @@
                         "mass15_stop": data[i].mass15_stop !== null ? Number(data[i].mass15_stop).toFixed(2) : 0.00,
                         "dens15_stop": data[i].dens15_stop !== null ? Number(data[i].dens15_stop).toFixed(5) : 0.00000,
                         "permissible_volume15_error": data[i].permissible_volume15_error !== null ? Number(data[i].permissible_volume15_error).toFixed(3) : 0.000,
-                        "absolute_volume15_error": data[i].permissible_volume15_error !== null ? Number(data[i].permissible_volume15_error * data[i].volume15_start).toFixed(3) : 0.000,
+                        "absolute_volume15_error": data[i].permissible_volume15_error !== null ? Number(data[i].permissible_volume15_error * data[i].volume15_start / 100.0).toFixed(3) : 0.000,
                         "permissible_mass15_error": data[i].permissible_mass15_error !== null ? Number(data[i].permissible_mass15_error).toFixed(3) : 0.000,
-                        "absolute_mass15_error": data[i].permissible_mass15_error !== null ? Number(data[i].permissible_mass15_error * data[i].mass15_start).toFixed(3) : 0.000
+                        "absolute_mass15_error": data[i].permissible_mass15_error !== null ? Number(data[i].permissible_mass15_error * data[i].mass15_start / 100.0).toFixed(3) : 0.000
 
                     });
                 }
@@ -504,9 +504,9 @@
                                 "dens15_stop": result[i].dens15_remains_stop !== null ? Number(result[i].dens15_remains_stop).toFixed(5) : 0.00000,
 
                                 "permissible_volume15_error": result[i].permissible_volume15_error !== null ? Number(result[i].permissible_volume15_error).toFixed(3) : 0.000,
-                                "absolute_volume15_error": result[i].permissible_volume15_error !== null ? Number(Number(result[i].permissible_volume15_error) * Number(result[i].volume15_remains_start)).toFixed(3) : 0.000,
+                                "absolute_volume15_error": result[i].permissible_volume15_error !== null ? Number(Number(result[i].permissible_volume15_error) * Number(result[i].volume15_remains_start)/100.0).toFixed(3) : 0.000,
                                 "permissible_mass15_error": result[i].permissible_mass15_error !== null ? Number(result[i].permissible_mass15_error).toFixed(3) : 0.000,
-                                "absolute_mass15_error": result[i].permissible_mass15_error !== null ? Number(Number(result[i].permissible_mass15_error) * Number(result[i].mass15_remains_start)).toFixed(3) : 0.000
+                                "absolute_mass15_error": result[i].permissible_mass15_error !== null ? Number(Number(result[i].permissible_mass15_error) * Number(result[i].mass15_remains_start)/100.0).toFixed(3) : 0.000
 
 
 
