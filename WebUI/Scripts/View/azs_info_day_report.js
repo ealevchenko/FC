@@ -244,8 +244,8 @@
                             "<td class=xl7420875 width=81 style='border-top:none;width:61pt'>&nbsp;</td>" +
                             "<td class=xl7420875 width=92 style='border-top:none;border-left:none;width:69pt;word-wrap:break-word'>" + (el.unified_tank_number !== null ? el.unified_tank_number : el.tank) + "</td>" +
                             "<td class=xl7220875 width=92 style='border-top:none;border-left:none;width:69pt'>" + (el.level_meters_serial_number !== null ? el.level_meters_serial_number : "&nbsp;") + "</td>" +
-                            "<td class=xl7220875-numder width=98 style='border-top:none;width:74pt'>" + (el.volume15_remains_start !== null ? Number(el.volume15_remains_start).toFixed(3) : "&nbsp;") + "</td>" +
-                            "<td class=xl7220875-numder width=103 style='border-top:none;width:77pt'>" + (el.volume15_remains_stop !== null ? Number(el.volume15_remains_stop).toFixed(3) : "&nbsp;") + "</td>" +
+                            "<td class=xl7220875-numder width=98 style='border-top:none;width:74pt'>" + (el.volume15_remains_start !== null ? Number(el.volume15_remains_start).toFixed(2) : "&nbsp;") + "</td>" +
+                            "<td class=xl7220875-numder width=103 style='border-top:none;width:77pt'>" + (el.volume15_remains_stop !== null ? Number(el.volume15_remains_stop).toFixed(2) : "&nbsp;") + "</td>" +
                             "<td class=xl7420875 width=93 style='border-top:none;width:70pt'>&nbsp;</td>" +
                             "<td class=xl7420875 width=108 style='border-top:none;border-left:none;width:81pt'>&nbsp;</td>" +
                             "<td class=xl7420875 width=46 style='border-top:none;border-left:none;width:35pt'>&nbsp;</td>" +
@@ -319,8 +319,8 @@
                         "<td class=xl671827 width=183 style='border-top:none;border-left:none;width:137pt'>&nbsp;</td>" +
                         "<td class=xl671827 width=183 style='border-top:none;border-left:none;width:137pt'>" + el.ukt_zed + "</td>" +
                         "<td class=xl671827 width=183 style='border-top:none;border-left:none;width:137pt'>" + outFuelTypeDescription(el.type) + "</td>" +
-                        "<td class=xl671827-number width=183 style='border-top:none;border-left:none;width:137pt'>" + (volume15_start).toFixed(3) + "</td>" +
-                        "<td class=xl671827-number width=183 style='border-top:none;border-left:none;width:137pt'>" + (volume15_stop).toFixed(3) + "</td>" +
+                        "<td class=xl671827-number width=183 style='border-top:none;border-left:none;width:137pt'>" + (volume15_start).toFixed(2) + "</td>" +
+                        "<td class=xl671827-number width=183 style='border-top:none;border-left:none;width:137pt'>" + (volume15_stop).toFixed(2) + "</td>" +
                         "<td class=xl671827 width=183 style='border-top:none;border-left:none;width:137pt'>&nbsp;</td>" +
                         "</tr>";
                 });
@@ -354,7 +354,7 @@
                                     "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + gun_value.ukt_zed + "</td>" +
                                     "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + outFuelTypeDescription(gun_value.fuel_type) + "</td>" +
                                     "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + gun_value.serial_number_flowmeter + "/" + gun_value.identification_number_flowmeter + "(" + gun_value.num + ")" + "</td>" +
-                                    "<td class=xl6427789-number width=170 style='border-top:none;border-left:none;width:128pt'>" + (gun_value.volume_delivery !== null ? Number(gun_value.volume_delivery).toFixed(3) : "&nbsp;") + "</td>" +
+                                    "<td class=xl6427789-number width=170 style='border-top:none;border-left:none;width:128pt'>" + (gun_value.volume_delivery !== null ? Number(gun_value.volume_delivery).toFixed(2) : "&nbsp;") + "</td>" +
                                     "<td class=xl6427789 width=147 style='border-top:none;border-left:none;width:110pt'>&nbsp;</td>" +
                                     "<td class=xl6427789 width=45 style='border-top:none;border-left:none;width:34pt'>&nbsp;</td>" +
                                     "</tr>";
@@ -369,7 +369,7 @@
                                 "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + outFuelTypeUKTZED(outOZMFuelType(el)) + "</td>" +
                                 "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + outFuelTypeDescription(outOZMFuelType(el)) + "</td>" +
                                 "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + cat.serial_number_flowmeter + "/" + cat.identification_number_flowmeter + "(" + cat.num + ")" + "</td>" +
-                                "<td class=xl6427789-number width=170 style='border-top:none;border-left:none;width:128pt'>" + Number(0).toFixed(3) + "</td>" +
+                                "<td class=xl6427789-number width=170 style='border-top:none;border-left:none;width:128pt'>" + Number(0).toFixed(2) + "</td>" +
                                 "<td class=xl6427789 width=147 style='border-top:none;border-left:none;width:110pt'>&nbsp;</td>" +
                                 "<td class=xl6427789 width=45 style='border-top:none;border-left:none;width:34pt'>&nbsp;</td>" +
                                 "</tr>";
@@ -386,7 +386,7 @@
                             "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + outFuelTypeUKTZED(cat_ns1.type_fuel) + "</td>" +
                             "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + outFuelTypeDescription(cat_ns1.type_fuel) + "</td>" +
                             "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + cat_ns1.serial_number_flowmeter + "(" + cat_ns1.name + ")" + "</td>" +
-                            "<td class=xl6427789-number width=170 style='border-top:none;border-left:none;width:128pt'>" + (ns1 != null ? Number(ns1.volume_delivery).toFixed(3) : Number(0).toFixed(3)) + "</td>" +
+                            "<td class=xl6427789-number width=170 style='border-top:none;border-left:none;width:128pt'>" + (ns1 != null ? Number(ns1.volume_delivery).toFixed(2) : Number(0).toFixed(2)) + "</td>" +
                             "<td class=xl6427789 width=147 style='border-top:none;border-left:none;width:110pt'>&nbsp;</td>" +
                             "<td class=xl6427789 width=45 style='border-top:none;border-left:none;width:34pt'>&nbsp;</td>" +
                             "</tr>";
@@ -402,7 +402,7 @@
                             "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + outFuelTypeUKTZED(cat_ns2.type_fuel) + "</td>" +
                             "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + outFuelTypeDescription(cat_ns2.type_fuel) + "</td>" +
                             "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + cat_ns2.serial_number_flowmeter + "(" + cat_ns2.name + ")" + "</td>" +
-                            "<td class=xl6427789-number width=170 style='border-top:none;border-left:none;width:128pt'>" + (ns2 != null ? Number(ns2.volume_delivery).toFixed(3) : Number(0).toFixed(3)) + "</td>" +
+                            "<td class=xl6427789-number width=170 style='border-top:none;border-left:none;width:128pt'>" + (ns2 != null ? Number(ns2.volume_delivery).toFixed(2) : Number(0).toFixed(2)) + "</td>" +
                             "<td class=xl6427789 width=147 style='border-top:none;border-left:none;width:110pt'>&nbsp;</td>" +
                             "<td class=xl6427789 width=45 style='border-top:none;border-left:none;width:34pt'>&nbsp;</td>" +
                             "</tr>";
@@ -418,7 +418,7 @@
                             "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + outFuelTypeUKTZED(cat_ns3.type_fuel) + "</td>" +
                             "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + outFuelTypeDescription(cat_ns3.type_fuel) + "</td>" +
                             "<td class=xl6427789 width=154 style='border-top:none;border-left:none;width:116pt'>" + cat_ns3.serial_number_flowmeter + "(" + cat_ns3.name + ")" + "</td>" +
-                            "<td class=xl6427789-number width=170 style='border-top:none;border-left:none;width:128pt'>" + (ns3 != null ? Number(ns3.volume_delivery).toFixed(3) : Number(0).toFixed(3)) + "</td>" +
+                            "<td class=xl6427789-number width=170 style='border-top:none;border-left:none;width:128pt'>" + (ns3 != null ? Number(ns3.volume_delivery).toFixed(2) : Number(0).toFixed(2)) + "</td>" +
                             "<td class=xl6427789 width=147 style='border-top:none;border-left:none;width:110pt'>&nbsp;</td>" +
                             "<td class=xl6427789 width=45 style='border-top:none;border-left:none;width:34pt'>&nbsp;</td>" +
                             "</tr>";
@@ -442,7 +442,7 @@
                         "<td class=xl6515240 width=80 style='border-top:none;border-left:none;width:60pt'>&nbsp;</td>" +
                         "<td class=xl6515240 width=218 style='border-top:none;border-left:none;width:164pt'>" + el.ukt_zed + "</td>" +
                         "<td class=xl6515240 width=218 style='border-top:none;border-left:none;width:164pt'>" + outFuelTypeDescription(el.fuel_type) + "</td>" +
-                        "<td class=xl6515240-number width=353 style='border-top:none;border-left:none;width:265pt'>" + (el.volume_delivery !== null ? Number(el.volume_delivery).toFixed(3) : "&nbsp;") + "</td>" +
+                        "<td class=xl6515240-number width=353 style='border-top:none;border-left:none;width:265pt'>" + (el.volume_delivery !== null ? Number(el.volume_delivery).toFixed(2) : "&nbsp;") + "</td>" +
                         "<td class=xl6515240 width=71 style='border-top:none;border-left:none;width:53pt'>&nbsp;</td>" +
                         "</tr>";
                 });
@@ -467,12 +467,12 @@
                         "<td class=xl6527014 width=41 style='border-top:none;border-left:none;width:31pt'>&nbsp;</td>" +
                         "<td class=xl6527014 width=112 style='border-top:none;border-left:none;width:84pt'>" + el.ukt_zed + "</td>" +
                         "<td class=xl6527014 width=112 style='border-top:none;border-left:none;width:84pt'>" + outFuelTypeDescription(el.type) + "</td>" +
-                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_stop !== null ? Number(el.volume15_stop).toFixed(3) : "&nbsp;") + "</td>" +
-                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_start !== null ? Number(el.volume15_start).toFixed(3) : "&nbsp;") + "</td>" +
-                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_delivery !== null ? Number(el.volume15_delivery).toFixed(3) : "&nbsp;") + "</td>" +
+                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_stop !== null ? Number(el.volume15_stop).toFixed(2) : "&nbsp;") + "</td>" +
+                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_start !== null ? Number(el.volume15_start).toFixed(2) : "&nbsp;") + "</td>" +
+                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_delivery !== null ? Number(el.volume15_delivery).toFixed(2) : "&nbsp;") + "</td>" +
                         "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>&nbsp;</td>" +
                         "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>&nbsp;</td>" +
-                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (result !== null ? Number(result).toFixed(3) : "&nbsp;") + "</td>" +
+                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (result !== null ? Number(result).toFixed(2) : "&nbsp;") + "</td>" +
                         "<td class=xl6527014 width=49 style='border-top:none;border-left:none;width:37pt'>&nbsp;</td>" +
                         "</tr>";
                 });
@@ -491,30 +491,31 @@
                 var tab = get_html_table6_star(list_daily_accounting.length);
                 $.each(list_daily_accounting, function (i, el) {
 
+
+
+
                     var result = el.volume15_stop - el.volume15_start + el.volume15_delivery;
-                    tab += "<tr class=xl6631436 style='height:auto'>" +
-                        "<td class=xl6531436 width=55 style='border-top:none;border-left:none;width:41pt'>&nbsp;</td>" +
-                        "<td class=xl6531436 width=133 style='border-top:none;border-left:none;width:100pt'>" + el.ukt_zed + "</td>" +
-                        "<td class=xl6531436 width=193 style='border-top:none;border-left:none;width:145pt'>" + outFuelTypeDescription(el.type) + "</td>" +
-                        "<td class=xl6531436-number width=133 style='border-top:none;border-left:none;width:100pt'>" + (el.volume15_start !== null ? Number(el.volume15_start).toFixed(3) : "&nbsp;") + "</td>" +
-                        "<td class=xl6531436-number width=133 style='border-top:none;border-left:none;width:100pt'>" + (el.volume15_stop !== null ? Number(el.volume15_stop).toFixed(3) : "&nbsp;") + "</td>" +
-                        "<td class=xl6531436-number width=133 style='border-top:none;border -left:none;width:100pt'>" + (result !== null ? Number(result).toFixed(3) : "&nbsp;") + "</td>" +
-                        "<td class=xl6531436-number width=133 style='border-top:none;border-left:none;width:100pt'>" + (el.volume15_delivery !== null ? Number(el.volume15_delivery).toFixed(3) : "&nbsp;") + "</td>" +
-                        "<td class=xl6531436 width=71 style='border-top:none;border-left:none;width:53pt'>&nbsp;</td>" +
+                    tab += "<tr class=xl6628927 style='height:auto'>" +
+                        "<td class=xl6528927 width=55 style='border-top:none;border-left:none;width:41pt'>&nbsp;</td>" +
+                        "<td class=xl6528927 width=133 style='border-top:none;border-left:none;width:100pt'>" + el.ukt_zed + "</td>" +
+                        "<td class=xl6528927 width=193 style='border-top:none;border-left:none;width:145pt'>" + outFuelTypeDescription(el.type) + "</td>" +
+                        "<td class=xl6528927-number width=133 style='border-top:none;border-left:none;width:100pt'>" + outFuelTypeVolumePL(el.type).toFixed(2) + "</td>" +
+                        "<td class=xl6528927-number width=133 style='border-top:none;border-left:none;width:100pt'>" + outFuelTypeVolumePL(el.type).toFixed(2) + "</td>" +
+                        "<td class=xl6528927-number width=133 style='border-top:none;border -left:none;width:100pt'>&nbsp;</td>" +
+                        "<td class=xl6528927-number width=133 style='border-top:none;border-left:none;width:100pt'>&nbsp;</td>" +
+                        "<td class=xl6528927 width=71 style='border-top:none;border-left:none;width:53pt'>&nbsp;</td>" +
                         "</tr>";
 
-                    //    tab += "<tr  class=xl6627014 style='height:auto'>" +
-                    //        "<td class=xl6527014 width=41 style='border-top:none;border-left:none;width:31pt'>&nbsp;</td>" +
-                    //        "<td class=xl6527014 width=112 style='border-top:none;border-left:none;width:84pt'>" + el.ukt_zed + "</td>" +
-                    //        "<td class=xl6527014 width=112 style='border-top:none;border-left:none;width:84pt'>" + outFuelTypeDescription(el.type) + "</td>" +
-                    //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_stop !== null ? Number(el.volume15_stop).toFixed(3) : "&nbsp;") + "</td>" +
-                    //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_start !== null ? Number(el.volume15_start).toFixed(3) : "&nbsp;") + "</td>" +
-                    //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_delivery !== null ? Number(el.volume15_delivery).toFixed(3) : "&nbsp;") + "</td>" +
-                    //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>&nbsp;</td>" +
-                    //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>&nbsp;</td>" +
-                    //        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (result !== null ? Number(result).toFixed(3) : "&nbsp;") + "</td>" +
-                    //        "<td class=xl6527014 width=49 style='border-top:none;border-left:none;width:37pt'>&nbsp;</td>" +
-                    //        "</tr>";
+                    //"<tr class=xl6628927 style='height:auto'> >" +
+                    // "<td class=xl6528927 width=55 style='border-top:none;border-left:none;width:41pt'>&nbsp;</td>" +
+                    // "<td class=xl6528927 width=133 style='border-top:none;border-left:none;width:100pt'>&nbsp;</td>" +
+                    // "<td class=xl6528927 width=193 style='border-top:none;border-left:none;width:145pt'>&nbsp;</td>" +
+                    // "<td class=xl6528927-number width=133 style='border-top:none;border-left:none;width:100pt'>&nbsp;</td>" +
+                    // "<td class=xl6528927-number width=133 style='border-top:none;border-left:none;width:100pt'>&nbsp;</td>" +
+                    // "<td class=xl6528927-number width=133 style='border-top:none;border-left:none;width:100pt'>&nbsp;</td>" +
+                    // "<td class=xl6528927-number width=133 style='border-top:none;border-left:none;width:100pt'>&nbsp;</td>" +
+                    // "<td class=xl6528927 width=71 style='border-top:none;border-left:none;width:53pt'>&nbsp;</td>" +
+                    //"</tr>";
                 });
                 tab += html_table6_stop;
                 $('div#report-6').html(tab);

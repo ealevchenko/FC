@@ -238,12 +238,23 @@ var outFuelTypeUKTZED = function (i) {
         default: return i;
     }
 };
+
 var outFuelTypeDescription = function (i) {
     switch (i) {
         case 107000022: return "Бензини моторні з вмістом свинцю 0,013г/л або менше: інші бензини, з октановим числом більш як 92, але менш як 95";
         case 107000023: return "Бензини моторні з вмістом свинцю 0,013г/л або менше: інші бензини, з октановим числом 95 або більше, але менш як 98";
         case 107000024: return "Важкі дистиляти (газойлі) із вмістом сірки не більш як 0,001 мас.%";
         case 107000027: return "Гас: паливо для реактивних двигунів";
+        default: return i;
+    }
+};
+// Вернуть обем остатка ГСМ в трубопроводе
+var outFuelTypeVolumePL = function (i) {
+    switch (i) {
+        case 107000022: return 4577;
+        case 107000023: return 3904;
+        case 107000024: return 2674;
+        case 107000027: return 6771;
         default: return i;
     }
 };

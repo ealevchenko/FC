@@ -159,7 +159,7 @@ var css_table3 = ".font527789 {" +
     "font-family: Arial, sans-serif;" +
     "mso-font-charset: 204;" +
     "mso-displayed-decimal-separator: '\,';" +
-    "mso-number-format: '0.000';" +
+    "mso-number-format: '0.00';" +
     "text-align: center;" +
     "vertical-align: middle;" +
     "border: .5pt solid black;" +
