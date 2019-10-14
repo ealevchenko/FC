@@ -109,15 +109,15 @@
     <Compile Include="Entities\ReceivingTanks_AZS.cs" />
     <Compile Include="Entities\RemainsTanks_AZS.cs" />
     <Compile Include="Entities\Daily_Accounting_Detali_Report_AZS.cs" />
-    <Compile Include="Model\Cat_TRK_AZS.cs" />
-    <Compile Include="Model\Model1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Model\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
