@@ -301,6 +301,21 @@
                 this.list = data;
                 this.obj_table.clear();
                 for (i = 0; i < data.length; i++) {
+
+                    var volume15_start = Number(data[i].volume15_start !== null ? Number(data[i].volume15_start).toFixed(6) : 0.000000);
+                    var volume15_received = Number(data[i].volume15_received !== null ? Number(data[i].volume15_received).toFixed(6) : 0.000000);
+                    var volume15_delivery = Number(data[i].volume15_delivery !== null ? Number(data[i].volume15_delivery).toFixed(6) : 0.000000);
+                    var volume15_stop = Number(data[i].volume15_stop !== null ? Number(data[i].volume15_stop).toFixed(6) : 0.000000);
+                    var permissible_volume15_error = Number(((volume15_start + volume15_received - volume15_delivery - volume15_stop) / volume15_stop) * 100.0);
+                    var absolute_volume15_error = (Number(permissible_volume15_error.toFixed(6)) * volume15_stop) / 100.0;
+
+                    var mass15_start = Number(data[i].mass15_start !== null ? Number(data[i].mass15_start).toFixed(6) : 0.000000);
+                    var mass15_received = Number(data[i].mass15_received !== null ? Number(data[i].mass15_received).toFixed(6) : 0.000000);
+                    var mass15_delivery = Number(data[i].mass15_delivery !== null ? Number(data[i].mass15_delivery).toFixed(6) : 0.000000);
+                    var mass15_stop = Number(data[i].mass15_stop !== null ? Number(data[i].mass15_stop).toFixed(6) : 0.000000);
+                    var permissible_mass15_error = Number(((mass15_start + mass15_received - mass15_delivery - mass15_stop) / mass15_stop) * 100.0);
+                    var absolute_mass15_error = (Number(permissible_mass15_error.toFixed(6)) * mass15_stop) / 100.0;
+
                     this.obj_table.row.add({
                         "id": data[i].id,
                         "type": data[i].type,
@@ -310,39 +325,44 @@
                         "date_stop": data[i].date_stop,
                         "volume_start": data[i].volume_start,
                         "mass_start": data[i].mass_start !== null ? Number(data[i].mass_start).toFixed(2) : 0.00,
-                        "dens_start": data[i].dens_start !== null ? Number(data[i].dens_start).toFixed(5) : 0.00000,
+                        "dens_start": data[i].dens_start !== null ? Number(data[i].dens_start).toFixed(6) : 0.000000,
                         "temp_start": data[i].temp_start !== null ? Number(data[i].temp_start).toFixed(2) : 0.00,
-                        "volume15_start": data[i].volume15_start,
+                        "volume15_start": data[i].volume15_start !== null ? Number(data[i].volume15_start).toFixed(6) : 0.000000,
                         "mass15_start": data[i].mass15_start !== null ? Number(data[i].mass15_start).toFixed(2) : 0.00,
-                        "dens15_start": data[i].dens15_start !== null ? Number(data[i].dens15_start).toFixed(5) : 0.00000,
+                        "dens15_start": data[i].dens15_start !== null ? Number(data[i].dens15_start).toFixed(6) : 0.000000,
 
                         "volume_received": data[i].volume_received !== null ? data[i].volume_received : 0,
                         "mass_received": data[i].mass_received !== null ? Number(data[i].mass_received).toFixed(2) : 0.00,
-                        "dens_received": data[i].dens_received !== null ? Number(data[i].dens_received).toFixed(5) : 0.00000,
+                        "dens_received": data[i].dens_received !== null ? Number(data[i].dens_received).toFixed(6) : 0.000000,
                         "temp_received": data[i].temp_received !== null ? Number(data[i].temp_received).toFixed(2) : 0.00,
-                        "volume15_received": data[i].volume15_received !== null ? data[i].volume15_received : 0,
+                        "volume15_received":  data[i].volume15_received !== null ? Number(data[i].volume15_received).toFixed(6) : 0.000000, 
                         "mass15_received": data[i].mass15_received !== null ? Number(data[i].mass15_received).toFixed(2) : 0.00,
-                        "dens15_received": data[i].dens15_received !== null ? Number(data[i].dens15_received).toFixed(5) : 0.00000,
+                        "dens15_received": data[i].dens15_received !== null ? Number(data[i].dens15_received).toFixed(6) : 0.000000,
 
                         "volume_delivery": data[i].volume_delivery !== null ? data[i].volume_delivery : 0,
                         "mass_delivery": data[i].mass_delivery !== null ? Number(data[i].mass_delivery).toFixed(2) : 0.00,
-                        "dens_delivery": data[i].dens_delivery !== null ? Number(data[i].dens_delivery).toFixed(5) : 0.00000,
+                        "dens_delivery": data[i].dens_delivery !== null ? Number(data[i].dens_delivery).toFixed(6) : 0.000000,
                         "temp_delivery": data[i].temp_delivery !== null ? Number(data[i].temp_delivery).toFixed(2) : 0.00,
-                        "volume15_delivery": data[i].volume15_delivery !== null ? data[i].volume15_delivery : 0,
+                        "volume15_delivery": data[i].volume15_delivery !== null ? Number(data[i].volume15_delivery).toFixed(6) : 0.000000,
                         "mass15_delivery": data[i].mass15_delivery !== null ? Number(data[i].mass15_delivery).toFixed(2) : 0.00,
-                        "dens15_delivery": data[i].dens15_delivery !== null ? Number(data[i].dens15_delivery).toFixed(5) : 0.00000,
+                        "dens15_delivery": data[i].dens15_delivery !== null ? Number(data[i].dens15_delivery).toFixed(6) : 0.000000,
 
                         "volume_stop": data[i].volume_stop !== null ? data[i].volume_stop : 0,
                         "mass_stop": data[i].mass_stop !== null ? Number(data[i].mass_stop).toFixed(2) : 0.00,
-                        "dens_stop": data[i].dens_stop !== null ? Number(data[i].dens_stop).toFixed(5) : 0.00000,
+                        "dens_stop": data[i].dens_stop !== null ? Number(data[i].dens_stop).toFixed(6) : 0.000000,
                         "temp_stop": data[i].temp_stop !== null ? Number(data[i].temp_stop).toFixed(2) : 0.00,
-                        "volume15_stop": data[i].volume15_stop !== null ? data[i].volume15_stop : 0,
+                        "volume15_stop": data[i].volume15_stop !== null ? Number(data[i].volume15_stop).toFixed(6) : 0.000000,
                         "mass15_stop": data[i].mass15_stop !== null ? Number(data[i].mass15_stop).toFixed(2) : 0.00,
-                        "dens15_stop": data[i].dens15_stop !== null ? Number(data[i].dens15_stop).toFixed(5) : 0.00000,
-                        "permissible_volume15_error": data[i].permissible_volume15_error !== null ? Number(data[i].permissible_volume15_error).toFixed(4) : 0.0000,
-                        "absolute_volume15_error": data[i].permissible_volume15_error !== null ? Number(Number(data[i].permissible_volume15_error).toFixed(4) * data[i].volume15_start / 100.0).toFixed(3) : 0.000,
-                        "permissible_mass15_error": data[i].permissible_mass15_error !== null ? Number(data[i].permissible_mass15_error).toFixed(4) : 0.0000,
-                        "absolute_mass15_error": data[i].permissible_mass15_error !== null ? Number(Number(data[i].permissible_mass15_error).toFixed(4) * data[i].mass15_start / 100.0).toFixed(3) : 0.000
+                        "dens15_stop": data[i].dens15_stop !== null ? Number(data[i].dens15_stop).toFixed(6) : 0.000000,
+                        "permissible_volume15_error": permissible_volume15_error !== null ? Number(permissible_volume15_error).toFixed(6) : 0.000000,
+                        "absolute_volume15_error": absolute_volume15_error !== null ? Number(absolute_volume15_error).toFixed(6) : 0.000000,
+                        "permissible_mass15_error": permissible_mass15_error !== null ? Number(permissible_mass15_error).toFixed(6) : 0.000000,
+                        "absolute_mass15_error": absolute_mass15_error !== null ? Number(absolute_mass15_error).toFixed(6) : 0.000000,
+
+                        //"permissible_volume15_error": data[i].permissible_volume15_error !== null ? Number(data[i].permissible_volume15_error).toFixed(6) : 0.000000,
+                        //"absolute_volume15_error": data[i].permissible_volume15_error !== null ? Number(Number(data[i].permissible_volume15_error) * data[i].volume15_start / 100.0).toFixed(6) : 0.000000,
+                        //"permissible_mass15_error": data[i].permissible_mass15_error !== null ? Number(data[i].permissible_mass15_error).toFixed(6) : 0.000000,
+                        //"absolute_mass15_error": data[i].permissible_mass15_error !== null ? Number(Number(data[i].permissible_mass15_error) * data[i].mass15_start / 100.0).toFixed(6) : 0.000000
 
                     });
                 }
@@ -452,6 +472,21 @@
                     function (result) {
                         table_detali.clear();
                         for (i = 0; i < result.length; i++) {
+
+                            var volume15_start = Number(result[i].volume15_remains_start !== null ? Number(result[i].volume15_remains_start).toFixed(6) : 0.000000);
+                            var volume15_received = Number(result[i].volume15_received !== null ? Number(result[i].volume15_received).toFixed(6) : 0.000000);
+                            var volume15_delivery = Number(result[i].volume15_delivery !== null ? Number(result[i].volume15_delivery).toFixed(6) : 0.000000);
+                            var volume15_stop = Number(result[i].volume15_remains_stop !== null ? Number(result[i].volume15_remains_stop).toFixed(6) : 0.000000);
+                            var permissible_volume15_error = volume15_stop!== 0 ? Number(((volume15_start + volume15_received - volume15_delivery - volume15_stop) / volume15_stop) * 100.0) : 0;
+                            var absolute_volume15_error = (Number(permissible_volume15_error.toFixed(6)) * volume15_stop) / 100.0;
+
+                            var mass15_start = Number(result[i].mass15_remains_start !== null ? Number(result[i].mass15_remains_start).toFixed(6) : 0.000000);
+                            var mass15_received = Number(result[i].mass15_received !== null ? Number(result[i].mass15_received).toFixed(6) : 0.000000);
+                            var mass15_delivery = Number(result[i].mass15_delivery !== null ? Number(result[i].mass15_delivery).toFixed(6) : 0.000000);
+                            var mass15_stop = Number(result[i].mass15_remains_stop !== null ? Number(result[i].mass15_remains_stop).toFixed(6) : 0.000000);
+                            var permissible_mass15_error = mass15_stop!== 0 ? Number(((mass15_start + mass15_received - mass15_delivery - mass15_stop) / mass15_stop) * 100.0) : 0;
+                            var absolute_mass15_error = (Number(permissible_mass15_error.toFixed(6)) * mass15_stop) / 100.0;
+
                             table_detali.row.add({
                                 "id": result[i].id,
                                 "type": result[i].type,
@@ -470,43 +505,48 @@
                                 "level_remains_start": result[i].level_remains_start !== null ? Number(result[i].level_remains_start).toFixed(2) : null,
                                 "volume_start": result[i].volume_remains_start,
                                 "mass_start": result[i].mass_remains_start !== null ? Number(result[i].mass_remains_start).toFixed(2) : 0.00,
-                                "dens_start": result[i].dens_avg_remains_start !== null ? Number(result[i].dens_avg_remains_start).toFixed(5) : 0.00000,
+                                "dens_start": result[i].dens_avg_remains_start !== null ? Number(result[i].dens_avg_remains_start).toFixed(6) : 0.000000,
                                 "temp_start": result[i].temp_remains_start !== null ? Number(result[i].temp_remains_start).toFixed(2) : 0.00,
-                                "volume15_start": result[i].volume15_remains_start,
+                                "volume15_start": result[i].volume15_remains_start !== null ? Number(result[i].volume15_remains_start).toFixed(6) : 0.000000,
                                 "mass15_start": result[i].mass15_remains_start !== null ? Number(result[i].mass15_remains_start).toFixed(2) : 0.00,
-                                "dens15_start": result[i].dens15_remains_start !== null ? Number(result[i].dens15_remains_start).toFixed(5) : 0.00000,
+                                "dens15_start": result[i].dens15_remains_start !== null ? Number(result[i].dens15_remains_start).toFixed(6) : 0.000000,
 
                                 "volume_received": result[i].volume_received !== null ? result[i].volume_received : 0,
                                 "mass_received": result[i].mass_received !== null ? Number(result[i].mass_received).toFixed(2) : 0.00,
-                                "dens_received": result[i].dens_received !== null ? Number(result[i].dens_received).toFixed(5) : 0.00000,
+                                "dens_received": result[i].dens_received !== null ? Number(result[i].dens_received).toFixed(6) : 0.000000,
                                 "temp_received": result[i].temp_received !== null ? Number(result[i].temp_received).toFixed(2) : 0.00,
-                                "volume15_received": result[i].volume15_received !== null ? result[i].volume15_received : 0,
+                                "volume15_received": result[i].volume15_received !== null ? Number(result[i].volume15_received).toFixed(6) : 0.000000, 
                                 "mass15_received": result[i].mass15_received !== null ? Number(result[i].mass15_received).toFixed(2) : 0.00,
-                                "dens15_received": result[i].dens15_received !== null ? Number(result[i].dens15_received).toFixed(5) : 0.00000,
+                                "dens15_received": result[i].dens15_received !== null ? Number(result[i].dens15_received).toFixed(6) : 0.000000,
 
                                 "count_tanks_delivery": result[i].count_tanks_delivery,
                                 "volume_delivery": result[i].volume_delivery !== null ? result[i].volume_delivery : 0,
                                 "mass_delivery": result[i].mass_delivery !== null ? Number(result[i].mass_delivery).toFixed(2) : 0.00,
-                                "dens_delivery": result[i].dens_delivery !== null ? Number(result[i].dens_delivery).toFixed(5) : 0.00000,
+                                "dens_delivery": result[i].dens_delivery !== null ? Number(result[i].dens_delivery).toFixed(6) : 0.000000,
                                 "temp_delivery": result[i].temp_delivery !== null ? Number(result[i].temp_delivery).toFixed(2) : 0.00,
-                                "volume15_delivery": result[i].volume15_delivery !== null ? result[i].volume15_delivery : 0,
+                                "volume15_delivery": result[i].volume15_delivery !== null ? Number(result[i].volume15_delivery).toFixed(6) : 0.000000,
                                 "mass15_delivery": result[i].mass15_delivery !== null ? Number(result[i].mass15_delivery).toFixed(2) : 0.00,
-                                "dens15_delivery": result[i].dens15_delivery !== null ? Number(result[i].dens15_delivery).toFixed(5) : 0.00000,
+                                "dens15_delivery": result[i].dens15_delivery !== null ? Number(result[i].dens15_delivery).toFixed(6) : 0.000000,
 
                                 "dt_actual_remains_stop": result[i].dt_actual_remains_stop,
                                 "level_remains_stop": result[i].level_remains_stop !== null ? Number(result[i].level_remains_stop).toFixed(2) : null,
                                 "volume_stop": result[i].volume_remains_stop,
                                 "mass_stop": result[i].mass_remains_stop !== null ? Number(result[i].mass_remains_stop).toFixed(2) : 0.00,
-                                "dens_stop": result[i].dens_avg_remains_stop !== null ? Number(result[i].dens_avg_remains_stop).toFixed(5) : 0.00000,
+                                "dens_stop": result[i].dens_avg_remains_stop !== null ? Number(result[i].dens_avg_remains_stop).toFixed(6) : 0.000000,
                                 "temp_stop": result[i].temp_remains_stop !== null ? Number(result[i].temp_remains_stop).toFixed(2) : 0.00,
-                                "volume15_stop": result[i].volume15_remains_stop,
+                                "volume15_stop": result[i].volume15_remains_stop !== null ? Number(result[i].volume15_remains_stop).toFixed(6) : 0.000000,
                                 "mass15_stop": result[i].mass15_remains_stop !== null ? Number(result[i].mass15_remains_stop).toFixed(2) : 0.00,
-                                "dens15_stop": result[i].dens15_remains_stop !== null ? Number(result[i].dens15_remains_stop).toFixed(5) : 0.00000,
+                                "dens15_stop": result[i].dens15_remains_stop !== null ? Number(result[i].dens15_remains_stop).toFixed(6) : 0.000000,
 
-                                "permissible_volume15_error": result[i].permissible_volume15_error !== null ? Number(result[i].permissible_volume15_error).toFixed(4) : 0.0000,
-                                "absolute_volume15_error": result[i].permissible_volume15_error !== null ? Number(Number(result[i].permissible_volume15_error).toFixed(4) * Number(result[i].volume15_remains_start)/100.0).toFixed(3) : 0.000,
-                                "permissible_mass15_error": result[i].permissible_mass15_error !== null ? Number(result[i].permissible_mass15_error).toFixed(4) : 0.0000,
-                                "absolute_mass15_error": result[i].permissible_mass15_error !== null ? Number(Number(result[i].permissible_mass15_error).toFixed(4) * Number(result[i].mass15_remains_start)/100.0).toFixed(3) : 0.000
+                                "permissible_volume15_error": permissible_volume15_error !== null ? Number(permissible_volume15_error).toFixed(6) : 0.000000,
+                                "absolute_volume15_error": absolute_volume15_error !== null ? Number(absolute_volume15_error).toFixed(6) : 0.000000,
+                                "permissible_mass15_error": permissible_mass15_error !== null ? Number(permissible_mass15_error).toFixed(6) : 0.000000,
+                                "absolute_mass15_error": absolute_mass15_error !== null ? Number(absolute_mass15_error).toFixed(6) : 0.000000,
+
+                                //"permissible_volume15_error": result[i].permissible_volume15_error !== null ? Number(result[i].permissible_volume15_error).toFixed(4) : 0.0000,
+                                //"absolute_volume15_error": result[i].permissible_volume15_error !== null ? Number(Number(result[i].permissible_volume15_error).toFixed(4) * Number(result[i].volume15_remains_start)/100.0).toFixed(3) : 0.000,
+                                //"permissible_mass15_error": result[i].permissible_mass15_error !== null ? Number(result[i].permissible_mass15_error).toFixed(4) : 0.0000,
+                                //"absolute_mass15_error": result[i].permissible_mass15_error !== null ? Number(Number(result[i].permissible_mass15_error).toFixed(4) * Number(result[i].mass15_remains_start)/100.0).toFixed(3) : 0.000
 
 
 
