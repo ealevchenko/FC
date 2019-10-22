@@ -469,7 +469,7 @@
                         "<td class=xl6527014 width=112 style='border-top:none;border-left:none;width:84pt'>" + outFuelTypeDescription(el.type) + "</td>" +
                         "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_stop !== null ? Number(el.volume15_stop).toFixed(2) : "&nbsp;") + "</td>" +
                         "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_start !== null ? Number(el.volume15_start).toFixed(2) : "&nbsp;") + "</td>" +
-                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_delivery !== null ? Number(el.volume15_delivery).toFixed(2) : "&nbsp;") + "</td>" +
+                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume_delivery !== null ? Number(el.volume_delivery).toFixed(2) : "&nbsp;") + "</td>" +
                         "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>&nbsp;</td>" +
                         "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>&nbsp;</td>" +
                         "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (result !== null ? Number(result).toFixed(2) : "&nbsp;") + "</td>" +

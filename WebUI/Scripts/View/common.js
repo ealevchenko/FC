@@ -253,8 +253,8 @@ var outFuelTypeVolumePL = function (i) {
     switch (i) {
         case 107000022: return 4577;
         case 107000023: return 3904;
-        case 107000024: return 2674;
-        case 107000027: return 6771;
+        case 107000024: return 6771;
+        case 107000027: return 2674;
         default: return i;
     }
 };

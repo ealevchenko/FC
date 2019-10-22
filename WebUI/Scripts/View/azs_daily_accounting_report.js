@@ -306,14 +306,14 @@
                     var volume15_received = Number(data[i].volume15_received !== null ? Number(data[i].volume15_received).toFixed(6) : 0.000000);
                     var volume15_delivery = Number(data[i].volume15_delivery !== null ? Number(data[i].volume15_delivery).toFixed(6) : 0.000000);
                     var volume15_stop = Number(data[i].volume15_stop !== null ? Number(data[i].volume15_stop).toFixed(6) : 0.000000);
-                    var permissible_volume15_error = Number(((volume15_start + volume15_received - volume15_delivery - volume15_stop) / volume15_stop) * 100.0);
+                    var permissible_volume15_error = Number(((volume15_start + volume15_received - volume15_delivery - volume15_stop) / volume15_stop) * -100.0);
                     var absolute_volume15_error = (Number(permissible_volume15_error.toFixed(6)) * volume15_stop) / 100.0;
 
                     var mass15_start = Number(data[i].mass15_start !== null ? Number(data[i].mass15_start).toFixed(6) : 0.000000);
                     var mass15_received = Number(data[i].mass15_received !== null ? Number(data[i].mass15_received).toFixed(6) : 0.000000);
                     var mass15_delivery = Number(data[i].mass15_delivery !== null ? Number(data[i].mass15_delivery).toFixed(6) : 0.000000);
                     var mass15_stop = Number(data[i].mass15_stop !== null ? Number(data[i].mass15_stop).toFixed(6) : 0.000000);
-                    var permissible_mass15_error = Number(((mass15_start + mass15_received - mass15_delivery - mass15_stop) / mass15_stop) * 100.0);
+                    var permissible_mass15_error = Number(((mass15_start + mass15_received - mass15_delivery - mass15_stop) / mass15_stop) * -100.0);
                     var absolute_mass15_error = (Number(permissible_mass15_error.toFixed(6)) * mass15_stop) / 100.0;
 
                     this.obj_table.row.add({
@@ -477,14 +477,14 @@
                             var volume15_received = Number(result[i].volume15_received !== null ? Number(result[i].volume15_received).toFixed(6) : 0.000000);
                             var volume15_delivery = Number(result[i].volume15_delivery !== null ? Number(result[i].volume15_delivery).toFixed(6) : 0.000000);
                             var volume15_stop = Number(result[i].volume15_remains_stop !== null ? Number(result[i].volume15_remains_stop).toFixed(6) : 0.000000);
-                            var permissible_volume15_error = volume15_stop!== 0 ? Number(((volume15_start + volume15_received - volume15_delivery - volume15_stop) / volume15_stop) * 100.0) : 0;
+                            var permissible_volume15_error = volume15_stop!== 0 ? Number(((volume15_start + volume15_received - volume15_delivery - volume15_stop) / volume15_stop) * -100.0) : 0;
                             var absolute_volume15_error = (Number(permissible_volume15_error.toFixed(6)) * volume15_stop) / 100.0;
 
                             var mass15_start = Number(result[i].mass15_remains_start !== null ? Number(result[i].mass15_remains_start).toFixed(6) : 0.000000);
                             var mass15_received = Number(result[i].mass15_received !== null ? Number(result[i].mass15_received).toFixed(6) : 0.000000);
                             var mass15_delivery = Number(result[i].mass15_delivery !== null ? Number(result[i].mass15_delivery).toFixed(6) : 0.000000);
                             var mass15_stop = Number(result[i].mass15_remains_stop !== null ? Number(result[i].mass15_remains_stop).toFixed(6) : 0.000000);
-                            var permissible_mass15_error = mass15_stop!== 0 ? Number(((mass15_start + mass15_received - mass15_delivery - mass15_stop) / mass15_stop) * 100.0) : 0;
+                            var permissible_mass15_error = mass15_stop!== 0 ? Number(((mass15_start + mass15_received - mass15_delivery - mass15_stop) / mass15_stop) * -100.0) : 0;
                             var absolute_mass15_error = (Number(permissible_mass15_error.toFixed(6)) * mass15_stop) / 100.0;
 
                             table_detali.row.add({
