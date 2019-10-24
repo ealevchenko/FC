@@ -461,7 +461,7 @@
                 var tab = get_html_table5_star(list_daily_accounting.length);
                 $.each(list_daily_accounting, function (i, el) {
 
-                    var result = el.volume15_stop - el.volume15_start + el.volume15_delivery;
+                    var result = el.volume15_stop - el.volume15_start + el.volume_delivery;
 
                     tab += "<tr  class=xl6627014 style='height:auto'>" +
                         "<td class=xl6527014 width=41 style='border-top:none;border-left:none;width:31pt'>&nbsp;</td>" +
