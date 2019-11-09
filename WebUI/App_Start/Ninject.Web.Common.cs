@@ -80,10 +80,10 @@ namespace WebUI.App_Start
             kernel.Bind<EFOC.Abstract.IRepository<EFOC.Entities.Outcomes>>().To<EFOC.Concrete.EFOutcomes>();
             kernel.Bind<EFOC.Abstract.IRepository<EFOC.Entities.Incomes>>().To<EFOC.Concrete.EFIncomes>();
 
-            kernel.Bind<EFFCK.Abstract.IRepository<EFFCK.Entities.FuelSaleRW>>().To<EFFCK.Concrete.EFFuelSaleRW>();
-            kernel.Bind<EFFCK.Abstract.IRepository<EFFCK.Entities.ReceivingFuelRW>>().To<EFFCK.Concrete.EFReceivingFuelRW>();
-            kernel.Bind<EFFCK.Abstract.IRepository<EFFCK.Entities.RemainsTanksRW>>().To<EFFCK.Concrete.EFRemainsTanksRW>();
-            kernel.Bind<EFFCK.Abstract.IRepository<EFFCK.Entities.Daily_ReportRW>>().To<EFFCK.Concrete.EFDaily_ReportRW>();
+            //kernel.Bind<EFFCK.Abstract.IRepository<EFFCK.Entities.FuelSaleRW>>().To<EFFCK.Concrete.EFFuelSaleRW>();
+            //kernel.Bind<EFFCK.Abstract.IRepository<EFFCK.Entities.ReceivingFuelRW>>().To<EFFCK.Concrete.EFReceivingFuelRW>();
+            //kernel.Bind<EFFCK.Abstract.IRepository<EFFCK.Entities.RemainsTanksRW>>().To<EFFCK.Concrete.EFRemainsTanksRW>();
+            //kernel.Bind<EFFCK.Abstract.IRepository<EFFCK.Entities.Daily_ReportRW>>().To<EFFCK.Concrete.EFDaily_ReportRW>();
 
             kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.FuelSale_KGD>>().To<EFFC.Concrete.EFFuelSale_KGD>();
             kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.ReceivingFuel_KGD>>().To<EFFC.Concrete.EFReceivingFuel_KGD>();
