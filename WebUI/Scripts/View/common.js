@@ -228,6 +228,21 @@ var outFuelType = function (i) {
         default: return i;
     }
 };
+// Вареант выдачи
+var outIssueOption = function (i) {
+    switch (i) {
+        case 1: return "_";
+        case 2: return "По резервированию";
+        case 3: return "По исходящей поставке";
+        case 4: return "По требованию (самовывоз)";
+        case 5: return "Заправка в баки ТС";
+        case 6: return "Выдача в топливозаправщик (супер-маршрут)";
+        case 7: return "Пролив";
+        default: return "Выдача по старой системе";
+    }
+};
+
+
 
 var outFuelTypeUKTZED = function (i) {
     switch (i) {
@@ -491,6 +506,12 @@ var getReference_azsCards = function (callback) {
         },
         getResult: function (value) {
             var result = getObjects(this.list, 'Id', value)
+            if (result != null && result.length > 0) {
+                return result[0];
+            }
+        },
+        getResultNumCard: function (value) {
+            var result = getObjects(this.list, 'Number', value)
             if (result != null && result.length > 0) {
                 return result[0];
             }

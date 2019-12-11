@@ -32,9 +32,13 @@
         public virtual DbSet<TrainTankerOrder> TrainTankerOrder { get; set; }
 
         public virtual DbSet<Daily_Report_KGD> Daily_Report_KGD { get; set; }
-        public virtual DbSet<FuelSale_KGD> FuelSale_KGD { get; set; }
-        public virtual DbSet<ReceivingFuel_KGD> ReceivingFuel_KGD { get; set; }
+        //public virtual DbSet<FuelSale_KGD> FuelSale_KGD { get; set; }
+        //public virtual DbSet<ReceivingFuel_KGD> ReceivingFuel_KGD { get; set; }
         public virtual DbSet<RemainsTanks_KGD> RemainsTanks_KGD { get; set; }
+
+        public virtual DbSet<FuelSale_TSK> FuelSale_TSK { get; set; }
+        public virtual DbSet<ReceivingFuel_TSK> ReceivingFuel_TSK { get; set; }
+
 
         public virtual DbSet<Daily_Report_AZS> Daily_Report_AZS { get; set; }
 
@@ -634,82 +638,82 @@
             modelBuilder.Entity<TrainTankerOrder>()
                 .Property(e => e.IncomeMass)
                 .HasPrecision(9, 1);
-            modelBuilder.Entity<FuelSale_KGD>()
-                .Property(e => e.dose)
-                .HasPrecision(9, 3);
+            //modelBuilder.Entity<FuelSale_KGD>()
+            //    .Property(e => e.dose)
+            //    .HasPrecision(9, 3);
 
-            modelBuilder.Entity<FuelSale_KGD>()
-                .Property(e => e.passage)
-                .IsFixedLength()
-                .IsUnicode(false);
+            //modelBuilder.Entity<FuelSale_KGD>()
+            //    .Property(e => e.passage)
+            //    .IsFixedLength()
+            //    .IsUnicode(false);
 
-            modelBuilder.Entity<FuelSale_KGD>()
-                .Property(e => e.mass)
-                .HasPrecision(10, 3);
+            //modelBuilder.Entity<FuelSale_KGD>()
+            //    .Property(e => e.mass)
+            //    .HasPrecision(10, 3);
 
-            modelBuilder.Entity<FuelSale_KGD>()
-                .Property(e => e.dens)
-                .HasPrecision(9, 5);
+            //modelBuilder.Entity<FuelSale_KGD>()
+            //    .Property(e => e.dens)
+            //    .HasPrecision(9, 5);
 
-            modelBuilder.Entity<FuelSale_KGD>()
-                .Property(e => e.temp)
-                .HasPrecision(3, 1);
+            //modelBuilder.Entity<FuelSale_KGD>()
+            //    .Property(e => e.temp)
+            //    .HasPrecision(3, 1);
 
-            modelBuilder.Entity<FuelSale_KGD>()
-                .Property(e => e.mass15)
-                .HasPrecision(10, 3);
+            //modelBuilder.Entity<FuelSale_KGD>()
+            //    .Property(e => e.mass15)
+            //    .HasPrecision(10, 3);
 
-            modelBuilder.Entity<FuelSale_KGD>()
-                .Property(e => e.dens15)
-                .HasPrecision(9, 5);
+            //modelBuilder.Entity<FuelSale_KGD>()
+            //    .Property(e => e.dens15)
+            //    .HasPrecision(9, 5);
 
-            modelBuilder.Entity<FuelSale_KGD>()
-                .Property(e => e.start_level)
-                .HasPrecision(7, 1);
+            //modelBuilder.Entity<FuelSale_KGD>()
+            //    .Property(e => e.start_level)
+            //    .HasPrecision(7, 1);
 
-            modelBuilder.Entity<FuelSale_KGD>()
-                .Property(e => e.start_volume)
-                .HasPrecision(9, 1);
+            //modelBuilder.Entity<FuelSale_KGD>()
+            //    .Property(e => e.start_volume)
+            //    .HasPrecision(9, 1);
 
-            modelBuilder.Entity<FuelSale_KGD>()
-                .Property(e => e.start_dens)
-                .HasPrecision(9, 5);
+            //modelBuilder.Entity<FuelSale_KGD>()
+            //    .Property(e => e.start_dens)
+            //    .HasPrecision(9, 5);
 
-            modelBuilder.Entity<FuelSale_KGD>()
-                .Property(e => e.start_mass)
-                .HasPrecision(9, 1);
+            //modelBuilder.Entity<FuelSale_KGD>()
+            //    .Property(e => e.start_mass)
+            //    .HasPrecision(9, 1);
 
-            modelBuilder.Entity<FuelSale_KGD>()
-                .Property(e => e.start_temp)
-                .HasPrecision(3, 1);
+            //modelBuilder.Entity<FuelSale_KGD>()
+            //    .Property(e => e.start_temp)
+            //    .HasPrecision(3, 1);
 
-            modelBuilder.Entity<FuelSale_KGD>()
-                .Property(e => e.start_water_level)
-                .HasPrecision(6, 1);
+            //modelBuilder.Entity<FuelSale_KGD>()
+            //    .Property(e => e.start_water_level)
+            //    .HasPrecision(6, 1);
 
-            modelBuilder.Entity<FuelSale_KGD>()
-                .Property(e => e.stop_level)
-                .HasPrecision(7, 1);
+            //modelBuilder.Entity<FuelSale_KGD>()
+            //    .Property(e => e.stop_level)
+            //    .HasPrecision(7, 1);
 
-            modelBuilder.Entity<FuelSale_KGD>()
-                .Property(e => e.stop_volume)
-                .HasPrecision(9, 1);
+            //modelBuilder.Entity<FuelSale_KGD>()
+            //    .Property(e => e.stop_volume)
+            //    .HasPrecision(9, 1);
 
-            modelBuilder.Entity<FuelSale_KGD>()
-                .Property(e => e.stop_density)
-                .HasPrecision(9, 5);
+            //modelBuilder.Entity<FuelSale_KGD>()
+            //    .Property(e => e.stop_density)
+            //    .HasPrecision(9, 5);
 
-            modelBuilder.Entity<FuelSale_KGD>()
-                .Property(e => e.stop_mass)
-                .HasPrecision(9, 1);
+            //modelBuilder.Entity<FuelSale_KGD>()
+            //    .Property(e => e.stop_mass)
+            //    .HasPrecision(9, 1);
 
-            modelBuilder.Entity<FuelSale_KGD>()
-                .Property(e => e.stop_temp)
-                .HasPrecision(3, 1);
+            //modelBuilder.Entity<FuelSale_KGD>()
+            //    .Property(e => e.stop_temp)
+            //    .HasPrecision(3, 1);
 
-            modelBuilder.Entity<FuelSale_KGD>()
-                .Property(e => e.stop_water_level)
-                .HasPrecision(6, 1);
+            //modelBuilder.Entity<FuelSale_KGD>()
+            //    .Property(e => e.stop_water_level)
+            //    .HasPrecision(6, 1);
 
             modelBuilder.Entity<FuelSale_OIL>()
                 .Property(e => e.OperatorCreated)

@@ -16,6 +16,8 @@
                 'field_UsageVolume': 'Объем (л)',
                 'field_UsageMass': 'Масса (кг)',
                 'field_Density': 'Плотность (кг/м3)',
+                'field_FLAG_R': 'Вариант выдачи',
+
                 'field_Volume15': 'Объем прив. к 15 град. (л)',
                 'field_Mass15': 'Масса прив. к 15 град. (кг)',
                 'field_Dens15': 'Плотность прив. к 15 град. (кг/м3)',
@@ -40,6 +42,7 @@
                 'field_UsageVolume': 'Volume (l)',
                 'field_UsageMass': 'Mass (kg)',
                 'field_Density': 'Density (kg/m3)',
+                'field_FLAG_R': 'Issue option',
                 'field_Volume15': 'Объем прив. к 15 град. (л)',
                 'field_Mass15': 'Масса прив. к 15 град. (кг)',
                 'field_Dens15': 'Плотность прив. к 15 град. (кг/м3)',
@@ -105,7 +108,7 @@
         },
         // Панель таблицы
         panel_select_report = {
-            html_div_panel : $('#table-panel'),
+            html_div_panel: $('#table-panel'),
             obj: null,
             obj_date: null,
             bt_left: $('<button class="ui-button ui-widget ui-corner-all ui-button-icon-only" ><span class="ui-icon ui-icon-circle-triangle-w"></span>text</button>'),
@@ -128,7 +131,7 @@
                 //this.bt_left.attr('title',(langView('bt_left_title', langs)));
                 this.label.text(langView('label_select_date', langs));
                 //this.bt_right.attr('title',langView('bt_right_title', langs));
-                this.bt_refresh.attr('title',langView('bt_refresh_title', langs));
+                this.bt_refresh.attr('title', langView('bt_refresh_title', langs));
                 this.bt_refresh.text(langView('bt_refresh_text', langs));
 
                 this.bt_refresh.on('click', function () {
@@ -156,8 +159,8 @@
                         language: lang,
                         format: lang == 'en' ? 'MM/DD/YYYY' : 'DD.MM.YYYY',
                         autoClose: true,
-                        singleDate : true,
-                        showShortcuts: false, 
+                        singleDate: true,
+                        showShortcuts: false,
                     }).
                     bind('datepicker-change', function (evt, obj) {
                         date_curent = obj.date1;
@@ -218,53 +221,38 @@
                         total_dt_volume = api
                             .data()
                             .reduce(function (a, b) {
-                                if (b.fuel_type == 107000024) {
-                                    return intVal(a) + intVal(b.volume);
-                                } else { return intVal(a);}
-                            }, 0);
-                        total_dt_volume15 = api
-                            .data()
-                            .reduce(function (a, b) {
-                                if (b.fuel_type == 107000024) {
-                                    return intVal(a) + intVal(b.volume15);
-                                } else { return intVal(a);}
+                                if (b.OZM_BAK == '000000000107000024') {
+                                    return intVal(a) + intVal(b.Target_Volume);
+                                } else { return intVal(a); }
                             }, 0);
                         // Total mass
                         total_dt_mass = api
                             .data()
                             .reduce(function (a, b) {
-                                if (b.fuel_type == 107000024) {
-                                    return intVal(a) + intVal(b.mass);
-                                } else { return intVal(a);}
-                            }, 0);
-                        total_dt_mass15 = api
-                            .data()
-                            .reduce(function (a, b) {
-                                if (b.fuel_type == 107000024) {
-                                    return intVal(a) + intVal(b.mass15);
-                                } else { return intVal(a);}
+                                if (b.OZM_BAK == '000000000107000024') {
+                                    return intVal(a) + intVal(b.Target_Mass);
+                                } else { return intVal(a); }
                             }, 0);
 
                         $('td#volume').text(total_dt_volume.toFixed(2));
-                        $('td#volume15').text(total_dt_volume15.toFixed(2));
                         $('td#mass').text(total_dt_mass.toFixed(2));
-                        $('td#mass15').text(total_dt_mass15.toFixed(2));
 
                     },
                     columns: [
 
-                        { data: "start_datetime", title: langView('field_DateTime', langs), width: "100px", orderable: true, searchable: false },
-                        { data: "fuel_type", title: langView('field_FuelType', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "number_card", title: langView('field_rfid_card', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "Start_Date", title: langView('field_DateTime', langs), width: "100px", orderable: true, searchable: false },
+                        { data: "FuelType", title: langView('field_FuelType', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "RFID", title: langView('field_rfid_card', langs), width: "50px", orderable: true, searchable: true },
                         { data: "AutoNumber", title: langView('field_AutoNumber', langs), width: "50px", orderable: true, searchable: true },
                         { data: "AutoModel", title: langView('field_AutoModel', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "tank_num", title: langView('field_TankNo', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "volume", title: langView('field_UsageVolume', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "mass", title: langView('field_UsageMass', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "dens", title: langView('field_Density', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "volume15", title: langView('field_Volume15', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "mass15", title: langView('field_Mass15', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "dens15", title: langView('field_Dens15', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "N_BAK", title: langView('field_TankNo', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "FLAG_R", title: langView('field_FLAG_R', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "Target_Volume", title: langView('field_UsageVolume', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "Target_Mass", title: langView('field_UsageMass', langs), width: "50px", orderable: true, searchable: true },
+                        { data: "Target_Dens", title: langView('field_Density', langs), width: "50px", orderable: true, searchable: true },
+                        //{ data: "volume15", title: langView('field_Volume15', langs), width: "50px", orderable: true, searchable: true },
+                        //{ data: "mass15", title: langView('field_Mass15', langs), width: "50px", orderable: true, searchable: true },
+                        //{ data: "dens15", title: langView('field_Dens15', langs), width: "50px", orderable: true, searchable: true },
                     ],
                     dom: 'Bfrtip',
                     buttons: [
@@ -279,14 +267,14 @@
                 if (this.list == null | data_refresh == true) {
                     // Обновим данные
                     //getAsyncReportLocalFS_RWOfDateTime(
-                      getAsyncReportFS_KGDOfDateTime(
-                        date_start, date_stop,
-                        function (result) {
-                            table_fuel_sales.list = result;
-                            table_fuel_sales.loadDataTable(result);
-                            table_fuel_sales.obj.draw();
-                        }
-                    );
+                    getAsyncReportFS_KGDOfDateTime(
+                      date_start, date_stop,
+                      function (result) {
+                          table_fuel_sales.list = result;
+                          table_fuel_sales.loadDataTable(result);
+                          table_fuel_sales.obj.draw();
+                      }
+                  );
                 } else {
                     table_fuel_sales.loadDataTable(this.list);
                     table_fuel_sales.obj.draw();
@@ -298,20 +286,68 @@
                 this.obj.clear();
                 for (i = 0; i < data.length; i++) {
 
-                    var cards = reference_cards != null ? reference_cards.getResult(data[i].id_card) : null;
+                    var cards = reference_cards != null ? reference_cards.getResultNumCard(data[i].RFID) : null;
 
                     this.obj.row.add({
+
                         "id": data[i].id,
-                        "start_datetime": data[i].start_datetime,
-                        "fuel_type": data[i].fuel_type,
-                        "number_card": data[i].number_card,
-                        "tank_num": data[i].tank_num,
-                        "volume": data[i].volume,
-                        "mass": data[i].mass,
-                        "dens": data[i].dens,
-                        "volume15": data[i].volume15,
-                        "mass15": data[i].mass15,
-                        "dens15": data[i].dens15,
+                        "Out_Type": data[i].Out_Type,
+                        "FuelType": outFuelType(107000024),
+                        "Target_Volume": data[i].Target_Volume,//29500.0,
+                        "Target_Dens": data[i].Target_Dens,//838.0,
+                        "Target_Mass": data[i].Target_Mass,//24721.0,
+                        "User": data[i].User,//"Баталия",
+                        "Crated_Date": data[i].Crated_Date,//"2019-12-10T00:48:04",
+                        "Start_Counter": data[i].Start_Counter,//17106025,
+                        "Start_Level": data[i].Start_Level,//2728.162,
+                        "Start_Volume": data[i].Start_Volume,//155.443446,
+                        "Start_Mass": data[i].Start_Mass,//130.246064,
+                        "Start_Dens": data[i].Start_Dens,//837.9,
+                        "Start_Temp": data[i].Start_Temp,//4.12,
+                        "Start_Water": data[i].Start_Water,//0.0,
+                        "Start_Date": data[i].Start_Date,//"2019-12-10T00:48:16",
+                        "End_Counter": data[i].End_Counter,//17135524,
+                        "End_Level": data[i].End_Level,//2217.575,
+                        "End_Volume": data[i].End_Volume,//126.356775,
+                        "End_Mass": data[i].End_Mass,//105.924884,
+                        "End_Dens": data[i].End_Dens,//838.3,
+                        "End_Temp": data[i].End_Temp,//3.982,
+                        "End_Water": data[i].End_Water,//0.0,
+                        "End_Date": data[i].End_Date,//"2019-12-10T02:53:33",
+                        "close": data[i].close,//"2019-12-10T02:53:33",
+                        "RFID": data[i].RFID,//"45,15044",
+                        "FLAG_R": data[i].FLAG_R!== null ? outIssueOption(Number(data[i].FLAG_R)):'?',//"0",
+                        "N_TREB": data[i].N_TREB,//"Кузь",
+                        "RSPOS": data[i].RSPOS,//null,
+                        "N_BAK": data[i].N_BAK,// "1",
+                        "OZM_BAK": data[i].OZM_BAK,//"000000000107000024",
+                        "OZM_TREB": data[i].OZM_TREB,//"000000000107000024",
+                        "PLOTNOST": data[i].PLOTNOST,//"838.1",
+                        "VOLUME": data[i].VOLUME,//29499.0,
+                        "MASS": data[i].MASS,//24723.1119,
+                        "LOGIN_R": data[i].LOGIN_R,//"Баталия",
+                        "LOGIN_EXP": data[i].LOGIN_EXP,//null,
+                        "N_POST": data[i].N_POST,//null,
+                        "TRANSP_FAKT": data[i].TRANSP_FAKT,//"223",
+                        "LGORT": data[i].LGORT,//null,
+                        "WERKS": data[i].WERKS,//null,
+                        "N_DEB": data[i].N_DEB,//"100615",
+                        "sending": data[i].sending,//null
+                        "AutoNumber": data[i].FLAG_R !=='7' ? (cards != null ? cards.AutoNumber : data[i].TRANSP_FAKT) : '',
+                        "AutoModel": data[i].FLAG_R !=='7' ? (cards != null ? cards.AutoModel : '?') : '',
+
+                        
+                        
+                        //"start_datetime": data[i].start_datetime,
+                        //"fuel_type": data[i].fuel_type,
+                        //"number_card": data[i].number_card,
+                        //"tank_num": data[i].tank_num,
+                        //"volume": data[i].volume,
+                        //"mass": data[i].mass,
+                        //"dens": data[i].dens,
+                        //"volume15": data[i].volume15,
+                        //"mass15": data[i].mass15,
+                        //"dens15": data[i].dens15,
                         //"AzsNo": data[i].AzsNo,
                         //"FuelType": outFuelType(data[i].FuelType),
                         //"Fuel": data[i].FuelType,
@@ -349,8 +385,8 @@
                         //"StopWaterLevel": data[i].StopWaterLevel,
                         //"DateTime": data[i].DateStart.substring(0, 10) + ' ' + data[i].TimeStart.substring(0, 12),
                         //"Waybill": cards != null ? cards.Number : data[i].CardId,
-                        "AutoNumber": cards != null ? cards.AutoNumber : data[i].auto_number,
-                        "AutoModel": cards != null ? cards.AutoModel : '?',
+                        //"AutoNumber": cards != null ? cards.AutoNumber : data[i].auto_number,
+                        //"AutoModel": cards != null ? cards.AutoModel : '?',
                     });
                 }
                 LockScreenOff();

@@ -199,10 +199,12 @@
     <Compile Include="Controllers\api\DCDaily_Report_AZSController.cs" />
     <Compile Include="Controllers\api\DCDaily_Report_KGDController.cs" />
     <Compile Include="Controllers\api\Daily_ReportRWController.cs" />
-    <Compile Include="Controllers\api\DCFuelSale_KGDController.cs" />
+    <Compile Include="Controllers\api\DCFuelSale_TSKController.cs" />
+    <Compile Include="Controllers\api\DCReceivingFuel_TSKController.cs" />
+    <Compile Include="Controllers\api\_DCFuelSale_KGDController.cs" />
     <Compile Include="Controllers\api\DCFuelSale_OILController.cs" />
     <Compile Include="Controllers\api\DCReceipts_OILController.cs" />
-    <Compile Include="Controllers\api\DCReceivingFuel_KGDController.cs" />
+    <Compile Include="Controllers\api\_DCReceivingFuel_KGDController.cs" />
     <Compile Include="Controllers\api\DCRemainsTanks_KGDController.cs" />
     <Compile Include="Controllers\api\DCRemainsTanks_OILController.cs" />
     <Compile Include="Controllers\api\DCTransfer_OILController.cs" />

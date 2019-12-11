@@ -11,25 +11,25 @@ using System.Web.Http.Description;
 namespace WebUI.Controllers.api
 {
     [RoutePrefix("api/fuel_sale_kgd")]
-    public class DCFuelSale_KGDController : ApiController
+    public class DCFuelSale_TSKController : ApiController
     {
-        protected IRepository<FuelSale_KGD> ef_fs;
+        protected IRepository<FuelSale_TSK> ef_fs;
 
-        public DCFuelSale_KGDController(IRepository<FuelSale_KGD> fs)
+        public DCFuelSale_TSKController(IRepository<FuelSale_TSK> fs)
         {
             this.ef_fs = fs;
         }
 
-        // GET: api/fuel_sale_kgd/start/2019-07-03T00:00:00/stop/2019-07-03T23:59:59
+        // GET: api/fuel_sale_kgd/start/2019-12-10T00:00:00/stop/2019-12-10T23:59:59
         [Route("start/{start:datetime}/stop/{stop:datetime}")]
-        [ResponseType(typeof(FuelSale_KGD))]
-        public IHttpActionResult GetFuelSale_KGD(DateTime start, DateTime stop)
+        [ResponseType(typeof(FuelSale_TSK))]
+        public IHttpActionResult GetFuelSale_TSK(DateTime start, DateTime stop)
         {
             try
             {
-                List<FuelSale_KGD> list = this.ef_fs
+                List<FuelSale_TSK> list = this.ef_fs
                     .Get()
-                    .Where(s => s.start_datetime >= start && s.start_datetime <= stop)
+                    .Where(s => s.Start_Date >= start && s.End_Date <= stop)
                     .ToList();
                 if (list == null)
                 {
