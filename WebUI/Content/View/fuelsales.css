@@ -49,3 +49,12 @@ table#table-fuel-sales th.title-foot {
 #table-panel label {
     margin: 5px;
 }
+
+td.value-field {
+    text-align:right;
+    color:blue;
+}
+
+td.text-centr-field {
+    text-align:center;
+}

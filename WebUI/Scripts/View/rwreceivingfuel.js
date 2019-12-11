@@ -222,27 +222,27 @@
                             .reduce(function (a, b) {
                                 return intVal(a) + intVal(b.railway_volume);
                             }, 0);
-                        total_dt_volume15 = api
-                            .data()
-                            .reduce(function (a, b) {
-                                return intVal(a) + intVal(b.railway_volume15);
-                            }, 0);
+                        //total_dt_volume15 = api
+                        //    .data()
+                        //    .reduce(function (a, b) {
+                        //        return intVal(a) + intVal(b.railway_volume15);
+                        //    }, 0);
                         // Total mass
                         total_dt_mass = api
                             .data()
                             .reduce(function (a, b) {
                                 return intVal(a) + intVal(b.railway_mass);
                             }, 0);
-                        total_dt_mass15 = api
-                            .data()
-                            .reduce(function (a, b) {
-                                return intVal(a) + intVal(b.railway_mass15);
-                            }, 0);
+                        //total_dt_mass15 = api
+                        //    .data()
+                        //    .reduce(function (a, b) {
+                        //        return intVal(a) + intVal(b.railway_mass15);
+                        //    }, 0);
 
                         $('td#volume').text(total_dt_volume.toFixed(2));
-                        $('td#volume15').text(total_dt_volume15.toFixed(2));
+                        //$('td#volume15').text(total_dt_volume15.toFixed(2));
                         $('td#mass').text(total_dt_mass.toFixed(2));
-                        $('td#mass15').text(total_dt_mass15.toFixed(2));
+                        //$('td#mass15').text(total_dt_mass15.toFixed(2));
 
                     },
                     columns: [
@@ -254,15 +254,21 @@
                         { data: "railway_dens", title: langView('field_railway_dens', langs), width: "50px", orderable: true, searchable: true },
                         { data: "railway_mass", title: langView('field_railway_mass', langs), width: "50px", orderable: true, searchable: true },
                         { data: "railway_temp", title: langView('field_railway_temp', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "railway_volume15", title: langView('field_railway_volume15', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "railway_dens15", title: langView('field_railway_dens15', langs), width: "50px", orderable: true, searchable: true },
-                        { data: "railway_mass15", title: langView('field_railway_mass15', langs), width: "50px", orderable: true, searchable: true },
+                        //{ data: "railway_volume15", title: langView('field_railway_volume15', langs), width: "50px", orderable: true, searchable: true },
+                        //{ data: "railway_dens15", title: langView('field_railway_dens15', langs), width: "50px", orderable: true, searchable: true },
+                        //{ data: "railway_mass15", title: langView('field_railway_mass15', langs), width: "50px", orderable: true, searchable: true },
                         { data: "operator_name", title: langView('field_operator_name', langs), width: "50px", orderable: true, searchable: true },
                     ],
                     dom: 'Bfrtip',
                     buttons: [
                         'copyHtml5',
-                        'excelHtml5',
+                        {
+                            extend: 'excelHtml5',
+                            sheetName: 'TSK прием',
+                            messageTop: function () {
+                                return 'Период отчета с ' + (date_start !== null ? toISOStringTZ(date_start).split('T').join(' ') : '') + ' по ' + (date_stop !== null ? toISOStringTZ(date_stop).split('T').join(' ') : '');
+                            }
+                        }
                     ]
                 });
             },
@@ -303,9 +309,9 @@
                         "railway_dens": data[i].railway_dens,
                         "railway_mass": data[i].railway_mass,
                         "railway_temp": data[i].railway_temp,
-                        "railway_volume15": data[i].railway_volume15,
-                        "railway_dens15": data[i].railway_dens15,
-                        "railway_mass15": data[i].railway_mass15,
+                        //"railway_volume15": data[i].railway_volume15,
+                        //"railway_dens15": data[i].railway_dens15,
+                        //"railway_mass15": data[i].railway_mass15,
                         "operator_name": data[i].operator_name,
 
                     });

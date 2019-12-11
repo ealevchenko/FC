@@ -471,6 +471,8 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\datatables.js" />
+    <Content Include="Scripts\DataTables\datatables.min.js" />
     <Content Include="Scripts\DateTime\jquery.daterangepicker.js" />
     <Content Include="Scripts\DateTime\moment.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />

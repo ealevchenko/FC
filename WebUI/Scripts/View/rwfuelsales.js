@@ -207,6 +207,13 @@
                     jQueryUI: true,
                     "createdRow": function (row, data, index) {
                         $(row).attr('id', data.id);
+                        $('td', row).eq(2).addClass('text-centr-field');
+                        $('td', row).eq(3).addClass('text-centr-field');
+                        $('td', row).eq(4).addClass('text-centr-field');
+                        $('td', row).eq(5).addClass('text-centr-field');
+                        $('td', row).eq(7).addClass('value-field');
+                        $('td', row).eq(8).addClass('value-field');
+                        $('td', row).eq(9).addClass('value-field');
                     },
                     "footerCallback": function (row, data, start, end, display) {
                         var api = this.api(), data;
@@ -257,7 +264,13 @@
                     dom: 'Bfrtip',
                     buttons: [
                         'copyHtml5',
-                        'excelHtml5',
+                        {
+                            extend: 'excelHtml5',
+                            sheetName: 'TSK выдача',
+                            messageTop: function () {
+                                return 'Период отчета с ' + (date_start !== null ? toISOStringTZ(date_start).split('T').join(' ') : '') + ' по ' + (date_stop !== null ? toISOStringTZ(date_stop).split('T').join(' ') : '');
+                            }
+                        }
                     ]
                 });
             },
@@ -293,9 +306,9 @@
                         "id": data[i].id,
                         "Out_Type": data[i].Out_Type,
                         "FuelType": outFuelType(107000024),
-                        "Target_Volume": data[i].Target_Volume,//29500.0,
-                        "Target_Dens": data[i].Target_Dens,//838.0,
-                        "Target_Mass": data[i].Target_Mass,//24721.0,
+                        "Target_Volume": data[i].Target_Volume.toFixed(2),//29500.0,
+                        "Target_Dens": data[i].Target_Dens.toFixed(2),//838.0,
+                        "Target_Mass": data[i].Target_Mass.toFixed(2),//24721.0,
                         "User": data[i].User,//"Баталия",
                         "Crated_Date": data[i].Crated_Date,//"2019-12-10T00:48:04",
                         "Start_Counter": data[i].Start_Counter,//17106025,
