@@ -34,12 +34,12 @@
         public virtual DbSet<Daily_Report_KGD> Daily_Report_KGD { get; set; }
         //public virtual DbSet<FuelSale_KGD> FuelSale_KGD { get; set; }
         //public virtual DbSet<ReceivingFuel_KGD> ReceivingFuel_KGD { get; set; }
-        public virtual DbSet<RemainsTanks_KGD> RemainsTanks_KGD { get; set; }
+        //public virtual DbSet<RemainsTanks_KGD> RemainsTanks_KGD { get; set; }
 
         public virtual DbSet<FuelSale_TSK> FuelSale_TSK { get; set; }
         public virtual DbSet<ReceivingFuel_TSK> ReceivingFuel_TSK { get; set; }
-
-
+        public virtual DbSet<Remains_TSK> Remains_TSK { get; set; }
+        
         public virtual DbSet<Daily_Report_AZS> Daily_Report_AZS { get; set; }
 
         public virtual DbSet<RemainsTanks_OIL> RemainsTanks_OIL { get; set; }
@@ -57,9 +57,21 @@
 
         public virtual DbSet<Cat_TRK_AZS> Cat_TRK_AZS { get; set; }
 
+        public virtual DbSet<Daily_Accounting_Detali_Report_TSK> Daily_Accounting_Detali_Report_TSK { get; set; }
+        public virtual DbSet<Daily_Accounting_Report_TSK> Daily_Accounting_Report_TSK { get; set; }
+        public virtual DbSet<DeliveryTanks_TSK> DeliveryTanks_TSK { get; set; }
+        public virtual DbSet<ReceivingTanks_TSK> ReceivingTanks_TSK { get; set; }
+        public virtual DbSet<RemainsTanks_TSK> RemainsTanks_TSK { get; set; }
+
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<DeliveryTanks_TSK>()
+                .Property(e => e.passage)
+                .IsFixedLength()
+                .IsUnicode(false);
 
             modelBuilder.Entity<DeliveryTanks_AZS>()
                 .Property(e => e.passage)

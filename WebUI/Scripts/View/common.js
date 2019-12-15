@@ -1074,6 +1074,54 @@ var getAsyncViewReportDR_KGDOfDateTime = function (start, stop, callback) {
         },
     });
 };
+// Суточный(налоговый) отчет по TSK - новый (БД ЦОД)
+var getAsyncViewDailyAccountingReportTSKOfDateTime = function (start, stop, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/dar_tsk/daily_accounting_report/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+};
+// Суточный(налоговый) отчет -ДЕТАЛИ по АЗС - новый (БД ЦОД)
+var getAsyncViewDailyAccountingDetaliReportTSKOfDateTime = function (start, fuel, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/dar_tsk/daily_accounting_detali_report/date/' + start + '/fuel/' + fuel,
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+};
+
+
 /////////////////////////////////////////////////////////////////////
 // Веруть Выдача масла из ЦСМ
 var getAsyncViewOilSalesOfDateTime = function (start, stop, callback) {

@@ -250,15 +250,21 @@
                         { data: "dens", title: langView('field_railway_dens', langs), width: "50px", orderable: false, searchable: true },
                         { data: "mass", title: langView('field_railway_mass', langs), width: "50px", orderable: false, searchable: true },
                         { data: "temp", title: langView('field_railway_temp', langs), width: "50px", orderable: false, searchable: true },
-                        { data: "volume15", title: langView('field_railway_volume15', langs), width: "50px", orderable: false, searchable: true },
-                        { data: "dens15", title: langView('field_railway_dens15', langs), width: "50px", orderable: false, searchable: true },
-                        { data: "mass15", title: langView('field_railway_mass15', langs), width: "50px", orderable: false, searchable: true },
+                        //{ data: "volume15", title: langView('field_railway_volume15', langs), width: "50px", orderable: false, searchable: true },
+                        //{ data: "dens15", title: langView('field_railway_dens15', langs), width: "50px", orderable: false, searchable: true },
+                        //{ data: "mass15", title: langView('field_railway_mass15', langs), width: "50px", orderable: false, searchable: true },
 
                     ],
                     dom: 'Bfrtip',
                     buttons: [
                         'copyHtml5',
-                        'excelHtml5',
+                        {
+                            extend: 'excelHtml5',
+                            sheetName: 'TSK прием',
+                            messageTop: function () {
+                                return 'Период отчета с ' + (date_start !== null ? toISOStringTZ(date_start).split('T').join(' ') : '') + ' по ' + (date_stop !== null ? toISOStringTZ(date_stop).split('T').join(' ') : '');
+                            }
+                        }
                     ]
                 });
             },
@@ -294,12 +300,12 @@
                         "date": data[i].date,
                         "level": data[i].level,
                         "volume": data[i].volume!==null? Number(data[i].volume*1000).toFixed(2):null,
-                        "dens": data[i].dens_avg,
+                        "dens": data[i].dens_avg !== null ? data[i].dens_avg.toFixed(2):null,
                         "mass": data[i].mass !== null ? Number(data[i].mass*1000).toFixed(2):null,
-                        "temp": data[i].temp_avg,
-                        "volume15": data[i].volume15 !== null ? Number(data[i].volume15*1000).toFixed(2):null,
-                        "dens15": data[i].dens15,
-                        "mass15": data[i].mass15 !== null ? Number(data[i].mass15*1000).toFixed(2):null,
+                        "temp": data[i].temp_avg !== null ? data[i].temp_avg.toFixed(2):null,
+                        //"volume15": data[i].volume15 !== null ? Number(data[i].volume15*1000).toFixed(2):null,
+                        //"dens15": data[i].dens15,
+                        //"mass15": data[i].mass15 !== null ? Number(data[i].mass15*1000).toFixed(2):null,
                     });
                 }
                 LockScreenOff();

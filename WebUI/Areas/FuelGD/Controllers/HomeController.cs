@@ -35,17 +35,22 @@ namespace WebUI.Areas.FuelGD.Controllers
             return View();
         }
 
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko")]
+        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko,EUROPE\iishkurka")]
         public ActionResult RemainsTanks()
         {
             return View();
         }
 
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko")]
-        public ActionResult DailyReport()
+        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko,EUROPE\iishkurka")]
+        public ActionResult DailyAccountingReport()
         {
             return View();
         }
+        //[ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko,EUROPE\iishkurka")]
+        //public ActionResult DailyReport()
+        //{
+        //    return View();
+        //}
 
     }
 }
