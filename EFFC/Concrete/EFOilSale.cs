@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace EFFC.Concrete
 {
-    public class EFFuelSale_OIL : IRepository<FuelSale_OIL>
+    public class EFOilSale : IRepository<OilSale>
     {
 
         private EFDbContext db;
 
-        public EFFuelSale_OIL(EFDbContext db)
+        public EFOilSale(EFDbContext db)
         {
 
             this.db = db;
@@ -25,11 +25,11 @@ namespace EFFC.Concrete
             get { return this.db.Database; }
         }
 
-        public IEnumerable<FuelSale_OIL> Get()
+        public IEnumerable<OilSale> Get()
         {
             try
             {
-                return db.Select<FuelSale_OIL>();
+                return db.Select<OilSale>();
             }
             catch (Exception e)
             {
@@ -37,11 +37,11 @@ namespace EFFC.Concrete
             }
         }
 
-        public FuelSale_OIL Get(int id)
+        public OilSale Get(int id)
         {
             try
             {
-                return db.Select<FuelSale_OIL>(id);
+                return db.Select<OilSale>(id);
             }
             catch (Exception e)
             {
@@ -49,11 +49,11 @@ namespace EFFC.Concrete
             }
         }
 
-        public void Add(FuelSale_OIL item)
+        public void Add(OilSale item)
         {
             try
             {
-                db.Insert<FuelSale_OIL>(item);
+                db.Insert<OilSale>(item);
             }
             catch (Exception e)
             {
@@ -61,11 +61,11 @@ namespace EFFC.Concrete
             }
         }
 
-        public void Update(FuelSale_OIL item)
+        public void Update(OilSale item)
         {
             try
             {
-                db.Update<FuelSale_OIL>(item);
+                db.Update<OilSale>(item);
             }
             catch (Exception e)
             {
@@ -73,11 +73,11 @@ namespace EFFC.Concrete
             }
         }
 
-        public void AddOrUpdate(FuelSale_OIL item)
+        public void AddOrUpdate(OilSale item)
         {
             try
             {
-                FuelSale_OIL dbEntry = db.FuelSale_OIL.Find(item.id);
+                OilSale dbEntry = db.OilSale.Find(item.id);
                 if (dbEntry == null)
                 {
                     Add(item);
@@ -98,7 +98,7 @@ namespace EFFC.Concrete
         {
             try
             {
-                FuelSale_OIL item = db.Delete<FuelSale_OIL>(id);
+                OilSale item = db.Delete<OilSale>(id);
             }
             catch (Exception e)
             {
@@ -118,12 +118,12 @@ namespace EFFC.Concrete
             }
         }
 
-        public FuelSale_OIL Refresh(FuelSale_OIL item)
+        public OilSale Refresh(OilSale item)
         {
             try
             {
                 db.Entry(item).State = EntityState.Detached;
-                return db.Select<FuelSale_OIL>(item.id);
+                return db.Select<OilSale>(item.id);
             }
             catch (Exception e)
             {

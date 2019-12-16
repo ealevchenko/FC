@@ -133,7 +133,7 @@ var AJAXComplete = function () {
 var getAsyncViewOilSalesOfDateTime = function (start, stop, callback) {
     $.ajax({
         type: 'GET',
-        url: '../api/oil/outcomes/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
+        url: '../api/oil/oilsale/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
         async: true,
         dataType: 'json',
         beforeSend: function () {

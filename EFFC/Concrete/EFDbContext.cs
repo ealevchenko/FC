@@ -12,6 +12,8 @@
             : base("name=oil")
         {
         }
+        //*******************************************************************************
+        //АЗС
         public virtual DbSet<Azs> Azs { get; set; }
         public virtual DbSet<azsCards> azsCards { get; set; }
         public virtual DbSet<azsDelta> azsDelta { get; set; }
@@ -30,44 +32,52 @@
         public virtual DbSet<TankerStorage> TankerStorage { get; set; }
         public virtual DbSet<TankStates> TankStates { get; set; }
         public virtual DbSet<TrainTankerOrder> TrainTankerOrder { get; set; }
-
-        public virtual DbSet<Daily_Report_KGD> Daily_Report_KGD { get; set; }
-        //public virtual DbSet<FuelSale_KGD> FuelSale_KGD { get; set; }
-        //public virtual DbSet<ReceivingFuel_KGD> ReceivingFuel_KGD { get; set; }
-        //public virtual DbSet<RemainsTanks_KGD> RemainsTanks_KGD { get; set; }
-
-        public virtual DbSet<FuelSale_TSK> FuelSale_TSK { get; set; }
-        public virtual DbSet<ReceivingFuel_TSK> ReceivingFuel_TSK { get; set; }
-        public virtual DbSet<Remains_TSK> Remains_TSK { get; set; }
-        
-        public virtual DbSet<Daily_Report_AZS> Daily_Report_AZS { get; set; }
-
-        public virtual DbSet<RemainsTanks_OIL> RemainsTanks_OIL { get; set; }
-        public virtual DbSet<Oil_Transfer> Oil_Transfer { get; set; }
-
-        public virtual DbSet<FuelSale_OIL> FuelSale_OIL { get; set; }
-        public virtual DbSet<Receipts_OIL> Receipts_OIL { get; set; }
-
-
         public virtual DbSet<Daily_Accounting_Report_AZS> Daily_Accounting_Report_AZS { get; set; }
         public virtual DbSet<Daily_Accounting_Detali_Report_AZS> Daily_Accounting_Detali_Report_AZS { get; set; }
         public virtual DbSet<DeliveryTanks_AZS> DeliveryTanks_AZS { get; set; }
         public virtual DbSet<ReceivingTanks_AZS> ReceivingTanks_AZS { get; set; }
         public virtual DbSet<RemainsTanks_AZS> RemainsTanks_AZS { get; set; }
-
         public virtual DbSet<Cat_TRK_AZS> Cat_TRK_AZS { get; set; }
 
+        //*******************************************************************************
+        // Карьерная
+        public virtual DbSet<FuelSale_TSK> FuelSale_TSK { get; set; }
+        public virtual DbSet<ReceivingFuel_TSK> ReceivingFuel_TSK { get; set; }
+        public virtual DbSet<Remains_TSK> Remains_TSK { get; set; }
         public virtual DbSet<Daily_Accounting_Detali_Report_TSK> Daily_Accounting_Detali_Report_TSK { get; set; }
         public virtual DbSet<Daily_Accounting_Report_TSK> Daily_Accounting_Report_TSK { get; set; }
         public virtual DbSet<DeliveryTanks_TSK> DeliveryTanks_TSK { get; set; }
         public virtual DbSet<ReceivingTanks_TSK> ReceivingTanks_TSK { get; set; }
         public virtual DbSet<RemainsTanks_TSK> RemainsTanks_TSK { get; set; }
+        //*******************************************************************************
+        // Маслосклад
+        public virtual DbSet<OilSale> OilSale { get; set; }
+        public virtual DbSet<RemainsTanks_OIL> RemainsTanks_OIL { get; set; }
+        public virtual DbSet<Oil_Transfer> Oil_Transfer { get; set; }
 
-
+        public virtual DbSet<Receipts_OIL> Receipts_OIL { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<OilSale>()
+                .Property(e => e.user)
+                .IsFixedLength();
 
+            modelBuilder.Entity<OilSale>()
+                .Property(e => e.oil_type)
+                .IsFixedLength();
+
+            modelBuilder.Entity<OilSale>()
+                .Property(e => e.tank_num)
+                .IsFixedLength();
+
+            modelBuilder.Entity<OilSale>()
+                .Property(e => e.receiver)
+                .IsFixedLength();
+
+            modelBuilder.Entity<OilSale>()
+                .Property(e => e.operator_started)
+                .IsFixedLength();
             modelBuilder.Entity<DeliveryTanks_TSK>()
                 .Property(e => e.passage)
                 .IsFixedLength()
@@ -650,102 +660,6 @@
             modelBuilder.Entity<TrainTankerOrder>()
                 .Property(e => e.IncomeMass)
                 .HasPrecision(9, 1);
-            //modelBuilder.Entity<FuelSale_KGD>()
-            //    .Property(e => e.dose)
-            //    .HasPrecision(9, 3);
-
-            //modelBuilder.Entity<FuelSale_KGD>()
-            //    .Property(e => e.passage)
-            //    .IsFixedLength()
-            //    .IsUnicode(false);
-
-            //modelBuilder.Entity<FuelSale_KGD>()
-            //    .Property(e => e.mass)
-            //    .HasPrecision(10, 3);
-
-            //modelBuilder.Entity<FuelSale_KGD>()
-            //    .Property(e => e.dens)
-            //    .HasPrecision(9, 5);
-
-            //modelBuilder.Entity<FuelSale_KGD>()
-            //    .Property(e => e.temp)
-            //    .HasPrecision(3, 1);
-
-            //modelBuilder.Entity<FuelSale_KGD>()
-            //    .Property(e => e.mass15)
-            //    .HasPrecision(10, 3);
-
-            //modelBuilder.Entity<FuelSale_KGD>()
-            //    .Property(e => e.dens15)
-            //    .HasPrecision(9, 5);
-
-            //modelBuilder.Entity<FuelSale_KGD>()
-            //    .Property(e => e.start_level)
-            //    .HasPrecision(7, 1);
-
-            //modelBuilder.Entity<FuelSale_KGD>()
-            //    .Property(e => e.start_volume)
-            //    .HasPrecision(9, 1);
-
-            //modelBuilder.Entity<FuelSale_KGD>()
-            //    .Property(e => e.start_dens)
-            //    .HasPrecision(9, 5);
-
-            //modelBuilder.Entity<FuelSale_KGD>()
-            //    .Property(e => e.start_mass)
-            //    .HasPrecision(9, 1);
-
-            //modelBuilder.Entity<FuelSale_KGD>()
-            //    .Property(e => e.start_temp)
-            //    .HasPrecision(3, 1);
-
-            //modelBuilder.Entity<FuelSale_KGD>()
-            //    .Property(e => e.start_water_level)
-            //    .HasPrecision(6, 1);
-
-            //modelBuilder.Entity<FuelSale_KGD>()
-            //    .Property(e => e.stop_level)
-            //    .HasPrecision(7, 1);
-
-            //modelBuilder.Entity<FuelSale_KGD>()
-            //    .Property(e => e.stop_volume)
-            //    .HasPrecision(9, 1);
-
-            //modelBuilder.Entity<FuelSale_KGD>()
-            //    .Property(e => e.stop_density)
-            //    .HasPrecision(9, 5);
-
-            //modelBuilder.Entity<FuelSale_KGD>()
-            //    .Property(e => e.stop_mass)
-            //    .HasPrecision(9, 1);
-
-            //modelBuilder.Entity<FuelSale_KGD>()
-            //    .Property(e => e.stop_temp)
-            //    .HasPrecision(3, 1);
-
-            //modelBuilder.Entity<FuelSale_KGD>()
-            //    .Property(e => e.stop_water_level)
-            //    .HasPrecision(6, 1);
-
-            modelBuilder.Entity<FuelSale_OIL>()
-                .Property(e => e.OperatorCreated)
-                .IsFixedLength();
-
-            modelBuilder.Entity<FuelSale_OIL>()
-                .Property(e => e.OilType)
-                .IsFixedLength();
-
-            modelBuilder.Entity<FuelSale_OIL>()
-                .Property(e => e.TankNo)
-                .IsFixedLength();
-
-            modelBuilder.Entity<FuelSale_OIL>()
-                .Property(e => e.Receiver)
-                .IsFixedLength();
-
-            modelBuilder.Entity<FuelSale_OIL>()
-                .Property(e => e.OperatorStarted)
-                .IsFixedLength();
 
             modelBuilder.Entity<Receipts_OIL>()
                 .Property(e => e.DensStop)

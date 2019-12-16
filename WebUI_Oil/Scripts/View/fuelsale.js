@@ -257,14 +257,13 @@
                     //},
                     columns: [
 
-                        { data: "DateStarted", title: 'Дата и время', width: "150px", orderable: true, searchable: false },
-                        { data: "TankNo", title: '№ Бака', width: "50px", orderable: true, searchable: true },
-                        { data: "OilType", title: 'Тип Масла', width: "50px", orderable: true, searchable: true },
-                        //{ data: "Invent", title: 'Инв. №', width: "100px", orderable: true, searchable: true },
-                        { data: "Receiver", title: 'Получатель', width: "50px", orderable: false, searchable: false },
-                        { data: "TargetVolume", title: 'Объем (м3)', width: "50px", orderable: false, searchable: false },
-                        { data: "CreatedDens", title: 'Плотность (кг/м3)', width: "50px", orderable: false, searchable: false },
-                        { data: "TargetMass", title: 'Масса (т)', width: "50px", orderable: false, searchable: false },
+                        { data: "start_datetime", title: 'Дата и время', width: "150px", orderable: true, searchable: false },
+                        { data: "tank_num", title: '№ Бака', width: "50px", orderable: true, searchable: true },
+                        { data: "oil_type", title: 'Тип Масла', width: "50px", orderable: true, searchable: true },
+                        { data: "receiver", title: 'Получатель', width: "50px", orderable: false, searchable: false },
+                        { data: "volume", title: 'Объем (м3)', width: "50px", orderable: false, searchable: false },
+                        { data: "dens", title: 'Плотность (кг/м3)', width: "50px", orderable: false, searchable: false },
+                        { data: "mass", title: 'Масса (т)', width: "50px", orderable: false, searchable: false },
                     ],
                     dom: 'Blftipr',
                     buttons: [
@@ -297,15 +296,25 @@
                 this.obj.clear();
                 for (i = 0; i < data.length; i++) {
                     this.obj.row.add({
-                        "Id": data[i].Id,
-                        "DateStarted": data[i].DateStarted,
-                        "TankNo": data[i].TankNo,
-                        "OilType": data[i].OilType,
-                        //"Invent": data[i].Invent,
-                        "Receiver": data[i].Receiver,
-                        "TargetVolume": data[i].TargetVolume !== null ? (data[i].TargetVolume / 1000).toFixed(3) : null,
-                        "CreatedDens": data[i].CreatedDens !== null ? data[i].CreatedDens.toFixed(1) : null,
-                        "TargetMass": data[i].TargetMass !== null ? (data[i].TargetMass / 1000).toFixed(3) : null,
+                        "id": data[i].id,
+                        "start_datetime": data[i].start_datetime,
+                        "tank_num": data[i].tank_num,
+                        "oil_type": data[i].oil_type,
+
+                        "receiver": data[i].receiver,
+                        "volume": data[i].volume !== null ? (data[i].volume).toFixed(2) : null,
+                        "dens": data[i].dens !== null ? data[i].dens.toFixed(4) : null,
+                        "mass": data[i].mass !== null ? (data[i].mass / 1000).toFixed(4) : null,
+
+                        //"Id": data[i].Id,
+                        //"DateStarted": data[i].DateStarted,
+                        //"TankNo": data[i].TankNo,
+                        //"OilType": data[i].OilType,
+                        ////"Invent": data[i].Invent,
+                        //"Receiver": data[i].Receiver,
+                        //"TargetVolume": data[i].TargetVolume !== null ? (data[i].TargetVolume / 1000).toFixed(3) : null,
+                        //"CreatedDens": data[i].CreatedDens !== null ? data[i].CreatedDens.toFixed(1) : null,
+                        //"TargetMass": data[i].TargetMass !== null ? (data[i].TargetMass / 1000).toFixed(3) : null,
                     });
                 }
                 LockScreenOff();

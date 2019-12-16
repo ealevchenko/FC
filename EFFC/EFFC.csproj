@@ -68,16 +68,11 @@
     <Compile Include="Concrete\EFReceivingTanks_AZS.cs" />
     <Compile Include="Concrete\EFDeliveryTanks_AZS.cs" />
     <Compile Include="Concrete\EFDaily_Accounting_Report_AZS.cs" />
-    <Compile Include="Concrete\EFDaily_Report_AZS.cs" />
     <Compile Include="Concrete\EFReceipts_OIL.cs" />
-    <Compile Include="Concrete\EFFuelSale_OIL.cs" />
+    <Compile Include="Concrete\EFOilSale.cs" />
     <Compile Include="Concrete\EFOil_Transfer.cs" />
     <Compile Include="Concrete\EFRemains_TSK.cs" />
     <Compile Include="Concrete\EFRemainsTanks_OIL.cs" />
-    <Compile Include="Concrete\EFRemainsTanks_KGD.cs" />
-    <Compile Include="Concrete\EFReceivingFuel_KGD.cs" />
-    <Compile Include="Concrete\EFFuelSale_KGD.cs" />
-    <Compile Include="Concrete\EFDaily_Report_KGD.cs" />
     <Compile Include="Concrete\EFTankStates.cs" />
     <Compile Include="Concrete\EFazsTankStates.cs" />
     <Compile Include="Concrete\EFCards.cs" />
@@ -103,14 +98,8 @@
     <Compile Include="Entities\TankerStorage.cs" />
     <Compile Include="Entities\TankStates.cs" />
     <Compile Include="Entities\TrainTankerOrder.cs" />
-    <Compile Include="Entities\Daily_Report_KGD.cs" />
-    <Compile Include="Entities\FuelSale_KGD.cs" />
-    <Compile Include="Entities\ReceivingFuel_KGD.cs" />
-    <Compile Include="Entities\RemainsTanks_KGD.cs" />
-    <Compile Include="Entities\Daily_Report_AZS.cs" />
     <Compile Include="Entities\RemainsTanks_OIL.cs" />
     <Compile Include="Entities\Oil_Transfer.cs" />
-    <Compile Include="Entities\FuelSale_OIL.cs" />
     <Compile Include="Entities\Receipts_OIL.cs" />
     <Compile Include="Entities\Daily_Accounting_Report_AZS.cs" />
     <Compile Include="Entities\DeliveryTanks_AZS.cs" />
@@ -125,6 +114,7 @@
     <Compile Include="Entities\DeliveryTanks_TSK.cs" />
     <Compile Include="Entities\ReceivingTanks_TSK.cs" />
     <Compile Include="Entities\RemainsTanks_TSK.cs" />
+    <Compile Include="Entities\OilSale.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
