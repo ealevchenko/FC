@@ -491,6 +491,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\View\tsk_info_day_report.js" />
     <Content Include="Scripts\View\tsk_daily_accounting_report.js" />
     <Content Include="Scripts\View\azs_info_day_report.js" />
     <Content Include="Scripts\View\azs_info_day_report_table1.js" />
@@ -573,6 +574,7 @@
     <Content Include="Areas\Oil\Views\Home\Transfer.cshtml" />
     <Content Include="Areas\FuelAZS\Views\Home\InformationDayReport.cshtml" />
     <Content Include="Areas\FuelGD\Views\Home\DailyAccountingReport.cshtml" />
+    <Content Include="Areas\FuelGD\Views\Home\InformationDayReport.cshtml" />
     <None Include="Properties\PublishProfiles\fc.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />

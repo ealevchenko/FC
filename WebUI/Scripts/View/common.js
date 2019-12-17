@@ -1097,11 +1097,103 @@ var getAsyncViewDailyAccountingReportTSKOfDateTime = function (start, stop, call
         },
     });
 };
-// Суточный(налоговый) отчет -ДЕТАЛИ по АЗС - новый (БД ЦОД)
+// Суточный(налоговый) отчет -ДЕТАЛИ по TSK - новый (БД ЦОД)
 var getAsyncViewDailyAccountingDetaliReportTSKOfDateTime = function (start, fuel, callback) {
     $.ajax({
         type: 'GET',
         url: '../../api/dar_tsk/daily_accounting_detali_report/date/' + start + '/fuel/' + fuel,
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+};
+// Суточный(налоговый) отчет по TSK - новый (БД ЦОД)
+var getAsyncViewDailyAccountingReportTSKOfDate = function (date, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/dar_tsk/daily_accounting_report/date/' + toISOStringTZ(date).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+};
+// Суточный(налоговый) отчет -ДЕТАЛИ по TSK - новый (БД ЦОД)
+var getAsyncViewDailyAccountingDetaliReportTSKOfDate = function (date, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/dar_tsk/daily_accounting_detali_report/date/' + toISOStringTZ(date).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+};
+// Получить выдачи за сутки просуммированные по пистолетам 
+var getAsyncViewDeliveryTanksReportTSKGroupNumOfDate = function (date, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/dar_tsk/delivery_tanks/group_num/date/' + toISOStringTZ(date).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+};
+// Получить выдачи за сутки просуммированные по ГСМ 
+var getAsyncViewDeliveryTanksReportTSKGroupFuelOfDate = function (date, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/dar_tsk/delivery_tanks/group_fuel/date/' + toISOStringTZ(date).substring(0, 19),
         async: true,
         dataType: 'json',
         beforeSend: function () {

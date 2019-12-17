@@ -13,44 +13,53 @@
         $('body').addClass('img-header-global');
     </script>
 }
-    <ul class="ca-menu">
-        <li>
-            <a href='@Url.Action("ReceivingFuel", "Home", new { Area = "FuelGD" })'>
-                <span class="ca-icon">j</span>
-                <div class="ca-content">
-                    <h2 class="ca-main">@GlobalResource.home_link_receiving_fuel_kgd</h2>
-                    <h3 class="ca-sub">@GlobalResource.home_link_description_receiving_fuel_kgd</h3>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href='@Url.Action("FuelSale", "Home", new { Area = "FuelGD" })'>
-                <span class="ca-icon">i</span>
-                <div class="ca-content">
-                    <h2 class="ca-main">@GlobalResource.home_link_fuelsales_kgd</h2>
-                    <h3 class="ca-sub">@GlobalResource.home_link_description_fuelsales_kgd</h3>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href='@Url.Action("RemainsTanks", "Home", new { Area = "FuelGD" })'>
-                <span class="ca-icon">Z</span>
-                <div class="ca-content">
-                    <h2 class="ca-main">@GlobalResource.home_link_remainstanks_kgd</h2>
-                    <h3 class="ca-sub">@GlobalResource.home_link_description_remainstanks_kgd</h3>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href='@Url.Action("DailyAccountingReport", "Home", new { Area = "FuelGD" })'>
-                <span class="ca-icon">P</span>
-                <div class="ca-content">
-                    <h2 class="ca-main">@GlobalResource.home_link_dailireport_kgd</h2>
-                    <h3 class="ca-sub">@GlobalResource.home_link_description_dailireport_kgd</h3>
-                </div>
-            </a>
-        </li>
-    </ul>
+<ul class="ca-menu">
+    <li>
+        <a href='@Url.Action("ReceivingFuel", "Home", new { Area = "FuelGD" })'>
+            <span class="ca-icon">j</span>
+            <div class="ca-content">
+                <h2 class="ca-main">@GlobalResource.home_link_receiving_fuel_kgd</h2>
+                <h3 class="ca-sub">@GlobalResource.home_link_description_receiving_fuel_kgd</h3>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href='@Url.Action("FuelSale", "Home", new { Area = "FuelGD" })'>
+            <span class="ca-icon">i</span>
+            <div class="ca-content">
+                <h2 class="ca-main">@GlobalResource.home_link_fuelsales_kgd</h2>
+                <h3 class="ca-sub">@GlobalResource.home_link_description_fuelsales_kgd</h3>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href='@Url.Action("RemainsTanks", "Home", new { Area = "FuelGD" })'>
+            <span class="ca-icon">Z</span>
+            <div class="ca-content">
+                <h2 class="ca-main">@GlobalResource.home_link_remainstanks_kgd</h2>
+                <h3 class="ca-sub">@GlobalResource.home_link_description_remainstanks_kgd</h3>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href='@Url.Action("DailyAccountingReport", "Home", new { Area = "FuelGD" })'>
+            <span class="ca-icon">P</span>
+            <div class="ca-content">
+                <h2 class="ca-main">@GlobalResource.home_link_dailireport_kgd</h2>
+                <h3 class="ca-sub">@GlobalResource.home_link_description_dailireport_kgd</h3>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href='@Url.Action("InformationDayReport", "Home", new { Area = "FuelGD" })'>
+            <span class="ca-icon">P</span>
+            <div class="ca-content">
+                <h2 class="ca-main">@GlobalResource.home_link_info_day_report_azs</h2>
+                <h3 class="ca-sub">@GlobalResource.home_info_day_report_azs</h3>
+            </div>
+        </a>
+    </li>
+</ul>
 <div class="more">
     <ul>
         <li>@GlobalResource.home_more_link:</li>

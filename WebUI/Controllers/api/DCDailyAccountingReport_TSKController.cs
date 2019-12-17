@@ -191,9 +191,9 @@ namespace WebUI.Controllers.api
                     ",min([fuel_name]) as [fuel_name] " +
                     ",sum([volume_delivery]) as [volume_delivery] " +
                     ",sum([volume15]) as [volume15] " +
-                    "FROM [dbo].[DeliveryTanks_AZS] " +
+                    "FROM [dbo].[DeliveryTanks_TSK] " +
                     "where[dt] = convert(datetime, '"+ date.ToString("yyyy-MM-dd HH:mm:ss")+ "', 120) "+
-                    "group by [trk_num],[side],[num]";
+                    "group by [num]";
                 List<DeliveryTanksGroupNumTSK> list = this.ef_dt.Database.SqlQuery<DeliveryTanksGroupNumTSK>(sql).ToList();
                 if (list == null)
                 {
@@ -221,7 +221,7 @@ namespace WebUI.Controllers.api
                     ",min([fuel_name]) as [fuel_name] " +
                     ",sum([volume_delivery]) as [volume_delivery] " +
                     ",sum([volume15]) as [volume15] " +
-                    "FROM [dbo].[DeliveryTanks_AZS] " +
+                    "FROM [dbo].[DeliveryTanks_TSK] " +
                     "where[dt] = convert(datetime, '"+ date.ToString("yyyy-MM-dd HH:mm:ss")+ "', 120) "+
                     "group by [fuel_type]";
                 List<DeliveryTanksGroupFuelTSK> list = this.ef_dt.Database.SqlQuery<DeliveryTanksGroupFuelTSK>(sql).ToList();
