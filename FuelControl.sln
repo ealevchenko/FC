@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29409.12
+# Visual Studio Express 2013 for Web
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFFC", "EFFC\EFFC.csproj", "{B73CA8E1-6727-4DFB-A4FA-DEEB4C901B06}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFOC", "EFOC\EFOC.csproj", "{7375DABD-0D71-40D1-ACF3-7DF26926E828}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI_Oil", "WebUI_Oil\WebUI_Oil.csproj", "{9DDA0208-C3A3-4002-BD1E-90304DF9B922}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MEDOC", "MEDOC\MEDOC.csproj", "{B4482087-6ED5-4779-A308-A6B9B71AA4C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{9DDA0208-C3A3-4002-BD1E-90304DF9B922}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DDA0208-C3A3-4002-BD1E-90304DF9B922}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DDA0208-C3A3-4002-BD1E-90304DF9B922}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4482087-6ED5-4779-A308-A6B9B71AA4C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4482087-6ED5-4779-A308-A6B9B71AA4C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4482087-6ED5-4779-A308-A6B9B71AA4C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4482087-6ED5-4779-A308-A6B9B71AA4C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
