@@ -1,5 +1,6 @@
 ﻿using EFFC.Abstract;
 using EFFC.Entities;
+using MEDOC;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,27 +11,29 @@ using System.Web.Http.Description;
 
 namespace WebUI.Controllers.api
 {
-    public class DeliveryTanksGroupNum {
+    public class DeliveryTanksGroupNum
+    {
         public DateTime dt { get; set; }
-        public string name_trk { get; set;  }
-        public int num { get;  set; }
-        public string name_gas_station { get;  set; }
-        public string serial_number_flowmeter { get;  set; }
-        public string identification_number_flowmeter { get;  set; }
-        public int fuel_type { get;  set; }
-        public string ukt_zed { get;  set; }
-        public string fuel_name { get;  set; }
-        public double volume_delivery { get;  set; }
-        public double volume15 { get;  set; }
+        public string name_trk { get; set; }
+        public int num { get; set; }
+        public string name_gas_station { get; set; }
+        public string serial_number_flowmeter { get; set; }
+        public string identification_number_flowmeter { get; set; }
+        public int fuel_type { get; set; }
+        public string ukt_zed { get; set; }
+        public string fuel_name { get; set; }
+        public double volume_delivery { get; set; }
+        public double volume15 { get; set; }
     }
 
-    public class DeliveryTanksGroupFuel {
+    public class DeliveryTanksGroupFuel
+    {
         public DateTime dt { get; set; }
-        public int fuel_type { get;  set; }
-        public string ukt_zed { get;  set; }
-        public string fuel_name { get;  set; }
-        public double volume_delivery { get;  set; }
-        public double volume15 { get;  set; }
+        public int fuel_type { get; set; }
+        public string ukt_zed { get; set; }
+        public string fuel_name { get; set; }
+        public double volume_delivery { get; set; }
+        public double volume15 { get; set; }
     }
 
     [RoutePrefix("api/dar_azs")]
@@ -42,7 +45,7 @@ namespace WebUI.Controllers.api
         protected IRepository<ReceivingTanks_AZS> ef_rect;
         protected IRepository<DeliveryTanks_AZS> ef_dt;
         protected IRepository<Cat_TRK_AZS> ef_ctrk;
-        public DCDailyAccountingReport_AZSController(IRepository<Daily_Accounting_Report_AZS> dar, 
+        public DCDailyAccountingReport_AZSController(IRepository<Daily_Accounting_Report_AZS> dar,
             IRepository<Daily_Accounting_Detali_Report_AZS> dadr,
             IRepository<RemainsTanks_AZS> remt,
             IRepository<ReceivingTanks_AZS> rect,
@@ -79,7 +82,7 @@ namespace WebUI.Controllers.api
                 return NotFound();
             }
         }
-        
+
         // GET: api/dar_azs/daily_accounting_report/start/2019-09-01T00:00:00/stop/2019-09-15T00:00:00
         [Route("daily_accounting_report/start/{start:datetime}/stop/{stop:datetime}")]
         [ResponseType(typeof(Daily_Accounting_Report_AZS))]
@@ -192,7 +195,7 @@ namespace WebUI.Controllers.api
                     ",sum([volume_delivery]) as [volume_delivery] " +
                     ",sum([volume15]) as [volume15] " +
                     "FROM [dbo].[DeliveryTanks_AZS] " +
-                    "where[dt] = convert(datetime, '"+ date.ToString("yyyy-MM-dd HH:mm:ss")+ "', 120) "+
+                    "where[dt] = convert(datetime, '" + date.ToString("yyyy-MM-dd HH:mm:ss") + "', 120) " +
                     "group by [trk_num],[side],[num]";
                 List<DeliveryTanksGroupNum> list = this.ef_dt.Database.SqlQuery<DeliveryTanksGroupNum>(sql).ToList();
                 if (list == null)
@@ -222,7 +225,7 @@ namespace WebUI.Controllers.api
                     ",sum([volume_delivery]) as [volume_delivery] " +
                     ",sum([volume15]) as [volume15] " +
                     "FROM [dbo].[DeliveryTanks_AZS] " +
-                    "where[dt] = convert(datetime, '"+ date.ToString("yyyy-MM-dd HH:mm:ss")+ "', 120) "+
+                    "where[dt] = convert(datetime, '" + date.ToString("yyyy-MM-dd HH:mm:ss") + "', 120) " +
                     "group by [fuel_type]";
                 List<DeliveryTanksGroupFuel> list = this.ef_dt.Database.SqlQuery<DeliveryTanksGroupFuel>(sql).ToList();
                 if (list == null)
@@ -236,5 +239,23 @@ namespace WebUI.Controllers.api
                 return NotFound();
             }
         }
+
+        // POST api/dar_azs/to_xml
+        [HttpPost]
+        [Route("to_xml")]
+        public string PostToXML([FromBody]J0210401 value)
+        {
+            try
+            {
+                MedocTransfer mt = new MedocTransfer();
+                string result_xml = mt.J0210401ToXML(value);
+                return result_xml;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
     }
+
 }

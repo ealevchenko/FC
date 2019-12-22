@@ -742,6 +742,10 @@
       <Project>{7375dabd-0d71-40d1-acf3-7df26926e828}</Project>
       <Name>EFOC</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MEDOC\MEDOC.csproj">
+      <Project>{b4482087-6ed5-4779-a308-a6b9b71aa4c5}</Project>
+      <Name>MEDOC</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

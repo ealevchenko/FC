@@ -239,7 +239,7 @@
                         tab += "<tr style='height:auto;'>" +
                             "<td class=xl7020875 width=24 style='width:18pt'>&nbsp;</td>" +
                             "<td class=xl7420875 width=51 style='border-top:none;border-left:none;width:38pt'>&nbsp;</td>" +
-                            "<td class=xl7420875 width=120 style='border-top:none;border-left:none;width:90pt'>" + el.ukt_zed + "</td>" +
+                            "<td class=xl7420875 width=120 style='border-top:none;border-left:none;width:90pt'>" + el.ukt_zed + "</td>" + //3
                             "<td class=xl7220875 width=81 style='border-top:none;border-left:none;width:61pt'>" + outFuelTypeDescription(el.fuel_type) + "</td>" +
                             "<td class=xl7420875 width=81 style='border-top:none;width:61pt'>&nbsp;</td>" +
                             "<td class=xl7420875 width=92 style='border-top:none;border-left:none;width:69pt;word-wrap:break-word'>" + (el.unified_tank_number !== null ? el.unified_tank_number : el.tank) + "</td>" +

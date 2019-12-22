@@ -819,6 +819,33 @@ var getAsyncViewDeliveryTanksReportGroupFuelOfDate = function (date, callback) {
         },
     });
 };
+
+var postToXML = function (report, callback) {
+    $.ajax({
+        url: '../../api/dar_azs/to_xml',
+        type: 'POST',
+        data: JSON.stringify(report),
+        contentType: "application/json;charset=utf-8",
+        async: true,
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+};
+
+
+
 /////////////////////////////////////////////////////////////////////
 // Веруть состояние экипировки ст Карьерная ГД
 var getAsyncViewLastTankStates = function (callback) {
@@ -1388,6 +1415,38 @@ function fnExcelReport(name_tab, tab, css, name_file) {
     tab_text = tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table
     tab_text = tab_text.replace(/<img[^>]*>/gi, ""); // remove if u want images in your table
     tab_text = tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
+
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+
+    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+        if (window.navigator.msSaveBlob) {
+            var blob = new Blob([tab_text], {
+                type: "application/csv;charset=utf-8;"
+            });
+            navigator.msSaveOrOpenBlob(blob, file_name);
+        }
+    } else {
+        $('#test').attr('href', 'data:application/vnd.ms-excel' + ', ' + encodeURIComponent(tab_text));
+        $('#test').attr('download', file_name);
+    }
+}
+
+function fnXMLReport(xml, name_file) {
+    var file_name = name_file + '.xml';
+    var tab_text = xml;
+    //var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
+    //tab_text = tab_text + '<head>';
+
+    //tab_text = tab_text + xml;
+
+    //tab_text = tab_text + '</head><body>';
+
+    //tab_text = tab_text + '</body></html>';
+
+    //tab_text = tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table
+    //tab_text = tab_text.replace(/<img[^>]*>/gi, ""); // remove if u want images in your table
+    //tab_text = tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
 
     var ua = window.navigator.userAgent;
     var msie = ua.indexOf("MSIE ");
