@@ -407,14 +407,65 @@
                 var tab = get_html_table5_star(list_daily_accounting.length);
                 $.each(list_daily_accounting, function (i, el) {
 
-                    var result = el.volume15_stop - el.volume15_start + el.volume_delivery;
+                    var PL107000022;
+                    var PL107000023;
+                    var PL107000024;
+                    var PL107000027;
+
+                    var res_107000022 = getObjects(list_daily_accounting_detali, 'tank', 'PL107000022');
+                    if (res_107000022 && res_107000022.length > 0) {
+                        PL107000022 = res_107000022[0];
+                    }
+                    var res_107000023 = getObjects(list_daily_accounting_detali, 'tank', 'PL107000023');
+                    if (res_107000023 && res_107000023.length > 0) {
+                        PL107000023 = res_107000023[0];
+                    }
+                    var res_107000024 = getObjects(list_daily_accounting_detali, 'tank', 'PL107000024');
+                    if (res_107000024 && res_107000024.length > 0) {
+                        PL107000024 = res_107000024[0];
+                    }
+                    var res_107000027 = getObjects(list_daily_accounting_detali, 'tank', 'PL107000027');
+                    if (res_107000027 && res_107000027.length > 0) {
+                        PL107000027 = res_107000027[0];
+                    }
+
+                    var volume15_start = 0;
+                    var volume15_stop = 0;
+
+                    switch (el.type) {
+                        case 107000022:
+                            volume15_start = (el.volume15_start !== null ? el.volume15_start - PL107000022.volume15_remains_start : 0);
+                            volume15_stop = (el.volume15_stop !== null ? el.volume15_stop - PL107000022.volume15_remains_stop : 0);
+                            break;
+                        case 107000023:
+                            volume15_start = (el.volume15_start !== null ? el.volume15_start - PL107000023.volume15_remains_start : 0);
+                            volume15_stop = (el.volume15_stop !== null ? el.volume15_stop - PL107000023.volume15_remains_stop : 0);
+                            break;
+                        case 107000024:
+                            volume15_start = (el.volume15_start !== null ? el.volume15_start - PL107000024.volume15_remains_start : 0);
+                            volume15_stop = (el.volume15_stop !== null ? el.volume15_stop - PL107000024.volume15_remains_stop : 0);
+                            break;
+                        case 107000027:
+                            volume15_start = (el.volume15_start !== null ? el.volume15_start - PL107000027.volume15_remains_start : 0);
+                            volume15_stop = (el.volume15_stop !== null ? el.volume15_stop - PL107000027.volume15_remains_stop : 0);
+                            break;
+                    }
+
+
+
+
+                    //var result = el.volume15_stop - el.volume15_start + el.volume_delivery;
+                    var result = volume15_stop - volume15_start + el.volume_delivery;
 
                     tab += "<tr  class=xl6627014 style='height:auto'>" +
                         "<td class=xl6527014 width=41 style='border-top:none;border-left:none;width:31pt'>&nbsp;</td>" +
                         "<td class=xl6527014 width=112 style='border-top:none;border-left:none;width:84pt'>" + el.ukt_zed + "</td>" +
                         "<td class=xl6527014 width=112 style='border-top:none;border-left:none;width:84pt'>" + outFuelTypeDescription(el.type) + "</td>" +
-                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_stop !== null ? Number(el.volume15_stop).toFixed(2) : "&nbsp;") + "</td>" +
-                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_start !== null ? Number(el.volume15_start).toFixed(2) : "&nbsp;") + "</td>" +
+                        //"<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_stop !== null ? Number(el.volume15_stop).toFixed(2) : "&nbsp;") + "</td>" +
+                        //"<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume15_start !== null ? Number(el.volume15_start).toFixed(2) : "&nbsp;") + "</td>" +
+                       "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + Number(volume15_stop).toFixed(2) + "</td>" +
+                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" +  Number(volume15_start).toFixed(2) + "</td>" +
+
                         "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.volume_delivery !== null ? Number(el.volume_delivery).toFixed(2) : "&nbsp;") + "</td>" +
                         "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>&nbsp;</td>" +
                         "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>&nbsp;</td>" +
