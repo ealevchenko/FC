@@ -327,6 +327,9 @@
                 this.list = data;
                 this.obj.clear();
                 for (i = 0; i < data.length; i++) {
+                    var val = (data[i].outcome_type === 2 || data[i].outcome_type === 5 || data[i].outcome_type === 6) ? (data[i].start_volume !== null && data[i].stop_volume !== null ? Number(data[i].start_volume - data[i].stop_volume).toFixed(2) : null) : (data[i].volume !== null ? (data[i].volume).toFixed(2) : null);
+                    var mass = (data[i].outcome_type === 2 || data[i].outcome_type === 5 || data[i].outcome_type === 6) ? (data[i].start_mass !== null && data[i].stop_mass !== null ? Number(data[i].start_mass - data[i].stop_mass).toFixed(4) : null) : (data[i].mass !== null ? data[i].mass.toFixed(4) : null);
+
                     this.obj.row.add({
                         "id": data[i].id,
                         "start_datetime": data[i].start_datetime,
@@ -334,53 +337,11 @@
                         "oil_type": data[i].oil_type,
 
                         "receiver": data[i].receiver,
-                        "volume": data[i].volume !== null ? (data[i].volume).toFixed(2) : null,
+                        //"volume": data[i].volume !== null ? (data[i].volume).toFixed(2) : null,
                         "dens": data[i].dens !== null ? data[i].dens.toFixed(4) : null,
-                        "mass": data[i].mass !== null ? (data[i].mass / 1000).toFixed(4) : null,
-                        //"id": 1,
-                        //"user": "                                                  ",
-                        //"create": "2019-12-16T12:37:41",
-                        //"oil_type": "И-20А                                             ",
-                        //"tank_num": "420       ",
-                        //"dose": 1923.0,
-                        //"volume": 1923,
-                        //"dens": 889.69998168945312,
-                        //"mass": 1710.8930647888185,
-                        //"temp": 3.2000000476837158,
-                        //"outcome_type": 1,
-                        //"receiver": "ЦТА                                                                                                 ",
-                        //"operator_started": "                                                  ",
-                        //"pump_used": "4",
-                        //"start_datetime": "2019-12-16T12:41:37",
-                        //"start_level": 996.70001220703125,
-                        //"start_volume": 8.5679998397827148,
-                        //"start_density": 889.79998779296875,
-                        //"start_mass": 7.6230001449584961,
-                        //"start_temp": 3.2000000476837158,
-                        //"start_water_level": 0.0,
-                        //"start_counter": 4147622,
-                        //"stop_datetime": "2019-12-16T12:56:56",
-                        //"stop_level": 832.29998779296875,
-                        //"stop_volume": 6.6840000152587891,
-                        //"stop_density": 889.5999755859375,
-                        //"stop_mass": 5.9470000267028809,
-                        //"stop_temp": 3.2000000476837158,
-                        //"stop_water_level": 0.0,
-                        //"stop_counter": 4149545,
-                        //"FLAG_R": 2,
-                        //"LOGIN_EXP": "Лихман",
-                        //"N_POST": "99",
-                        //"TRANSP_FAKT": "",
-                        //"N_TREB": "4788572",
-                        //"LGORT": "1721",
-                        //"WERKS": "0010",
-                        //"sended": 1,
-                        //"OZM_TREB": "000000000310038031",
-                        //"OZM_BAK": null,
-                        //"N_POS": 1
-
-
-
+                        //"mass": data[i].mass !== null ? (data[i].mass / 1000).toFixed(4) : null,
+                        "volume": val,
+                        "mass": mass !== null ? (mass / 1000).toFixed(4) : null,
                     });
                 }
                 LockScreenOff();

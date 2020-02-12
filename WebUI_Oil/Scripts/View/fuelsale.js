@@ -295,6 +295,8 @@
                 this.list = data;
                 this.obj.clear();
                 for (i = 0; i < data.length; i++) {
+                    var val = (data[i].outcome_type === 2 || data[i].outcome_type === 5 || data[i].outcome_type === 6) ? (data[i].start_volume !== null && data[i].stop_volume !== null ? Number(data[i].start_volume - data[i].stop_volume).toFixed(2) : null) : (data[i].volume !== null ? (data[i].volume).toFixed(2) : null);
+                    var mass = (data[i].outcome_type === 2 || data[i].outcome_type === 5 || data[i].outcome_type === 6) ? (data[i].start_mass !== null && data[i].stop_mass !== null ? Number(data[i].start_mass - data[i].stop_mass).toFixed(4) : null) : (data[i].mass !== null ? data[i].mass.toFixed(4) : null);
                     this.obj.row.add({
                         "id": data[i].id,
                         "start_datetime": data[i].start_datetime,
@@ -302,19 +304,11 @@
                         "oil_type": data[i].oil_type,
 
                         "receiver": data[i].receiver,
-                        "volume": data[i].volume !== null ? (data[i].volume).toFixed(2) : null,
+                        //"volume": data[i].volume !== null ? (data[i].volume).toFixed(2) : null,
                         "dens": data[i].dens !== null ? data[i].dens.toFixed(4) : null,
-                        "mass": data[i].mass !== null ? (data[i].mass / 1000).toFixed(4) : null,
-
-                        //"Id": data[i].Id,
-                        //"DateStarted": data[i].DateStarted,
-                        //"TankNo": data[i].TankNo,
-                        //"OilType": data[i].OilType,
-                        ////"Invent": data[i].Invent,
-                        //"Receiver": data[i].Receiver,
-                        //"TargetVolume": data[i].TargetVolume !== null ? (data[i].TargetVolume / 1000).toFixed(3) : null,
-                        //"CreatedDens": data[i].CreatedDens !== null ? data[i].CreatedDens.toFixed(1) : null,
-                        //"TargetMass": data[i].TargetMass !== null ? (data[i].TargetMass / 1000).toFixed(3) : null,
+                        //"mass": data[i].mass !== null ? (data[i].mass / 1000).toFixed(4) : null,
+                        "volume": val,
+                        "mass": mass !== null ? (mass / 1000).toFixed(4) : null,
                     });
                 }
                 LockScreenOff();
