@@ -34,17 +34,17 @@
         };
 
     var lang = $.cookie('lang') === undefined ? 'ru' : $.cookie('lang'),
-        date_curent = moment(new Date()).add('day', -1)._d,
-        date_start = null,
-        date_stop = null,
+        //date_curent = moment(new Date()).add('day', -1)._d,
+        date_start = new Date(new Date().getFullYear(), new Date().getMonth(), 1, 0, 0, 0),
+        date_stop = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 23, 59, 59),
         langs = $.extend(true, $.extend(true, getLanguages($.Text_View, lang), getLanguages($.Text_Common, lang)), getLanguages($.Text_Table, lang)),
         report_data = null,
         // Загрузка библиотек
-        loadData = function (date, callback) {
+        loadData = function (start, stop, callback) {
             LockScreen(langView('mess_delay', langs));
-            var count = 5;
-            // Загрузка списка общего отчета за сутки (common.js)
-            getAsyncViewDailyAccountingReportOfDate(date, function (result_daily_accounting) {
+            var count = 8;
+            // Загрузка списка общего отчета за сутки (common.js) getAsyncViewDailyAccountingReportOfDate
+            getAsyncViewDailyAccountingReportPeriodOfDateTime(start, stop, function (result_daily_accounting) {
                 list_daily_accounting = result_daily_accounting;
                 count -= 1;
                 if (count <= 0) {
@@ -54,9 +54,21 @@
                     }
                 }
             });
+
             // Загрузка списка детального отчета за сутки (common.js)
-            getAsyncViewDailyAccountingDetaliReportOfDate(date, function (result_daily_accounting_detali) {
-                list_daily_accounting_detali = result_daily_accounting_detali;
+            //getAsyncViewDailyAccountingDetaliReportOfDate(start, function (result_daily_accounting_detali) {
+            //    list_daily_accounting_detali = result_daily_accounting_detali;
+            //    count -= 1;
+            //    if (count <= 0) {
+            //        if (typeof callback === 'function') {
+            //            LockScreenOff();
+            //            callback();
+            //        }
+            //    }
+            //});
+
+            getAsyncViewDailyAccountingDetaliReportPeriodOfDateTime(start, stop, 107000022, function (result_daily_accounting_detali) {
+                list_daily_accounting_detali_107000022 = result_daily_accounting_detali;
                 count -= 1;
                 if (count <= 0) {
                     if (typeof callback === 'function') {
@@ -64,9 +76,52 @@
                         callback();
                     }
                 }
-            });
+            }); 
+            getAsyncViewDailyAccountingDetaliReportPeriodOfDateTime(start, stop, 107000023, function (result_daily_accounting_detali) {
+                list_daily_accounting_detali_107000023 = result_daily_accounting_detali;
+                count -= 1;
+                if (count <= 0) {
+                    if (typeof callback === 'function') {
+                        LockScreenOff();
+                        callback();
+                    }
+                }
+            }); 
+            getAsyncViewDailyAccountingDetaliReportPeriodOfDateTime(start, stop, 107000024, function (result_daily_accounting_detali) {
+                list_daily_accounting_detali_107000024 = result_daily_accounting_detali;
+                count -= 1;
+                if (count <= 0) {
+                    if (typeof callback === 'function') {
+                        LockScreenOff();
+                        callback();
+                    }
+                }
+            }); 
+            getAsyncViewDailyAccountingDetaliReportPeriodOfDateTime(start, stop, 107000027, function (result_daily_accounting_detali) {
+                list_daily_accounting_detali_107000027 = result_daily_accounting_detali;
+                count -= 1;
+                if (count <= 0) {
+                    if (typeof callback === 'function') {
+                        LockScreenOff();
+                        callback();
+                    }
+                }
+            }); 
+
+
+
             // Получить выдачи за сутки просуммированные по пистолетам  (common.js)
-            getAsyncViewDeliveryTanksReportGroupNumOfDate(date, function (result_delivery_tanks_group_num) {
+            //getAsyncViewDeliveryTanksReportGroupNumOfDate(start, function (result_delivery_tanks_group_num) {
+            //    list_delivery_tanks_group_num = result_delivery_tanks_group_num;
+            //    count -= 1;
+            //    if (count <= 0) {
+            //        if (typeof callback === 'function') {
+            //            LockScreenOff();
+            //            callback();
+            //        }
+            //    }
+            //});
+            getAsyncViewDeliveryTanksReportGroupNumOfDateTime(start, stop, function (result_delivery_tanks_group_num) {
                 list_delivery_tanks_group_num = result_delivery_tanks_group_num;
                 count -= 1;
                 if (count <= 0) {
@@ -77,7 +132,17 @@
                 }
             });
             // Получить выдачи за сутки просуммированные по ГСМ  (common.js)
-            getAsyncViewDeliveryTanksReportGroupFuelOfDate(date, function (result_delivery_tanks_group_fuel) {
+            //getAsyncViewDeliveryTanksReportGroupFuelOfDate(start, function (result_delivery_tanks_group_fuel) {
+            //    list_delivery_tanks_group_fuel = result_delivery_tanks_group_fuel;
+            //    count -= 1;
+            //    if (count <= 0) {
+            //        if (typeof callback === 'function') {
+            //            LockScreenOff();
+            //            callback();
+            //        }
+            //    }
+            //});
+            getAsyncViewDeliveryTanksReportGroupFuelOfDateTime(start, stop, function (result_delivery_tanks_group_fuel) {
                 list_delivery_tanks_group_fuel = result_delivery_tanks_group_fuel;
                 count -= 1;
                 if (count <= 0) {
@@ -102,6 +167,11 @@
         // список 
         list_daily_accounting = [],
         list_daily_accounting_detali = [],
+        list_daily_accounting_detali_107000022 = [],
+        list_daily_accounting_detali_107000023 = [],
+        list_daily_accounting_detali_107000024 = [],
+        list_daily_accounting_detali_107000027 = [],
+
         list_delivery_tanks_group_num = [],
         list_delivery_tanks_group_fuel = [],
         list_catalog_trk = [],
@@ -172,29 +242,23 @@
             html_div_panel: $('#table-panel'),
             obj: null,
             obj_date: null,
-            bt_left: $('<button class="ui-button ui-widget ui-corner-all ui-button-icon-only" ><span class="ui-icon ui-icon-circle-triangle-w"></span>text</button>'),
-            bt_right: $('<button class="ui-button ui-widget ui-corner-all ui-button-icon-only" ><span class="ui-icon ui-icon-circle-triangle-e"></span>text</button>'),
+            //bt_left: $('<button class="ui-button ui-widget ui-corner-all ui-button-icon-only" ><span class="ui-icon ui-icon-circle-triangle-w"></span>text</button>'),
+            //bt_right: $('<button class="ui-button ui-widget ui-corner-all ui-button-icon-only" ><span class="ui-icon ui-icon-circle-triangle-e"></span>text</button>'),
             bt_excel: $('<button class="ui-button ui-widget ui-corner-all">to Excel</button >'),
             bt_excel_all: $('<button class="ui-button ui-widget ui-corner-all">to Excel All</button >'),
             bt_xml: $('<button class="ui-button ui-widget ui-corner-all">to XML</button >'),
             label: $('<label for="date" ></label>'),
             span: $('<span id="select-range"></span>'),
-            input_date: $('<input id="date" name="date" size="20">'),
+            input_data_start: $('<input id="date-start" name="date-start" size="20">'),
+            input_data_stop: $('<input id="date-stop" name="date-stop" size="20">'),
             initObject: function () {
-                this.span.append(this.input_date);
-                obj = this.html_div_panel;
-                obj
-                    //.append(this.bt_left)
+                this.html_div_panel
                     .append(this.label)
-                    .append(this.span)
-                    //.append(this.bt_right)
+                    .append(this.span.append(this.input_data_start).append(' - ').append(this.input_data_stop))
                     .append(this.bt_excel)
                     .append(this.bt_excel_all)
                     .append(this.bt_xml);
-                //this.bt_left.attr('title',(langView('bt_left_title', langs)));
                 this.label.text(langView('label_select_date', langs));
-                //this.bt_right.attr('title',langView('bt_right_title', langs));
-                //this.bt_excel.attr('title', langView('bt_excel_title', langs));
                 this.bt_excel.text(langView('bt_excel_text', langs));
                 this.bt_excel_all.text(langView('bt_excel_all_text', langs));
                 this.bt_xml.text(langView('bt_xml_text', langs));
@@ -208,31 +272,40 @@
                     toXML();
                 });
                 // настроим компонент выбора времени
-                this.obj_date = this.input_date.dateRangePicker(
+                this.obj_date = this.span.dateRangePicker(
                     {
-                        startOfWeek: 'monday',
-                        //separator: lang == 'en' ? 'to' : 'по',
-                        language: lang,
-                        format: lang === 'en' ? 'MM/DD/YYYY' : 'DD.MM.YYYY',
-                        autoClose: true,
-                        singleDate: true,
-                        showShortcuts: false,
+                        language: 'ru',
+                        format: 'DD.MM.YYYY HH:mm',
+                        separator: '-',
+                        autoClose: false,
+                        time: {
+                            enabled: false
+                        },
+                        setValue: function (s, s1, s2) {
+                            $('input#date-start').val(s1);
+                            s2 = moment(s2, 'DD.MM.YYYY HH:mm').set({ 'hour': 23, 'minute': 59, 'second': 59, 'millisecond': 999 }).format('DD.MM.YYYY HH:mm');
+                            $('input#date-stop').val(s2);
+                            //panel_select_report.period = s1 + '-' + s2;
+                        }
                     }).
                     bind('datepicker-change', function (evt, obj) {
-                        date_curent = obj.date1;
+                        date_start = obj.date1;
+                        date_stop = moment(obj.date2).set({ 'hour': 23, 'minute': 59, 'second': 59, 'millisecond': 999 })._d;
                     })
                     .bind('datepicker-closed', function () {
                         panel_select_report.loadReport(true);
                     });
-                // Выставим текущую дату
-                var date_curent_set = date_curent.getDate() + '.' + (date_curent.getMonth() + 1) + '.' + date_curent.getFullYear() + ' 00:00';
-                this.obj_date.data('dateRangePicker').setDateRange(date_curent_set, date_curent_set, true);
+                this.obj_date.data('dateRangePicker').setDateRange(
+                    (date_start.getDate() + '.' + (date_start.getMonth() + 1) + '.' + date_start.getFullYear() + ' ' + date_start.getHours() + ':' + date_start.getMinutes() + ':' + date_start.getSeconds()),
+                    (date_stop.getDate() + '.' + (date_stop.getMonth() + 1) + '.' + date_stop.getFullYear() + ' ' + date_stop.getHours() + ':' + date_stop.getMinutes() + ':' + date_stop.getSeconds()));
             },
             loadReport: function (data_refresh) {
-                date_start = new Date(date_curent.getFullYear(), date_curent.getMonth(), date_curent.getDate(), 0, 0, 0);
-                date_stop = new Date(date_curent.getFullYear(), date_curent.getMonth(), date_curent.getDate(), 23, 59, 59);
                 if (data_refresh) {
-                    loadData(date_start, function () {
+                    loadData(date_start, date_stop, function () {
+                        list_daily_accounting_detali = list_daily_accounting_detali_107000022.concat(list_daily_accounting_detali_107000023);
+                        list_daily_accounting_detali = list_daily_accounting_detali.concat(list_daily_accounting_detali_107000024);
+                        list_daily_accounting_detali = list_daily_accounting_detali.concat(list_daily_accounting_detali_107000027);
+
                         get_ReportAll();
                         tab_type_reports.activeTable(tab_type_reports.active);
                     });
@@ -248,6 +321,7 @@
             // Формируем таблицу 1
             var tab1 = [];
             var index = 1;
+
             $.each(list_daily_accounting_detali, function (i, el) {
                 if (el.tank !== "B13" && el.tank !== "PL107000022" && el.tank !== "PL107000023" && el.tank !== "PL107000024" && el.tank !== "PL107000027") {
                     var T1R = {

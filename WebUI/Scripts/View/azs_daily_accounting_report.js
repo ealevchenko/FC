@@ -39,10 +39,10 @@
                 'field_mass15_stop': 'Остаток, масса на конец суток пересчитанная к 15 град. С° (кг)',
                 'field_dens15_stop': 'Остаток, плотность на конец суток пересчитанная к 15 град. С° (кг/м3).',
 
-                'field_permissible_volume15_error': 'Допустимая погрешность литров при 15 °С, 0,65%',
-                'field_permissible_mass15_error': 'Допустимая погрешность фактических КГ, 0,65%',
-                'field_absolute_volume15_error': 'Абсолютная погрешность литров при 15 °С, л',
-                'field_absolute_mass15_error': 'Абсолютная погрешность фактических КГ',
+                'field_permissible_volume15_error': 'Допустимая погрешность объема при 15 °С, (<0,65%)',
+                'field_permissible_mass15_error': 'Допустимая погрешность массы при 15 °С, (<0,65%)',
+                'field_absolute_volume15_error': 'Абсолютная погрешность объема при 15 °С, л',
+                'field_absolute_mass15_error': 'Абсолютная погрешность массы при 15 °С, кг',
 
                 'field_serial_number': 'Серийный (идентификационный) номер резервуара',
                 'field_unified_tank_number': 'Унифицированный номер резервуара',
@@ -175,14 +175,15 @@
                         },
                         setValue: function (s, s1, s2) {
                             $('input#date-start').val(s1);
+                            s2 = moment(s2, 'DD.MM.YYYY HH:mm').set({ 'hour': 23, 'minute': 59, 'second': 59, 'millisecond': 999 }).format('DD.MM.YYYY HH:mm');
                             $('input#date-stop').val(s2);
-                            panel_select_report.period = s1 + '-' + s2;
+                            //panel_select_report.period = s1 + '-' + s2;
                         }
                     }).
                     bind('datepicker-change', function (evt, obj) {
                         panel_select_report.date_start = obj.date1;
-                        panel_select_report.date_stop = obj.date2;
-                        panel_select_report.period = obj.value;
+                        panel_select_report.date_stop = moment(obj.date2).set({ 'hour': 23, 'minute': 59, 'second': 59, 'millisecond': 999 })._d;
+                        //panel_select_report.period = obj.value;
                     })
                     .bind('datepicker-closed', function () {
                         tab_type_reports.activeTable(tab_type_reports.active, true);
@@ -282,7 +283,7 @@
                 LockScreen(langView('mess_delay', langs));
                 if (this.list === null | data_refresh === true) {
                     // Обновим данные
-                    getAsyncViewDailyAccountingReportOfDateTime(
+                    getAsyncViewDailyAccountingReportPeriodOfDateTime(
                         panel_select_report.date_start,
                         panel_select_report.date_stop,
                         function (result) {
@@ -301,28 +302,15 @@
                 this.list = data;
                 this.obj_table.clear();
                 for (i = 0; i < data.length; i++) {
-
-                    var volume15_start = Number(data[i].volume15_start !== null ? Number(data[i].volume15_start).toFixed(6) : 0.000000);
-                    var volume15_received = Number(data[i].volume15_received !== null ? Number(data[i].volume15_received).toFixed(6) : 0.000000);
-                    var volume15_delivery = Number(data[i].volume15_delivery !== null ? Number(data[i].volume15_delivery).toFixed(6) : 0.000000);
-                    var volume15_stop = Number(data[i].volume15_stop !== null ? Number(data[i].volume15_stop).toFixed(6) : 0.000000);
-                    var permissible_volume15_error = Number(((volume15_start + volume15_received - volume15_delivery - volume15_stop) / volume15_stop) * -100.0);
-                    var absolute_volume15_error = (Number(permissible_volume15_error.toFixed(6)) * volume15_stop) / 100.0;
-
-                    var mass15_start = Number(data[i].mass15_start !== null ? Number(data[i].mass15_start).toFixed(6) : 0.000000);
-                    var mass15_received = Number(data[i].mass15_received !== null ? Number(data[i].mass15_received).toFixed(6) : 0.000000);
-                    var mass15_delivery = Number(data[i].mass15_delivery !== null ? Number(data[i].mass15_delivery).toFixed(6) : 0.000000);
-                    var mass15_stop = Number(data[i].mass15_stop !== null ? Number(data[i].mass15_stop).toFixed(6) : 0.000000);
-                    var permissible_mass15_error = Number(((mass15_start + mass15_received - mass15_delivery - mass15_stop) / mass15_stop) * -100.0);
-                    var absolute_mass15_error = (Number(permissible_mass15_error.toFixed(6)) * mass15_stop) / 100.0;
-
+                    var day_start = moment(data[i].date_start).get('date');
+                    var day_stop = moment(data[i].date_stop).get('date');
                     this.obj_table.row.add({
                         "id": data[i].id,
                         "type": data[i].type,
                         "ukt_zed": data[i].ukt_zed,
                         "fuel_name": data[i].fuel_name,
-                        "date_start": data[i].date_start,
-                        "date_stop": data[i].date_stop,
+                        "date_start": data[i].date_start.replace("T", " "),
+                        "date_stop": data[i].date_stop.replace("T", " "),
                         "volume_start": data[i].volume_start,
                         "mass_start": data[i].mass_start !== null ? Number(data[i].mass_start).toFixed(2) : 0.00,
                         "dens_start": data[i].dens_start !== null ? Number(data[i].dens_start).toFixed(6) : 0.000000,
@@ -334,7 +322,7 @@
                         "volume_received": data[i].volume_received !== null ? data[i].volume_received : 0,
                         "mass_received": data[i].mass_received !== null ? Number(data[i].mass_received).toFixed(2) : 0.00,
                         "dens_received": data[i].dens_received !== null ? Number(data[i].dens_received).toFixed(6) : 0.000000,
-                        "temp_received": data[i].temp_received !== null ? Number(data[i].temp_received).toFixed(2) : 0.00,
+                        "temp_received": data[i].temp_received !== null && day_start===day_stop ? Number(data[i].temp_received).toFixed(2) : 0.00,
                         "volume15_received":  data[i].volume15_received !== null ? Number(data[i].volume15_received).toFixed(6) : 0.000000, 
                         "mass15_received": data[i].mass15_received !== null ? Number(data[i].mass15_received).toFixed(2) : 0.00,
                         "dens15_received": data[i].dens15_received !== null ? Number(data[i].dens15_received).toFixed(6) : 0.000000,
@@ -342,7 +330,7 @@
                         "volume_delivery": data[i].volume_delivery !== null ? data[i].volume_delivery : 0,
                         "mass_delivery": data[i].mass_delivery !== null ? Number(data[i].mass_delivery).toFixed(2) : 0.00,
                         "dens_delivery": data[i].dens_delivery !== null ? Number(data[i].dens_delivery).toFixed(6) : 0.000000,
-                        "temp_delivery": data[i].temp_delivery !== null ? Number(data[i].temp_delivery).toFixed(2) : 0.00,
+                        "temp_delivery": data[i].temp_delivery !== null && day_start === day_stop ? Number(data[i].temp_delivery).toFixed(2) : 0.00,
                         "volume15_delivery": data[i].volume15_delivery !== null ? Number(data[i].volume15_delivery).toFixed(6) : 0.000000,
                         "mass15_delivery": data[i].mass15_delivery !== null ? Number(data[i].mass15_delivery).toFixed(2) : 0.00,
                         "dens15_delivery": data[i].dens15_delivery !== null ? Number(data[i].dens15_delivery).toFixed(6) : 0.000000,
@@ -354,15 +342,11 @@
                         "volume15_stop": data[i].volume15_stop !== null ? Number(data[i].volume15_stop).toFixed(6) : 0.000000,
                         "mass15_stop": data[i].mass15_stop !== null ? Number(data[i].mass15_stop).toFixed(2) : 0.00,
                         "dens15_stop": data[i].dens15_stop !== null ? Number(data[i].dens15_stop).toFixed(6) : 0.000000,
-                        "permissible_volume15_error": permissible_volume15_error !== null ? Number(permissible_volume15_error).toFixed(6) : 0.000000,
-                        "absolute_volume15_error": absolute_volume15_error !== null ? Number(absolute_volume15_error).toFixed(6) : 0.000000,
-                        "permissible_mass15_error": permissible_mass15_error !== null ? Number(permissible_mass15_error).toFixed(6) : 0.000000,
-                        "absolute_mass15_error": absolute_mass15_error !== null ? Number(absolute_mass15_error).toFixed(6) : 0.000000,
 
-                        //"permissible_volume15_error": data[i].permissible_volume15_error !== null ? Number(data[i].permissible_volume15_error).toFixed(6) : 0.000000,
-                        //"absolute_volume15_error": data[i].permissible_volume15_error !== null ? Number(Number(data[i].permissible_volume15_error) * data[i].volume15_start / 100.0).toFixed(6) : 0.000000,
-                        //"permissible_mass15_error": data[i].permissible_mass15_error !== null ? Number(data[i].permissible_mass15_error).toFixed(6) : 0.000000,
-                        //"absolute_mass15_error": data[i].permissible_mass15_error !== null ? Number(Number(data[i].permissible_mass15_error) * data[i].mass15_start / 100.0).toFixed(6) : 0.000000
+                        "permissible_volume15_error": data[i].allowable_volume15_error !== null ? Number(data[i].allowable_volume15_error).toFixed(6) : 0.000000,
+                        "absolute_volume15_error": data[i].absolute_volume15_error !== null ? Number(data[i].absolute_volume15_error).toFixed(6) : 0.000000,
+                        "permissible_mass15_error": data[i].allowable_mass15_error !== null ? Number(data[i].allowable_mass15_error).toFixed(6) : 0.000000,
+                        "absolute_mass15_error": data[i].absolute_mass15_error !== null ? Number(data[i].absolute_mass15_error).toFixed(6) : 0.000000,
 
                     });
                 }
@@ -466,27 +450,15 @@
                 });
 
                 LockScreen(langView('mess_delay', langs));
-                getAsyncViewDailyAccountingDetaliReportOfDateTime(
-                    data.date_start,
+                getAsyncViewDailyAccountingDetaliReportPeriodOfDateTime(
+                    moment(data.date_start)._d,
+                    moment(data.date_stop)._d,
                     data.type,
                     function (result) {
                         table_detali.clear();
                         for (i = 0; i < result.length; i++) {
-
-                            var volume15_start = Number(result[i].volume15_remains_start !== null ? Number(result[i].volume15_remains_start).toFixed(6) : 0.000000);
-                            var volume15_received = Number(result[i].volume15_received !== null ? Number(result[i].volume15_received).toFixed(6) : 0.000000);
-                            var volume15_delivery = Number(result[i].volume15_delivery !== null ? Number(result[i].volume15_delivery).toFixed(6) : 0.000000);
-                            var volume15_stop = Number(result[i].volume15_remains_stop !== null ? Number(result[i].volume15_remains_stop).toFixed(6) : 0.000000);
-                            var permissible_volume15_error = volume15_stop!== 0 ? Number(((volume15_start + volume15_received - volume15_delivery - volume15_stop) / volume15_stop) * -100.0) : 0;
-                            var absolute_volume15_error = (Number(permissible_volume15_error.toFixed(6)) * volume15_stop) / 100.0;
-
-                            var mass15_start = Number(result[i].mass15_remains_start !== null ? Number(result[i].mass15_remains_start).toFixed(6) : 0.000000);
-                            var mass15_received = Number(result[i].mass15_received !== null ? Number(result[i].mass15_received).toFixed(6) : 0.000000);
-                            var mass15_delivery = Number(result[i].mass15_delivery !== null ? Number(result[i].mass15_delivery).toFixed(6) : 0.000000);
-                            var mass15_stop = Number(result[i].mass15_remains_stop !== null ? Number(result[i].mass15_remains_stop).toFixed(6) : 0.000000);
-                            var permissible_mass15_error = mass15_stop!== 0 ? Number(((mass15_start + mass15_received - mass15_delivery - mass15_stop) / mass15_stop) * -100.0) : 0;
-                            var absolute_mass15_error = (Number(permissible_mass15_error.toFixed(6)) * mass15_stop) / 100.0;
-
+                            var day_start = moment(result[i].date_start).get('date');
+                            var day_stop = moment(result[i].date_stop).get('date');
                             table_detali.row.add({
                                 "id": result[i].id,
                                 "type": result[i].type,
@@ -501,12 +473,12 @@
                                 "level_meters_model": result[i].level_meters_model,
                                 "level_meters_serial_number": result[i].level_meters_serial_number,
 
-                                "dt_actual_remains_start": result[i].dt_actual_remains_start,
+                                //"dt_actual_remains_start": result[i].dt_actual_remains_start,
                                 "level_remains_start": result[i].level_remains_start !== null ? Number(result[i].level_remains_start).toFixed(2) : null,
                                 "volume_start": result[i].volume_remains_start,
                                 "mass_start": result[i].mass_remains_start !== null ? Number(result[i].mass_remains_start).toFixed(2) : 0.00,
                                 "dens_start": result[i].dens_avg_remains_start !== null ? Number(result[i].dens_avg_remains_start).toFixed(6) : 0.000000,
-                                "temp_start": result[i].temp_remains_start !== null ? Number(result[i].temp_remains_start).toFixed(2) : 0.00,
+                                "temp_start": result[i].temp_remains_start !== null && day_start === day_stop ? Number(result[i].temp_remains_start).toFixed(2) : 0.00,
                                 "volume15_start": result[i].volume15_remains_start !== null ? Number(result[i].volume15_remains_start).toFixed(6) : 0.000000,
                                 "mass15_start": result[i].mass15_remains_start !== null ? Number(result[i].mass15_remains_start).toFixed(2) : 0.00,
                                 "dens15_start": result[i].dens15_remains_start !== null ? Number(result[i].dens15_remains_start).toFixed(6) : 0.000000,
@@ -514,12 +486,12 @@
                                 "volume_received": result[i].volume_received !== null ? result[i].volume_received : 0,
                                 "mass_received": result[i].mass_received !== null ? Number(result[i].mass_received).toFixed(2) : 0.00,
                                 "dens_received": result[i].dens_received !== null ? Number(result[i].dens_received).toFixed(6) : 0.000000,
-                                "temp_received": result[i].temp_received !== null ? Number(result[i].temp_received).toFixed(2) : 0.00,
+                                "temp_received": result[i].temp_received !== null && day_start === day_stop ? Number(result[i].temp_received).toFixed(2) : 0.00,
                                 "volume15_received": result[i].volume15_received !== null ? Number(result[i].volume15_received).toFixed(6) : 0.000000, 
                                 "mass15_received": result[i].mass15_received !== null ? Number(result[i].mass15_received).toFixed(2) : 0.00,
                                 "dens15_received": result[i].dens15_received !== null ? Number(result[i].dens15_received).toFixed(6) : 0.000000,
 
-                                "count_tanks_delivery": result[i].count_tanks_delivery,
+                                //"count_tanks_delivery": result[i].count_tanks_delivery,
                                 "volume_delivery": result[i].volume_delivery !== null ? result[i].volume_delivery : 0,
                                 "mass_delivery": result[i].mass_delivery !== null ? Number(result[i].mass_delivery).toFixed(2) : 0.00,
                                 "dens_delivery": result[i].dens_delivery !== null ? Number(result[i].dens_delivery).toFixed(6) : 0.000000,
@@ -528,7 +500,7 @@
                                 "mass15_delivery": result[i].mass15_delivery !== null ? Number(result[i].mass15_delivery).toFixed(2) : 0.00,
                                 "dens15_delivery": result[i].dens15_delivery !== null ? Number(result[i].dens15_delivery).toFixed(6) : 0.000000,
 
-                                "dt_actual_remains_stop": result[i].dt_actual_remains_stop,
+                                //"dt_actual_remains_stop": result[i].dt_actual_remains_stop,
                                 "level_remains_stop": result[i].level_remains_stop !== null ? Number(result[i].level_remains_stop).toFixed(2) : null,
                                 "volume_stop": result[i].volume_remains_stop,
                                 "mass_stop": result[i].mass_remains_stop !== null ? Number(result[i].mass_remains_stop).toFixed(2) : 0.00,
@@ -538,25 +510,10 @@
                                 "mass15_stop": result[i].mass15_remains_stop !== null ? Number(result[i].mass15_remains_stop).toFixed(2) : 0.00,
                                 "dens15_stop": result[i].dens15_remains_stop !== null ? Number(result[i].dens15_remains_stop).toFixed(6) : 0.000000,
 
-                                "permissible_volume15_error": permissible_volume15_error !== null ? Number(permissible_volume15_error).toFixed(6) : 0.000000,
-                                "absolute_volume15_error": absolute_volume15_error !== null ? Number(absolute_volume15_error).toFixed(6) : 0.000000,
-                                "permissible_mass15_error": permissible_mass15_error !== null ? Number(permissible_mass15_error).toFixed(6) : 0.000000,
-                                "absolute_mass15_error": absolute_mass15_error !== null ? Number(absolute_mass15_error).toFixed(6) : 0.000000,
-
-                                //"permissible_volume15_error": result[i].permissible_volume15_error !== null ? Number(result[i].permissible_volume15_error).toFixed(4) : 0.0000,
-                                //"absolute_volume15_error": result[i].permissible_volume15_error !== null ? Number(Number(result[i].permissible_volume15_error).toFixed(4) * Number(result[i].volume15_remains_start)/100.0).toFixed(3) : 0.000,
-                                //"permissible_mass15_error": result[i].permissible_mass15_error !== null ? Number(result[i].permissible_mass15_error).toFixed(4) : 0.0000,
-                                //"absolute_mass15_error": result[i].permissible_mass15_error !== null ? Number(Number(result[i].permissible_mass15_error).toFixed(4) * Number(result[i].mass15_remains_start)/100.0).toFixed(3) : 0.000
-
-
-
-                                //"relation_remains_start": 0.37620936869214172,
-                                //"ratio_vd_remains_start": 277.70298252940768,
-                                //"ratio_tv_remains_start": 9.1418876592190443,
-
-                                //"relation_remains_stop": 0.37533652212551294,
-                                //"ratio_vd_remains_stop": 276.87663904789287,
-                                //"ratio_tv_remains_stop": 9.3458794009252717,
+                                "permissible_volume15_error": result[i].allowable_volume15_error !== null ? Number(result[i].allowable_volume15_error).toFixed(6) : 0.000000,
+                                "absolute_volume15_error": result[i].absolute_volume15_error !== null ? Number(result[i].absolute_volume15_error).toFixed(6) : 0.000000,
+                                "permissible_mass15_error": result[i].allowable_mass15_error !== null ? Number(result[i].allowable_mass15_error).toFixed(6) : 0.000000,
+                                "absolute_mass15_error": result[i].absolute_mass15_error !== null ? Number(result[i].absolute_mass15_error).toFixed(6) : 0.000000,
                             });
                         }
                         LockScreenOff();

@@ -12,7 +12,7 @@
                 'field_OilType': 'Тип Масла',
                 'field_Invent': 'Инв. №',
                 'field_Receiver': 'Получатель',
-                'field_TargetVolume': 'Объем (м3)',
+                'field_TargetVolume': 'Объем (л)',
                 'field_CreatedDens': 'Плотность (кг/м3)',
                 'field_TargetMass': 'Масса (т)',
                 'bt_left_title': 'Предыдущая дата',
@@ -32,7 +32,7 @@
                 'field_OilType': 'Type Oil',
                 'field_Invent': 'Inventory No.',
                 'field_Receiver': 'Recipient',
-                'field_TargetVolume': 'Volume(m3)',
+                'field_TargetVolume': 'Volume(l)',
                 'field_CreatedDens': 'Density(kg/m3)',
                 'field_TargetMass': 'Mass(t)',
                 'bt_left_title': 'Previous Date',
@@ -327,8 +327,10 @@
                 this.list = data;
                 this.obj.clear();
                 for (i = 0; i < data.length; i++) {
-                    var val = (data[i].outcome_type === 2 || data[i].outcome_type === 5 || data[i].outcome_type === 6) ? (data[i].start_volume !== null && data[i].stop_volume !== null ? Number(data[i].start_volume - data[i].stop_volume).toFixed(2) : null) : (data[i].volume !== null ? (data[i].volume).toFixed(2) : null);
-                    var mass = (data[i].outcome_type === 2 || data[i].outcome_type === 5 || data[i].outcome_type === 6) ? (data[i].start_mass !== null && data[i].stop_mass !== null ? Number(data[i].start_mass - data[i].stop_mass).toFixed(4) : null) : (data[i].mass !== null ? data[i].mass.toFixed(4) : null);
+                    //var val = (data[i].outcome_type === 2 || data[i].outcome_type === 5 || data[i].outcome_type === 6) ? (data[i].start_volume !== null && data[i].stop_volume !== null ? Number(data[i].start_volume - data[i].stop_volume).toFixed(2) : null) : (data[i].volume !== null ? (data[i].volume).toFixed(2) : null);
+                    //var mass = (data[i].outcome_type === 2 || data[i].outcome_type === 5 || data[i].outcome_type === 6) ? (data[i].start_mass !== null && data[i].stop_mass !== null ? Number(data[i].start_mass - data[i].stop_mass).toFixed(4) : null) : (data[i].mass !== null ? data[i].mass.toFixed(4) : null);
+                    var val = (data[i].outcome_type === 2 || data[i].outcome_type === 5 || data[i].outcome_type === 6) ? (data[i].start_volume !== null && data[i].stop_volume !== null ? Number((data[i].start_volume - data[i].stop_volume) * 1000).toFixed(2) : null) : (data[i].volume !== null ? (data[i].volume).toFixed(2) : null);
+                    var mass = (data[i].outcome_type === 2 || data[i].outcome_type === 5 || data[i].outcome_type === 6) ? (data[i].start_mass !== null && data[i].stop_mass !== null ? Number(data[i].start_mass - data[i].stop_mass).toFixed(4) : null) : (data[i].mass !== null ? (data[i].mass / 1000).toFixed(4) : null);
 
                     this.obj.row.add({
                         "id": data[i].id,
@@ -341,7 +343,8 @@
                         "dens": data[i].dens !== null ? data[i].dens.toFixed(4) : null,
                         //"mass": data[i].mass !== null ? (data[i].mass / 1000).toFixed(4) : null,
                         "volume": val,
-                        "mass": mass !== null ? (mass / 1000).toFixed(4) : null,
+                        "mass": mass,
+                        //"mass": mass !== null ? (mass / 1000).toFixed(4) : null,
                     });
                 }
                 LockScreenOff();

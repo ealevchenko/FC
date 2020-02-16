@@ -283,13 +283,13 @@
     <value>Суточный отчет (экипировка ст. "Карьерная ГД")</value>
   </data>
   <data name="home_daili_report_azs" xml:space="preserve">
-    <value>Суточный отчет (АЗС)</value>
+    <value>Отчет АЗС по движению топлива</value>
   </data>
   <data name="home_link_dailireport_azs" xml:space="preserve">
-    <value>Суточный отчет</value>
+    <value>Отчет АЗС</value>
   </data>
   <data name="home_link_description_dailireport_azs" xml:space="preserve">
-    <value>Суточный отчет (АЗС)</value>
+    <value>Отчет АЗС по движению топлива</value>
   </data>
   <data name="home_remains_tanks_oil" xml:space="preserve">
     <value>Остатки в емкостях</value>

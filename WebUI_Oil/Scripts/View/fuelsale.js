@@ -261,7 +261,7 @@
                         { data: "tank_num", title: '№ Бака', width: "50px", orderable: true, searchable: true },
                         { data: "oil_type", title: 'Тип Масла', width: "50px", orderable: true, searchable: true },
                         { data: "receiver", title: 'Получатель', width: "50px", orderable: false, searchable: false },
-                        { data: "volume", title: 'Объем (м3)', width: "50px", orderable: false, searchable: false },
+                        { data: "volume", title: 'Объем (л)', width: "50px", orderable: false, searchable: false },
                         { data: "dens", title: 'Плотность (кг/м3)', width: "50px", orderable: false, searchable: false },
                         { data: "mass", title: 'Масса (т)', width: "50px", orderable: false, searchable: false },
                     ],
@@ -295,8 +295,8 @@
                 this.list = data;
                 this.obj.clear();
                 for (i = 0; i < data.length; i++) {
-                    var val = (data[i].outcome_type === 2 || data[i].outcome_type === 5 || data[i].outcome_type === 6) ? (data[i].start_volume !== null && data[i].stop_volume !== null ? Number(data[i].start_volume - data[i].stop_volume).toFixed(2) : null) : (data[i].volume !== null ? (data[i].volume).toFixed(2) : null);
-                    var mass = (data[i].outcome_type === 2 || data[i].outcome_type === 5 || data[i].outcome_type === 6) ? (data[i].start_mass !== null && data[i].stop_mass !== null ? Number(data[i].start_mass - data[i].stop_mass).toFixed(4) : null) : (data[i].mass !== null ? data[i].mass.toFixed(4) : null);
+                    var val = (data[i].outcome_type === 2 || data[i].outcome_type === 5 || data[i].outcome_type === 6) ? (data[i].start_volume !== null && data[i].stop_volume !== null ? Number((data[i].start_volume - data[i].stop_volume)*1000).toFixed(2) : null) : (data[i].volume !== null ? (data[i].volume).toFixed(2) : null);
+                    var mass = (data[i].outcome_type === 2 || data[i].outcome_type === 5 || data[i].outcome_type === 6) ? (data[i].start_mass !== null && data[i].stop_mass !== null ? Number(data[i].start_mass - data[i].stop_mass).toFixed(4) : null) : (data[i].mass !== null ? (data[i].mass / 1000).toFixed(4) : null);
                     this.obj.row.add({
                         "id": data[i].id,
                         "start_datetime": data[i].start_datetime,
@@ -308,7 +308,8 @@
                         "dens": data[i].dens !== null ? data[i].dens.toFixed(4) : null,
                         //"mass": data[i].mass !== null ? (data[i].mass / 1000).toFixed(4) : null,
                         "volume": val,
-                        "mass": mass !== null ? (mass / 1000).toFixed(4) : null,
+                        "mass": mass,
+                        //"mass": mass !== null ? (mass / 1000).toFixed(4) : null,
                     });
                 }
                 LockScreenOff();
