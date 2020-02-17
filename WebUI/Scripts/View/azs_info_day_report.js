@@ -76,7 +76,7 @@
                         callback();
                     }
                 }
-            }); 
+            });
             getAsyncViewDailyAccountingDetaliReportPeriodOfDateTime(start, stop, 107000023, function (result_daily_accounting_detali) {
                 list_daily_accounting_detali_107000023 = result_daily_accounting_detali;
                 count -= 1;
@@ -86,7 +86,7 @@
                         callback();
                     }
                 }
-            }); 
+            });
             getAsyncViewDailyAccountingDetaliReportPeriodOfDateTime(start, stop, 107000024, function (result_daily_accounting_detali) {
                 list_daily_accounting_detali_107000024 = result_daily_accounting_detali;
                 count -= 1;
@@ -96,7 +96,7 @@
                         callback();
                     }
                 }
-            }); 
+            });
             getAsyncViewDailyAccountingDetaliReportPeriodOfDateTime(start, stop, 107000027, function (result_daily_accounting_detali) {
                 list_daily_accounting_detali_107000027 = result_daily_accounting_detali;
                 count -= 1;
@@ -106,7 +106,7 @@
                         callback();
                     }
                 }
-            }); 
+            });
 
 
 
@@ -407,25 +407,27 @@
             $.each([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], function (i, el) {
                 var gun = getObjects(list_delivery_tanks_group_num, 'num', el);
                 if (gun && gun.length > 0) {
-                    var gun_value = gun[0];
-                    switch ($.trim(gun_value.name_trk)) {
-                        case "Правый стояк": ns1 = gun_value; break;
-                        case "Средний стояк": ns2 = gun_value; break;
-                        case "Левый стояк": ns3 = gun_value; break;
-                        default:
-                            var T3R = {
-                                G1: index,
-                                G2: Number(gun_value.ukt_zed),
-                                G3S: outFuelTypeDescription(gun_value.fuel_type),
-                                G4S: gun_value.serial_number_flowmeter + "/" + gun_value.identification_number_flowmeter + "(" + gun_value.num + ")",
-                                G5: gun_value.volume_delivery !== null ? Number(gun_value.volume_delivery).toFixed(2) : Number(0).toFixed(2),
-                                G6: Number(0).toFixed(2),
-                                G7: null
-                            };
-                            tab3.push(T3R);
-                            index++;
-                            break;
-                    }
+                    $.each(gun, function (i, el) {
+                        var gun_value = gun[i];
+                        switch ($.trim(gun_value.name_trk)) {
+                            case "Правый стояк": ns1 = gun_value; break;
+                            case "Средний стояк": ns2 = gun_value; break;
+                            case "Левый стояк": ns3 = gun_value; break;
+                            default:
+                                var T3R = {
+                                    G1: index,
+                                    G2: Number(gun_value.ukt_zed),
+                                    G3S: outFuelTypeDescription(gun_value.fuel_type),
+                                    G4S: gun_value.serial_number_flowmeter + "/" + gun_value.identification_number_flowmeter + "(" + gun_value.num + ")",
+                                    G5: gun_value.volume15 !== null ? Number(gun_value.volume15).toFixed(2) : Number(0).toFixed(2),
+                                    G6: Number(0).toFixed(2),
+                                    G7: null
+                                };
+                                tab3.push(T3R);
+                                index++;
+                                break;
+                        }
+                    });
                 } else {
                     var catalog = getObjects(list_catalog_trk, 'num', el);
                     if (catalog && catalog.length > 0) {
@@ -454,7 +456,7 @@
                         G2: Number(outFuelTypeUKTZED(cat_ns1.type_fuel)),
                         G3S: outFuelTypeDescription(cat_ns1.type_fuel),
                         G4S: cat_ns1.serial_number_flowmeter + "(" + cat_ns1.name + ")",
-                        G5: (ns1 !== null ? Number(ns1.volume_delivery).toFixed(2) : Number(0).toFixed(2)),
+                        G5: (ns1 !== null ? Number(ns1.volume15).toFixed(2) : Number(0).toFixed(2)),
                         G6: Number(0).toFixed(2),
                         G7: null
                     };
@@ -472,7 +474,7 @@
                         G2: Number(outFuelTypeUKTZED(cat_ns2.type_fuel)),
                         G3S: outFuelTypeDescription(cat_ns2.type_fuel),
                         G4S: cat_ns2.serial_number_flowmeter + "(" + cat_ns2.name + ")",
-                        G5: (ns2 !== null ? Number(ns2.volume_delivery).toFixed(2) : Number(0).toFixed(2)),
+                        G5: (ns2 !== null ? Number(ns2.volume15).toFixed(2) : Number(0).toFixed(2)),
                         G6: Number(0).toFixed(2),
                         G7: null
                     };
@@ -490,7 +492,7 @@
                         G2: Number(outFuelTypeUKTZED(cat_ns3.type_fuel)),
                         G3S: outFuelTypeDescription(cat_ns3.type_fuel),
                         G4S: cat_ns3.serial_number_flowmeter + "(" + cat_ns3.name + ")",
-                        G5: (ns3 !== null ? Number(ns3.volume_delivery).toFixed(2) : Number(0).toFixed(2)),
+                        G5: (ns3 !== null ? Number(ns3.volume15).toFixed(2) : Number(0).toFixed(2)),
                         G6: Number(0).toFixed(2),
                         G7: null
                     };
@@ -506,7 +508,7 @@
                     G1: index,
                     G2: Number(el.ukt_zed),
                     G3S: outFuelTypeDescription(el.fuel_type),
-                    G4: (el.volume_delivery !== null ? Number(el.volume_delivery).toFixed(2) : Number(0).toFixed(2)),
+                    G4: (el.volume15 !== null ? Number(el.volume15).toFixed(2) : Number(0).toFixed(2)),
                     G5: null
                 };
                 tab4.push(T4R);
@@ -644,9 +646,9 @@
             }
         },
 
-        exportTable_all = function(){
+        exportTable_all = function () {
             var tab = get_table1() + get_table2() + get_table3() + get_table4() + get_table5() + get_table6();
-            fnExcelReport("Таблица вся", tab, css_table1+css_table2+css_table3+css_table4+css_table5+css_table6, "TableAll"); //
+            fnExcelReport("Таблица вся", tab, css_table1 + css_table2 + css_table3 + css_table4 + css_table5 + css_table6, "TableAll"); //
         },
 
         get_table1 = function () {
