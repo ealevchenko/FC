@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<DECLAR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="J0210401.XSD">
+  <DECLARHEAD>
+    <TIN>24432974</TIN>
+    <C_DOC>J02</C_DOC>
+    <C_DOC_SUB>104</C_DOC_SUB>
+    <C_DOC_VER>1</C_DOC_VER>
+    <C_DOC_TYPE>0</C_DOC_TYPE>
+    <C_DOC_CNT>1</C_DOC_CNT>
+    <C_REG>28</C_REG>
+    <C_RAJ>10</C_RAJ>
+    <PERIOD_MONTH>1</PERIOD_MONTH>
+    <PERIOD_TYPE>1</PERIOD_TYPE>
+    <PERIOD_YEAR>2020</PERIOD_YEAR>
+    <C_STI_ORIG>2810</C_STI_ORIG>
+    <C_DOC_STAN>1</C_DOC_STAN>
+    <LINKED_DOCS xsi:nil="true" />
+    <D_FILL>05022020</D_FILL>
+    <SOFTWARE>MEDOC</SOFTWARE>
+  </DECLARHEAD>
+  <DECLARBODY>
+    <HZ>1</HZ>
+    <HDATE1>01012020</HDATE1>
+    <HTIME1>00:00:00</HTIME1>
+    <HDATE2>31012020</HDATE2>
+    <HTIME2>23:59:59</HTIME2>
+    <HTIN>24432974</HTIN>
+    <HNAME>ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО"АРСЕЛОРМІТТАЛ КРИВИЙ РІГ"</HNAME>
+    <R07G1>1005741</R07G1>
+    <T1RXXXXG1 ROWNUM="1">1</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="2">2</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="3">3</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="4">4</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="5">5</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="6">6</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="7">7</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="8">8</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="9">9</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="10">10</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="11">11</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="12">12</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="13">13</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="14">14</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="15">15</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="16">16</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="17">17</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="18">18</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="19">19</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="20">20</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="21">21</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="22">22</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="23">23</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="24">24</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="25">25</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="26">26</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="27">27</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="28">28</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="29">29</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="30">30</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="31">31</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="32">32</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="33">33</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="34">34</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="35">35</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="36">36</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="37">37</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="38">38</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="39">39</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="40">40</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="41">41</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="42">42</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="43">43</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="44">44</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="45">45</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="46">46</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="47">47</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="48">48</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="49">49</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="50">50</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="51">51</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="52">52</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="53">53</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="54">54</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="55">55</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="56">56</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="57">57</T1RXXXXG1>
+    <T1RXXXXG1 ROWNUM="58">58</T1RXXXXG1>
+    <T1RXXXXG2 ROWNUM="1">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="2">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="3">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="4">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="5">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="6">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="7">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="8">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="9">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="10">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="11">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="12">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="13">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="14">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="15">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="16">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="17">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="18">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="19">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="20">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="21">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="22">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="23">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="24">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="25">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="26">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="27">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="28">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="29">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="30">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="31">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="32">2710194300</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="33" xsi:nil="true" />
+    <T1RXXXXG2 ROWNUM="34" xsi:nil="true" />
+    <T1RXXXXG2 ROWNUM="35" xsi:nil="true" />
+    <T1RXXXXG2 ROWNUM="36" xsi:nil="true" />
+    <T1RXXXXG2 ROWNUM="37" xsi:nil="true" />
+    <T1RXXXXG2 ROWNUM="38" xsi:nil="true" />
+    <T1RXXXXG2 ROWNUM="39">2710192100</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="40">2710192100</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="41">2710192100</T1RXXXXG2>
+    <T1RXXXXG2 ROWNUM="42" xsi:nil="true" />
+    <T1RXXXXG2 ROWNUM="43" xsi:nil="true" />
+    <T1RXXXXG2 ROWNUM="44" xsi:nil="true" />
+    <T1RXXXXG2 ROWNUM="45" xsi:nil="true" />
+    <T1RXXXXG2 ROWNUM="46" xsi:nil="true" />
+    <T1RXXXXG2 ROWNUM="47" xsi:nil="true" />
+    <T1RXXXXG2 ROWNUM="48" xsi:nil="true" />
+    <T1RXXXXG2 ROWNUM="49" xsi:nil="true" />
+    <T1RXXXXG2 ROWNUM="50" xsi:nil="true" />
+    <T1RXXXXG2 ROWNUM="51" xsi:nil="true" />
+    <T1RXXXXG2 ROWNUM="52" xsi:nil="true" />
+    <T1RXXXXG2 ROWNUM="53" xsi:nil="true" />
+    <T1RXXXXG2 ROWNUM="54" xsi:nil="true" />
+    <T1RXXXXG2 ROWNUM="55" xsi:nil="true" />
+    <T1RXXXXG2 ROWNUM="56" xsi:nil="true" />
+    <T1RXXXXG2 ROWNUM="57" xsi:nil="true" />
+    <T1RXXXXG2 ROWNUM="58" xsi:nil="true" />
+    <T1RXXXXG3S ROWNUM="1">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="2">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="3">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="4">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="5">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="6">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="7">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="8">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="9">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="10">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="11">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="12">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="13">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="14">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="15">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="16">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="17">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="18">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="19">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="20">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="21">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="22">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="23">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="24">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="25">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="26">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="27">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="28">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="29">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="30">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="31">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="32">Важкі дистиляти (газойлі)</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="33" xsi:nil="true" />
+    <T1RXXXXG3S ROWNUM="34" xsi:nil="true" />
+    <T1RXXXXG3S ROWNUM="35" xsi:nil="true" />
+    <T1RXXXXG3S ROWNUM="36" xsi:nil="true" />
+    <T1RXXXXG3S ROWNUM="37" xsi:nil="true" />
+    <T1RXXXXG3S ROWNUM="38" xsi:nil="true" />
+    <T1RXXXXG3S ROWNUM="39">Гас: паливо для реактивних двигунів</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="40">Гас: паливо для реактивних двигунів</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="41">Гас: паливо для реактивних двигунів</T1RXXXXG3S>
+    <T1RXXXXG3S ROWNUM="42" xsi:nil="true" />
+    <T1RXXXXG3S ROWNUM="43" xsi:nil="true" />
+    <T1RXXXXG3S ROWNUM="44" xsi:nil="true" />
+    <T1RXXXXG3S ROWNUM="45" xsi:nil="true" />
+    <T1RXXXXG3S ROWNUM="46" xsi:nil="true" />
+    <T1RXXXXG3S ROWNUM="47" xsi:nil="true" />
+    <T1RXXXXG3S ROWNUM="48" xsi:nil="true" />
+    <T1RXXXXG3S ROWNUM="49" xsi:nil="true" />
+    <T1RXXXXG3S ROWNUM="50" xsi:nil="true" />
+    <T1RXXXXG3S ROWNUM="51" xsi:nil="true" />
+    <T1RXXXXG3S ROWNUM="52" xsi:nil="true" />
+    <T1RXXXXG3S ROWNUM="53" xsi:nil="true" />
+    <T1RXXXXG3S ROWNUM="54" xsi:nil="true" />
+    <T1RXXXXG3S ROWNUM="55" xsi:nil="true" />
+    <T1RXXXXG3S ROWNUM="56" xsi:nil="true" />
+    <T1RXXXXG3S ROWNUM="57" xsi:nil="true" />
+    <T1RXXXXG3S ROWNUM="58" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="1" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="2" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="3" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="4" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="5" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="6" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="7" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="8" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="9" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="10" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="11" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="12" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="13" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="14" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="15" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="16" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="17" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="18" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="19" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="20" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="21" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="22" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="23" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="24" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="25" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="26" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="27" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="28" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="29" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="30" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="31" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="32" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="33" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="34" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="35" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="36" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="37" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="38" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="39" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="40" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="41" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="42" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="43" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="44" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="45" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="46" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="47" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="48" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="49" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="50" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="51" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="52" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="53" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="54" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="55" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="56" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="57" xsi:nil="true" />
+    <T1RXXXXG4 ROWNUM="58" xsi:nil="true" />
+    <T1RXXXXG5S ROWNUM="1">20004316/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="2">20004317/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="3">20004318/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="4">20004319/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="5">20004320/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="6">20004321/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="7">20004322/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="8">20004323/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="9">20004324/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="10">20004325/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="11">20004326/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="12">20004327/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="13">20004328/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="14">20004329/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="15">20004330/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="16">20004331/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="17">20004332/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="18">20004333/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="19">20004334/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="20">20004335/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="21">20004336/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="22">20004337/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="23">20004338/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="24">20004339/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="25">20004340/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="26">20004341/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="27">20004342/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="28">20004343/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="29">20004344/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="30">20004345/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="31">20004346/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="32">20004347/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="33">20004372/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="34">20004373/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="35">20004374/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="36">20004356/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="37">20004357/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="38">20004365/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="39">2004348/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="40">2004353/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="41">2004354/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="42">2000266/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="43">2000267/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="44">2000301/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="45">2000304/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="46">2000303/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="47">2000305/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="48">2000306/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="49">20000269/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="50">20000270/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="51">20000133/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="52">20000141/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="53">20000134/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="54">20000135/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="55">20004367/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="56">20004250/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="57">20004251/1005741</T1RXXXXG5S>
+    <T1RXXXXG5S ROWNUM="58" xsi:nil="true" />
+    <T1RXXXXG6S ROWNUM="1">1807301010</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="2">1807301005</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="3">1807302010</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="4">1807312000</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="5">1807312002</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="6">1807301004</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="7">1807301002</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="8">1807311003</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="9">1807311000</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="10">1807301008</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="11">1807272004</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="12">1807301001</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="13">1807302011</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="14">1807311002</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="15">1807312003</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="16">1807302009</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="17">1807301017</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="18">1807301011</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="19">1807311004</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="20">1808011000</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="21">1807311010</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="22">1807302004</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="23">1807301003</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="24">1807311005</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="25">1807301016</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="26">1807312001</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="27">1807311001</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="28">1807311016</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="29">1807311009</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="30">1807312005</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="31">1807311015</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="32">1807311018</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="33">1807311007</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="34">1807311008</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="35">1807312006</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="36">1807311013</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="37">1807311014</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="38">1807311006</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="39">1807302005</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="40">1807312004</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="41">1807301014</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="42">Б860(3409б)</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="43">Б860(3410б)</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="44">Б861(3411б)</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="45">Б861(3413б)</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="46">Б861(3412б)</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="47">Б861(3414б)</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="48">Б861(3415б)</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="49">Б859(1)</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="50">Б859(2)</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="51">86</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="52">19/1</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="53">19/2</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="54">19/3</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="55">1807301015</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="56">1</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="57">2</T1RXXXXG6S>
+    <T1RXXXXG6S ROWNUM="58" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="1" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="2" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="3" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="4" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="5" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="6" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="7" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="8" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="9" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="10" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="11" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="12" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="13" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="14" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="15" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="16" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="17" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="18" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="19" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="20" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="21" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="22" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="23" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="24" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="25" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="26" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="27" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="28" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="29" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="30" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="31" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="32" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="33" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="34" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="35" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="36" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="37" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="38" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="39" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="40" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="41" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="42" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="43" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="44" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="45" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="46" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="47" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="48" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="49" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="50" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="51" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="52" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="53" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="54" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="55" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="56" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="57" xsi:nil="true" />
+    <T1RXXXXG7 ROWNUM="58" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="1" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="2" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="3" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="4" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="5" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="6" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="7" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="8" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="9" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="10" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="11" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="12" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="13" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="14" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="15" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="16" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="17" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="18" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="19" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="20" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="21" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="22" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="23" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="24" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="25" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="26" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="27" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="28" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="29" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="30" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="31" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="32" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="33" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="34" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="35" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="36" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="37" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="38" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="39" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="40" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="41" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="42" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="43" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="44" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="45" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="46" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="47" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="48" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="49" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="50" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="51" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="52" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="53" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="54" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="55" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="56" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="57" xsi:nil="true" />
+    <T1RXXXXG8 ROWNUM="58" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="1" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="2" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="3" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="4" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="5" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="6" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="7" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="8" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="9" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="10" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="11" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="12" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="13" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="14" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="15" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="16" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="17" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="18" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="19" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="20" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="21" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="22" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="23" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="24" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="25" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="26" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="27" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="28" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="29" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="30" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="31" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="32" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="33" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="34" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="35" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="36" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="37" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="38" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="39" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="40" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="41" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="42" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="43" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="44" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="45" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="46" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="47" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="48" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="49" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="50" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="51" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="52" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="53" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="54" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="55" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="56" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="57" xsi:nil="true" />
+    <T1RXXXXG9 ROWNUM="58" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="1" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="2" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="3" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="4" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="5" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="6" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="7" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="8" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="9" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="10" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="11" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="12" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="13" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="14" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="15" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="16" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="17" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="18" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="19" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="20" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="21" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="22" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="23" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="24" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="25" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="26" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="27" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="28" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="29" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="30" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="31" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="32" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="33" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="34" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="35" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="36" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="37" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="38" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="39" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="40" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="41" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="42" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="43" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="44" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="45" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="46" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="47" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="48" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="49" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="50" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="51" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="52" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="53" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="54" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="55" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="56" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="57" xsi:nil="true" />
+    <T1RXXXXG10 ROWNUM="58" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="1">1</T1RXXXXG11>
+    <T1RXXXXG11 ROWNUM="2" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="3" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="4" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="5" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="6" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="7" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="8" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="9" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="10" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="11" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="12" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="13" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="14" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="15" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="16" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="17" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="18" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="19" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="20" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="21" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="22" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="23" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="24" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="25" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="26" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="27" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="28" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="29" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="30" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="31" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="32" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="33" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="34" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="35" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="36" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="37" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="38" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="39" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="40" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="41" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="42" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="43" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="44" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="45" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="46" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="47" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="48" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="49" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="50" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="51" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="52" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="53" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="54" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="55" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="56" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="57" xsi:nil="true" />
+    <T1RXXXXG11 ROWNUM="58" xsi:nil="true" />
+    <T2RXXXXG1 ROWNUM="1" xsi:nil="true" />
+    <T2RXXXXG2 ROWNUM="1" xsi:nil="true" />
+    <T2RXXXXG3S ROWNUM="1" xsi:nil="true" />
+    <T2RXXXXG4 ROWNUM="1" xsi:nil="true" />
+    <T2RXXXXG5 ROWNUM="1" xsi:nil="true" />
+    <T2RXXXXG6 ROWNUM="1" xsi:nil="true" />
+    <T3RXXXXG1 ROWNUM="1" xsi:nil="true" />
+    <T3RXXXXG2 ROWNUM="1" xsi:nil="true" />
+    <T3RXXXXG3S ROWNUM="1" xsi:nil="true" />
+    <T3RXXXXG4S ROWNUM="1" xsi:nil="true" />
+    <T3RXXXXG5 ROWNUM="1" xsi:nil="true" />
+    <T3RXXXXG6 ROWNUM="1" xsi:nil="true" />
+    <T3RXXXXG7 ROWNUM="1" xsi:nil="true" />
+    <T4RXXXXG1 ROWNUM="1" xsi:nil="true" />
+    <T4RXXXXG2 ROWNUM="1" xsi:nil="true" />
+    <T4RXXXXG3S ROWNUM="1" xsi:nil="true" />
+    <T4RXXXXG4 ROWNUM="1" xsi:nil="true" />
+    <T4RXXXXG5 ROWNUM="1" xsi:nil="true" />
+    <T5RXXXXG1 ROWNUM="1" xsi:nil="true" />
+    <T5RXXXXG2 ROWNUM="1" xsi:nil="true" />
+    <T5RXXXXG3S ROWNUM="1" xsi:nil="true" />
+    <T5RXXXXG4 ROWNUM="1" xsi:nil="true" />
+    <T5RXXXXG5 ROWNUM="1" xsi:nil="true" />
+    <T5RXXXXG6 ROWNUM="1" xsi:nil="true" />
+    <T5RXXXXG7 ROWNUM="1" xsi:nil="true" />
+    <T5RXXXXG8 ROWNUM="1" xsi:nil="true" />
+    <T5RXXXXG9 ROWNUM="1">0.00</T5RXXXXG9>
+    <T5RXXXXG10 ROWNUM="1" xsi:nil="true" />
+    <T6RXXXXG1 ROWNUM="1" xsi:nil="true" />
+    <T6RXXXXG2 ROWNUM="1" xsi:nil="true" />
+    <T6RXXXXG3S ROWNUM="1" xsi:nil="true" />
+    <T6RXXXXG4 ROWNUM="1" xsi:nil="true" />
+    <T6RXXXXG5 ROWNUM="1" xsi:nil="true" />
+    <T6RXXXXG6 ROWNUM="1" xsi:nil="true" />
+    <T6RXXXXG7 ROWNUM="1" xsi:nil="true" />
+    <T6RXXXXG8 ROWNUM="1" xsi:nil="true" />
+    <HKEXECUTOR>2885205156</HKEXECUTOR>
+    <HEXECUTOR>Плічко Сергій Анатолійович</HEXECUTOR>
+    <HPOST>фінансовий директор-головний бухгалтер</HPOST>
+  </DECLARBODY>
+</DECLAR>
