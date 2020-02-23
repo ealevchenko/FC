@@ -81,7 +81,9 @@ namespace MEDOC
         public string HNUM { get; set; }
 
         public string HDATE1 { get; set; }
+        public string HTIME1 { get; set; }
         public string HDATE2 { get; set; }
+        public string HTIME2 { get; set; }
         public string HNUMREG { get; set; }
         public string HTIN { get; set; }
         public string HNAME { get; set; }
@@ -116,9 +118,17 @@ namespace MEDOC
             // Используем XmlSerializer для перобразования в XML строку
             var xmlserializer = new XmlSerializer(typeof(TType));
             var stringWriter = new StringWriter();
-            using (var writer = XmlWriter.Create(stringWriter, new XmlWriterSettings() { Indent = true, Encoding = Encoding.UTF8 }))
+            using (var writer = XmlWriter.Create(stringWriter, new XmlWriterSettings() { Indent = true, Encoding = Encoding.GetEncoding("Windows-1251") }))
             {
                 xmlserializer.Serialize(writer, sourceObject);
+
+                //Encoding utf8 = Encoding.GetEncoding("UTF-16");
+                //Encoding win1251 = Encoding.GetEncoding("Windows-1251");
+
+                //byte[] utf8Bytes = utf8.GetBytes(stringWriter.ToString());
+                //byte[] win1251Bytes = Encoding.Convert(win1251, utf8, utf8Bytes);
+
+                //return win1251.GetString(win1251Bytes);
                 return stringWriter.ToString();
             }
         }
@@ -138,9 +148,9 @@ namespace MEDOC
                         HDATE = data.HDATE,
                         HNUM = data.HNUM!=null ? data.HNUM : "HNUM",
                         HDATE1 = data.HDATE1,
-                        //HTIME1 = null, //DateTime.Now,
+                        HTIME1 = data.HTIME1,
                         HDATE2 = data.HDATE2,
-                        //HTIME2 = null,//DateTime.Now,
+                        HTIME2 = data.HTIME2,
                         HNUMREG = data.HNUMREG!=null ? data.HNUMREG : "HNUMREG",
                         HTIN = data.HTIN!=null ? data.HTIN : "HTIN",
                         HNAME = data.HNAME!=null ? data.HNAME : "HNAME",

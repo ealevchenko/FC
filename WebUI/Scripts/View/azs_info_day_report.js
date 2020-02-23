@@ -214,7 +214,7 @@
                     exportTable_all();
                 });
                 this.bt_xml.on('click', function () {
-                    toXML();
+                    pn_XML.Open();
                 });
                 // настроим компонент выбора времени
                 this.obj_date = this.span.dateRangePicker(
@@ -513,8 +513,10 @@
             report_data = {
                 HDATE: (moment(new Date()).format('DD MM YYYY')),
                 HNUM: null,
-                HDATE1: (moment(date_start).format('DD MM YYYY HH:mm')),
-                HDATE2: (moment(date_stop).format('DD MM YYYY HH:mm')),
+                HDATE1: (moment(date_start).format('DDMMYYYY')),
+                HTIME1: (moment(date_start).format('HH:mm:ss')),
+                HDATE2: (moment(date_stop).format('DDMMYYYY')),
+                HTIME2: (moment(date_stop).format('HH:mm:ss')),
                 HNUMREG: null,
                 HTIN: null,
                 HNAME: null,
@@ -832,7 +834,7 @@
         },
 
         get_table4 = function () {
-        var tab = get_html_table4_star(sum_daily_accounting.length);
+            var tab = get_html_table4_star(sum_daily_accounting.length);
             if (report_data !== null && report_data.T4R !== null) {
                 $.each(report_data.T4R, function (i, el) {
                     tab += "<tr class=xl6615240 style='height:auto'>" +
@@ -929,9 +931,86 @@
             return tab;
         },
 
-        toXML = function () {
-            //
+        // Панель "Править название парка"
+        pn_XML = {
+            obj: null,
+            id: null,
+            name_park_wagon_ru: $('input#name-park-wagon-ru'),
+            name_park_wagon_en: $('input#name-park-wagon-en'),
+            alert_park_wagon: $('#edit-park-name-alert'),
+            all_obj: null,
+            // список парков
+            list_park_wagons: null,
+            lang: ($.cookie('lang') === undefined ? 'ru' : $.cookie('lang')),
+            mors: null,
+            val: null,
+            // Валидация данных
+            validation: function () {
+                pn_XML.val.clear_all();
+                var valid = true;
+                valid = valid & pn_XML.val.checkInputOfNull(pn_XML.name_park_wagon_ru, "Укажите название парка на русском");
+                valid = valid & pn_XML.val.checkInputOfNull(pn_XML.name_park_wagon_en, "Укажите название парка на английском");
+                return valid;
+            },
+            // инициализвция Диалога
+            init: function () {
+                pn_XML.obj = $("div#edit-park-name").dialog({
+                    resizable: false,
+                    modal: true,
+                    autoOpen: false,
+                    height: "auto",
+                    width: 500,
+                    classes: {
+                        "ui-dialog": "card",
+                        "ui-dialog-titlebar": "card-header bg-primary text-white",
+                        "ui-dialog-content": "card-body",
+                        "ui-dialog-buttonpane": "card-footer text-muted"
+                    },
+                    open: function (event, ui) {
+
+                    },
+                    buttons: [
+                        {
+                            text: "XML",
+                            class: "btn btn-outline-primary btn-sm",
+                            click: function () {
+                                toXML($('#HNUMREG').val(),$('#HTIN').val(),$('#HNAME').val(),$('#HKEXECUTOR').val(),$('#HEXECUTOR').val(),$('#HPOST').val());
+                                $(this).dialog("close");
+                            }
+                        },
+                        {
+                            text: "Отмена",
+                            class: "btn btn-outline-primary btn-sm",
+                            click: function () {
+                                $(this).dialog("close");
+                            }
+                        },
+                    ]
+                });
+            },
+            // Открыть Диалог 
+            Open: function (id) {
+                pn_XML.obj.dialog("open");
+            },
+            // Получить новый парк
+            getNew: function () {
+                return {
+                    id: (pn_XML.id ? pn_XML.id : 0),
+                    name_park_ru: pn_XML.name_park_wagon_ru.val(),
+                    name_park_en: pn_XML.name_park_wagon_en.val(),
+                }
+            },
+        },
+        toXML = function (HNUMREG, HTIN, HNAME, HKEXECUTOR, HEXECUTOR, HPOST) {
+        report_data.HNUMREG = HNUMREG;
+        report_data.HTIN = HTIN;
+        report_data.HNAME =HNAME;
+        report_data.HKEXECUTOR =HKEXECUTOR;
+        report_data.HEXECUTOR =HEXECUTOR;
+        report_data.HPOST =HPOST;
             postToXML(report_data, function (xml) {
+                //encoding="utf-16"
+                xml = xml.replace('encoding="utf-16"', 'encoding="windows-1251"');
                 fnXMLReport(xml, "doc_J0210401");
             });
         };
@@ -945,6 +1024,7 @@
     //-----------------------------------------------------------------------------------------
     panel_select_report.initObject();
     tab_type_reports.initObject();
+    pn_XML.init();
     //table_report_1.initObject();
     ////// Загрузка библиотек
     //loadReference(function (result) {

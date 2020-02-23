@@ -748,11 +748,11 @@ public partial class DBody
 
     private string hDATE1Field;
 
-    private System.DateTime hTIME1Field;
+    private string hTIME1Field;
 
     private string hDATE2Field;
 
-    private System.DateTime hTIME2Field;
+    private string hTIME2Field;
 
     private string hNUMREGField;
 
@@ -935,8 +935,8 @@ public partial class DBody
     }
 
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified, DataType = "time")]
-    public System.DateTime HTIME1
+    [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    public string HTIME1
     {
         get
         {
@@ -963,8 +963,8 @@ public partial class DBody
     }
 
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified, DataType = "time")]
-    public System.DateTime HTIME2
+    [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    public string HTIME2
     {
         get
         {
