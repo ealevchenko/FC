@@ -345,6 +345,7 @@ namespace WebUI.Controllers.api
         {
             try
             {
+                //[passage]=N'B' and 
                 string sql = "Select " +
                     "min([dt]) as [dt] " +
                     ",min([name_trk]) as [name_trk] " +
@@ -358,7 +359,7 @@ namespace WebUI.Controllers.api
                     ",sum([volume_delivery]) as [volume_delivery] " +
                     ",sum([volume15]) as [volume15] " +
                     "FROM [dbo].[DeliveryTanks_AZS] " +
-                    "where[dt] >= convert(datetime, '" + start.ToString("yyyy-MM-dd HH:mm:ss") + "', 120) and [dt] <= convert(datetime, '" + stop.ToString("yyyy-MM-dd HH:mm:ss") + "', 120)" +
+                    "where [dt] >= convert(datetime, '" + start.ToString("yyyy-MM-dd HH:mm:ss") + "', 120) and [dt] <= convert(datetime, '" + stop.ToString("yyyy-MM-dd HH:mm:ss") + "', 120)" +
                     "group by [trk_num],[side],[num]";
                 List<DeliveryTanksGroupNum> list = this.ef_dt.Database.SqlQuery<DeliveryTanksGroupNum>(sql).ToList();
                 if (list == null)

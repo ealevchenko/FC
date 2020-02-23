@@ -42,31 +42,8 @@
         // Загрузка библиотек
         loadData = function (start, stop, callback) {
             LockScreen(langView('mess_delay', langs));
-            var count = 8;
-            // Загрузка списка общего отчета за сутки (common.js) getAsyncViewDailyAccountingReportOfDate
-            getAsyncViewDailyAccountingReportPeriodOfDateTime(start, stop, function (result_daily_accounting) {
-                list_daily_accounting = result_daily_accounting;
-                count -= 1;
-                if (count <= 0) {
-                    if (typeof callback === 'function') {
-                        LockScreenOff();
-                        callback();
-                    }
-                }
-            });
-
-            // Загрузка списка детального отчета за сутки (common.js)
-            //getAsyncViewDailyAccountingDetaliReportOfDate(start, function (result_daily_accounting_detali) {
-            //    list_daily_accounting_detali = result_daily_accounting_detali;
-            //    count -= 1;
-            //    if (count <= 0) {
-            //        if (typeof callback === 'function') {
-            //            LockScreenOff();
-            //            callback();
-            //        }
-            //    }
-            //});
-
+            var count = 6;
+            //Получить детальный суточный отчет по каждому типу
             getAsyncViewDailyAccountingDetaliReportPeriodOfDateTime(start, stop, 107000022, function (result_daily_accounting_detali) {
                 list_daily_accounting_detali_107000022 = result_daily_accounting_detali;
                 count -= 1;
@@ -107,43 +84,9 @@
                     }
                 }
             });
-
-
-
-            // Получить выдачи за сутки просуммированные по пистолетам  (common.js)
-            //getAsyncViewDeliveryTanksReportGroupNumOfDate(start, function (result_delivery_tanks_group_num) {
-            //    list_delivery_tanks_group_num = result_delivery_tanks_group_num;
-            //    count -= 1;
-            //    if (count <= 0) {
-            //        if (typeof callback === 'function') {
-            //            LockScreenOff();
-            //            callback();
-            //        }
-            //    }
-            //});
+            // Получить выдачи по всем колонкам
             getAsyncViewDeliveryTanksReportGroupNumOfDateTime(start, stop, function (result_delivery_tanks_group_num) {
                 list_delivery_tanks_group_num = result_delivery_tanks_group_num;
-                count -= 1;
-                if (count <= 0) {
-                    if (typeof callback === 'function') {
-                        LockScreenOff();
-                        callback();
-                    }
-                }
-            });
-            // Получить выдачи за сутки просуммированные по ГСМ  (common.js)
-            //getAsyncViewDeliveryTanksReportGroupFuelOfDate(start, function (result_delivery_tanks_group_fuel) {
-            //    list_delivery_tanks_group_fuel = result_delivery_tanks_group_fuel;
-            //    count -= 1;
-            //    if (count <= 0) {
-            //        if (typeof callback === 'function') {
-            //            LockScreenOff();
-            //            callback();
-            //        }
-            //    }
-            //});
-            getAsyncViewDeliveryTanksReportGroupFuelOfDateTime(start, stop, function (result_delivery_tanks_group_fuel) {
-                list_delivery_tanks_group_fuel = result_delivery_tanks_group_fuel;
                 count -= 1;
                 if (count <= 0) {
                     if (typeof callback === 'function') {
@@ -165,78 +108,80 @@
             });
         },
         // список 
-        list_daily_accounting = [],
-        list_daily_accounting_detali = [],
+        //list_daily_accounting = [],
+        list_daily_accounting_detali = [], // основной 
         list_daily_accounting_detali_107000022 = [],
         list_daily_accounting_detali_107000023 = [],
         list_daily_accounting_detali_107000024 = [],
         list_daily_accounting_detali_107000027 = [],
 
         list_delivery_tanks_group_num = [],
-        list_delivery_tanks_group_fuel = [],
+        //list_delivery_tanks_group_fuel = [],
         list_catalog_trk = [],
 
-        //// Типы отчетов
-        tab_type_reports = {
-            html_div: $("#tabs-reports"),
-            active: 0,
-            initObject: function () {
-                $('#link-tabs-report-1').text(langView('text_link_tabs_report_1', langs));
-                $('#link-tabs-report-2').text(langView('text_link_tabs_report_2', langs));
-                $('#link-tabs-report-3').text(langView('text_link_tabs_report_3', langs));
-                $('#link-tabs-report-4').text(langView('text_link_tabs_report_4', langs));
-                $('#link-tabs-report-5').text(langView('text_link_tabs_report_5', langs));
-                $('#link-tabs-report-6').text(langView('text_link_tabs_report_6', langs));
-                this.html_div.tabs({
-                    collapsible: true,
-                    activate: function (event, ui) {
-                        tab_type_reports.active = tab_type_reports.html_div.tabs("option", "active");
-                        tab_type_reports.activeTable(tab_type_reports.active);
-                    },
-                });
-                //this.activeTable(this.active);
-            },
-            activeTable: function (active) {
-                if (active === 0) {
-                    table_report_1.viewTable();
-                }
-                if (active === 1) {
-                    table_report_2.viewTable();
-                }
-                if (active === 2) {
-                    table_report_3.viewTable();
-                }
-                if (active === 3) {
-                    table_report_4.viewTable();
-                }
-                if (active === 4) {
-                    table_report_5.viewTable();
-                }
-                if (active === 5) {
-                    table_report_6.viewTable();
-                }
-            },
-            excelTable: function (active) {
-                if (active === 0) {
-                    table_report_1.exportTable();
-                }
-                if (active === 1) {
-                    table_report_2.exportTable();
-                }
-                if (active === 2) {
-                    table_report_3.exportTable();
-                }
-                if (active === 3) {
-                    table_report_4.exportTable();
-                }
-                if (active === 4) {
-                    table_report_5.exportTable();
-                }
-                if (active === 5) {
-                    table_report_6.exportTable();
-                }
-            },
+        sum_daily_accounting = [];
+
+    //// Типы отчетов
+    tab_type_reports = {
+        html_div: $("#tabs-reports"),
+        active: 0,
+        initObject: function () {
+            $('#link-tabs-report-1').text(langView('text_link_tabs_report_1', langs));
+            $('#link-tabs-report-2').text(langView('text_link_tabs_report_2', langs));
+            $('#link-tabs-report-3').text(langView('text_link_tabs_report_3', langs));
+            $('#link-tabs-report-4').text(langView('text_link_tabs_report_4', langs));
+            $('#link-tabs-report-5').text(langView('text_link_tabs_report_5', langs));
+            $('#link-tabs-report-6').text(langView('text_link_tabs_report_6', langs));
+            this.html_div.tabs({
+                collapsible: true,
+                activate: function (event, ui) {
+                    tab_type_reports.active = tab_type_reports.html_div.tabs("option", "active");
+                    tab_type_reports.activeTable(tab_type_reports.active);
+                },
+            });
+            //this.activeTable(this.active);
         },
+        activeTable: function (active) {
+            if (active === 0) {
+                table_report_1.viewTable();
+            }
+            if (active === 1) {
+                table_report_2.viewTable();
+            }
+            if (active === 2) {
+                table_report_3.viewTable();
+            }
+            if (active === 3) {
+                table_report_4.viewTable();
+            }
+            if (active === 4) {
+                table_report_5.viewTable();
+            }
+            if (active === 5) {
+                table_report_6.viewTable();
+            }
+        },
+        excelTable: function (active) {
+            if (active === 0) {
+                table_report_1.exportTable();
+            }
+            if (active === 1) {
+                table_report_2.exportTable();
+            }
+            if (active === 2) {
+                table_report_3.exportTable();
+            }
+            if (active === 3) {
+                table_report_4.exportTable();
+            }
+            if (active === 4) {
+                table_report_5.exportTable();
+            }
+            if (active === 5) {
+                table_report_6.exportTable();
+            }
+        },
+    },
         // Панель таблицы
         panel_select_report = {
             html_div_panel: $('#table-panel'),
@@ -318,12 +263,65 @@
         },
         // Получение всего отчета
         get_ReportAll = function () {
+            sum_daily_accounting = [];
             // Формируем таблицу 1
             var tab1 = [];
             var index = 1;
+            // Сумма 
+            var volume15_remains_start_107000022 = 0;
+            var volume15_remains_stop_107000022 = 0;
+            var volume15_delivery_107000022 = 0;
+            var volume15_remains_start_107000023 = 0;
+            var volume15_remains_stop_107000023 = 0;
+            var volume15_delivery_107000023 = 0;
+            var volume15_remains_start_107000024 = 0;
+            var volume15_remains_stop_107000024 = 0;
+            var volume15_delivery_107000024 = 0;
+            var volume15_remains_start_107000027 = 0;
+            var volume15_remains_stop_107000027 = 0;
+            var volume15_delivery_107000027 = 0;
 
+            $.each(list_delivery_tanks_group_num, function (i, el) {
+                if (el.fuel_type === 107000022) {
+                    volume15_delivery_107000022 += el.volume15 !== null ? Number(Number(el.volume15).toFixed(2)) : 0;
+                }
+                if (el.fuel_type === 107000023) {
+                    volume15_delivery_107000023 += el.volume15 !== null ? Number(Number(el.volume15).toFixed(2)) : 0;
+                }
+                if (el.fuel_type === 107000024) {
+                    volume15_delivery_107000024 += el.volume15 !== null ? Number(Number(el.volume15).toFixed(2)) : 0;
+
+                }
+                if (el.fuel_type === 107000027) {
+                    volume15_delivery_107000027 += el.volume15 !== null ? Number(Number(el.volume15).toFixed(2)) : 0;
+                }
+            });
+
+            // Получим детальную таблицу и определим суммы
             $.each(list_daily_accounting_detali, function (i, el) {
                 if (el.tank !== "B13" && el.tank !== "PL107000022" && el.tank !== "PL107000023" && el.tank !== "PL107000024" && el.tank !== "PL107000027") {
+                    if (el.fuel_type === 107000022) {
+                        volume15_remains_start_107000022 += el.volume15_remains_start !== null ? Number(Number(el.volume15_remains_start).toFixed(2)) : 0;
+                        volume15_remains_stop_107000022 += el.volume15_remains_stop !== null ? Number(Number(el.volume15_remains_stop).toFixed(2)) : 0;
+                        //volume15_delivery_107000022 += el.volume15_delivery !== null ? Number(Number(el.volume15_delivery).toFixed(2)) : 0;
+                    }
+                    if (el.fuel_type === 107000023) {
+                        volume15_remains_start_107000023 += el.volume15_remains_start !== null ? Number(Number(el.volume15_remains_start).toFixed(2)) : 0;
+                        volume15_remains_stop_107000023 += el.volume15_remains_stop !== null ? Number(Number(el.volume15_remains_stop).toFixed(2)) : 0;
+                        //volume15_delivery_107000023 += el.volume15_delivery !== null ? Number(Number(el.volume15_delivery).toFixed(2)) : 0;
+                    }
+                    if (el.fuel_type === 107000024) {
+                        volume15_remains_start_107000024 += el.volume15_remains_start !== null ? Number(Number(el.volume15_remains_start).toFixed(2)) : 0;
+                        volume15_remains_stop_107000024 += el.volume15_remains_stop !== null ? Number(Number(el.volume15_remains_stop).toFixed(2)) : 0;
+                        //volume15_delivery_107000024 += el.volume15_delivery !== null ? Number(Number(el.volume15_delivery).toFixed(2)) : 0;
+
+                    }
+                    if (el.fuel_type === 107000027) {
+                        volume15_remains_start_107000027 += el.volume15_remains_start !== null ? Number(Number(el.volume15_remains_start).toFixed(2)) : 0;
+                        volume15_remains_stop_107000027 += el.volume15_remains_stop !== null ? Number(Number(el.volume15_remains_stop).toFixed(2)) : 0;
+                        //volume15_delivery_107000027 += el.volume15_delivery !== null ? Number(Number(el.volume15_delivery).toFixed(2)) : 0;
+                    }
+
                     var T1R = {
                         G1: index,
                         G2: Number(el.ukt_zed),
@@ -341,60 +339,21 @@
                     index++;
                 }
             });
+            // Сформируем список сумм
+            sum_daily_accounting.push({ type: 107000022, volume15_remains_start: volume15_remains_start_107000022, volume15_remains_stop: volume15_remains_stop_107000022, volume15_delivery: volume15_delivery_107000022 });
+            sum_daily_accounting.push({ type: 107000023, volume15_remains_start: volume15_remains_start_107000023, volume15_remains_stop: volume15_remains_stop_107000023, volume15_delivery: volume15_delivery_107000023 });
+            sum_daily_accounting.push({ type: 107000024, volume15_remains_start: volume15_remains_start_107000024, volume15_remains_stop: volume15_remains_stop_107000024, volume15_delivery: volume15_delivery_107000024 });
+            sum_daily_accounting.push({ type: 107000027, volume15_remains_start: volume15_remains_start_107000027, volume15_remains_stop: volume15_remains_stop_107000027, volume15_delivery: volume15_delivery_107000027 });
             // Формируем таблицу 2
             var tab2 = [];
             index = 1;
-            $.each(list_daily_accounting, function (i, el) {
-
-                var PL107000022;
-                var PL107000023;
-                var PL107000024;
-                var PL107000027;
-
-                var res_107000022 = getObjects(list_daily_accounting_detali, 'tank', 'PL107000022');
-                if (res_107000022 && res_107000022.length > 0) {
-                    PL107000022 = res_107000022[0];
-                }
-                var res_107000023 = getObjects(list_daily_accounting_detali, 'tank', 'PL107000023');
-                if (res_107000023 && res_107000023.length > 0) {
-                    PL107000023 = res_107000023[0];
-                }
-                var res_107000024 = getObjects(list_daily_accounting_detali, 'tank', 'PL107000024');
-                if (res_107000024 && res_107000024.length > 0) {
-                    PL107000024 = res_107000024[0];
-                }
-                var res_107000027 = getObjects(list_daily_accounting_detali, 'tank', 'PL107000027');
-                if (res_107000027 && res_107000027.length > 0) {
-                    PL107000027 = res_107000027[0];
-                }
-
-                var volume15_start = 0;
-                var volume15_stop = 0;
-
-                switch (el.type) {
-                    case 107000022:
-                        volume15_start = (el.volume15_start !== null ? el.volume15_start - PL107000022.volume15_remains_start : 0);
-                        volume15_stop = (el.volume15_stop !== null ? el.volume15_stop - PL107000022.volume15_remains_stop : 0);
-                        break;
-                    case 107000023:
-                        volume15_start = (el.volume15_start !== null ? el.volume15_start - PL107000023.volume15_remains_start : 0);
-                        volume15_stop = (el.volume15_stop !== null ? el.volume15_stop - PL107000023.volume15_remains_stop : 0);
-                        break;
-                    case 107000024:
-                        volume15_start = (el.volume15_start !== null ? el.volume15_start - PL107000024.volume15_remains_start : 0);
-                        volume15_stop = (el.volume15_stop !== null ? el.volume15_stop - PL107000024.volume15_remains_stop : 0);
-                        break;
-                    case 107000027:
-                        volume15_start = (el.volume15_start !== null ? el.volume15_start - PL107000027.volume15_remains_start : 0);
-                        volume15_stop = (el.volume15_stop !== null ? el.volume15_stop - PL107000027.volume15_remains_stop : 0);
-                        break;
-                }
+            $.each(sum_daily_accounting, function (i, el) {
                 var T2R = {
                     G1: index,
-                    G2: Number(el.ukt_zed),
+                    G2: Number(outFuelTypeUKTZED(el.type)),
                     G3S: outFuelTypeDescription(el.type),
-                    G4: Number(volume15_start).toFixed(2),
-                    G5: Number(volume15_stop).toFixed(2),
+                    G4: Number(el.volume15_remains_start).toFixed(2),
+                    G5: Number(el.volume15_remains_stop).toFixed(2),
                     G6: null
                 };
                 tab2.push(T2R);
@@ -503,12 +462,12 @@
             // Формируем таблицу 4
             var tab4 = [];
             index = 1;
-            $.each(list_delivery_tanks_group_fuel, function (i, el) {
+            $.each(sum_daily_accounting, function (i, el) {
                 var T4R = {
                     G1: index,
-                    G2: Number(el.ukt_zed),
-                    G3S: outFuelTypeDescription(el.fuel_type),
-                    G4: (el.volume15 !== null ? Number(el.volume15).toFixed(2) : Number(0).toFixed(2)),
+                    G2: Number(outFuelTypeUKTZED(el.type)),
+                    G3S: outFuelTypeDescription(el.type),
+                    G4: (el.volume15_delivery !== null ? Number(el.volume15_delivery).toFixed(2) : Number(0).toFixed(2)),
                     G5: null
                 };
                 tab4.push(T4R);
@@ -517,16 +476,15 @@
             // Формируем таблицу 5
             var tab5 = [];
             index = 1;
-            $.each(list_daily_accounting, function (i, el) {
-
-                var result = el.volume15_stop - el.volume15_start + el.volume_delivery;
+            $.each(sum_daily_accounting, function (i, el) {
+                var result = el.volume15_remains_stop - el.volume15_remains_start + el.volume15_delivery;
                 var T5R = {
                     G1: index,
-                    G2: Number(el.ukt_zed),
+                    G2: Number(outFuelTypeUKTZED(el.type)),
                     G3S: outFuelTypeDescription(el.type),
-                    G4: (el.volume15_stop !== null ? Number(el.volume15_stop).toFixed(2) : Number(0).toFixed(2)),
-                    G5: (el.volume15_start !== null ? Number(el.volume15_start).toFixed(2) : Number(0).toFixed(2)),
-                    G6: (el.volume_delivery !== null ? Number(el.volume_delivery).toFixed(2) : Number(0).toFixed(2)),
+                    G4: (el.volume15_remains_stop !== null ? Number(el.volume15_remains_stop).toFixed(2) : Number(0).toFixed(2)),
+                    G5: (el.volume15_remains_start !== null ? Number(el.volume15_remains_start).toFixed(2) : Number(0).toFixed(2)),
+                    G6: (el.volume15_delivery !== null ? Number(el.volume15_delivery).toFixed(2) : Number(0).toFixed(2)),
                     G7: Number(0).toFixed(2),
                     G8: Number(0).toFixed(2),
                     G9: (result !== null ? Number(result).toFixed(2) : Number(0).toFixed(2)),
@@ -538,11 +496,10 @@
             // Формируем таблицу 6
             var tab6 = [];
             index = 1;
-            $.each(list_daily_accounting, function (i, el) {
-                //var result = el.volume15_stop - el.volume15_start + el.volume15_delivery;
+            $.each(sum_daily_accounting, function (i, el) {
                 var T6R = {
                     G1: index,
-                    G2: Number(el.ukt_zed),
+                    G2: Number(outFuelTypeUKTZED(el.type)),
                     G3S: outFuelTypeDescription(el.type),
                     G4: outFuelTypeVolumePL(el.type).toFixed(2),
                     G5: outFuelTypeVolumePL(el.type).toFixed(2),
@@ -875,7 +832,7 @@
         },
 
         get_table4 = function () {
-            var tab = get_html_table4_star(list_delivery_tanks_group_fuel.length);
+        var tab = get_html_table4_star(sum_daily_accounting.length);
             if (report_data !== null && report_data.T4R !== null) {
                 $.each(report_data.T4R, function (i, el) {
                     tab += "<tr class=xl6615240 style='height:auto'>" +
@@ -901,7 +858,7 @@
         },
 
         get_table5 = function () {
-            var tab = get_html_table5_star(list_daily_accounting.length);
+            var tab = get_html_table5_star(sum_daily_accounting.length);
             if (report_data !== null && report_data.T5R !== null) {
                 $.each(report_data.T5R, function (i, el) {
                     tab += "<tr  class=xl6627014 style='height:auto'>" +
@@ -940,7 +897,7 @@
         },
 
         get_table6 = function () {
-            var tab = get_html_table6_star(list_daily_accounting.length);
+            var tab = get_html_table6_star(sum_daily_accounting.length);
             if (report_data !== null && report_data.T6R !== null) {
                 $.each(report_data.T6R, function (i, el) {
                     tab += "<tr class=xl6628927 style='height:auto'>" +
