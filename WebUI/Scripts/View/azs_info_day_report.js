@@ -119,7 +119,7 @@
         //list_delivery_tanks_group_fuel = [],
         list_catalog_trk = [],
 
-        sum_daily_accounting = [];
+        sum_daily_accounting = [],
 
     //// Типы отчетов
     tab_type_reports = {
@@ -632,24 +632,6 @@
                         "</tr>";
                 });
             }
-            //$.each(list_daily_accounting_detali, function (i, el) {
-            //    if (el.tank !== "B13" && el.tank !== "PL107000022" && el.tank !== "PL107000023" && el.tank !== "PL107000024" && el.tank !== "PL107000027") {
-            //        tab += "<tr style='height:auto;'>" +
-            //            "<td class=xl7020875 width=24 style='width:18pt'>&nbsp;</td>" +
-            //            "<td class=xl7420875 width=51 style='border-top:none;border-left:none;width:38pt'>&nbsp;</td>" +
-            //            "<td class=xl7420875 width=120 style='border-top:none;border-left:none;width:90pt'>" + el.ukt_zed + "</td>" +
-            //            "<td class=xl7220875 width=81 style='border-top:none;border-left:none;width:61pt'>" + outFuelTypeDescription(el.fuel_type) + "</td>" +
-            //            "<td class=xl7420875 width=81 style='border-top:none;width:61pt'>&nbsp;</td>" +
-            //            "<td class=xl7420875 width=92 style='border-top:none;border-left:none;width:69pt;word-wrap:break-word'>" + (el.unified_tank_number !== null ? el.unified_tank_number : el.tank) + "</td>" +
-            //            "<td class=xl7220875 width=92 style='border-top:none;border-left:none;width:69pt'>" + (el.level_meters_serial_number !== null ? el.level_meters_serial_number : "&nbsp;") + "</td>" +
-            //            "<td class=xl7220875-numder width=98 style='border-top:none;width:74pt'>" + (el.volume15_remains_start !== null ? Number(el.volume15_remains_start).toFixed(2) : "&nbsp;") + "</td>" +
-            //            "<td class=xl7220875-numder width=103 style='border-top:none;width:77pt'>" + (el.volume15_remains_stop !== null ? Number(el.volume15_remains_stop).toFixed(2) : "&nbsp;") + "</td>" +
-            //            "<td class=xl7420875 width=93 style='border-top:none;width:70pt'>&nbsp;</td>" +
-            //            "<td class=xl7420875 width=108 style='border-top:none;border-left:none;width:81pt'>&nbsp;</td>" +
-            //            "<td class=xl7420875 width=46 style='border-top:none;border-left:none;width:35pt'>&nbsp;</td>" +
-            //            "</tr>";
-            //    }
-            //});
             tab += html_table1_stop;
             return tab;
         },
@@ -1010,7 +992,8 @@
         report_data.HPOST =HPOST;
             postToXML(report_data, function (xml) {
                 //encoding="utf-16"
-                xml = xml.replace('encoding="utf-16"', 'encoding="windows-1251"');
+                //xml = xml.replace('encoding="utf-16"', 'encoding="windows-1251"');
+                xml = xml.replace('<DECLAR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">', '<DECLAR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="J0210401.XSD">');
                 fnXMLReport(xml, "doc_J0210401");
             });
         };
