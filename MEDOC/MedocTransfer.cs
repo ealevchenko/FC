@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
+using static MEDOC.MedocTransfer;
 
 namespace MEDOC
 {
@@ -100,6 +101,33 @@ namespace MEDOC
         public T6R[] T6R { get; set; }
     }
 
+    static class ff
+    {
+        public static string SerializeObject<T>(this T value)
+        {
+            var serializer = new XmlSerializer(typeof(T));
+            var settings = new XmlWriterSettings
+            {
+                //Encoding = new UTF8Encoding(true),
+                Encoding = Encoding.GetEncoding("Windows-1251"),
+                Indent = true,
+                //OmitXmlDeclaration = false,
+                //NewLineHandling = NewLineHandling.None
+            };
+
+            //using (var stringWriter = new UTF8StringWriter())
+            using (var stringWriter = new Win1251StringWriter())
+            {
+                using (var xmlWriter = XmlWriter.Create(stringWriter, settings))
+                {
+                    serializer.Serialize(xmlWriter, value);
+                }
+
+                return stringWriter.ToString();
+            }
+        }
+    }
+
     public class MedocTransfer
     {
 
@@ -117,6 +145,7 @@ namespace MEDOC
 
             // Используем XmlSerializer для перобразования в XML строку
             var xmlserializer = new XmlSerializer(typeof(TType));
+
             var stringWriter = new StringWriter();
             using (var writer = XmlWriter.Create(stringWriter, new XmlWriterSettings() { Indent = true, Encoding = Encoding.GetEncoding("Windows-1251") }))
             {
@@ -129,7 +158,30 @@ namespace MEDOC
                 //byte[] win1251Bytes = Encoding.Convert(win1251, utf8, utf8Bytes);
 
                 //return win1251.GetString(win1251Bytes);
+
                 return stringWriter.ToString();
+            }
+        }
+
+        public class UTF8StringWriter : StringWriter
+        {
+            public override Encoding Encoding
+            {
+                get
+                {
+                    return Encoding.UTF8;
+                }
+            }
+        }
+
+        public class Win1251StringWriter : StringWriter
+        {
+            public override Encoding Encoding
+            {
+                get
+                {
+                    return Encoding.Default;
+                }
             }
         }
 
@@ -146,18 +198,18 @@ namespace MEDOC
                     DBody dbody = new DBody()
                     {
                         HDATE = data.HDATE,
-                        HNUM = data.HNUM!=null ? data.HNUM : "HNUM",
+                        HNUM = data.HNUM != null ? data.HNUM : "HNUM",
                         HDATE1 = data.HDATE1,
                         HTIME1 = data.HTIME1,
                         HDATE2 = data.HDATE2,
                         HTIME2 = data.HTIME2,
-                        HNUMREG = data.HNUMREG!=null ? data.HNUMREG : "HNUMREG",
-                        HTIN = data.HTIN!=null ? data.HTIN : "HTIN",
-                        HNAME = data.HNAME!=null ? data.HNAME : "HNAME",
+                        HNUMREG = data.HNUMREG != null ? data.HNUMREG : "HNUMREG",
+                        HTIN = data.HTIN != null ? data.HTIN : "HTIN",
+                        HNAME = data.HNAME != null ? data.HNAME : "HNAME",
                         R07G1 = data.R07G1,
-                        HKEXECUTOR = (data.HKEXECUTOR != null ? data.HKEXECUTOR: "HKEXECUTOR"),
-                        HEXECUTOR = data.HEXECUTOR!=null ? data.HEXECUTOR : "HEXECUTOR",
-                        HPOST = data.HPOST!=null ? data.HPOST :"HPOST"
+                        HKEXECUTOR = (data.HKEXECUTOR != null ? data.HKEXECUTOR : "HKEXECUTOR"),
+                        HEXECUTOR = data.HEXECUTOR != null ? data.HEXECUTOR : "HEXECUTOR",
+                        HPOST = data.HPOST != null ? data.HPOST : "HPOST"
                     };
                     // Таблица1
                     int row = 1;
@@ -339,7 +391,7 @@ namespace MEDOC
                         T6RXXXXG5.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G5 });
                         T6RXXXXG6.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G6 });
                         T6RXXXXG7.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G7 });
-                         T6RXXXXG8.Add(new Ozn2Column() { ROWNUM = row, Value = tr.G8 });
+                        T6RXXXXG8.Add(new Ozn2Column() { ROWNUM = row, Value = tr.G8 });
                         row++;
                     }
                     dbody.T6RXXXXG1 = T6RXXXXG1.ToArray();
@@ -357,7 +409,8 @@ namespace MEDOC
                         DECLARBODY = dbody,
                     };
 
-                    string result = Serialize<DeclarContent>(dc);
+                    //string result = Serialize<DeclarContent>(dc);
+                    string result = ff.SerializeObject<DeclarContent>(dc);
                     return result;
                 }
                 else return null;
