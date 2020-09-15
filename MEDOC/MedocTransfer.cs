@@ -117,6 +117,7 @@ namespace MEDOC
 
             //using (var stringWriter = new UTF8StringWriter())
             using (var stringWriter = new Win1251StringWriter())
+            //using (var stringWriter = new ASCIIStringWriter())
             {
                 using (var xmlWriter = XmlWriter.Create(stringWriter, settings))
                 {
@@ -185,6 +186,17 @@ namespace MEDOC
             }
         }
 
+        public class ASCIIStringWriter : StringWriter
+        {
+            public override Encoding Encoding
+            {
+                get
+                {
+                    return Encoding.ASCII;
+                }
+            }
+        }
+
         //DGI4nomColumn[] T1RXXXXG1 = new DGI4nomColumn[];
 
 
@@ -195,22 +207,44 @@ namespace MEDOC
                 if (data != null)
                 {
                     DHead dhead = new DHead();
+                    dhead.TIN = data.HTIN != null ? data.HTIN : "";
+                    dhead.C_DOC_TYPE = "0";
+                    dhead.C_DOC_CNT = "1";
+                    dhead.C_REG = "28";
+                    dhead.C_RAJ = "10";
+                    dhead.PERIOD_MONTH = DateTime.Now.Month.ToString();
+                    dhead.PERIOD_TYPE = "1";
+                    dhead.PERIOD_YEAR = DateTime.Now.Year.ToString();
+                    dhead.C_STI_ORIG = "2810";
+                    dhead.C_DOC_STAN = "1";
+                    dhead.SOFTWARE = "MEDOC";
+                    dhead.D_FILL = DateTime.Now.Date.ToString("ddMMyyyy");
+
                     DBody dbody = new DBody()
                     {
-                        HDATE = data.HDATE,
-                        HNUM = data.HNUM != null ? data.HNUM : "HNUM",
+                        //HDATE = data.HDATE,
+                        //HNUM = data.HNUM != null ? data.HNUM : "",
                         HDATE1 = data.HDATE1,
                         HTIME1 = data.HTIME1,
                         HDATE2 = data.HDATE2,
                         HTIME2 = data.HTIME2,
-                        HNUMREG = data.HNUMREG != null ? data.HNUMREG : "HNUMREG",
-                        HTIN = data.HTIN != null ? data.HTIN : "HTIN",
-                        HNAME = data.HNAME != null ? data.HNAME : "HNAME",
+                        //HNUMREG = data.HNUMREG != null ? data.HNUMREG : "",
+                        HTIN = data.HTIN != null ? data.HTIN : "",
+                        HNAME = data.HNAME != null ? data.HNAME : "",
                         R07G1 = data.R07G1,
-                        HKEXECUTOR = (data.HKEXECUTOR != null ? data.HKEXECUTOR : "HKEXECUTOR"),
-                        HEXECUTOR = data.HEXECUTOR != null ? data.HEXECUTOR : "HEXECUTOR",
-                        HPOST = data.HPOST != null ? data.HPOST : "HPOST"
+                        HKEXECUTOR = (data.HKEXECUTOR != null ? data.HKEXECUTOR : ""),
+                        HEXECUTOR = data.HEXECUTOR != null ? data.HEXECUTOR : "",
+                        HPOST = data.HPOST != null ? data.HPOST : ""
                     };
+
+                    if (data.HNUM != null) {
+                        dbody.HNUM = data.HNUM;
+                    }
+
+                    if (data.HNUMREG != null) {
+                        dbody.HNUMREG = data.HNUMREG;
+                    }
+
                     // Таблица1
                     int row = 1;
                     List<DGI4nomColumn> T1RXXXXG1 = new List<DGI4nomColumn>();

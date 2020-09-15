@@ -121,67 +121,67 @@
 
         sum_daily_accounting = [],
 
-    //// Типы отчетов
-    tab_type_reports = {
-        html_div: $("#tabs-reports"),
-        active: 0,
-        initObject: function () {
-            $('#link-tabs-report-1').text(langView('text_link_tabs_report_1', langs));
-            $('#link-tabs-report-2').text(langView('text_link_tabs_report_2', langs));
-            $('#link-tabs-report-3').text(langView('text_link_tabs_report_3', langs));
-            $('#link-tabs-report-4').text(langView('text_link_tabs_report_4', langs));
-            $('#link-tabs-report-5').text(langView('text_link_tabs_report_5', langs));
-            $('#link-tabs-report-6').text(langView('text_link_tabs_report_6', langs));
-            this.html_div.tabs({
-                collapsible: true,
-                activate: function (event, ui) {
-                    tab_type_reports.active = tab_type_reports.html_div.tabs("option", "active");
-                    tab_type_reports.activeTable(tab_type_reports.active);
-                },
-            });
-            //this.activeTable(this.active);
+        //// Типы отчетов
+        tab_type_reports = {
+            html_div: $("#tabs-reports"),
+            active: 0,
+            initObject: function () {
+                $('#link-tabs-report-1').text(langView('text_link_tabs_report_1', langs));
+                $('#link-tabs-report-2').text(langView('text_link_tabs_report_2', langs));
+                $('#link-tabs-report-3').text(langView('text_link_tabs_report_3', langs));
+                $('#link-tabs-report-4').text(langView('text_link_tabs_report_4', langs));
+                $('#link-tabs-report-5').text(langView('text_link_tabs_report_5', langs));
+                $('#link-tabs-report-6').text(langView('text_link_tabs_report_6', langs));
+                this.html_div.tabs({
+                    collapsible: true,
+                    activate: function (event, ui) {
+                        tab_type_reports.active = tab_type_reports.html_div.tabs("option", "active");
+                        tab_type_reports.activeTable(tab_type_reports.active);
+                    },
+                });
+                //this.activeTable(this.active);
+            },
+            activeTable: function (active) {
+                if (active === 0) {
+                    table_report_1.viewTable();
+                }
+                if (active === 1) {
+                    table_report_2.viewTable();
+                }
+                if (active === 2) {
+                    table_report_3.viewTable();
+                }
+                if (active === 3) {
+                    table_report_4.viewTable();
+                }
+                if (active === 4) {
+                    table_report_5.viewTable();
+                }
+                if (active === 5) {
+                    table_report_6.viewTable();
+                }
+            },
+            excelTable: function (active) {
+                if (active === 0) {
+                    table_report_1.exportTable();
+                }
+                if (active === 1) {
+                    table_report_2.exportTable();
+                }
+                if (active === 2) {
+                    table_report_3.exportTable();
+                }
+                if (active === 3) {
+                    table_report_4.exportTable();
+                }
+                if (active === 4) {
+                    table_report_5.exportTable();
+                }
+                if (active === 5) {
+                    table_report_6.exportTable();
+                }
+            },
         },
-        activeTable: function (active) {
-            if (active === 0) {
-                table_report_1.viewTable();
-            }
-            if (active === 1) {
-                table_report_2.viewTable();
-            }
-            if (active === 2) {
-                table_report_3.viewTable();
-            }
-            if (active === 3) {
-                table_report_4.viewTable();
-            }
-            if (active === 4) {
-                table_report_5.viewTable();
-            }
-            if (active === 5) {
-                table_report_6.viewTable();
-            }
-        },
-        excelTable: function (active) {
-            if (active === 0) {
-                table_report_1.exportTable();
-            }
-            if (active === 1) {
-                table_report_2.exportTable();
-            }
-            if (active === 2) {
-                table_report_3.exportTable();
-            }
-            if (active === 3) {
-                table_report_4.exportTable();
-            }
-            if (active === 4) {
-                table_report_5.exportTable();
-            }
-            if (active === 5) {
-                table_report_6.exportTable();
-            }
-        },
-    },
         // Панель таблицы
         panel_select_report = {
             html_div_panel: $('#table-panel'),
@@ -917,9 +917,9 @@
         pn_XML = {
             obj: null,
             id: null,
-            name_park_wagon_ru: $('input#name-park-wagon-ru'),
-            name_park_wagon_en: $('input#name-park-wagon-en'),
-            alert_park_wagon: $('#edit-park-name-alert'),
+            //name_park_wagon_ru: $('input#name-park-wagon-ru'),
+            //name_park_wagon_en: $('input#name-park-wagon-en'),
+            alert_park_wagon: $('#edit-medoc-alert'),
             all_obj: null,
             // список парков
             list_park_wagons: null,
@@ -930,13 +930,13 @@
             validation: function () {
                 pn_XML.val.clear_all();
                 var valid = true;
-                valid = valid & pn_XML.val.checkInputOfNull(pn_XML.name_park_wagon_ru, "Укажите название парка на русском");
-                valid = valid & pn_XML.val.checkInputOfNull(pn_XML.name_park_wagon_en, "Укажите название парка на английском");
+                //valid = valid & pn_XML.val.checkInputOfNull(pn_XML.name_park_wagon_ru, "Укажите название парка на русском");
+                //valid = valid & pn_XML.val.checkInputOfNull(pn_XML.name_park_wagon_en, "Укажите название парка на английском");
                 return valid;
             },
             // инициализвция Диалога
             init: function () {
-                pn_XML.obj = $("div#edit-park-name").dialog({
+                pn_XML.obj = $("div#edit-medoc").dialog({
                     resizable: false,
                     modal: true,
                     autoOpen: false,
@@ -956,7 +956,7 @@
                             text: "XML",
                             class: "btn btn-outline-primary btn-sm",
                             click: function () {
-                                toXML($('#HNUMREG').val(),$('#HTIN').val(),$('#HNAME').val(),$('#HKEXECUTOR').val(),$('#HEXECUTOR').val(),$('#HPOST').val());
+                                toXML($('#HNUMREG').val(), $('#HNUM').val(), $('#HTIN').val(), $('#HNAME').val(), $('#HKEXECUTOR').val(), $('#HEXECUTOR').val(), $('#HPOST').val());
                                 $(this).dialog("close");
                             }
                         },
@@ -983,16 +983,17 @@
                 }
             },
         },
-        toXML = function (HNUMREG, HTIN, HNAME, HKEXECUTOR, HEXECUTOR, HPOST) {
-        report_data.HNUMREG = HNUMREG;
-        report_data.HTIN = HTIN;
-        report_data.HNAME =HNAME;
-        report_data.HKEXECUTOR =HKEXECUTOR;
-        report_data.HEXECUTOR =HEXECUTOR;
-        report_data.HPOST =HPOST;
+        toXML = function (HNUMREG, HNUM, HTIN, HNAME, HKEXECUTOR, HEXECUTOR, HPOST) {
+            report_data.HNUMREG = HNUMREG;
+            report_data.HNUM = HNUM;
+            report_data.HTIN = HTIN;
+            report_data.HNAME = HNAME;
+            report_data.HKEXECUTOR = HKEXECUTOR;
+            report_data.HEXECUTOR = HEXECUTOR;
+            report_data.HPOST = HPOST;
             postToXML(report_data, function (xml) {
                 //encoding="utf-16"
-                //xml = xml.replace('encoding="utf-16"', 'encoding="windows-1251"');
+                //xml = xml.replace('encoding="us-ascii"', 'encoding="windows-1251"');
                 xml = xml.replace('<DECLAR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">', '<DECLAR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="J0210401.XSD">');
                 fnXMLReport(xml, "doc_J0210401");
             });

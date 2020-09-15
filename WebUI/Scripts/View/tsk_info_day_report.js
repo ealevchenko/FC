@@ -1114,7 +1114,7 @@
             //id: null,
             //name_park_wagon_ru: $('input#name-park-wagon-ru'),
             //name_park_wagon_en: $('input#name-park-wagon-en'),
-            //alert_park_wagon: $('#edit-park-name-alert'),
+            //alert_park_wagon: $('#edit-medoc-alert'),
             all_obj: null,
             // список парков
             list_park_wagons: null,
@@ -1131,7 +1131,7 @@
             },
             // инициализвция Диалога
             init: function () {
-                pn_XML.obj = $("div#edit-park-name").dialog({
+                pn_XML.obj = $("div#edit-medoc").dialog({
                     resizable: false,
                     modal: true,
                     autoOpen: false,
@@ -1151,7 +1151,7 @@
                             text: "XML",
                             class: "btn btn-outline-primary btn-sm",
                             click: function () {
-                                toXML($('#HNUMREG').val(), $('#HTIN').val(), $('#HNAME').val(), $('#HKEXECUTOR').val(), $('#HEXECUTOR').val(), $('#HPOST').val());
+                                toXML($('#HNUMREG').val(), $('#HNUM').val(), $('#HTIN').val(), $('#HNAME').val(), $('#HKEXECUTOR').val(), $('#HEXECUTOR').val(), $('#HPOST').val());
                                 $(this).dialog("close");
                             }
                         },
@@ -1178,8 +1178,9 @@
             //    };
             //},
         },
-        toXML = function (HNUMREG, HTIN, HNAME, HKEXECUTOR, HEXECUTOR, HPOST) {
+        toXML = function (HNUMREG, HNUM, HTIN, HNAME, HKEXECUTOR, HEXECUTOR, HPOST) {
             report_data.HNUMREG = HNUMREG;
+            report_data.HNUM = HNUM;
             report_data.HTIN = HTIN;
             report_data.HNAME = HNAME;
             report_data.HKEXECUTOR = HKEXECUTOR;
@@ -1187,7 +1188,7 @@
             report_data.HPOST = HPOST;
             postToXML(report_data, function (xml) {
                 //encoding="utf-16"
-                //xml = xml.replace('encoding="utf-16"', 'encoding="windows-1251"');
+                //xml = xml.replace('encoding="us-ascii"', 'encoding="windows-1251"');
                 xml = xml.replace('<DECLAR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">', '<DECLAR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="J0210401.XSD">');
                 fnXMLReport(xml, "doc_J0210401");
             });
