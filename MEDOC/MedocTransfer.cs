@@ -215,20 +215,22 @@ namespace MEDOC
                     dhead.PERIOD_MONTH = DateTime.Now.Month.ToString();
                     dhead.PERIOD_TYPE = "1";
                     dhead.PERIOD_YEAR = DateTime.Now.Year.ToString();
-                    dhead.C_STI_ORIG = "2810";
                     dhead.C_DOC_STAN = "1";
+                    dhead.C_STI_ORIG = "2810";
                     dhead.SOFTWARE = "MEDOC";
                     dhead.D_FILL = DateTime.Now.Date.ToString("ddMMyyyy");
 
                     DBody dbody = new DBody()
                     {
-                        //HDATE = data.HDATE,
-                        //HNUM = data.HNUM != null ? data.HNUM : "",
+                        ItemElementName = ItemChoiceType.HZ,
+                        Item = 1,
+                        //HDATE = null,
+                        HNUM = data.HNUM != null ? data.HNUM : null,
                         HDATE1 = data.HDATE1,
                         HTIME1 = data.HTIME1,
                         HDATE2 = data.HDATE2,
                         HTIME2 = data.HTIME2,
-                        //HNUMREG = data.HNUMREG != null ? data.HNUMREG : "",
+                        HNUMREG = data.HNUMREG != null ? data.HNUMREG : null,
                         HTIN = data.HTIN != null ? data.HTIN : "",
                         HNAME = data.HNAME != null ? data.HNAME : "",
                         R07G1 = data.R07G1,
@@ -237,14 +239,17 @@ namespace MEDOC
                         HPOST = data.HPOST != null ? data.HPOST : ""
                     };
 
-                    if (data.HNUM != null) {
-                        dbody.HNUM = data.HNUM;
-                    }
+                    //if (data.HNUM != null)
+                    //{
+                    //    dbody.HNUM = data.HNUM;
+                    //}
+                    //else { dbody.HNUM = null; };
 
-                    if (data.HNUMREG != null) {
-                        dbody.HNUMREG = data.HNUMREG;
-                    }
-
+                    //if (data.HNUMREG != null)
+                    //{
+                    //    dbody.HNUMREG = data.HNUMREG;
+                    //}
+                    //else { dbody.HNUMREG = null; };
                     // Таблица1
                     int row = 1;
                     List<DGI4nomColumn> T1RXXXXG1 = new List<DGI4nomColumn>();

@@ -742,7 +742,7 @@ public partial class DBody
 
     private ItemChoiceType itemElementNameField;
 
-    private string hDATEField;
+    //private string hDATEField;
 
     private string hNUMField;
 
@@ -865,6 +865,7 @@ public partial class DBody
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute("HZ", typeof(int), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
     [System.Xml.Serialization.XmlElementAttribute("HZU", typeof(int), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+
     [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemElementName")]
     public int Item
     {
@@ -892,19 +893,19 @@ public partial class DBody
         }
     }
 
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable = true)]
-    public string HDATE
-    {
-        get
-        {
-            return this.hDATEField;
-        }
-        set
-        {
-            this.hDATEField = value;
-        }
-    }
+    ///// <remarks/>
+    //[System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable = true)]
+    //public string HDATE
+    //{
+    //    get
+    //    {
+    //        return this.hDATEField;
+    //    }
+    //    set
+    //    {
+    //        this.hDATEField = value;
+    //    }
+    //}
 
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified, DataType = "positiveInteger", IsNullable = true)]
