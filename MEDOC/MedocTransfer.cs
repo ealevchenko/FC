@@ -239,17 +239,6 @@ namespace MEDOC
                         HPOST = data.HPOST != null ? data.HPOST : ""
                     };
 
-                    //if (data.HNUM != null)
-                    //{
-                    //    dbody.HNUM = data.HNUM;
-                    //}
-                    //else { dbody.HNUM = null; };
-
-                    //if (data.HNUMREG != null)
-                    //{
-                    //    dbody.HNUMREG = data.HNUMREG;
-                    //}
-                    //else { dbody.HNUMREG = null; };
                     // Таблица1
                     int row = 1;
                     List<DGI4nomColumn> T1RXXXXG1 = new List<DGI4nomColumn>();
@@ -276,6 +265,21 @@ namespace MEDOC
                         T1RXXXXG8.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G8 });
                         T1RXXXXG9.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G9 });
                         T1RXXXXG10.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G10 });
+                        //if (tr.G9 > 0)
+                        //{
+                        //    T1RXXXXG9.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G9 });
+                        //}
+                        //else { 
+                        //T1RXXXXG9.Add(null);
+                        //}
+                        //if (tr.G10 > 0)
+                        //{
+                        //    T1RXXXXG10.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G10 });
+                        //}
+                        //else {
+                        //    T1RXXXXG10.Add(null);                      
+                        //}
+                        //
                         T1RXXXXG11.Add(new Ozn2Column() { ROWNUM = row, Value = tr.G11 });
                         row++;
                     }

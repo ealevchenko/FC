@@ -1594,9 +1594,10 @@ function fnXMLReport(xml, name_file) {
     //tab_text = tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
 
     var ua = window.navigator.userAgent;
-    var msie = ua.indexOf("MSIE ");
+    var msie = ua.indexOf("MSIE");
 
     if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+        $('#xml_load').hide();
         if (window.navigator.msSaveBlob) {
             var blob = new Blob([tab_text], {
                 type: "application/csv;charset=utf-8;"
@@ -1604,7 +1605,9 @@ function fnXMLReport(xml, name_file) {
             navigator.msSaveOrOpenBlob(blob, file_name);
         }
     } else {
-        $('#test').attr('href', 'data:application/vnd.ms-excel' + ', ' + encodeURIComponent(tab_text));
-        $('#test').attr('download', file_name);
+        $('#xml_load').attr('href', 'data:application/vnd.ms-excel' + ', ' + encodeURIComponent(tab_text));
+        $('#xml_load').attr('download', file_name);
+        $('#xml_load').text('Загрузить созданый XML-файл');
+        $('#xml_load').show();
     }
 }

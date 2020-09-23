@@ -196,13 +196,15 @@
             span: $('<span id="select-range"></span>'),
             input_data_start: $('<input id="date-start" name="date-start" size="20">'),
             input_data_stop: $('<input id="date-stop" name="date-stop" size="20">'),
+            xml_load: $('<a id="xml_load" style="color:#F44336"></a>'),
             initObject: function () {
                 this.html_div_panel
                     .append(this.label)
                     .append(this.span.append(this.input_data_start).append(' - ').append(this.input_data_stop))
                     .append(this.bt_excel)
                     .append(this.bt_excel_all)
-                    .append(this.bt_xml);
+                    .append(this.bt_xml)
+                    .append(this.xml_load);
                 this.label.text(langView('label_select_date', langs));
                 this.bt_excel.text(langView('bt_excel_text', langs));
                 this.bt_excel_all.text(langView('bt_excel_all_text', langs));
@@ -245,6 +247,7 @@
                     (date_stop.getDate() + '.' + (date_stop.getMonth() + 1) + '.' + date_stop.getFullYear() + ' ' + date_stop.getHours() + ':' + date_stop.getMinutes() + ':' + date_stop.getSeconds()));
             },
             loadReport: function (data_refresh) {
+                panel_select_report.xml_load.hide();
                 if (data_refresh) {
                     loadData(date_start, date_stop, function () {
                         list_daily_accounting_detali = list_daily_accounting_detali_107000022.concat(list_daily_accounting_detali_107000023);
@@ -994,6 +997,7 @@
             postToXML(report_data, function (xml) {
                 //encoding="utf-16"
                 //xml = xml.replace('encoding="us-ascii"', 'encoding="windows-1251"');
+                xml = xml.replace('encoding="windows-1251"', '');
                 xml = xml.replace('<DECLAR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">', '<DECLAR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="J0210401.XSD">');
                 fnXMLReport(xml, "doc_J0210401");
             });
