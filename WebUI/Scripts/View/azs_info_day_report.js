@@ -196,7 +196,8 @@
             span: $('<span id="select-range"></span>'),
             input_data_start: $('<input id="date-start" name="date-start" size="20">'),
             input_data_stop: $('<input id="date-stop" name="date-stop" size="20">'),
-            xml_load: $('<a id="xml_load" style="color:#F44336"></a>'),
+            //xml_load: $('<button id="xml_load" class="ui-button ui-widget ui-corner-all"></button >'),
+            xml_load: $('<a id="xml_load" class="btn btn-danger active" role="button" aria-pressed="true" style="color:#F44336"></a>'),
             initObject: function () {
                 this.html_div_panel
                     .append(this.label)

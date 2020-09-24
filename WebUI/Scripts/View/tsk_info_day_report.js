@@ -3,34 +3,34 @@
     // Список общесистемных слов 
     $.Text_View =
         {
-        'default':  //default language: ru
-        {
-            'text_link_tabs_report_1': 'Таблица 1',
-            'text_link_tabs_report_2': 'Таблица 2',
-            'text_link_tabs_report_3': 'Таблица 3',
-            'text_link_tabs_report_4': 'Таблица 4',
-            'text_link_tabs_report_5': 'Таблица 5',
-            'text_link_tabs_report_6': 'Таблица 6',
-            'bt_excel_text': 'в excel',
-            'bt_excel_all_text': 'в excel все',
-            'bt_xml_text': 'в XML(J0210401)',
+            'default':  //default language: ru
+            {
+                'text_link_tabs_report_1': 'Таблица 1',
+                'text_link_tabs_report_2': 'Таблица 2',
+                'text_link_tabs_report_3': 'Таблица 3',
+                'text_link_tabs_report_4': 'Таблица 4',
+                'text_link_tabs_report_5': 'Таблица 5',
+                'text_link_tabs_report_6': 'Таблица 6',
+                'bt_excel_text': 'в excel',
+                'bt_excel_all_text': 'в excel все',
+                'bt_xml_text': 'в XML(J0210401)',
 
-            'label_select_date': 'Выберите дату'
-        },
-        'en':  //default language: English
-        {
-            'text_link_tabs_report_1': 'Table 1',
-            'text_link_tabs_report_2': 'Table 2',
-            'text_link_tabs_report_3': 'Table 3',
-            'text_link_tabs_report_4': 'Table 4',
-            'text_link_tabs_report_5': 'Table 5',
-            'text_link_tabs_report_6': 'Table 6',
-            'bt_excel_text': 'to excel',
-            'bt_excel_all_text': 'to excel all',
-            'bt_xml_text': 'to XML(J0210401)',
+                'label_select_date': 'Выберите дату'
+            },
+            'en':  //default language: English
+            {
+                'text_link_tabs_report_1': 'Table 1',
+                'text_link_tabs_report_2': 'Table 2',
+                'text_link_tabs_report_3': 'Table 3',
+                'text_link_tabs_report_4': 'Table 4',
+                'text_link_tabs_report_5': 'Table 5',
+                'text_link_tabs_report_6': 'Table 6',
+                'bt_excel_text': 'to excel',
+                'bt_excel_all_text': 'to excel all',
+                'bt_xml_text': 'to XML(J0210401)',
 
-            'label_select_date': 'Select a date'
-        }
+                'label_select_date': 'Select a date'
+            }
         };
 
     var lang = $.cookie('lang') === undefined ? 'ru' : $.cookie('lang'),
@@ -217,13 +217,15 @@
             span: $('<span id="select-range"></span>'),
             input_data_start: $('<input id="date-start" name="date-start" size="20">'),
             input_data_stop: $('<input id="date-stop" name="date-stop" size="20">'),
+            xml_load: $('<a id="xml_load" class="btn btn-danger active" role="button" aria-pressed="true" style="color:#F44336"></a>'),
             initObject: function () {
                 this.html_div_panel
                     .append(this.label)
                     .append(this.span.append(this.input_data_start).append(' - ').append(this.input_data_stop))
                     .append(this.bt_excel)
                     .append(this.bt_excel_all)
-                    .append(this.bt_xml);
+                    .append(this.bt_xml)
+                    .append(this.xml_load);
                 this.label.text(langView('label_select_date', langs));
                 this.bt_excel.text(langView('bt_excel_text', langs));
                 this.bt_excel_all.text(langView('bt_excel_all_text', langs));
@@ -266,6 +268,7 @@
                     (date_stop.getDate() + '.' + (date_stop.getMonth() + 1) + '.' + date_stop.getFullYear() + ' ' + date_stop.getHours() + ':' + date_stop.getMinutes() + ':' + date_stop.getSeconds()));
             },
             loadReport: function (data_refresh) {
+                panel_select_report.xml_load.hide();
                 if (data_refresh) {
                     loadData(date_start, date_stop, function () {
                         get_ReportAll();
@@ -1188,7 +1191,7 @@
             report_data.HPOST = HPOST;
             postToXML(report_data, function (xml) {
                 //encoding="utf-16"
-                //xml = xml.replace('encoding="us-ascii"', 'encoding="windows-1251"');
+                xml = xml.replace('encoding="windows-1251"', '');
                 xml = xml.replace('<DECLAR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">', '<DECLAR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="J0210401.XSD">');
                 fnXMLReport(xml, "doc_J0210401");
             });

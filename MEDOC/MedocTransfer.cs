@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
-using static MEDOC.MedocTransfer;
+//using MEDOC.MedocTransfer;
 
 namespace MEDOC
 {
@@ -116,7 +116,7 @@ namespace MEDOC
             };
 
             //using (var stringWriter = new UTF8StringWriter())
-            using (var stringWriter = new Win1251StringWriter())
+            using (var stringWriter = new MEDOC.MedocTransfer.Win1251StringWriter())
             //using (var stringWriter = new ASCIIStringWriter())
             {
                 using (var xmlWriter = XmlWriter.Create(stringWriter, settings))
@@ -263,22 +263,24 @@ namespace MEDOC
                         T1RXXXXG6S.Add(new StrColumn() { ROWNUM = row, Value = tr.G6S });
                         T1RXXXXG7.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G7 });
                         T1RXXXXG8.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G8 });
-                        T1RXXXXG9.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G9 });
-                        T1RXXXXG10.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G10 });
-                        //if (tr.G9 > 0)
-                        //{
-                        //    T1RXXXXG9.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G9 });
-                        //}
-                        //else { 
-                        //T1RXXXXG9.Add(null);
-                        //}
-                        //if (tr.G10 > 0)
-                        //{
-                        //    T1RXXXXG10.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G10 });
-                        //}
-                        //else {
-                        //    T1RXXXXG10.Add(null);                      
-                        //}
+                        //T1RXXXXG9.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G9 });
+                        //T1RXXXXG10.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G10 });
+                        if (tr.G9 > 0)
+                        {
+                            T1RXXXXG9.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G9 });
+                        }
+                        else
+                        {
+                            T1RXXXXG9.Add(null);
+                        }
+                        if (tr.G10 > 0)
+                        {
+                            T1RXXXXG10.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G10 });
+                        }
+                        else
+                        {
+                            T1RXXXXG10.Add(null);
+                        }
                         //
                         T1RXXXXG11.Add(new Ozn2Column() { ROWNUM = row, Value = tr.G11 });
                         row++;
