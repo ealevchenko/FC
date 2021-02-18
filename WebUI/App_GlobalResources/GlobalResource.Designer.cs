@@ -169,6 +169,15 @@ namespace WebUI.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на ЦУ КХП АМКР.
+        /// </summary>
+        public static string home_link_benzene {
+            get {
+                return ResourceManager.GetString("home_link_benzene", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Отчет АЗС.
         /// </summary>
         public static string home_link_dailireport_azs {
@@ -183,6 +192,15 @@ namespace WebUI.App_GlobalResources {
         public static string home_link_dailireport_kgd {
             get {
                 return ResourceManager.GetString("home_link_dailireport_kgd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Отчетная документация.
+        /// </summary>
+        public static string home_link_description_benzene {
+            get {
+                return ResourceManager.GetString("home_link_description_benzene", resourceCulture);
             }
         }
         

@@ -13,44 +13,53 @@
         $('body').addClass('img-header-global');
     </script>
 }
-    <ul class="ca-menu">
-        <li>
-            <a href='@Url.Action("Cards", "Home", new { Area = "Cards" })'>
-                <span class="ca-icon">u</span>
-                <div class="ca-content">
-                    <h2 class="ca-main">@GlobalResource.home_link_RFID_cards</h2>
-                    <h3 class="ca-sub">@GlobalResource.home_link_description_RFID_cards</h3>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href='@Url.Action("Index", "Home", new { Area = "FuelAZS" })'>
-                <span class="ca-icon">F</span>
-                <div class="ca-content">
-                    <h2 class="ca-main">@GlobalResource.home_link_fuel_azs</h2>
-                    <h3 class="ca-sub">@GlobalResource.home_link_description_fuel_azs</h3>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href='@Url.Action("Index", "Home", new { Area = "FuelGD" })'>
-                <span class="ca-icon">F</span>
-                <div class="ca-content">
-                    <h2 class="ca-main">@GlobalResource.home_link_fuel_gd</h2>
-                    <h3 class="ca-sub">@GlobalResource.home_link_description_fuel_gd</h3>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href='@Url.Action("Index", "Home", new { Area = "Oil" })'>
-                <span class="ca-icon">F</span>
-                <div class="ca-content">
-                    <h2 class="ca-main">@GlobalResource.home_link_oil</h2>
-                    <h3 class="ca-sub">@GlobalResource.home_link_description_oil</h3>
-                </div>
-            </a>
-        </li>
-    </ul>
+<ul class="ca-menu">
+    <li>
+        <a href='@Url.Action("Cards", "Home", new { Area = "Cards" })'>
+            <span class="ca-icon">u</span>
+            <div class="ca-content">
+                <h2 class="ca-main">@GlobalResource.home_link_RFID_cards</h2>
+                <h3 class="ca-sub">@GlobalResource.home_link_description_RFID_cards</h3>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href='@Url.Action("Index", "Home", new { Area = "FuelAZS" })'>
+            <span class="ca-icon">F</span>
+            <div class="ca-content">
+                <h2 class="ca-main">@GlobalResource.home_link_fuel_azs</h2>
+                <h3 class="ca-sub">@GlobalResource.home_link_description_fuel_azs</h3>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href='@Url.Action("Index", "Home", new { Area = "FuelGD" })'>
+            <span class="ca-icon">F</span>
+            <div class="ca-content">
+                <h2 class="ca-main">@GlobalResource.home_link_fuel_gd</h2>
+                <h3 class="ca-sub">@GlobalResource.home_link_description_fuel_gd</h3>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href='@Url.Action("Index", "Home", new { Area = "Oil" })'>
+            <span class="ca-icon">F</span>
+            <div class="ca-content">
+                <h2 class="ca-main">@GlobalResource.home_link_oil</h2>
+                <h3 class="ca-sub">@GlobalResource.home_link_description_oil</h3>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href='@Url.Action("Index", "Home", new { Area = "Benzene" })'>
+            <span class="ca-icon">F</span>
+            <div class="ca-content">
+                <h2 class="ca-main">@GlobalResource.home_link_benzene</h2>
+                <h3 class="ca-sub">@GlobalResource.home_link_description_benzene</h3>
+            </div>
+        </a>
+    </li>
+</ul>
 <div class="more">
     <ul>
         <li>@GlobalResource.home_more_link:</li>

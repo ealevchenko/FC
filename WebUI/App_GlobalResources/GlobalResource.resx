@@ -303,4 +303,10 @@
   <data name="home_link_info_day_report_azs" xml:space="preserve">
     <value>Акцизный склад топлива</value>
   </data>
+  <data name="home_link_benzene" xml:space="preserve">
+    <value>ЦУ КХП АМКР</value>
+  </data>
+  <data name="home_link_description_benzene" xml:space="preserve">
+    <value>Отчетная документация</value>
+  </data>
 </root>
