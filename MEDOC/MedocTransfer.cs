@@ -342,7 +342,15 @@ namespace MEDOC
                         T3RXXXXG3S.Add(new StrColumn() { ROWNUM = row, Value = tr.G3S });
                         T3RXXXXG4S.Add(new StrColumn() { ROWNUM = row, Value = tr.G4S });
                         T3RXXXXG5.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G5 });
-                        T3RXXXXG6.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G6 });
+                        //T3RXXXXG6.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G6 });
+                        if (tr.G6 > 0)
+                        {
+                            T3RXXXXG6.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G6 });
+                        }
+                        else
+                        {
+                            T3RXXXXG6.Add(null);
+                        }
                         T3RXXXXG7.Add(new Ozn2Column() { ROWNUM = row, Value = tr.G7 });
                         row++;
                     }
