@@ -18,7 +18,7 @@ namespace WebUI.Areas.FuelAZS.Controllers
         /// Состояние склада ГСМ АЗС
         /// </summary>
         /// <returns></returns>
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko,EUROPE\iishkurka")]
+        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\edik,EUROPE\ealevchenko,EUROPE\iishkurka")]
         public ActionResult TankStates()
         {
             return View();
@@ -27,12 +27,13 @@ namespace WebUI.Areas.FuelAZS.Controllers
         /// Заправочная ведомость
         /// </summary>
         /// <returns></returns>
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko,EUROPE\iishkurka")]
+        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\edik,EUROPE\ealevchenko,EUROPE\iishkurka")]
         public ActionResult FuelSale()
         {
             return View();
         }
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko,EUROPE\iishkurka")]
+
+        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\edik,EUROPE\ealevchenko,EUROPE\iishkurka")]
         public ActionResult DailyAccountingReport()
         {
             return View();
@@ -41,7 +42,7 @@ namespace WebUI.Areas.FuelAZS.Controllers
         /// Информация за сутки
         /// </summary>
         /// <returns></returns>
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko,EUROPE\iishkurka")]
+        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\edik,EUROPE\ealevchenko,EUROPE\iishkurka")]
         public ActionResult InformationDayReport()
         {
             return View();

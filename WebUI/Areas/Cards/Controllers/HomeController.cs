@@ -18,7 +18,7 @@ namespace WebUI.Areas.Cards.Controllers
         /// RFID Карты
         /// </summary>
         /// <returns></returns>
-        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_CardRFID_user,EUROPE\KRR-LG-Fuel_CardRFID_admin", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko,EUROPE\iishkurka")]
+        [ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_CardRFID_user,EUROPE\KRR-LG-Fuel_CardRFID_admin", Users = @"EUROPE\iishkurka")]
         public ActionResult Cards()
         {
             return View();

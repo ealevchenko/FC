@@ -214,6 +214,14 @@ var outOZMFuelType = function (i) {
     }
 };
 
+// Убрать Т из формата даты ISO
+var getReplaceTOfDT = function (date) {
+    return date !== null && date !== undefined ? date.replace(/T/g, ' ').replace(/Z/g, '') : null;
+};
+// Убрать время из даты ISO
+var getSupstrTOfDT = function (date) {
+    return date !== null ? date.substr(0, 10) : null;
+};
 
 var outVal = function (i) {
     return i != null ? Number(i) : '';
@@ -1523,6 +1531,54 @@ var getAsyncViewOilFuelSaleOfDateTime = function (start, stop, callback) {
         complete: function () {
             AJAXComplete();
         }
+    });
+};
+/////////////////////////////////////////////////////////////////////
+// Веруть ЦУ КХП бензол
+// Суточный(налоговый) отчет бензолу за период (БД ЦОД)
+var getAsyncViewDailyReportBenzenePeriodOfDateTime = function (start, stop, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/dar_benzene/daily_report/period/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+};
+
+var getAsyncViewDailyReportBenzeneTanksPeriodOfDateTime = function (start, stop, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/dar_benzene/daily_report/tanks/period/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
     });
 };
 

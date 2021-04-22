@@ -14,16 +14,17 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WebUI</RootNamespace>
     <AssemblyName>WebUI</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44375</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <Use64BitIISExpress />
     <UseGlobalApplicationHostFile />
     <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -76,15 +77,16 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
@@ -109,7 +111,6 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
@@ -127,6 +128,7 @@
     <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
@@ -136,11 +138,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Benzene\Data\" />
     <Folder Include="Areas\Cards\Models\" />
     <Folder Include="Areas\FuelAZS\Models\" />
     <Folder Include="Areas\FuelGD\Models\" />
     <Folder Include="Areas\Oil\Models\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Benzene\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_GlobalResources\GlobalResource.en.designer.cs">
@@ -158,6 +162,8 @@
     <Compile Include="App_Start\Ninject.Web.Common.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Benzene\BenzeneAreaRegistration.cs" />
+    <Compile Include="Areas\Benzene\Controllers\HomeController.cs" />
     <Compile Include="Areas\Cards\CardsAreaRegistration.cs" />
     <Compile Include="Areas\Cards\Controllers\HomeController.cs" />
     <Compile Include="Areas\FuelAZS\Controllers\HomeController.cs" />
@@ -196,6 +202,7 @@
     <Compile Include="Areas\Oil\OilAreaRegistration.cs" />
     <Compile Include="Controllers\api\DCDailyAccountingReport_TSKController.cs" />
     <Compile Include="Controllers\api\DCDailyAccountingReport_AZSController.cs" />
+    <Compile Include="Controllers\api\DCDailyReport_BenzeneController.cs" />
     <Compile Include="Controllers\api\DCFuelSale_TSKController.cs" />
     <Compile Include="Controllers\api\DCReceivingFuel_TSKController.cs" />
     <Compile Include="Controllers\api\DCRemainsTanks_TSKController.cs" />
@@ -454,6 +461,7 @@
     <Content Include="Images\error.jpg" />
     <Content Include="Images\Error_404.jpg" />
     <Content Include="Images\fuelsales.jpg" />
+    <Content Include="Images\global_benzene.jpg" />
     <Content Include="Images\global_oil.jpg" />
     <Content Include="Images\oilsales.jpg" />
     <Content Include="Images\RFID_admin.jpg" />
@@ -490,6 +498,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\View\benzene_daily_report.js" />
     <Content Include="Scripts\View\tsk_info_day_report.js" />
     <Content Include="Scripts\View\tsk_daily_accounting_report.js" />
     <Content Include="Scripts\View\azs_info_day_report.js" />
@@ -574,6 +583,11 @@
     <Content Include="Areas\FuelAZS\Views\Home\InformationDayReport.cshtml" />
     <Content Include="Areas\FuelGD\Views\Home\DailyAccountingReport.cshtml" />
     <Content Include="Areas\FuelGD\Views\Home\InformationDayReport.cshtml" />
+    <Content Include="Areas\Benzene\Views\web.config" />
+    <Content Include="Areas\Benzene\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Benzene\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Benzene\Views\Home\DailyReport.cshtml" />
+    <Content Include="Areas\Benzene\Views\Shared\_Global.cshtml" />
     <None Include="Properties\PublishProfiles\fc.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
@@ -775,7 +789,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54457</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:54457/FuelControl</IISUrl>
+          <IISUrl>http://localhost:57777/FuelControl</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

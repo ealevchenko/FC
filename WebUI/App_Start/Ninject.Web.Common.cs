@@ -107,6 +107,9 @@ namespace WebUI.App_Start
             kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.Oil_Transfer>>().To<EFFC.Concrete.EFOil_Transfer>();
             kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.Receipts_OIL>>().To<EFFC.Concrete.EFReceipts_OIL>();
             kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.OilSale>>().To<EFFC.Concrete.EFOilSale>();
+            //***********************************************************************************************
+            // бензол            
+            kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.Daily_Report_Benzene>>().To<EFFC.Concrete.EFDaily_Report_Benzene>();
 
         }        
     }

@@ -133,6 +133,15 @@ namespace WebUI.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Отчет по движению бензола.
+        /// </summary>
+        public static string home_daili_report_benzone {
+            get {
+                return ResourceManager.GetString("home_daili_report_benzone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Суточный отчет (экипировка ст. &quot;Карьерная ГД&quot;).
         /// </summary>
         public static string home_daili_report_rw {
@@ -169,6 +178,15 @@ namespace WebUI.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Информация по акцизному складу бензола.
+        /// </summary>
+        public static string home_info_day_report_benzone {
+            get {
+                return ResourceManager.GetString("home_info_day_report_benzone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на ЦУ КХП АМКР.
         /// </summary>
         public static string home_link_benzene {
@@ -183,6 +201,15 @@ namespace WebUI.App_GlobalResources {
         public static string home_link_dailireport_azs {
             get {
                 return ResourceManager.GetString("home_link_dailireport_azs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Отчет Бензол.
+        /// </summary>
+        public static string home_link_dailireport_benzone {
+            get {
+                return ResourceManager.GetString("home_link_dailireport_benzone", resourceCulture);
             }
         }
         
@@ -210,6 +237,15 @@ namespace WebUI.App_GlobalResources {
         public static string home_link_description_dailireport_azs {
             get {
                 return ResourceManager.GetString("home_link_description_dailireport_azs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Отчет по движению бензола.
+        /// </summary>
+        public static string home_link_description_dailireport_benzone {
+            get {
+                return ResourceManager.GetString("home_link_description_dailireport_benzone", resourceCulture);
             }
         }
         
@@ -390,6 +426,15 @@ namespace WebUI.App_GlobalResources {
         public static string home_link_info_day_report_azs {
             get {
                 return ResourceManager.GetString("home_link_info_day_report_azs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Акцизный склад бензола.
+        /// </summary>
+        public static string home_link_info_day_report_benzone {
+            get {
+                return ResourceManager.GetString("home_link_info_day_report_benzone", resourceCulture);
             }
         }
         
@@ -588,6 +633,15 @@ namespace WebUI.App_GlobalResources {
         public static string lang {
             get {
                 return ResourceManager.GetString("lang", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Меню ЦУ КХП.
+        /// </summary>
+        public static string link_menu_home_benzene {
+            get {
+                return ResourceManager.GetString("link_menu_home_benzene", resourceCulture);
             }
         }
         

@@ -309,4 +309,22 @@
   <data name="home_link_description_benzene" xml:space="preserve">
     <value>Отчетная документация</value>
   </data>
+  <data name="home_daili_report_benzone" xml:space="preserve">
+    <value>Отчет по движению бензола</value>
+  </data>
+  <data name="home_info_day_report_benzone" xml:space="preserve">
+    <value>Информация по акцизному складу бензола</value>
+  </data>
+  <data name="home_link_dailireport_benzone" xml:space="preserve">
+    <value>Отчет Бензол</value>
+  </data>
+  <data name="home_link_description_dailireport_benzone" xml:space="preserve">
+    <value>Отчет по движению бензола</value>
+  </data>
+  <data name="home_link_info_day_report_benzone" xml:space="preserve">
+    <value>Акцизный склад бензола</value>
+  </data>
+  <data name="link_menu_home_benzene" xml:space="preserve">
+    <value>Меню ЦУ КХП</value>
+  </data>
 </root>

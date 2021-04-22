@@ -30,7 +30,7 @@ namespace WebUI.Infrastructure
             {
                 return allowedUsers.Contains(httpContext.User.Identity.Name);
             }
-            return true;
+            return false;
         }
 
         private bool Role(HttpContextBase httpContext)
@@ -49,7 +49,7 @@ namespace WebUI.Infrastructure
                 }
                 return false;
             }
-            return true;
+            return false;
         }
 
         public void OnActionExecuted(ActionExecutedContext filterContext)
@@ -84,7 +84,7 @@ namespace WebUI.Infrastructure
             }
             bool us = User(filterContext.HttpContext);
             bool rl = Role(filterContext.HttpContext);
-            if (!us && !rl)
+            if (!(us | rl))
             {
 
                 string message = filterContext.HttpContext.User.Identity.Name + ";" + filterContext.ActionDescriptor.ActionName;

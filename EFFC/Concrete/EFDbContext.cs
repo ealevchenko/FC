@@ -56,6 +56,9 @@
         public virtual DbSet<Oil_Transfer> Oil_Transfer { get; set; }
 
         public virtual DbSet<Receipts_OIL> Receipts_OIL { get; set; }
+        //*******************************************************************************
+        // Бензол
+        public virtual DbSet<Daily_Report_Benzene> Daily_Report_Benzene { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

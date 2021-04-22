@@ -1,0 +1,54 @@
+﻿@using WebUI.App_GlobalResources;
+@{
+    ViewBag.Title = @GlobalResource.home_title;
+    ViewBag.section = @GlobalResource.home;
+}
+
+@section styles {
+    <link rel="stylesheet" type="text/css" href="~/Content/homemenu.css">
+}
+
+@section scripts {
+    <script>
+        $('body').addClass('img-header-global-benzene');
+    </script>
+}
+<ul class="ca-menu">
+    @*<li>
+        <a href='@Url.Action("FuelSale", "Home", new { Area = "Benzene" })'>
+            <span class="ca-icon">i</span>
+            <div class="ca-content">
+                <h2 class="ca-main">@GlobalResource.home_link_fuelsales</h2>
+                <h3 class="ca-sub">@GlobalResource.home_link_description_fuelsales</h3>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href='@Url.Action("TankStates", "Home", new { Area = "Benzene" })'>
+            <span class="ca-icon">Z</span>
+            <div class="ca-content">
+                <h2 class="ca-main">@GlobalResource.home_link_tankstates</h2>
+                <h3 class="ca-sub">@GlobalResource.home_link_description_tankstates</h3>
+            </div>
+        </a>
+    </li>*@
+    <li>
+        <a href='@Url.Action("DailyReport", "Home", new { Area = "Benzene" })'>
+            <span class="ca-icon">P</span>
+            <div class="ca-content">
+                <h2 class="ca-main">@GlobalResource.home_link_dailireport_benzone</h2>
+                <h3 class="ca-sub">@GlobalResource.home_link_description_dailireport_benzone</h3>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href='@Url.Action("InformationDayReport", "Home", new { Area = "Benzene" })'>
+            <span class="ca-icon">P</span>
+            <div class="ca-content">
+                <h2 class="ca-main">@GlobalResource.home_link_info_day_report_benzone</h2>
+                <h3 class="ca-sub">@GlobalResource.home_info_day_report_benzone</h3>
+            </div>
+        </a>
+    </li>
+</ul>
+

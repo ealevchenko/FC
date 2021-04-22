@@ -72,6 +72,10 @@ body{
     background-image: url(../Images/pattern.png), url(../Images/global_oil.jpg);
 }
 
+.img-header-global-benzene {
+	background-image: url(../Images/pattern.png), url(../Images/global_benzene.jpg);
+}
+
 .img-header-RFID {
     background-image: url(../Images/pattern.png), url(../Images/RFID.jpg);
 }
