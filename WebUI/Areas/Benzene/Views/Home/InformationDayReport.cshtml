@@ -1,0 +1,123 @@
+﻿@using WebUI.App_GlobalResources;
+@{
+    /**/
+
+    ViewBag.Title = @GlobalResource.home_title;
+    ViewBag.section = @GlobalResource.home_info_day_report_azs;
+}
+
+@section styles {
+    @Styles.Render("~/jquery-ui/css")
+    @Styles.Render("~/DataTables/css")
+    @Styles.Render("~/DateTime/css")
+    <link rel="stylesheet" type="text/css" href="~/Content/View/info_day_report.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/View/info_day_report_table1.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/View/info_day_report_table2.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/View/info_day_report_table3.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/View/info_day_report_table4.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/View/info_day_report_table5.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/View/info_day_report_table6.css">
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/Ajax")
+    @Scripts.Render("~/bundles/jquery-ui")
+    @Scripts.Render("~/bundles/DataTables")
+    @Scripts.Render("~/bundles/DateTime")
+    <script src="~/Scripts/jquery.cookie.js" type="text/javascript"></script>
+    <script src="~/Scripts/View/common.js" type="text/javascript"></script>
+    <script src="~/Scripts/View/azs_info_day_report_table1.js" type="text/javascript"></script>
+    <script src="~/Scripts/View/azs_info_day_report_table2.js" type="text/javascript"></script>
+    <script src="~/Scripts/View/azs_info_day_report_table3.js" type="text/javascript"></script>
+    <script src="~/Scripts/View/azs_info_day_report_table4.js" type="text/javascript"></script>
+    <script src="~/Scripts/View/azs_info_day_report_table5.js" type="text/javascript"></script>
+    <script src="~/Scripts/View/azs_info_day_report_table6.js" type="text/javascript"></script>
+    <script src="~/Scripts/View/benzene_info_day_report.js" type="text/javascript"></script>
+    <script>
+        $('body').addClass('img-header-global-benzene');
+    </script>
+}
+
+
+<div id="report">
+    <div id="table-panel">
+    </div>
+    <div id="tabs-reports">
+        <ul>
+            <li><a href="#tabs-report-1" id="link-tabs-report-1"></a></li>
+            <li><a href="#tabs-report-2" id="link-tabs-report-2"></a></li>
+            <li><a href="#tabs-report-3" id="link-tabs-report-3"></a></li>
+            <li><a href="#tabs-report-4" id="link-tabs-report-4"></a></li>
+            <li><a href="#tabs-report-5" id="link-tabs-report-5"></a></li>
+            <li><a href="#tabs-report-6" id="link-tabs-report-6"></a></li>
+        </ul>
+        <div id="tabs-report-1">
+            <div id="report-1" align=center>
+
+            </div>
+        </div>
+        <div id="tabs-report-2">
+            <div id="report-2" align=center>
+
+            </div>
+        </div>
+        <div id="tabs-report-3">
+            <div id="report-3" align=center>
+
+            </div>
+        </div>
+        <div id="tabs-report-4">
+            <div id="report-4" align=center>
+
+            </div>
+        </div>
+        <div id="tabs-report-5">
+            <div id="report-5" align=center>
+
+            </div>
+        </div>
+        <div id="tabs-report-6">
+            <div id="report-6" align=center>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="edit-medoc" title="Дополнительные характеристики (J0210401)" style="display:none">
+    <div class="alert" id="edit-medoc-alert">
+    </div>
+    <form id="form-medoc">
+        <fieldset>
+            <label for="HNUMREG">Реєстраційний номер основної довідки (заповнюється для коригуючої довідки) </label>
+            <input type="text" name="HNUMREG" id="HNUMREG" value="" class="text ui-widget-content ui-corner-all">
+            <label for="HNUM">Порядковий номер коригуючої довідки</label>
+            <input type="text" name="HNUM" id="HNUM" value="" class="text ui-widget-content ui-corner-all">
+            <label for="HTIN">Податковий номер платника податків або серія (за наявності) та номер паспорта</label>
+            <input type="text" name="HTIN" id="HTIN" value="24432974" class="text ui-widget-content ui-corner-all">
+            <label for="HNAME">Найменування або прізвище, ім’я та по батькові (за наявності)</label>
+            <input type="text" name="HNAME" id="HNAME" value='ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО"АРСЕЛОРМІТТАЛ КРИВИЙ РІГ"' class="text ui-widget-content ui-corner-all">
+            <label for="HKEXECUTOR">Реєстраційний номер облікової картки платника податків або серія (за наявності) та номер паспорта </label>
+            <input type="text" name="HKEXECUTOR" id="HKEXECUTOR" value="2885205156" class="text ui-widget-content ui-corner-all">
+            <label for="HEXECUTOR">Прізвище, ім’я, по батькові (за наявності)</label>
+            <input type="text" name="HEXECUTOR" id="HEXECUTOR" value="Плічко Сергій Анатолійович" class="text ui-widget-content ui-corner-all">
+            <label for="HPOST">Посада</label>
+            <input type="text" name="HPOST" id="HPOST" value="фінансовий директор-головний бухгалтер" class="text ui-widget-content ui-corner-all">
+            <!-- Allow form submission with keyboard without duplicating the dialog button -->
+            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+        </fieldset>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

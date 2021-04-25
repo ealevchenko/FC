@@ -349,6 +349,15 @@ namespace WebUI.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Остатки бензола в емкостях ЦУ КХП.
+        /// </summary>
+        public static string home_link_description_remains_tanks_benzone {
+            get {
+                return ResourceManager.GetString("home_link_description_remains_tanks_benzone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Остатки диз. топлива в емкостях ст. Карьерная.
         /// </summary>
         public static string home_link_description_remainstanks_kgd {
@@ -495,6 +504,15 @@ namespace WebUI.App_GlobalResources {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Остатки.
         /// </summary>
+        public static string home_link_remains_tanks_benzone {
+            get {
+                return ResourceManager.GetString("home_link_remains_tanks_benzone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Остатки.
+        /// </summary>
         public static string home_link_remainstanks_kgd {
             get {
                 return ResourceManager.GetString("home_link_remainstanks_kgd", resourceCulture);
@@ -561,6 +579,15 @@ namespace WebUI.App_GlobalResources {
         public static string home_receiving_fuel_rw {
             get {
                 return ResourceManager.GetString("home_receiving_fuel_rw", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Остатки в емкостях.
+        /// </summary>
+        public static string home_remains_tanks_benzene {
+            get {
+                return ResourceManager.GetString("home_remains_tanks_benzene", resourceCulture);
             }
         }
         

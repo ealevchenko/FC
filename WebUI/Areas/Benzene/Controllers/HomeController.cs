@@ -19,5 +19,15 @@ namespace WebUI.Areas.Benzene.Controllers
         {
             return View();
         }
+
+        public ActionResult InformationDayReport()
+        {
+            return View();
+        }
+
+        public ActionResult RemainsTanks()
+        {
+            return View();
+        }
     }
 }

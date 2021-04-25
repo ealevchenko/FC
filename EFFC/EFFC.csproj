@@ -64,6 +64,7 @@
     <Compile Include="Concrete\EFReceivingFuel_TSK.cs" />
     <Compile Include="Concrete\EFFuelSale_TSK.cs" />
     <Compile Include="Concrete\EFReceivingTanks_TSK.cs" />
+    <Compile Include="Concrete\EFRemains_Benzene.cs" />
     <Compile Include="Concrete\EFRemainsTanks_TSK.cs" />
     <Compile Include="Concrete\EFRemainsTanks_AZS.cs" />
     <Compile Include="Concrete\EFReceivingTanks_AZS.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Entities\RemainsTanks_TSK.cs" />
     <Compile Include="Entities\OilSale.cs" />
     <Compile Include="Entities\Daily_Report_Benzene.cs" />
+    <Compile Include="Entities\Remains_Benzene.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

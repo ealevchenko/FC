@@ -144,7 +144,6 @@
     <Folder Include="Areas\FuelGD\Models\" />
     <Folder Include="Areas\Oil\Models\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Benzene\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_GlobalResources\GlobalResource.en.designer.cs">
@@ -202,6 +201,7 @@
     <Compile Include="Areas\Oil\OilAreaRegistration.cs" />
     <Compile Include="Controllers\api\DCDailyAccountingReport_TSKController.cs" />
     <Compile Include="Controllers\api\DCDailyAccountingReport_AZSController.cs" />
+    <Compile Include="Controllers\api\DCRemains_BenzeneController.cs" />
     <Compile Include="Controllers\api\DCDailyReport_BenzeneController.cs" />
     <Compile Include="Controllers\api\DCFuelSale_TSKController.cs" />
     <Compile Include="Controllers\api\DCReceivingFuel_TSKController.cs" />
@@ -499,6 +499,8 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\View\benzene_daily_report.js" />
+    <Content Include="Scripts\View\benzene_info_day_report.js" />
+    <Content Include="Scripts\View\benzene_remains_tanks.js" />
     <Content Include="Scripts\View\tsk_info_day_report.js" />
     <Content Include="Scripts\View\tsk_daily_accounting_report.js" />
     <Content Include="Scripts\View\azs_info_day_report.js" />
@@ -588,6 +590,8 @@
     <Content Include="Areas\Benzene\Views\Home\Index.cshtml" />
     <Content Include="Areas\Benzene\Views\Home\DailyReport.cshtml" />
     <Content Include="Areas\Benzene\Views\Shared\_Global.cshtml" />
+    <Content Include="Areas\Benzene\Views\Home\InformationDayReport.cshtml" />
+    <Content Include="Areas\Benzene\Views\Home\RemainsTanks.cshtml" />
     <None Include="Properties\PublishProfiles\fc.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />

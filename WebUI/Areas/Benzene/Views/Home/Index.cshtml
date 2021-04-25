@@ -15,23 +15,32 @@
 }
 <ul class="ca-menu">
     @*<li>
-        <a href='@Url.Action("FuelSale", "Home", new { Area = "Benzene" })'>
-            <span class="ca-icon">i</span>
+            <a href='@Url.Action("FuelSale", "Home", new { Area = "Benzene" })'>
+                <span class="ca-icon">i</span>
+                <div class="ca-content">
+                    <h2 class="ca-main">@GlobalResource.home_link_fuelsales</h2>
+                    <h3 class="ca-sub">@GlobalResource.home_link_description_fuelsales</h3>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href='@Url.Action("TankStates", "Home", new { Area = "Benzene" })'>
+                <span class="ca-icon">Z</span>
+                <div class="ca-content">
+                    <h2 class="ca-main">@GlobalResource.home_link_tankstates</h2>
+                    <h3 class="ca-sub">@GlobalResource.home_link_description_tankstates</h3>
+                </div>
+            </a>
+        </li>*@
+    <li>
+        <a href='@Url.Action("RemainsTanks", "Home", new { Area = "Benzene" })'>
+            <span class="ca-icon">Z</span>
             <div class="ca-content">
-                <h2 class="ca-main">@GlobalResource.home_link_fuelsales</h2>
-                <h3 class="ca-sub">@GlobalResource.home_link_description_fuelsales</h3>
+                <h2 class="ca-main">@GlobalResource.home_link_remains_tanks_benzone</h2>
+                <h3 class="ca-sub">@GlobalResource.home_link_description_remains_tanks_benzone</h3>
             </div>
         </a>
     </li>
-    <li>
-        <a href='@Url.Action("TankStates", "Home", new { Area = "Benzene" })'>
-            <span class="ca-icon">Z</span>
-            <div class="ca-content">
-                <h2 class="ca-main">@GlobalResource.home_link_tankstates</h2>
-                <h3 class="ca-sub">@GlobalResource.home_link_description_tankstates</h3>
-            </div>
-        </a>
-    </li>*@
     <li>
         <a href='@Url.Action("DailyReport", "Home", new { Area = "Benzene" })'>
             <span class="ca-icon">P</span>

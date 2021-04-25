@@ -110,7 +110,7 @@ namespace WebUI.App_Start
             //***********************************************************************************************
             // бензол            
             kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.Daily_Report_Benzene>>().To<EFFC.Concrete.EFDaily_Report_Benzene>();
-
+            kernel.Bind<EFFC.Abstract.IRepository<EFFC.Entities.Remains_Benzene>>().To<EFFC.Concrete.EFRemains_Benzene>();
         }        
     }
 }

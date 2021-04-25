@@ -327,4 +327,13 @@
   <data name="link_menu_home_benzene" xml:space="preserve">
     <value>Меню ЦУ КХП</value>
   </data>
+  <data name="home_link_description_remains_tanks_benzone" xml:space="preserve">
+    <value>Остатки бензола в емкостях ЦУ КХП</value>
+  </data>
+  <data name="home_link_remains_tanks_benzone" xml:space="preserve">
+    <value>Остатки</value>
+  </data>
+  <data name="home_remains_tanks_benzene" xml:space="preserve">
+    <value>Остатки в емкостях</value>
+  </data>
 </root>
