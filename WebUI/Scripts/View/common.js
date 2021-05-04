@@ -1605,6 +1605,29 @@ var getAsyncViewRemainsBenzenePeriodOfDateTime = function (start, stop, callback
     });
 };
 
+var getAsyncViewFuelSaleBenzenePeriodOfDateTime = function (start, stop, callback) {
+    $.ajax({
+        type: 'GET',
+        url: '../../api/dar_benzene/sales_benzine/period/start/' + toISOStringTZ(start).substring(0, 19) + '/stop/' + toISOStringTZ(stop).substring(0, 19),
+        async: true,
+        dataType: 'json',
+        beforeSend: function () {
+            AJAXBeforeSend();
+        },
+        success: function (data) {
+            if (typeof callback === 'function') {
+                callback(data);
+            }
+        },
+        error: function (x, y, z) {
+            OnAJAXError(x, y, z);
+        },
+        complete: function () {
+            AJAXComplete();
+        },
+    });
+};
+
 //-------------------------------------------------------------------------
 // Экспорт отчетов в Excel
 function fnExcelReport(name_tab, tab, css, name_file) {

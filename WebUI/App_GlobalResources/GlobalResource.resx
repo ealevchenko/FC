@@ -310,13 +310,13 @@
     <value>Отчетная документация</value>
   </data>
   <data name="home_daili_report_benzone" xml:space="preserve">
-    <value>Отчет по движению бензола</value>
+    <value>Суточный отчет (движения бензола на ЦУ КХП)</value>
   </data>
   <data name="home_info_day_report_benzone" xml:space="preserve">
     <value>Информация по акцизному складу бензола</value>
   </data>
   <data name="home_link_dailireport_benzone" xml:space="preserve">
-    <value>Отчет Бензол</value>
+    <value>Суточный отчет</value>
   </data>
   <data name="home_link_description_dailireport_benzone" xml:space="preserve">
     <value>Отчет по движению бензола</value>
@@ -335,5 +335,14 @@
   </data>
   <data name="home_remains_tanks_benzene" xml:space="preserve">
     <value>Остатки в емкостях</value>
+  </data>
+  <data name="home_fuel_sales_benzone" xml:space="preserve">
+    <value>Заправочная ведомость (Бензол)</value>
+  </data>
+  <data name="home_link_description_fuelsales_benzone" xml:space="preserve">
+    <value>Заправочная ведомость (по объему и весу)</value>
+  </data>
+  <data name="home_link_fuelsales_benzone" xml:space="preserve">
+    <value>Выдача Бензола</value>
   </data>
 </root>

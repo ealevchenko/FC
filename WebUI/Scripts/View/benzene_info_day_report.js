@@ -72,7 +72,7 @@
         level_meters_serial_number_1 = "50233729", // 50161698 
         level_meters_serial_number_2 = "50233730", // 50161699
         serial_number_flowmeter = "G200000007602232",
-        volume_pipeline = 0.00,
+        volume_pipeline = 672.00,
         list_daily_detali = [],
         // Типы отчетов
         tab_type_reports = {
@@ -351,7 +351,7 @@
                 HNUMREG: null,
                 HTIN: null,
                 HNAME: null,
-                R07G1: '1005741',
+                R07G1: '1001008',
                 HKEXECUTOR: null,
                 HEXECUTOR: null,
                 HPOST: null,

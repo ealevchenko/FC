@@ -7,20 +7,20 @@
             {
                 'text_link_tabs_report_1': 'Ведомость',
                 'text_link_tabs_report_2': '',
-                'field_date': 'Дата и время',
-
-                'field_railway_num_nak': '№ Накладной',
-                'field_railway_num_tanker': '№ Цистерны',
-                'field_railway_level': 'Уровень',
-                'field_railway_volume': 'Объем (л)',
-                'field_railway_dens': 'Плотность (кг/м3)',
-                'field_railway_mass': 'Масса (кг)',
-                'field_railway_temp': 'Температура (гр.)',
-                'field_railway_volume15': 'Объем прив. к 15 град. (л)',
-                'field_railway_dens15': 'Плотность прив. к 15 град. (кг/м3)',
-                'field_railway_mass15': 'Масса прив. к 15 град. (кг)',
-                'field_operator_name': 'Оператор',
                 'field_FuelType': 'Тип топлива',
+                'field_DateTime': 'Дата и время',
+                'field_rfid_card': 'RFID-Карта',
+                'field_AutoNumber': 'Номер транспортного средства',
+                'field_AutoModel': 'Модель трансп. средства',
+                'field_TankNo': '№ Емкости',
+                'field_UsageVolume': 'Объем (л)',
+                'field_UsageMass': 'Масса (кг)',
+                'field_Density': 'Плотность (кг/м3)',
+                'field_FLAG_R': 'Вариант выдачи',
+
+                'field_Volume15': 'Объем прив. к 15 град. (л)',
+                'field_Mass15': 'Масса прив. к 15 град. (кг)',
+                'field_Dens15': 'Плотность прив. к 15 град. (кг/м3)',
                 'bt_left_title': 'Предыдущая дата',
                 'bt_right_title': 'Следующая дата',
                 'bt_refresh_title': 'Обновить отчет',
@@ -33,21 +33,19 @@
             {
                 'text_link_tabs_report_1': 'Statement',
                 'text_link_tabs_report_2': '',
-                'field_date': 'Date and time',
-
-                'field_railway_num_nak': 'No. Consignment note',
-                'field_railway_num_tanker': 'Tank number',
-
-                'field_railway_level': 'Level',
-                'field_railway_volume': 'Volume (l)',
-                'field_railway_dens': 'Density (kg / m3)',
-                'field_railway_mass': 'Mass (kg)',
-                'field_railway_temp': 'Temperature (gr.)',
-                'field_railway_volume15': 'Volume converted to 15 degrees (l)',
-                'field_railway_dens15': 'Density converted to 15 degrees (kg / m3)',
-                'field_railway_mass15': 'Mass converted to 15 degrees (kg)',
-                'field_operator_name': 'Operator',
                 'field_FuelType': 'Fuel type',
+                'field_DateTime': 'Date and time',
+                'field_rfid_card': 'RFID Card',
+                'field_AutoNumber': 'Vehicle Number',
+                'field_AutoModel': 'Model trans. facilities',
+                'field_TankNo': 'Capacity No.',
+                'field_UsageVolume': 'Volume (l)',
+                'field_UsageMass': 'Mass (kg)',
+                'field_Density': 'Density (kg/m3)',
+                'field_FLAG_R': 'Issue option',
+                'field_Volume15': 'Объем прив. к 15 град. (л)',
+                'field_Mass15': 'Масса прив. к 15 град. (кг)',
+                'field_Dens15': 'Плотность прив. к 15 град. (кг/м3)',
                 'bt_left_title': 'Previous Date',
                 'bt_right_title': 'Next Date',
                 'bt_refresh_title': 'Refresh Report',
@@ -63,24 +61,24 @@
         date_start = null,
         date_stop = null,
         langs = $.extend(true, $.extend(true, getLanguages($.Text_View, lang), getLanguages($.Text_Common, lang)), getLanguages($.Text_Table, lang)),
-        //// Загрузка библиотек
-        //loadReference = function (callback) {
-        //    LockScreen(langView('mess_load', langs));
-        //    var count = 1;
-        //    // Загрузка списка карточек (common.js)
-        //    getReference_azsCards(function (result) {
-        //        reference_cards = result;
-        //        count -= 1;
-        //        if (count <= 0) {
-        //            if (typeof callback === 'function') {
-        //                LockScreenOff();
-        //                callback();
-        //            }
-        //        }
-        //    })
-        //},
-        //// список карточек
-        //reference_cards = null,
+        // Загрузка библиотек
+        loadReference = function (callback) {
+            LockScreen(langView('mess_load', langs));
+            var count = 1;
+            // Загрузка списка карточек (common.js)
+            getReference_azsCards(function (result) {
+                reference_cards = result;
+                count -= 1;
+                if (count <= 0) {
+                    if (typeof callback === 'function') {
+                        LockScreenOff();
+                        callback();
+                    }
+                }
+            })
+        },
+        // список карточек
+        reference_cards = null,
         //// Типы отчетов
         tab_type_reports = {
             html_div: $("#tabs-reports"),
@@ -99,10 +97,10 @@
             },
             activeTable: function (active, data_refresh) {
                 if (active == 0) {
-                    table_remains_tanks.viewTable(data_refresh);
+                    table_fuel_sales.viewTable(data_refresh);
                 }
                 //if (active == 1) {
-                //    table_remains_tanks.viewTable(data_refresh);
+                //    table_fuel_sales.viewTable(data_refresh);
                 //}
 
             },
@@ -110,7 +108,7 @@
         },
         // Панель таблицы
         panel_select_report = {
-            html_div_panel : $('#table-panel'),
+            html_div_panel: $('#table-panel'),
             obj: null,
             obj_date: null,
             bt_left: $('<button class="ui-button ui-widget ui-corner-all ui-button-icon-only" ><span class="ui-icon ui-icon-circle-triangle-w"></span>text</button>'),
@@ -133,7 +131,7 @@
                 //this.bt_left.attr('title',(langView('bt_left_title', langs)));
                 this.label.text(langView('label_select_date', langs));
                 //this.bt_right.attr('title',langView('bt_right_title', langs));
-                this.bt_refresh.attr('title',langView('bt_refresh_title', langs));
+                this.bt_refresh.attr('title', langView('bt_refresh_title', langs));
                 this.bt_refresh.text(langView('bt_refresh_text', langs));
 
                 this.bt_refresh.on('click', function () {
@@ -161,8 +159,8 @@
                         language: lang,
                         format: lang == 'en' ? 'MM/DD/YYYY' : 'DD.MM.YYYY',
                         autoClose: true,
-                        singleDate : true,
-                        showShortcuts: false, 
+                        singleDate: true,
+                        showShortcuts: false,
                     }).
                     bind('datepicker-change', function (evt, obj) {
                         date_curent = obj.date1;
@@ -175,11 +173,11 @@
                 this.obj_date.data('dateRangePicker').setDateRange(date_curent_set, date_curent_set, true);
             },
             viewReport: function () {
-                if (panel_select_report.select_sm.val() === "2") {
+                if (panel_select_report.select_sm.val() == 2) {
                     date_start = new Date(date_curent.getFullYear(), date_curent.getMonth(), date_curent.getDate(), 19, 0, 0);
                     date_stop = new Date(date_curent.getFullYear(), date_curent.getMonth(), date_curent.getDate() + 1, 6, 59, 59);
                 }
-                if (panel_select_report.select_sm.val() === "1") {
+                if (panel_select_report.select_sm.val() == 1) {
                     date_start = new Date(date_curent.getFullYear(), date_curent.getMonth(), date_curent.getDate(), 7, 0, 0);
                     date_stop = new Date(date_curent.getFullYear(), date_curent.getMonth(), date_curent.getDate(), 18, 59, 59);
                 }
@@ -187,8 +185,8 @@
             }
         },
         // Таблица 
-        table_remains_tanks = {
-            html_table: $('table#table-remains-tanks'),
+        table_fuel_sales = {
+            html_table: $('#table-fuel-sales'),
             obj_table: null,
             select: null,
             select_id: null,
@@ -210,106 +208,108 @@
                     "createdRow": function (row, data, index) {
                         $(row).attr('id', data.id);
                     },
-                    //"footerCallback": function (row, data, start, end, display) {
-                    //    var api = this.api(), data;
-                    //    // Remove the formatting to get integer data for summation
-                    //    var intVal = function (i) {
-                    //        return typeof i === 'string' ?
-                    //            i.replace(/[\$,]/g, '') * 1 :
-                    //            typeof i === 'number' ?
-                    //            i : 0;
-                    //    };
+                    "footerCallback": function (row, data, start, end, display) {
+                        var total_volume = 0;
+                        var total_volume15 = 0;
+                        var total_mass = 0;
+                        var total_dens = 0;
+                        var total_dens15 = 0;
 
-                    //    var pipe_volume = Number(kgd_pipe_dt);
-                    //    var last_volume = 0;
-                    //    var last_dens = 0;
-                    //    var last_mass = 0;
-                    //    // Total volume
+                        var api = this.api(), data;
+                        // Remove the formatting to get integer data for summation
+                        var intVal = function (i) {
+                            return typeof i === 'string' ?
+                                i.replace(/[\$,]/g, '') * 1 :
+                                typeof i === 'number' ?
+                                    i : 0;
+                        };
+                        //
+                        total_volume = api
+                            .data()
+                            .reduce(function (a, b) {
+                                return intVal(a) + intVal(b.outed_volume);
+                            }, 0);
+                        //
+                        total_volume15 = api
+                            .data()
+                            .reduce(function (a, b) {
+                                return intVal(a) + intVal(b.outed_volume15);
+                            }, 0);
+                        //
+                        total_mass = api
+                            .data()
+                            .reduce(function (a, b) {
+                                return intVal(a) + intVal(b.outed_mass);
+                            }, 0);
 
-                    //    var lastRow = api.rows().count();
-                    //    if (lastRow > 0) {
-                    //        //var row = api.rows(lastRow).data();
-                    //        last_volume = Number(api.data()[lastRow - 1].volume);
-                    //        last_mass = Number(api.data()[lastRow - 1].mass);
-                    //        last_dens = Number(api.data()[lastRow - 1].dens);
-                    //    }
-                    //    var pipe_mass = pipe_volume * last_dens * 0.001;
-                    //    $('td#pipe-volume').text(pipe_volume.toFixed(2));
-                    //    $('td#pipe-mass').text(pipe_mass.toFixed(2));
-                    //    $('td#volume').text(last_volume.toFixed(2));
-                    //    $('td#mass').text(last_mass.toFixed(2));
-                    //    $('td#dens').text(last_dens.toFixed(2));
-                    //    $('td#total-volume').text(Number(last_volume + pipe_volume).toFixed(2));
-                    //    $('td#total-mass').text(Number(last_mass + pipe_mass).toFixed(2));
-
-                    //},
+                        $('td#total_volume').text(Number(total_volume).toFixed(2));
+                        $('td#total_volume15').text(Number(total_volume15).toFixed(2));
+                        $('td#total_mass').text(Number(total_mass / 1000).toFixed(2));
+                        if (total_mass > 0 && total_volume > 0) {
+                            total_dens = (total_mass / total_volume);
+                        }
+                        if (total_mass > 0 && total_volume15 > 0) {
+                            total_dens15 = (total_mass / total_volume15);
+                        }
+                        $('td#total_dens').text(Number(total_dens).toFixed(4));
+                        $('td#total_dens15').text(Number(total_dens15).toFixed(4));
+                    },
                     columns: [
                         {
                             data: function (row, type, val, meta) {
-                                return row.dt ? row.dt.replace(/T/g, ' ') : null;
+                                return meta.row + 1;
                             },
-                            title: 'Дата и время', width: "50px", orderable: true, searchable: false
+                            className: 'dt-body-center',
+                            title: '№п.п', width: "50px", orderable: true, searchable: false, //className: 'td-text'
                         },
                         {
                             data: function (row, type, val, meta) {
-                                return row.tank;
+                                return row.sap_supply;
                             },
-                            title: 'Емкость', width: "50px", orderable: true, searchable: false
+                            className: 'dt-body-center',
+                            title: 'Номер исходящей поставки', width: "100px", orderable: false, searchable: false, //className: 'td-number'
                         },
                         {
                             data: function (row, type, val, meta) {
-                                return row.total_level !== null ? Number(row.total_level).toFixed(2) : Number(0).toFixed(2);
+                                return row.outed_tank;
                             },
-                            title: 'Уровень емкости (мм)', width: "50px", orderable: false, searchable: false
+                            className: 'dt-body-center',
+                            title: 'Номер резервуара', width: "50px", orderable: false, searchable: false, //className: 'td-number'
                         },
                         {
                             data: function (row, type, val, meta) {
-                                return row.level !== null ? Number(row.level).toFixed(2) : Number(0).toFixed(2);
+                                return row.outed_volume !== null ? Number(row.outed_volume).toFixed(2) : Number(0).toFixed(2);
                             },
-                            title: 'Уровень (мм)', width: "50px", orderable: false, searchable: false
+                            className: 'dt-body-right',
+                            title: 'Выдано объем (л)', width: "50px", orderable: false, searchable: false, //className: 'td-number'
                         },
                         {
                             data: function (row, type, val, meta) {
-                                return row.volume !== null ? Number(row.volume).toFixed(2) : Number(0).toFixed(2);
+                                return row.outed_volume15 !== null ? Number(row.outed_volume15).toFixed(2) : Number(0).toFixed(2);
                             },
-                            title: 'Объем (л)', width: "50px", orderable: false, searchable: false
+                            className: 'dt-body-right',
+                            title: 'Выдано объем (л), прив. к 15 град', width: "50px", orderable: false, searchable: false, //className: 'td-number'
                         },
                         {
                             data: function (row, type, val, meta) {
-                                return row.volume15 !== null ? Number(row.volume15).toFixed(2) : Number(0).toFixed(2);
-
+                                return row.outed_mass !== null ? Number(row.outed_mass / 1000).toFixed(2) : Number(0).toFixed(2);
                             },
-                            title: 'Объем пр. к 15 гр. (л)', width: "50px", orderable: false, searchable: false
+                            className: 'dt-body-right',
+                            title: 'Выдано масса (т.)', width: "50px", orderable: false, searchable: false, //className: 'td-number'
                         },
                         {
                             data: function (row, type, val, meta) {
-                                return row.mass !== null ? Number(row.mass / 1000).toFixed(2) : Number(0).toFixed(2);
+                                return row.outed_dens !== null ? Number(row.outed_dens / 1000).toFixed(4) : Number(0).toFixed(4);
                             },
-                            title: 'Масса (т)', width: "50px", orderable: false, searchable: false
+                            className: 'dt-body-right',
+                            title: 'Плотность (кг/м3)', width: "50px", orderable: false, searchable: false, //className: 'td-number'
                         },
                         {
                             data: function (row, type, val, meta) {
-                                return row.dens !== null ? Number(row.dens).toFixed(4) : Number(0).toFixed(4);
+                                return row.outed_dens15 !== null ? Number(row.outed_dens15 / 1000).toFixed(4) : Number(0).toFixed(4);
                             },
-                            title: 'Плотность (кг/м3)', width: "50px", orderable: false, searchable: false
-                        },
-                        {
-                            data: function (row, type, val, meta) {
-                                return row.dens15 !== null ? Number(row.dens15).toFixed(4) : Number(0).toFixed(4);
-                            },
-                            title: 'Плотность пр. к 15 гр. (кг/м3)', width: "50px", orderable: false, searchable: false
-                        },
-                        {
-                            data: function (row, type, val, meta) {
-                                return row.temp !== null ? Number(row.temp).toFixed(1) : Number(0).toFixed(1);
-                            },
-                            title: 'Температура', width: "50px", orderable: false, searchable: false
-                        },
-                        {
-                            data: function (row, type, val, meta) {
-                                return row.water_level !== null ? Number(row.water_level).toFixed(1) : Number(0).toFixed(1);
-                            },
-                            title: 'Уровень подт. воды', width: "50px", orderable: false, searchable: false
+                            className: 'dt-body-right',
+                            title: 'Плотность (кг/м3), прив. к 15 град', width: "50px", orderable: false, searchable: false, //className: 'td-number'
                         }
                     ],
                     dom: 'Bfrtip',
@@ -317,7 +317,7 @@
                         'copyHtml5',
                         {
                             extend: 'excelHtml5',
-                            sheetName: 'TSK прием',
+                            sheetName: 'Выдача бензола',
                             messageTop: function () {
                                 return 'Период отчета с ' + (date_start !== null ? toISOStringTZ(date_start).split('T').join(' ') : '') + ' по ' + (date_stop !== null ? toISOStringTZ(date_stop).split('T').join(' ') : '');
                             }
@@ -328,43 +328,26 @@
             // Показать таблицу с данными
             viewTable: function (data_refresh) {
                 LockScreen(langView('mess_delay', langs));
-                if (this.list === null | data_refresh === true) {
+                if (this.list == null | data_refresh == true) {
                     // Обновим данные
-                    getAsyncViewRemainsBenzenePeriodOfDateTime(
-                        date_start, date_stop,
-                        function (result) {
-                            table_remains_tanks.list = result;
-                            table_remains_tanks.loadDataTable(result);
-                            table_remains_tanks.obj.draw();
-                        }
-                    );
+                    getAsyncViewFuelSaleBenzenePeriodOfDateTime(
+                      date_start, date_stop,
+                      function (result) {
+                          table_fuel_sales.list = result;
+                          table_fuel_sales.loadDataTable(result);
+                          table_fuel_sales.obj.draw();
+                      }
+                  );
                 } else {
-                    table_remains_tanks.loadDataTable(this.list);
-                    table_remains_tanks.obj.draw();
-                }
+                    table_fuel_sales.loadDataTable(this.list);
+                    table_fuel_sales.obj.draw();
+                };
             },
             // Загрузить данные
             loadDataTable: function (data) {
                 //this.list = data;
                 this.obj.clear();
-                this.obj.rows.add(data)
-                for (i = 0; i < data.length; i++) {
-
-                   //var cards = reference_cards != null ? reference_cards.getResult(data[i].id_card) : null;
-
-                    //this.obj.row.add({
-                    //    "id": data[i].id,
-                    //    "date": data[i].date,
-                    //    "level": data[i].level,
-                    //    "volume": data[i].volume!==null? Number(data[i].volume*1000).toFixed(2):null,
-                    //    "dens": data[i].dens_avg !== null ? data[i].dens_avg.toFixed(2):null,
-                    //    "mass": data[i].mass !== null ? Number(data[i].mass*1000).toFixed(2):null,
-                    //    "temp": data[i].temp_avg !== null ? data[i].temp_avg.toFixed(2):null,
-                    //    //"volume15": data[i].volume15 !== null ? Number(data[i].volume15*1000).toFixed(2):null,
-                    //    //"dens15": data[i].dens15,
-                    //    //"mass15": data[i].mass15 !== null ? Number(data[i].mass15*1000).toFixed(2):null,
-                    //});
-                }
+                this.obj.rows.add(data);
                 LockScreenOff();
             },
         }
@@ -379,9 +362,9 @@
     panel_select_report.initObject();
     tab_type_reports.initObject();
     //// Загрузка библиотек
-    //loadReference(function (result) {
-        table_remains_tanks.initObject();
+    loadReference(function (result) {
+        table_fuel_sales.initObject();
         panel_select_report.viewReport();
-    //});
+    });
 
 });

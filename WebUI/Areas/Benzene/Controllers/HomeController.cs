@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebUI.Infrastructure;
 
 namespace WebUI.Areas.Benzene.Controllers
 {
@@ -10,6 +11,16 @@ namespace WebUI.Areas.Benzene.Controllers
     {
         // GET: Benzene/Home
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// Заправочная ведомость жд трансп.
+        /// </summary>
+        /// <returns></returns>
+        //[ViewAuthorize(Roles = @"EUROPE\KRR-LG-Fuel_site_user", Users = @"HP_EDIK\lev75,EUROPE\ealevchenko,EUROPE\iishkurka")]
+        public ActionResult FuelSale()
         {
             return View();
         }

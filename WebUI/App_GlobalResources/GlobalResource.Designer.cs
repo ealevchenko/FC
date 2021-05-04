@@ -133,7 +133,7 @@ namespace WebUI.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Отчет по движению бензола.
+        ///   Ищет локализованную строку, похожую на Суточный отчет (движения бензола на ЦУ КХП).
         /// </summary>
         public static string home_daili_report_benzone {
             get {
@@ -156,6 +156,15 @@ namespace WebUI.App_GlobalResources {
         public static string home_fuel_sales {
             get {
                 return ResourceManager.GetString("home_fuel_sales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Заправочная ведомость (Бензол).
+        /// </summary>
+        public static string home_fuel_sales_benzone {
+            get {
+                return ResourceManager.GetString("home_fuel_sales_benzone", resourceCulture);
             }
         }
         
@@ -205,7 +214,7 @@ namespace WebUI.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Отчет Бензол.
+        ///   Ищет локализованную строку, похожую на Суточный отчет.
         /// </summary>
         public static string home_link_dailireport_benzone {
             get {
@@ -282,6 +291,15 @@ namespace WebUI.App_GlobalResources {
         public static string home_link_description_fuelsales {
             get {
                 return ResourceManager.GetString("home_link_description_fuelsales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Заправочная ведомость (по объему и весу).
+        /// </summary>
+        public static string home_link_description_fuelsales_benzone {
+            get {
+                return ResourceManager.GetString("home_link_description_fuelsales_benzone", resourceCulture);
             }
         }
         
@@ -417,6 +435,15 @@ namespace WebUI.App_GlobalResources {
         public static string home_link_fuelsales {
             get {
                 return ResourceManager.GetString("home_link_fuelsales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Выдача Бензола.
+        /// </summary>
+        public static string home_link_fuelsales_benzone {
+            get {
+                return ResourceManager.GetString("home_link_fuelsales_benzone", resourceCulture);
             }
         }
         
