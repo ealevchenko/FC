@@ -12,25 +12,25 @@ namespace MEDOC
 {
     public class T1R
     {
-        public ulong G1 { get; set; }
-        public ulong G2 { get; set; }
+        public ulong? G1 { get; set; }
+        public ulong? G2 { get; set; }
         public string G3S { get; set; }
-        public int G4 { get; set; }
+        public int? G4 { get; set; }
         public string G5S { get; set; }
         public string G6S { get; set; }
-        public decimal G7 { get; set; }
-        public decimal G8 { get; set; }
-        public decimal G9 { get; set; }
-        public decimal G10 { get; set; }
+        public decimal? G7 { get; set; }
+        public decimal? G8 { get; set; }
+        public decimal? G9 { get; set; }
+        public decimal? G10 { get; set; }
         public string G11 { get; set; }
     }
     public class T2R
     {
-        public ulong G1 { get; set; }
-        public ulong G2 { get; set; }
+        public ulong? G1 { get; set; }
+        public ulong? G2 { get; set; }
         public string G3S { get; set; }
-        public decimal G4 { get; set; }
-        public decimal G5 { get; set; }
+        public decimal? G4 { get; set; }
+        public decimal? G5 { get; set; }
         public string G6 { get; set; }
     }
     public class T3R
@@ -53,26 +53,26 @@ namespace MEDOC
     }
     public class T5R
     {
-        public ulong G1 { get; set; }
-        public ulong G2 { get; set; }
+        public ulong? G1 { get; set; }
+        public ulong? G2 { get; set; }
         public string G3S { get; set; }
-        public decimal G4 { get; set; }
-        public decimal G5 { get; set; }
-        public decimal G6 { get; set; }
-        public decimal G7 { get; set; }
-        public decimal G8 { get; set; }
-        public decimal G9 { get; set; }
+        public decimal? G4 { get; set; }
+        public decimal? G5 { get; set; }
+        public decimal? G6 { get; set; }
+        public decimal? G7 { get; set; }
+        public decimal? G8 { get; set; }
+        public decimal? G9 { get; set; }
         public string G10 { get; set; }
     }
     public class T6R
     {
-        public ulong G1 { get; set; }
-        public ulong G2 { get; set; }
+        public ulong? G1 { get; set; }
+        public ulong? G2 { get; set; }
         public string G3S { get; set; }
-        public decimal G4 { get; set; }
-        public decimal G5 { get; set; }
-        public decimal G6 { get; set; }
-        public decimal G7 { get; set; }
+        public decimal? G4 { get; set; }
+        public decimal? G5 { get; set; }
+        public decimal? G6 { get; set; }
+        public decimal? G7 { get; set; }
         public string G8 { get; set; }
     }
 
@@ -255,34 +255,106 @@ namespace MEDOC
 
                     foreach (T1R tr in data.T1R)
                     {
-                        T1RXXXXG1.Add(new DGI4nomColumn() { ROWNUM = row, Value = tr.G1 });
-                        T1RXXXXG2.Add(new KOATUUColumn() { ROWNUM = row, Value = tr.G2 });
-                        T1RXXXXG3S.Add(new StrColumn() { ROWNUM = row, Value = tr.G3S });
-                        T1RXXXXG4.Add(new ChkColumn() { ROWNUM = row, Value = tr.G4 });
-                        T1RXXXXG5S.Add(new StrColumn() { ROWNUM = row, Value = tr.G5S });
-                        T1RXXXXG6S.Add(new StrColumn() { ROWNUM = row, Value = tr.G6S });
-                        T1RXXXXG7.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G7 });
-                        T1RXXXXG8.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G8 });
-                        //T1RXXXXG9.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G9 });
-                        //T1RXXXXG10.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G10 });
-                        if (tr.G9 > 0)
+                        //T1RXXXXG1.Add(new DGI4nomColumn() { ROWNUM = row, Value = tr.G1 });
+                        if (tr.G1 != null)
                         {
-                            T1RXXXXG9.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G9 });
+                            T1RXXXXG1.Add(new DGI4nomColumn() { ROWNUM = row, Value = (ulong)tr.G1 });
+                        }
+                        else
+                        {
+                            T1RXXXXG1.Add(null);
+                        }
+                        //T1RXXXXG2.Add(new KOATUUColumn() { ROWNUM = row, Value = tr.G2 });
+                        if (tr.G2 != null)
+                        {
+                            T1RXXXXG2.Add(new KOATUUColumn() { ROWNUM = row, Value = (ulong)tr.G2 });
+                        }
+                        else
+                        {
+                            T1RXXXXG2.Add(null);
+                        }
+                        //T1RXXXXG3S.Add(new StrColumn() { ROWNUM = row, Value = tr.G3S });
+                        if (tr.G3S != null)
+                        {
+                            T1RXXXXG3S.Add(new StrColumn() { ROWNUM = row, Value = tr.G3S });
+                        }
+                        else
+                        {
+                            T1RXXXXG3S.Add(null);
+                        }
+                        //T1RXXXXG4.Add(new ChkColumn() { ROWNUM = row, Value = tr.G4 });
+                        if (tr.G4 != null)
+                        {
+                            T1RXXXXG4.Add(new ChkColumn() { ROWNUM = row, Value = (int)tr.G4 });
+                        }
+                        else
+                        {
+                            T1RXXXXG4.Add(null);
+                        }
+                        //T1RXXXXG5S.Add(new StrColumn() { ROWNUM = row, Value = tr.G5S });
+                        if (tr.G5S != null)
+                        {
+                            T1RXXXXG5S.Add(new StrColumn() { ROWNUM = row, Value = tr.G5S });
+                        }
+                        else
+                        {
+                            T1RXXXXG5S.Add(null);
+                        }
+                        //T1RXXXXG6S.Add(new StrColumn() { ROWNUM = row, Value = tr.G6S });
+                        if (tr.G6S != null)
+                        {
+                            T1RXXXXG6S.Add(new StrColumn() { ROWNUM = row, Value = tr.G6S });
+                        }
+                        else
+                        {
+                            T1RXXXXG6S.Add(null);
+                        }
+                        //T1RXXXXG7.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G7 });
+                        if (tr.G7 != null)
+                        {
+                            T1RXXXXG7.Add(new Decimal2Column() { ROWNUM = row, Value = (decimal)tr.G7 });
+                        }
+                        else
+                        {
+                            T1RXXXXG7.Add(null);
+                        }
+                        //T1RXXXXG8.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G8 });
+                        if (tr.G8 != null)
+                        {
+                            T1RXXXXG8.Add(new Decimal2Column() { ROWNUM = row, Value = (decimal)tr.G8 });
+                        }
+                        else
+                        {
+                            T1RXXXXG8.Add(null);
+                        }
+                        //T1RXXXXG9.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G9 });
+                        if (tr.G9!=null && tr.G9 > 0)
+                        {
+                            T1RXXXXG9.Add(new Decimal2Column() { ROWNUM = row, Value = (decimal)tr.G9 });
                         }
                         else
                         {
                             T1RXXXXG9.Add(null);
                         }
-                        if (tr.G10 > 0)
+                        //T1RXXXXG10.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G10 });
+                        if (tr.G10!=null && tr.G10 > 0)
                         {
-                            T1RXXXXG10.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G10 });
+                            T1RXXXXG10.Add(new Decimal2Column() { ROWNUM = row, Value = (decimal)tr.G10 });
                         }
                         else
                         {
                             T1RXXXXG10.Add(null);
                         }
                         //
-                        T1RXXXXG11.Add(new Ozn2Column() { ROWNUM = row, Value = tr.G11 });
+                        //T1RXXXXG11.Add(new Ozn2Column() { ROWNUM = row, Value = tr.G11 });
+                        if (tr.G11 != null)
+                        {
+                            T1RXXXXG11.Add(new Ozn2Column() { ROWNUM = row, Value = tr.G11 });
+                        }
+                        else
+                        {
+                            T1RXXXXG11.Add(null);
+                        }
                         row++;
                     }
                     dbody.T1RXXXXG1 = T1RXXXXG1.ToArray();
@@ -309,12 +381,60 @@ namespace MEDOC
 
                     foreach (T2R tr in data.T2R)
                     {
-                        T2RXXXXG1.Add(new DGI4nomColumn() { ROWNUM = row, Value = tr.G1 });
-                        T2RXXXXG2.Add(new KOATUUColumn() { ROWNUM = row, Value = tr.G2 });
-                        T2RXXXXG3S.Add(new StrColumn() { ROWNUM = row, Value = tr.G3S });
-                        T2RXXXXG4.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G4 });
-                        T2RXXXXG5.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G5 });
-                        T2RXXXXG6.Add(new Ozn2Column() { ROWNUM = row, Value = tr.G6 });
+                        //T2RXXXXG1.Add(new DGI4nomColumn() { ROWNUM = row, Value = tr.G1 });
+                        if (tr.G1 != null)
+                        {
+                            T2RXXXXG1.Add(new DGI4nomColumn() { ROWNUM = row, Value = (ulong)tr.G1 });
+                        }
+                        else
+                        {
+                            T2RXXXXG1.Add(null);
+                        }
+                        //T2RXXXXG2.Add(new KOATUUColumn() { ROWNUM = row, Value = tr.G2 });
+                        if (tr.G2 != null)
+                        {
+                            T2RXXXXG2.Add(new KOATUUColumn() { ROWNUM = row, Value = (ulong)tr.G2 });
+                        }
+                        else
+                        {
+                            T2RXXXXG2.Add(null);
+                        }
+                        //T2RXXXXG3S.Add(new StrColumn() { ROWNUM = row, Value = tr.G3S });
+                        if (tr.G3S != null)
+                        {
+                            T2RXXXXG3S.Add(new StrColumn() { ROWNUM = row, Value = tr.G3S });
+                        }
+                        else
+                        {
+                            T2RXXXXG3S.Add(null);
+                        }
+                        //T2RXXXXG4.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G4 });
+                        if (tr.G4 != null)
+                        {
+                            T2RXXXXG4.Add(new Decimal2Column() { ROWNUM = row, Value = (decimal)tr.G4 });
+                        }
+                        else
+                        {
+                            T2RXXXXG4.Add(null);
+                        }
+                        //T2RXXXXG5.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G5 });
+                        if (tr.G5 != null)
+                        {
+                            T2RXXXXG5.Add(new Decimal2Column() { ROWNUM = row, Value = (decimal)tr.G5 });
+                        }
+                        else
+                        {
+                            T2RXXXXG5.Add(null);
+                        }
+                        //T2RXXXXG6.Add(new Ozn2Column() { ROWNUM = row, Value = tr.G6 });
+                        if (tr.G6 != null)
+                        {
+                            T2RXXXXG6.Add(new Ozn2Column() { ROWNUM = row, Value = tr.G6 });
+                        }
+                        else
+                        {
+                            T2RXXXXG6.Add(null);
+                        }
                         row++;
                     }
 
@@ -401,16 +521,96 @@ namespace MEDOC
 
                     foreach (T5R tr in data.T5R)
                     {
-                        T5RXXXXG1.Add(new DGI4nomColumn() { ROWNUM = row, Value = tr.G1 });
-                        T5RXXXXG2.Add(new KOATUUColumn() { ROWNUM = row, Value = tr.G2 });
-                        T5RXXXXG3S.Add(new StrColumn() { ROWNUM = row, Value = tr.G3S });
-                        T5RXXXXG4.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G4 });
-                        T5RXXXXG5.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G5 });
-                        T5RXXXXG6.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G6 });
-                        T5RXXXXG7.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G7 });
-                        T5RXXXXG8.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G8 });
-                        T5RXXXXG9.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G9 });
-                        T5RXXXXG10.Add(new Ozn2Column() { ROWNUM = row, Value = tr.G10 });
+                        //T5RXXXXG1.Add(new DGI4nomColumn() { ROWNUM = row, Value = tr.G1 });
+                        if (tr.G1 != null)
+                        {
+                            T5RXXXXG1.Add(new DGI4nomColumn() { ROWNUM = row, Value = (ulong)tr.G1 });
+                        }
+                        else
+                        {
+                            T5RXXXXG1.Add(null);
+                        }
+                        //T5RXXXXG2.Add(new KOATUUColumn() { ROWNUM = row, Value = tr.G2 });
+                        if (tr.G2 != null)
+                        {
+                            T5RXXXXG2.Add(new KOATUUColumn() { ROWNUM = row, Value = (ulong)tr.G2 });
+                        }
+                        else
+                        {
+                            T5RXXXXG2.Add(null);
+                        }
+                        //T5RXXXXG3S.Add(new StrColumn() { ROWNUM = row, Value = tr.G3S });
+                        if (tr.G3S != null)
+                        {
+                            T5RXXXXG3S.Add(new StrColumn() { ROWNUM = row, Value = tr.G3S });
+                        }
+                        else
+                        {
+                            T5RXXXXG3S.Add(null);
+                        }
+                        //T5RXXXXG4.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G4 });
+                        if (tr.G4 != null)
+                        {
+                            T5RXXXXG4.Add(new Decimal2Column() { ROWNUM = row, Value = (decimal)tr.G4 });
+                        }
+                        else
+                        {
+                            T5RXXXXG4.Add(null);
+                        }
+                        //T5RXXXXG5.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G5 });
+                        if (tr.G5 != null)
+                        {
+                            T5RXXXXG5.Add(new Decimal2Column() { ROWNUM = row, Value = (decimal)tr.G5 });
+                        }
+                        else
+                        {
+                            T5RXXXXG5.Add(null);
+                        }
+                        //T5RXXXXG6.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G6 });
+                        if (tr.G6 != null)
+                        {
+                            T5RXXXXG6.Add(new Decimal2Column() { ROWNUM = row, Value = (decimal)tr.G6 });
+                        }
+                        else
+                        {
+                            T5RXXXXG6.Add(null);
+                        }
+                        //T5RXXXXG7.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G7 });
+                        if (tr.G7 != null)
+                        {
+                            T5RXXXXG7.Add(new Decimal2Column() { ROWNUM = row, Value = (decimal)tr.G7 });
+                        }
+                        else
+                        {
+                            T5RXXXXG7.Add(null);
+                        }
+                        //T5RXXXXG8.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G8 });
+                        if (tr.G8 != null)
+                        {
+                            T5RXXXXG8.Add(new Decimal2Column() { ROWNUM = row, Value = (decimal)tr.G8 });
+                        }
+                        else
+                        {
+                            T5RXXXXG8.Add(null);
+                        }
+                        //T5RXXXXG9.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G9 });
+                        if (tr.G9 != null)
+                        {
+                            T5RXXXXG9.Add(new Decimal2Column() { ROWNUM = row, Value = (decimal)tr.G9 });
+                        }
+                        else
+                        {
+                            T5RXXXXG9.Add(null);
+                        }
+                        //T5RXXXXG10.Add(new Ozn2Column() { ROWNUM = row, Value = tr.G10 });
+                        if (tr.G10 != null)
+                        {
+                            T5RXXXXG10.Add(new Ozn2Column() { ROWNUM = row, Value = tr.G10 });
+                        }
+                        else
+                        {
+                            T5RXXXXG10.Add(null);
+                        }
                         row++;
                     }
                     dbody.T5RXXXXG1 = T5RXXXXG1.ToArray();
@@ -437,14 +637,78 @@ namespace MEDOC
 
                     foreach (T6R tr in data.T6R)
                     {
-                        T6RXXXXG1.Add(new DGI4nomColumn() { ROWNUM = row, Value = tr.G1 });
-                        T6RXXXXG2.Add(new KOATUUColumn() { ROWNUM = row, Value = tr.G2 });
-                        T6RXXXXG3S.Add(new StrColumn() { ROWNUM = row, Value = tr.G3S });
-                        T6RXXXXG4.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G4 });
-                        T6RXXXXG5.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G5 });
-                        T6RXXXXG6.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G6 });
-                        T6RXXXXG7.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G7 });
-                        T6RXXXXG8.Add(new Ozn2Column() { ROWNUM = row, Value = tr.G8 });
+                        //T6RXXXXG1.Add(new DGI4nomColumn() { ROWNUM = row, Value = tr.G1 });
+                        if (tr.G1 != null)
+                        {
+                            T6RXXXXG1.Add(new DGI4nomColumn() { ROWNUM = row, Value = (ulong)tr.G1 });
+                        }
+                        else
+                        {
+                            T6RXXXXG1.Add(null);
+                        }
+                        //T6RXXXXG2.Add(new KOATUUColumn() { ROWNUM = row, Value = tr.G2 });
+                        if (tr.G2 != null)
+                        {
+                            T6RXXXXG2.Add(new KOATUUColumn() { ROWNUM = row, Value = (ulong)tr.G2 });
+                        }
+                        else
+                        {
+                            T6RXXXXG2.Add(null);
+                        }
+                        //T6RXXXXG3S.Add(new StrColumn() { ROWNUM = row, Value = tr.G3S });
+                        if (tr.G3S != null)
+                        {
+                            T6RXXXXG3S.Add(new StrColumn() { ROWNUM = row, Value = tr.G3S });
+                        }
+                        else
+                        {
+                            T6RXXXXG3S.Add(null);
+                        }
+                        //T6RXXXXG4.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G4 });
+                        if (tr.G4 != null)
+                        {
+                            T6RXXXXG4.Add(new Decimal2Column() { ROWNUM = row, Value = (decimal)tr.G4 });
+                        }
+                        else
+                        {
+                            T6RXXXXG4.Add(null);
+                        }
+                        //T6RXXXXG5.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G5 });
+                        if (tr.G5 != null)
+                        {
+                            T6RXXXXG5.Add(new Decimal2Column() { ROWNUM = row, Value = (decimal)tr.G5 });
+                        }
+                        else
+                        {
+                            T6RXXXXG5.Add(null);
+                        }
+                        //T6RXXXXG6.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G6 });
+                        if (tr.G6 != null)
+                        {
+                            T6RXXXXG6.Add(new Decimal2Column() { ROWNUM = row, Value = (decimal)tr.G6 });
+                        }
+                        else
+                        {
+                            T6RXXXXG6.Add(null);
+                        }
+                        //T6RXXXXG7.Add(new Decimal2Column() { ROWNUM = row, Value = tr.G7 });
+                        if (tr.G7 != null)
+                        {
+                            T6RXXXXG7.Add(new Decimal2Column() { ROWNUM = row, Value = (decimal)tr.G7 });
+                        }
+                        else
+                        {
+                            T6RXXXXG7.Add(null);
+                        }
+                        //T6RXXXXG8.Add(new Ozn2Column() { ROWNUM = row, Value = tr.G8 });
+                        if (tr.G8 != null)
+                        {
+                            T6RXXXXG8.Add(new Ozn2Column() { ROWNUM = row, Value = tr.G8 });
+                        }
+                        else
+                        {
+                            T6RXXXXG8.Add(null);
+                        }
                         row++;
                     }
                     dbody.T6RXXXXG1 = T6RXXXXG1.ToArray();

@@ -67,8 +67,8 @@
             //});
         },
         // список
-        code_fuel = "6439",
-        name_fuel = "Бензол сирий кам'яновугільний",
+        code_fuel = "2707101000",
+        name_fuel = "Бензол",
         level_meters_serial_number_1 = "50233729", // 50161698 
         level_meters_serial_number_2 = "50233730", // 50161699
         serial_number_flowmeter = "G200000007602232",
@@ -251,43 +251,64 @@
             var volume15_dispensing = volume15_dispensing_tank_1 + volume15_dispensing_tank_2;
 
             // 1
+            //var T1R = {
+            //    G1: 1,
+            //    G2: Number(code_fuel),
+            //    G3S: name_fuel,
+            //    G4: null,
+            //    G5S: 1,
+            //    G6S: level_meters_serial_number_1,
+            //    G7: volume15_remains_start_tank_1 !== null ? Number(volume15_remains_start_tank_1).toFixed(2) : 0.00,
+            //    G8: volume15_remains_stop_tank_1 !== null ? Number(volume15_remains_stop_tank_1).toFixed(2) : 0.00,
+            //    G9: 0.00,
+            //    G10: 0.00,
+            //    G11: null
+            //};
             var T1R = {
-                G1: 1,
-                G2: Number(code_fuel),
-                G3S: name_fuel,
+                G1: null,
+                G2: null,
+                G3S: null,
                 G4: null,
-                G5S: 1,
-                G6S: level_meters_serial_number_1,
-                G7: volume15_remains_start_tank_1 !== null ? Number(volume15_remains_start_tank_1).toFixed(2) : 0.00,
-                G8: volume15_remains_stop_tank_1 !== null ? Number(volume15_remains_stop_tank_1).toFixed(2) : 0.00,
-                G9: 0.00,
-                G10: 0.00,
+                G5S: null,
+                G6S: null,
+                G7: null,
+                G8: null,
+                G9: null,
+                G10: null,
                 G11: null
             };
             tab1.push(T1R);
             // 2
-            var T1R = {
-                G1: 1,
-                G2: Number(code_fuel),
-                G3S: name_fuel,
-                G4: null,
-                G5S: 2,
-                G6S: level_meters_serial_number_2,
-                G7: volume15_remains_start_tank_2 !== null ? Number(volume15_remains_start_tank_2).toFixed(2) : 0.00,
-                G8: volume15_remains_stop_tank_2 !== null ? Number(volume15_remains_stop_tank_2).toFixed(2) : 0.00,
-                G9: 0.00,
-                G10: 0.00,
-                G11: null
-            };
-            tab1.push(T1R);
+            //var T1R = {
+            //    G1: 2,
+            //    G2: Number(code_fuel),
+            //    G3S: name_fuel,
+            //    G4: null,
+            //    G5S: 2,
+            //    G6S: level_meters_serial_number_2,
+            //    G7: volume15_remains_start_tank_2 !== null ? Number(volume15_remains_start_tank_2).toFixed(2) : 0.00,
+            //    G8: volume15_remains_stop_tank_2 !== null ? Number(volume15_remains_stop_tank_2).toFixed(2) : 0.00,
+            //    G9: 0.00,
+            //    G10: 0.00,
+            //    G11: null
+            //};
+            //tab1.push(T1R);
             // Формируем таблицу 2
             var tab2 = [];
+            //var T2R = {
+            //    G1: 1,
+            //    G2: Number(code_fuel),
+            //    G3S: name_fuel,
+            //    G4: Number(volume15_remains_start).toFixed(2),
+            //    G5: Number(volume15_remains_stop).toFixed(2),
+            //    G6: null
+            //};
             var T2R = {
-                G1: 1,
-                G2: Number(code_fuel),
-                G3S: name_fuel,
-                G4: Number(volume15_remains_start).toFixed(2),
-                G5: Number(volume15_remains_stop).toFixed(2),
+                G1: null,
+                G2: null,
+                G3S: null,
+                G4: null,
+                G5: null,
                 G6: null
             };
             tab2.push(T2R);
@@ -314,30 +335,52 @@
             tab4.push(T4R);
             // Формируем таблицу 5
             var tab5 = [];
-            var result = volume15_remains_stop - volume15_remains_start + volume15_dispensing;
+            //var result = volume15_remains_stop - volume15_remains_start + volume15_dispensing;
+            //var T5R = {
+            //    G1: 1,
+            //    G2: Number(code_fuel),
+            //    G3S: name_fuel,
+            //    G4: (volume15_remains_stop !== null ? Number(volume15_remains_stop).toFixed(2) : Number(0).toFixed(2)),
+            //    G5: (volume15_remains_start !== null ? Number(volume15_remains_start).toFixed(2) : Number(0).toFixed(2)),
+            //    G6: (volume15_dispensing !== null ? Number(volume15_dispensing).toFixed(2) : Number(0).toFixed(2)),
+            //    G7: Number(0).toFixed(2),
+            //    G8: Number(0).toFixed(2),
+            //    G9: (result !== null ? Number(result).toFixed(2) : Number(0).toFixed(2)),
+            //    G10: null
+            //};
             var T5R = {
-                G1: 1,
-                G2: Number(code_fuel),
-                G3S: name_fuel,
-                G4: (volume15_remains_stop !== null ? Number(volume15_remains_stop).toFixed(2) : Number(0).toFixed(2)),
-                G5: (volume15_remains_start !== null ? Number(volume15_remains_start).toFixed(2) : Number(0).toFixed(2)),
-                G6: (volume15_dispensing !== null ? Number(volume15_dispensing).toFixed(2) : Number(0).toFixed(2)),
-                G7: Number(0).toFixed(2),
-                G8: Number(0).toFixed(2),
-                G9: (result !== null ? Number(result).toFixed(2) : Number(0).toFixed(2)),
+                G1: null,
+                G2: null,
+                G3S: null,
+                G4: null,
+                G5: null,
+                G6: null,
+                G7: null,
+                G8: null,
+                G9: null,
                 G10: null
             };
             tab5.push(T5R);
             // Формируем таблицу 6
             var tab6 = [];
+            //var T6R = {
+            //    G1: index,
+            //    G2: Number(code_fuel),
+            //    G3S: name_fuel,
+            //    G4: Number(volume_pipeline).toFixed(2),
+            //    G5: Number(volume_pipeline).toFixed(2),
+            //    G6: Number(0).toFixed(2),
+            //    G7: Number(0).toFixed(2),
+            //    G8: null
+            //};
             var T6R = {
-                G1: index,
-                G2: Number(code_fuel),
-                G3S: name_fuel,
-                G4: Number(volume_pipeline).toFixed(2),
-                G5: Number(volume_pipeline).toFixed(2),
-                G6: Number(0).toFixed(2),
-                G7: Number(0).toFixed(2),
+                G1: null,
+                G2: null,
+                G3S: null,
+                G4: null,
+                G5: null,
+                G6: null,
+                G7: null,
                 G8: null
             };
             tab6.push(T6R);
@@ -449,17 +492,17 @@
                 $.each(report_data.T1R, function (i, el) {
                     tab += "<tr style='height:auto;'>" +
                         "<td class=xl7020875 width=24 style='width:18pt'>&nbsp;</td>" +
-                        "<td class=xl7420875 width=51 style='border-top:none;border-left:none;width:38pt'>&nbsp;</td>" +
-                        "<td class=xl7420875 width=120 style='border-top:none;border-left:none;width:90pt'>" + (el.G2 !== null ? el.G2 : "&nbsp;") + "</td>" +
-                        "<td class=xl7220875 width=81 style='border-top:none;border-left:none;width:61pt'>" + (el.G3S !== null ? el.G3S : "&nbsp;") + "</td>" +
-                        "<td class=xl7420875 width=81 style='border-top:none;width:61pt'>&nbsp;</td>" +
-                        "<td class=xl7420875 width=92 style='border-top:none;border-left:none;width:69pt;word-wrap:break-word'>" + (el.G5S !== null ? el.G5S : "&nbsp;") + "</td>" +
-                        "<td class=xl7220875 width=92 style='border-top:none;border-left:none;width:69pt'>" + (el.G6S !== null ? el.G6S : "&nbsp;") + "</td>" +
-                        "<td class=xl7220875-numder width=98 style='border-top:none;width:74pt'>" + (el.G7 !== null ? Number(el.G7).toFixed(2) : "&nbsp;") + "</td>" +
-                        "<td class=xl7220875-numder width=103 style='border-top:none;width:77pt'>" + (el.G8 !== null ? Number(el.G8).toFixed(2) : "&nbsp;") + "</td>" +
-                        "<td class=xl7420875 width=93 style='border-top:none;width:70pt'>&nbsp;</td>" +
-                        "<td class=xl7420875 width=108 style='border-top:none;border-left:none;width:81pt'>&nbsp;</td>" +
-                        "<td class=xl7420875 width=46 style='border-top:none;border-left:none;width:35pt'>&nbsp;</td>" +
+                        "<td class=xl7420875 width=51 style='border-top:none;border-left:none;width:38pt'>-</td>" +
+                        "<td class=xl7420875 width=120 style='border-top:none;border-left:none;width:90pt'>" + (el.G2 !== null ? el.G2 : "-") + "</td>" +
+                        "<td class=xl7220875 width=81 style='border-top:none;border-left:none;width:61pt'>" + (el.G3S !== null ? el.G3S : "-") + "</td>" +
+                        "<td class=xl7420875 width=81 style='border-top:none;width:61pt'>-</td>" +
+                        "<td class=xl7420875 width=92 style='border-top:none;border-left:none;width:69pt;word-wrap:break-word'>" + (el.G5S !== null ? el.G5S : "-") + "</td>" +
+                        "<td class=xl7220875 width=92 style='border-top:none;border-left:none;width:69pt'>" + (el.G6S !== null ? el.G6S : "-") + "</td>" +
+                        "<td class=xl7220875-numder width=98 style='border-top:none;width:74pt'>" + (el.G7 !== null ? Number(el.G7).toFixed(2) : "-") + "</td>" +
+                        "<td class=xl7220875-numder width=103 style='border-top:none;width:77pt'>" + (el.G8 !== null ? Number(el.G8).toFixed(2) : "-") + "</td>" +
+                        "<td class=xl7420875 width=93 style='border-top:none;width:70pt'>-</td>" +
+                        "<td class=xl7420875 width=108 style='border-top:none;border-left:none;width:81pt'>-</td>" +
+                        "<td class=xl7420875 width=46 style='border-top:none;border-left:none;width:35pt'>-</td>" +
                         "</tr>";
                 });
             }
@@ -473,12 +516,12 @@
             if (report_data !== null && report_data.T2R !== null) {
                 $.each(report_data.T2R, function (i, el) {
                     tab += "<tr style='height:auto'>" +
-                        "<td class=xl671827 width=183 style='border-top:none;border-left:none;width:137pt'>&nbsp;</td>" +
-                        "<td class=xl671827 width=183 style='border-top:none;border-left:none;width:137pt'>" + (el.G2 !== null ? el.G2 : "&nbsp;") + "</td>" +
-                        "<td class=xl671827 width=183 style='border-top:none;border-left:none;width:137pt'>" + (el.G3S !== null ? el.G3S : "&nbsp;") + "</td>" +
-                        "<td class=xl671827-number width=183 style='border-top:none;border-left:none;width:137pt'>" + (el.G4 !== null ? Number(el.G4).toFixed(2) : "&nbsp;") + "</td>" +
-                        "<td class=xl671827-number width=183 style='border-top:none;border-left:none;width:137pt'>" + (el.G5 !== null ? Number(el.G5).toFixed(2) : "&nbsp;") + "</td>" +
-                        "<td class=xl671827 width=183 style='border-top:none;border-left:none;width:137pt'>&nbsp;</td>" +
+                        "<td class=xl671827 width=183 style='border-top:none;border-left:none;width:137pt'>-</td>" +
+                        "<td class=xl671827 width=183 style='border-top:none;border-left:none;width:137pt'>" + (el.G2 !== null ? el.G2 : "-") + "</td>" +
+                        "<td class=xl671827 width=183 style='border-top:none;border-left:none;width:137pt'>" + (el.G3S !== null ? el.G3S : "-") + "</td>" +
+                        "<td class=xl671827-number width=183 style='border-top:none;border-left:none;width:137pt'>" + (el.G4 !== null ? Number(el.G4).toFixed(2) : "-") + "</td>" +
+                        "<td class=xl671827-number width=183 style='border-top:none;border-left:none;width:137pt'>" + (el.G5 !== null ? Number(el.G5).toFixed(2) : "-") + "</td>" +
+                        "<td class=xl671827 width=183 style='border-top:none;border-left:none;width:137pt'>-</td>" +
                         "</tr>";
                 });
             }
@@ -527,16 +570,16 @@
             if (report_data !== null && report_data.T5R !== null) {
                 $.each(report_data.T5R, function (i, el) {
                     tab += "<tr  class=xl6627014 style='height:auto'>" +
-                        "<td class=xl6527014 width=41 style='border-top:none;border-left:none;width:31pt'>&nbsp;</td>" +
-                        "<td class=xl6527014 width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.G2 !== null ? el.G2 : "&nbsp;") + "</td>" +
-                        "<td class=xl6527014 width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.G3S !== null ? el.G3S : "&nbsp;") + "</td>" +
-                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.G4 !== null ? Number(el.G4).toFixed(2) : "&nbsp;") + "</td>" +
-                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.G5 !== null ? Number(el.G5).toFixed(2) : "&nbsp;") + "</td>" +
-                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.G6 !== null ? Number(el.G6).toFixed(2) : "&nbsp;") + "</td>" +
-                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>&nbsp;</td>" +
-                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>&nbsp;</td>" +
-                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.G9 !== null ? Number(el.G9).toFixed(2) : "&nbsp;") + "</td>" +
-                        "<td class=xl6527014 width=49 style='border-top:none;border-left:none;width:37pt'>&nbsp;</td>" +
+                        "<td class=xl6527014 width=41 style='border-top:none;border-left:none;width:31pt'>-</td>" +
+                        "<td class=xl6527014 width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.G2 !== null ? el.G2 : "-") + "</td>" +
+                        "<td class=xl6527014 width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.G3S !== null ? el.G3S : "-") + "</td>" +
+                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.G4 !== null ? Number(el.G4).toFixed(2) : "-") + "</td>" +
+                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.G5 !== null ? Number(el.G5).toFixed(2) : "-") + "</td>" +
+                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.G6 !== null ? Number(el.G6).toFixed(2) : "-") + "</td>" +
+                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>-</td>" +
+                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>-</td>" +
+                        "<td class=xl6527014-number width=112 style='border-top:none;border-left:none;width:84pt'>" + (el.G9 !== null ? Number(el.G9).toFixed(2) : "-") + "</td>" +
+                        "<td class=xl6527014 width=49 style='border-top:none;border-left:none;width:37pt'>-</td>" +
                         "</tr>";
                 });
             }
@@ -549,14 +592,14 @@
             if (report_data !== null && report_data.T6R !== null) {
                 $.each(report_data.T6R, function (i, el) {
                     tab += "<tr class=xl6628927 style='height:auto'>" +
-                        "<td class=xl6528927 width=55 style='border-top:none;border-left:none;width:41pt'>&nbsp;</td>" +
-                        "<td class=xl6528927 width=133 style='border-top:none;border-left:none;width:100pt'>" + (el.G2 !== null ? el.G2 : " &nbsp;") + "</td>" +
-                        "<td class=xl6528927 width=193 style='border-top:none;border-left:none;width:145pt'>" + (el.G3S !== null ? el.G3S : " &nbsp;") + "</td>" +
-                        "<td class=xl6528927-number width=133 style='border-top:none;border-left:none;width:100pt'>" + (el.G4 !== null ? Number(el.G4).toFixed(2) : " &nbsp;") + "</td>" +
-                        "<td class=xl6528927-number width=133 style='border-top:none;border-left:none;width:100pt'>" + (el.G5 !== null ? Number(el.G5).toFixed(2) : " &nbsp;") + "</td>" +
-                        "<td class=xl6528927-number width=133 style='border-top:none;border -left:none;width:100pt'>&nbsp;</td>" +
-                        "<td class=xl6528927-number width=133 style='border-top:none;border-left:none;width:100pt'>&nbsp;</td>" +
-                        "<td class=xl6528927 width=71 style='border-top:none;border-left:none;width:53pt'>&nbsp;</td>" +
+                        "<td class=xl6528927 width=55 style='border-top:none;border-left:none;width:41pt'>-</td>" +
+                        "<td class=xl6528927 width=133 style='border-top:none;border-left:none;width:100pt'>" + (el.G2 !== null ? el.G2 : "-") + "</td>" +
+                        "<td class=xl6528927 width=193 style='border-top:none;border-left:none;width:145pt'>" + (el.G3S !== null ? el.G3S : "-") + "</td>" +
+                        "<td class=xl6528927-number width=133 style='border-top:none;border-left:none;width:100pt'>" + (el.G4 !== null ? Number(el.G4).toFixed(2) : "-") + "</td>" +
+                        "<td class=xl6528927-number width=133 style='border-top:none;border-left:none;width:100pt'>" + (el.G5 !== null ? Number(el.G5).toFixed(2) : "-") + "</td>" +
+                        "<td class=xl6528927-number width=133 style='border-top:none;border -left:none;width:100pt'>-</td>" +
+                        "<td class=xl6528927-number width=133 style='border-top:none;border-left:none;width:100pt'>-</td>" +
+                        "<td class=xl6528927 width=71 style='border-top:none;border-left:none;width:53pt'>-</td>" +
                         "</tr>";
                 });
             }
