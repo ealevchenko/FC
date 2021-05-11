@@ -244,21 +244,21 @@
                         // Начало
                         {
                             data: function (row, type, val, meta) {
-                                return row.start_volume !== null ? Number(row.start_volume).toFixed(3) : Number(0).toFixed(3);
+                                return row.start_volume !== null ? Number(row.start_volume).toFixed(2) : Number(0).toFixed(2);
                             },
                             className: 'dt-body-right',
                             title: 'Остаток, объем на начало выборки (л)', width: "50px", orderable: false, searchable: false, className: 'td-number'
                         },
                         {
                             data: function (row, type, val, meta) {
-                                return row.start_volume15 !== null ? Number(row.start_volume15).toFixed(3) : Number(0).toFixed(3);
+                                return row.start_volume15 !== null ? Number(row.start_volume15).toFixed(2) : Number(0).toFixed(2);
                             },
                             className: 'dt-body-right',
                             title: 'Остаток, объем на начало выборки (л), привед. к 15 град', width: "50px", orderable: false, searchable: false, className: 'td-number'
                         },
                         {
                             data: function (row, type, val, meta) {
-                                return row.start_mass !== null ? Number(row.start_mass / 1000).toFixed(3) : Number(0).toFixed(3);
+                                return row.start_mass !== null ? Number(row.start_mass / 1000).toFixed(2) : Number(0).toFixed(2);
                             },
                             className: 'dt-body-right',
                             title: 'Остаток, масса на начало выборки (т)', width: "50px", orderable: false, searchable: false, className: 'td-number'
@@ -280,21 +280,21 @@
                         // Приход
                         {
                             data: function (row, type, val, meta) {
-                                return row.deliverys_volume !== null ? Number(row.deliverys_volume).toFixed(3) : Number(0).toFixed(3);
+                                return row.deliverys_volume !== null ? Number(row.deliverys_volume).toFixed(2) : Number(0).toFixed(2);
                             },
                             className: 'dt-body-right',
                             title: 'Приход, объем (л)', width: "50px", orderable: false, searchable: false, className: 'td-number'
                         },
                         {
                             data: function (row, type, val, meta) {
-                                return row.deliverys_volume15 !== null ? Number(row.deliverys_volume15).toFixed(3) : Number(0).toFixed(3);
+                                return row.deliverys_volume15 !== null ? Number(row.deliverys_volume15).toFixed(2) : Number(0).toFixed(2);
                             },
                             className: 'dt-body-right',
                             title: 'Приход, объем (л), привед. к 15 град', width: "50px", orderable: false, searchable: false, className: 'td-number'
                         },
                         {
                             data: function (row, type, val, meta) {
-                                return row.deliverys_mass !== null ? Number(row.deliverys_mass / 1000).toFixed(3) : Number(0).toFixed(3);
+                                return row.deliverys_mass !== null ? Number(row.deliverys_mass / 1000).toFixed(2) : Number(0).toFixed(2);
                             },
                             className: 'dt-body-right',
                             title: 'Приход, масса (т)', width: "50px", orderable: false, searchable: false, className: 'td-number'
@@ -316,21 +316,21 @@
                         // Выдача
                         {
                             data: function (row, type, val, meta) {
-                                return row.dispensing_volume !== null ? Number(row.dispensing_volume).toFixed(3) : Number(0).toFixed(3);
+                                return row.dispensing_volume !== null ? Number(row.dispensing_volume).toFixed(2) : Number(0).toFixed(2);
                             },
                             className: 'dt-body-right',
                             title: 'Расход, объем (л)', width: "50px", orderable: false, searchable: false, className: 'td-number'
                         },
                         {
                             data: function (row, type, val, meta) {
-                                return row.dispensing_volume15 !== null ? Number(row.dispensing_volume15).toFixed(3) : Number(0).toFixed(3);
+                                return row.dispensing_volume15 !== null ? Number(row.dispensing_volume15).toFixed(2) : Number(0).toFixed(2);
                             },
                             className: 'dt-body-right',
                             title: 'Расход, объем (л), привед. к 15 град', width: "50px", orderable: false, searchable: false, className: 'td-number'
                         },
                         {
                             data: function (row, type, val, meta) {
-                                return row.dispensing_mass !== null ? Number(row.dispensing_mass / 1000).toFixed(3) : Number(0).toFixed(3);
+                                return row.dispensing_mass !== null ? Number(row.dispensing_mass / 1000).toFixed(2) : Number(0).toFixed(2);
                             },
                             className: 'dt-body-right',
                             title: 'Расход, масса (т)', width: "50px", orderable: false, searchable: false, className: 'td-number'
@@ -352,21 +352,21 @@
                         // Конец
                         {
                             data: function (row, type, val, meta) {
-                                return row.stop_volume !== null ? Number(row.stop_volume).toFixed(3) : Number(0).toFixed(3);
+                                return row.stop_volume !== null ? Number(row.stop_volume).toFixed(2) : Number(0).toFixed(2);
                             },
                             className: 'dt-body-right',
                             title: 'Остаток, объем на конец выборки (л)', width: "50px", orderable: false, searchable: false, className: 'td-number'
                         },
                         {
                             data: function (row, type, val, meta) {
-                                return row.stop_volume15 !== null ? Number(row.stop_volume15).toFixed(3) : Number(0).toFixed(3);
+                                return row.stop_volume15 !== null ? Number(row.stop_volume15).toFixed(2) : Number(0).toFixed(2);
                             },
                             className: 'dt-body-right',
                             title: 'Остаток, объем на конец выборки (л), привед. к 15 град', width: "50px", orderable: false, searchable: false, className: 'td-number'
                         },
                         {
                             data: function (row, type, val, meta) {
-                                return row.stop_mass !== null ? Number(row.stop_mass / 1000).toFixed(3) : Number(0).toFixed(3);
+                                return row.stop_mass !== null ? Number(row.stop_mass / 1000).toFixed(2) : Number(0).toFixed(2);
                             },
                             className: 'dt-body-right',
                             title: 'Остаток, масса на конец выборки (т)', width: "50px", orderable: false, searchable: false, className: 'td-number'
